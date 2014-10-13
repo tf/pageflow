@@ -1,7 +1,9 @@
---no-api private
+--embed-mixin ClassMethods
+--hide-api private
 --exclude app/controllers
 --exclude app/mailers
 --exclude lib/generators
+--exclude lib/active_admin
 -
 doc/*.md
-README.md
+CHANGELOG.md

@@ -1,3 +1,5 @@
+# @title Creating File Types
+
 # Creating File Types
 
 Pageflow lets page types define new types of files to be managed in
@@ -8,7 +10,7 @@ The code in the following example is taken from the
 `pageflow-panorama` engine, which adds the ability to upload zip files
 containing 360° degree panoramas.
 
-# The Basic Setup
+## The Basic Setup
 
 First let us a create an ActiveRecord model to hold the data
 associated with the new type of file:
