@@ -1,0 +1,7 @@
+--no-api private
+--exclude app/controllers
+--exclude app/mailers
+--exclude lib/generators
+-
+doc/*.md
+README.md
