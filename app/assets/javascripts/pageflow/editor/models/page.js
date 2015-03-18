@@ -31,6 +31,7 @@ pageflow.Page = Backbone.Model.extend({
     });
 
     this.listenTo(this, 'change:template', function() {
+      this.configuration.set(this.pageType().defaultConfiguration(), {trigger: false});
       this.save();
     });
   },

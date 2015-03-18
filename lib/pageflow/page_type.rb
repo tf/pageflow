@@ -38,6 +38,14 @@ module Pageflow
       raise(NotImplementedError, 'PageType subclass needs to define a name.')
     end
 
+    # Override to return a default page configuration.
+    #
+    # @return [Hash]
+    # @since 0.8
+    def default_configuration
+      {}
+    end
+
     # Rails helper modules to make available in the html template.
     #
     # Example:

@@ -42,8 +42,8 @@
 //= require ./initializers/setup_help_entries
 //= require ./initializers/setup_file_types
 //= require ./initializers/setup_widget_types
-//= require ./initializers/setup_collections
 //= require ./initializers/setup_page_types
+//= require ./initializers/setup_collections
 //= require ./initializers/edit_lock
 //= require ./initializers/files_polling
 //= require ./initializers/routing

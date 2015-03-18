@@ -13,6 +13,10 @@ pageflow.PageType = pageflow.Object.extend({
     return this.seed.thumbnail_candidates;
   },
 
+  defaultConfiguration: function() {
+    return this.seed.default_configuration;
+  },
+
   pageLinks: function(configuration) {
     if ('pageLinks' in this.options) {
       return this.options.pageLinks(configuration);
