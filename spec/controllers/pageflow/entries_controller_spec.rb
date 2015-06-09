@@ -270,6 +270,16 @@ module Pageflow
           expect(response.body).to include(".image_panorama_#{image_file.id}")
           expect(response.body).to include("url('#{image_file.attachment.url(:panorama_large)}')")
         end
+
+        it 'includes poster panorama style group for video files' do
+          entry = create(:entry, :published)
+          video_file = create(:video_file, :used_in => entry.published_revision)
+
+          get(:show, :id => entry, :format => 'css')
+
+          expect(response.body).to include(".video_poster_panorama_#{video_file.id}")
+          expect(response.body).to include("url('#{video_file.poster.url(:panorama_large)}')")
+        end
       end
 
       context 'with format json' do

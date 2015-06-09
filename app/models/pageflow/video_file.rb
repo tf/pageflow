@@ -5,17 +5,25 @@ module Pageflow
 
     belongs_to :confirmed_by, :class_name => 'User'
 
+    POSTER_STYLES = Pageflow.config.thumbnail_styles
+      .merge(print: ['300x300>', :JPG],
+             medium: ['1024x1024>', :JPG],
+             large: ['1920x1920>', :JPG],
+             panorama_medium: ['1024x1024^', :JPG],
+             panorama_large: ['1920x1080^', :JPG])
+
+    POSTER_CONVERT_OPTIONS = {
+      print: "-quality 10 -interlace Plane",
+      medium: "-quality 90 -interlace Plane",
+      large: "-quality 90 -interlace Plane",
+      panorama_medium: '-quality 70 -interlace Plane',
+      panorama_large: '-quality 70 -interlace Plane'
+    }
+
     has_attached_file(:poster, Pageflow.config.paperclip_s3_default_options
                         .merge(:default_url => ':pageflow_placeholder',
-                               :styles => Pageflow.config.thumbnail_styles
-                                 .merge(:medium => ['1920x1920>', :JPG],
-                                        :large => ['1024x1024>', :JPG],
-                                        :print => ['300x300>', :JPG]),
-                               :convert_options => {
-                                 :medium => "-quality 90 -interlace Plane",
-                                 :large => "-quality 90 -interlace Plane",
-                                 :print => "-quality 10 -interlace Plane"
-                               }))
+                               :styles => POSTER_STYLES,
+                               :convert_options => POSTER_CONVERT_OPTIONS))
 
     has_attached_file(:thumbnail, Pageflow.config.paperclip_s3_default_options
                         .merge(:default_url => ':pageflow_placeholder',

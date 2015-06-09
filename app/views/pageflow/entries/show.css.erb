@@ -23,6 +23,12 @@
             background-image: url('<%= image_file.attachment.url("panorama_#{style}") %>');
           }
         <% end %>
+
+        <% @entry.video_files.each do |video_file| %>
+          .load_images .video_poster_panorama_<%= video_file.id %> {
+            background-image: url('<%= video_file.poster.url("panorama_#{style}") %>');
+          }
+        <% end %>
       <% end %>
     <% end %>
 
