@@ -23,11 +23,12 @@ module Pageflow
 
       it 'copies draft' do
         entry = create(:entry, title: 'Some Title')
-        create(:chapter, revision: entry.draft, title: 'Original Chapter')
+        storyline = create(:storyline, revision: entry.draft)
+        create(:chapter, storyline: storyline, revision: entry.draft, title: 'Original Chapter')
 
         duplicate = EntryDuplicate.of(entry).create!
 
-        expect(duplicate.draft.chapters.map(&:title)).to eq(['Original Chapter'])
+        expect(duplicate.draft.storylines.first.chapters.map(&:title)).to eq(['Original Chapter'])
       end
 
       it 'copies memberships' do

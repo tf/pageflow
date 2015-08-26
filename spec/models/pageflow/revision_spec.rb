@@ -103,26 +103,42 @@ module Pageflow
         expect(copied_revision.emphasize_chapter_beginning).to eq(true)
       end
 
-      it 'copies chapters to new revision' do
+      it 'copies storylines to new revision' do
         revision = create(:revision)
-        chapter = create(:chapter, :revision => revision, :title => 'Intro')
+        storyline = create(:storyline, :revision => revision, :configuration => {'some' => 'value'})
 
         copied_revision = revision.copy
 
+        expect(copied_revision).to have(1).storyline
+        expect(copied_revision.storylines.first).not_to eq(storyline)
+        expect(copied_revision.storylines.first.configuration['some']).to eq('value')
+      end
+
+      it 'copies chapters to new revision' do
+        revision = create(:revision)
+        storyline = create(:storyline, :revision => revision)
+        chapter = create(:chapter, :storyline => storyline, :revision => revision, :title => 'Intro')
+
+        copied_revision = revision.copy
+
+        expect(revision).to have(1).chapter
         expect(copied_revision).to have(1).chapter
-        expect(copied_revision.chapters.first).not_to eq(chapter)
-        expect(copied_revision.chapters.first.title).to eq('Intro')
+        expect(copied_revision.storylines.first).to have(1).chapter
+        expect(copied_revision.storylines.first.chapters.first).not_to eq(chapter)
+        expect(copied_revision.storylines.first.chapters.first.title).to eq('Intro')
       end
 
       it 'copies pages to new revision' do
         revision = create(:revision)
-        chapter = create(:chapter, :revision => revision)
+        storyline = create(:storyline, :revision => revision)
+        chapter = create(:chapter, :storyline => storyline)
         page = create(:page, :chapter => chapter, :configuration => {'title' => 'Main'})
 
         copied_revision = revision.copy
 
-        expect(copied_revision.chapters.first).to have(1).page
-        expect(copied_revision.chapters.first.pages.first.configuration['title']).to eq('Main')
+        expect(copied_revision.storylines.first.chapters.first).to have(1).page
+        expect(copied_revision.storylines.first.chapters.first.pages.first).not_to eq(page)
+        expect(copied_revision.storylines.first.chapters.first.pages.first.configuration['title']).to eq('Main')
       end
 
       it 'copies file usages to new revision' do

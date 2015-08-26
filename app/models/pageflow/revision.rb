@@ -5,6 +5,7 @@ module Pageflow
     belongs_to :restored_from, :class_name => 'Pageflow::Revision'
 
     has_many :widgets, :as => :subject
+    has_many :storylines
     has_many :chapters, -> { order('position ASC') }
     has_many :pages, -> { reorder('pageflow_chapters.position ASC, pageflow_pages.position ASC') }, :through => :chapters
 
@@ -76,14 +77,15 @@ module Pageflow
 
     def copy(&block)
       revision = dup
+
       yield(revision) if block_given?
 
       widgets.each do |widget|
         widget.copy_to(revision)
       end
 
-      chapters.each do |chapter|
-        chapter.copy_to(revision)
+      storylines.each do |storyline|
+        storyline.copy_to(revision)
       end
 
       file_usages.each do |file_usage|
