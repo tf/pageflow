@@ -21,7 +21,9 @@ pageflow.StorylinePickerView = Backbone.Marionette.Layout.extend({
       label: 'Erzählstränge',
       propertyName: 'storyline_id',
       values: pageflow.storylines.pluck('id'),
-      texts: pageflow.storylines.map(function(s) { return 'Erzählstrang ' + s.id; })
+      texts: pageflow.storylines.map(function(storyline) {
+        return storyline.title();
+      })
     }));
 
     this.load();

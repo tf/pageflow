@@ -1,6 +1,6 @@
-pageflow.EditChapterView = Backbone.Marionette.Layout.extend({
-  template: 'templates/edit_chapter',
-  className: 'edit_chapter',
+pageflow.EditStorylineView = Backbone.Marionette.Layout.extend({
+  template: 'templates/edit_storyline',
+  className: 'edit_storyline',
 
   mixins: [pageflow.failureIndicatingView],
 
@@ -26,14 +26,20 @@ pageflow.EditChapterView = Backbone.Marionette.Layout.extend({
     var view = this;
 
     configurationEditor.tab('general', function() {
-      this.input('title', pageflow.TextInputView, {
-        model: view.model
-      });
+      this.input('title', pageflow.TextInputView);
+
+      if (pageflow.features.isEnabled('chapter_hierachy')) {
+        this.input('parent_page_perma_id', pageflow.PageLinkInputView);
+        this.input('display_parent_page_button', pageflow.CheckBoxInputView);
+        this.input('navigation_bar_mode', pageflow.SelectInputView, {
+          values: pageflow.ChapterFilter.strategies
+        });
+      }
     });
   },
 
   destroy: function() {
-    if (confirm(I18n.t('pageflow.editor.views.edit_chapter_view.confirm_destroy'))) {
+    if (confirm(I18n.t('pageflow.editor.views.edit_storyline_view.confirm_destroy'))) {
       this.model.destroy();
       this.goBack();
     }

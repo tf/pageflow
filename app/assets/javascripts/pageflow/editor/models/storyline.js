@@ -3,6 +3,8 @@ pageflow.Storyline = Backbone.Model.extend({
   paramRoot: 'storyline',
   i18nKey: 'pageflow/storyline',
 
+  mixins: [pageflow.failureTracking, pageflow.delayedDestroying],
+
   initialize: function(attributes, options) {
     this.chapters = new pageflow.StorylineChaptersCollection({
       chapters: options.chapters || pageflow.chapters,
@@ -19,6 +21,10 @@ pageflow.Storyline = Backbone.Model.extend({
 
   urlRoot: function() {
     return this.isNew() ? this.collection.url() : '/storylines';
+  },
+
+  title: function() {
+    return this.configuration.get('title') || I18n.t('pageflow.storylines.untitled');
   },
 
   addChapter: function(params) {

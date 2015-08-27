@@ -1,0 +1,30 @@
+de:
+  pageflow:
+    storylines:
+      untitled: Unbenannter Erzählstrang
+    editor:
+      templates:
+        edit_storyline:
+          destroy: Löschen
+          outline: Gliederung
+          retry: Erneut versuchen
+          save_error: Beim Speichern des Erzählstrangs ist ein Problem aufgetreten.
+      views:
+        edit_storyline_view:
+          confirm_destroy: Erzählstrang wirklich löschen?
+  activerecord:
+    attributes:
+      "pageflow/storyline":
+        title: "Titel"
+        parent_page_perma_id: "Übergeordnete Seite"
+        navigation_bar_mode: "Navigationsleiste"
+        display_parent_page_button: "'Übergeordnete Seite'-Button anzeigen"
+    values:
+      "pageflow/storyline":
+        navigation_bar_mode:
+          non: "Ausblenden"
+          all: "Alle Seiten zeigen"
+          current_chapter: "Nur aktuelles Kapitel"
+          same_parent_page: "Nur Kapitel mit gleicher übergeordneter Seite"
+          same_parent_chapter: "Nur Kapitel mit gleichem übergeordneten Kapitel"
+          inherit_from_parent: "Von übergeordnetem Kapitel erben"
