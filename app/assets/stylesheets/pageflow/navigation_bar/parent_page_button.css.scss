@@ -1,0 +1,47 @@
+.navigation_parent_page_button {
+  display: block;
+  width: 45px;
+  height: 45px;
+  position: absolute;
+  top: 20px;
+  right: 100px;
+  z-index: 10;
+
+  background-size: 200% auto;
+  background-image: image-url('pageflow/parent_page_button_sprite.png');
+  background-position: -45px 0;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  @include hover {
+    background-position: 0 0;
+    -webkit-mask-image: none;
+  }
+
+  .label {
+    text-transform: uppercase;
+    text-shadow: 1px 1px 4px #2b2b2b;
+    font-size: 1.0em;
+    letter-spacing: 0.1em;
+    color: #FFFEFE;
+    position: absolute;
+    margin-right: 115%;
+    text-align: right;
+    right: 0px;
+    margin-top: 14px;
+    margin-left: 1em;
+    white-space: nowrap;
+  }
+
+  .hideText & {
+    display: none;
+  }
+
+  @include phone {
+    right: 40px;
+  }
+
+  @include pad_portrait {
+    right: 40px;
+  }
+}

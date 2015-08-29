@@ -29,6 +29,7 @@
         element.toggleClass('inside_sub_chapter', highlightedPagePermaId !== currentPagePermaId);
 
         highlightPage(highlightedPagePermaId);
+        setStorylineTransitionClass(currentPagePermaId);
         filterChapters(currentPagePermaId);
       }
 
@@ -78,13 +79,38 @@
         links.each(function() {
           var link = $(this);
 
-          link.toggleClass('filtered', !chapterFilter.chapterVisibleFromPage(
+          link.parent().toggleClass('filtered', !chapterFilter.chapterVisibleFromPage(
             currentPagePermaId,
             link.data('chapterId')
           ));
         });
 
         scroller.refresh();
+      }
+
+      var previousStorylineId;
+
+      function setStorylineTransitionClass(currentPagePermaId) {
+        var currentStorylineId = pageflow.entryData.getStorylineIdByPagePermaId(currentPagePermaId);
+
+        var parentPagePermaId = pageflow.entryData.getParentPagePermaId(currentStorylineId);
+        var currentParentPageStorylineId = parentPagePermaId && pageflow.entryData.getStorylineIdByPagePermaId(parentPagePermaId);
+
+        parentPagePermaId = pageflow.entryData.getParentPagePermaId(previousStorylineId);
+        var previousParentPageStorylineId = parentPagePermaId && pageflow.entryData.getStorylineIdByPagePermaId(parentPagePermaId);
+
+        element.removeClass('moving_in moving_out');
+
+        if (previousStorylineId) {
+          if (currentParentPageStorylineId === previousStorylineId) {
+            element.addClass('moving_in');
+          }
+          if (currentStorylineId === previousParentPageStorylineId) {
+            element.addClass('moving_out');
+          }
+        }
+
+        previousStorylineId = currentStorylineId;
       }
     }
   });

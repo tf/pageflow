@@ -12,12 +12,14 @@
       <span class="button"></span>
     </a>
   </li>
-  <li>
-    <a class="navigation_bullet navigation_index" tabindex="2" title="<%= t('.open_overview') %>" data-active-title="<%= t('.close_overview') %>">
-      <span class="hint"><%= t('.open_overview') %></span>
-      <span class="button"></span>
-    </a>
-  </li>
+  <% if entry.storylines.one? %>
+    <li>
+      <a class="navigation_bullet navigation_index" tabindex="2" title="<%= t('.open_overview') %>" data-active-title="<%= t('.close_overview') %>">
+        <span class="hint"><%= t('.open_overview') %></span>
+        <span class="button"></span>
+      </a>
+    </li>
+  <% end %>
   <li class="navigation_menu share" tabindex="2">
     <div class="navigation_menu_box navigation_share_box">
       <%= render 'pageflow/entries/share_menu/facebook_link', entry: entry %>
@@ -43,6 +45,11 @@
     </a>
   </li>
 </ul>
+
+<ul class="parent_page">
+  <%= render :partial => 'pageflow/entries/navigation/parent_page' %>
+</ul>
+
 <a class="scroll_indicator top" tabindex="2">
   <span class="hint"><%= t('.scroll_up') %></span>
 </a>

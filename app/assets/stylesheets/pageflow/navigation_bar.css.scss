@@ -76,6 +76,10 @@ $nav-color: #9c9c9c;
     &[tabindex] {
       outline: -webkit-focus-ring-color none 0;
     }
+
+    &.filtered {
+      display: none;
+    }
   }
 
   a {
@@ -245,6 +249,8 @@ $nav-color: #9c9c9c;
   }
 
   &.js {
+    @import "./navigation_bar/parent_page_button";
+
     position: absolute;
     bottom: 0;
 
@@ -271,7 +277,7 @@ $nav-color: #9c9c9c;
       $pressed-offset: -64px;
 
       &.top {
-        top: 145px;
+        top: 103px;
         $top-offset: -13px;
         background-position: $top-offset $normal-offset;
 
@@ -301,7 +307,7 @@ $nav-color: #9c9c9c;
 
     .navigation_bar_top {
       top: 0;
-      height: 180px;
+      height: 136px;
 
       a.navigation_main, a.navigation_top, a.navigation_index {
         display: block;
@@ -318,7 +324,7 @@ $nav-color: #9c9c9c;
 
     .scroller {
       overflow: hidden;
-      top: 180px;
+      top: 136px;
       bottom: 268px;
 
       &:after {
@@ -352,7 +358,22 @@ $nav-color: #9c9c9c;
       }
     }
 
+    &.with_overview_button,
     &.with_home_button {
+      .navigation_bar_top {
+        height: 180px;
+      }
+
+      .scroller {
+        top: 180px;
+      }
+
+      .scroll_indicator.top {
+        top: 145px;
+      }
+    }
+
+    &.with_overview_button.with_home_button {
       .navigation_bar_top {
         height: 224px;
       }

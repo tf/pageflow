@@ -229,6 +229,23 @@ body {
     }
   }
 
+  .overview_mobile {
+    li {
+      &.parent_page {
+        margin-bottom: 20px;
+        display: none;
+
+        &.visible {
+          display: block;
+        }
+      }
+
+      &.filtered {
+        display: none;
+      }
+    }
+  }
+
   &.active {
     pointer-events: all;
     visibility: visible;

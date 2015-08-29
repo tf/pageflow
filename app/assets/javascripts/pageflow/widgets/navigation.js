@@ -4,20 +4,38 @@
   $.widget('pageflow.navigation', {
     _create: function() {
       var element = this.element,
+          overlaysByPermaId = {},
+          parentPage = this.element.find('.parent_page'),
+          parentPageInfo = this.element.find('.parent_page .page_info'),
           overlays = element.find('.navigation_site_detail'),
-          hasHomeButton = !!element.find('.navigation_home').length,
           toggleIndicators = function() {};
 
+      overlays.each(function() {
+        var overlay = $(this);
+        var link = overlay.prev();
+        overlaysByPermaId[parseInt(link.attr('href').replace('#', ''), 10)] = overlay;
+      });
+
       element.addClass('js').append(overlays);
+      $('.navigation_bar_bottom', element)
+        .append($('.navigation_bar_top > li', element).slice(-2));
 
       $('a.navigation_top', element).topButton();
-
-      $('.navigation_bar_bottom', element)
-        .append($('.navigation_bar_top > li', element).slice(hasHomeButton ? 4 : 3));
-
-
       $('.navigation_volume_box', element).volumeSlider({orientation: 'h'});
       $('.navigation_mute', element).muteButton();
+
+      /* parent page */
+
+      parentPage.parentPageButton();
+
+      pageflow.events.on('page:change', function(page) {
+        var parentPagePermaId = pageflow.entryData.getParentPagePermaIdByPagePermaId(page.getPermaId());
+
+        if (parentPagePermaId) {
+          var pageInfoHtml = overlaysByPermaId[parentPagePermaId].find('.page_info').html();
+          parentPageInfo.html(pageInfoHtml);
+        }
+      });
 
       /* hide volume button on mobile devices */
 
@@ -60,7 +78,7 @@
       });
 
       /* pages */
-      var pageLinks = $('.navigation_thumbnails a', element),
+      var pageLinks = $('.navigation_thumbnails a, .parent_page a', element),
         target;
 
       function registerHandler() {

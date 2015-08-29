@@ -1,7 +1,13 @@
 <%= content_tag(:div,
-                class: ["navigation", entry.home_button.enabled? ? 'with_home_button' : nil].compact.join(' '),
+                class: [
+                  "navigation",
+                  entry.home_button.enabled? ? 'with_home_button' : nil,
+                  entry.storylines.one? ? 'with_overview_button' : nil
+                ].compact.join(' '),
                 data: {widget: 'default_navigation'}) do %>
+
   <%= render 'pageflow/entries/navigation/bar_top', :entry => entry %>
+
   <div class="scroller">
     <ul class="navigation_thumbnails">
       <%= render :partial => 'pageflow/entries/navigation/page',
