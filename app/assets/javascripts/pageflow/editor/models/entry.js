@@ -29,6 +29,17 @@ pageflow.Entry = Backbone.Model.extend({
     this.videoFiles = pageflow.videoFiles;
     this.audioFiles = pageflow.audioFiles;
 
+    var storylineOrdering = new pageflow.StorylineOrdering(this.storylines, this.pages);
+
+    storylineOrdering.apply();
+    this.storylines.sort();
+
+    this.listenTo(this.storylines, 'change:configuration', function() {
+      storylineOrdering.apply();
+      this.storylines.sort();
+      this.storylines.saveOrder();
+    });
+
     pageflow.editor.fileTypes.each(function(fileType) {
       this.watchFileCollection(fileType.collectionName, this.getFileCollection(fileType));
     }, this);

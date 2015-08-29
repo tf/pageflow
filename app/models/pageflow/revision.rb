@@ -1,5 +1,11 @@
 module Pageflow
   class Revision < ActiveRecord::Base
+    PAGE_ORDER = [
+      'pageflow_storylines.position ASC',
+      'pageflow_chapters.position ASC',
+      'pageflow_pages.position ASC'
+    ].join(',')
+
     belongs_to :entry, :touch => true
     belongs_to :creator, :class_name => 'User'
     belongs_to :restored_from, :class_name => 'Pageflow::Revision'
@@ -7,7 +13,7 @@ module Pageflow
     has_many :widgets, :as => :subject
     has_many :storylines
     has_many :chapters, -> { order('position ASC') }
-    has_many :pages, -> { reorder('pageflow_chapters.position ASC, pageflow_pages.position ASC') }, :through => :chapters
+    has_many :pages, -> { reorder(PAGE_ORDER) }, through: :storylines
 
     has_many :file_usages
 
