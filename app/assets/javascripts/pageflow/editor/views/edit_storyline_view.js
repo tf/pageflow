@@ -27,10 +27,11 @@ pageflow.EditStorylineView = Backbone.Marionette.Layout.extend({
 
     configurationEditor.tab('general', function() {
       this.input('title', pageflow.TextInputView);
+      this.input('parent_page_perma_id', pageflow.PageLinkInputView, {
+        disabled: pageflow.storylines.length <= 1
+      });
 
-      if (pageflow.features.isEnabled('chapter_hierachy')) {
-        this.input('parent_page_perma_id', pageflow.PageLinkInputView);
-        this.input('display_parent_page_button', pageflow.CheckBoxInputView);
+      if (pageflow.theming.supportsNavigationBarModes()) {
         this.input('navigation_bar_mode', pageflow.SelectInputView, {
           values: pageflow.ChapterFilter.strategies
         });
