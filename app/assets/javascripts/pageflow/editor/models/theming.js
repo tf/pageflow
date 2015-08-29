@@ -15,5 +15,13 @@ pageflow.Theming = Backbone.Model.extend({
 
   supportsScrollIndicatorModes: function() {
     return this.get('scroll_indicator_modes');
+  },
+
+  hasConfigurableParentPageButton: function() {
+    return this.get('configurable_parent_page_button');
+  },
+
+  supportsNavigationBarModes: function() {
+    return this.get('navigation_bar_modes');
   }
 });

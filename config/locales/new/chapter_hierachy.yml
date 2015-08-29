@@ -1,31 +1,20 @@
 en:
-  pageflow:
-    chapter_hierachy:
-      feature_name: "Chapter Hierachy"
-
   activerecord:
     attributes:
       "pageflow/chapter":
-        parent_page_perma_id: "Parent Page"
         navigation_bar_mode: "Navigation Bar"
+        display_parent_page_button: "Display 'Parent Page'-Button"
       values:
       "pageflow/chapter":
         navigation_bar_mode:
           non: "Hide"
-          all: "All pages"
+          current_storyline: "Current storyline"
           current_chapter: "Current chapter only"
-          same_parent_page: "Chapters with same parent page only"
-          same_parent_chapter: "Chapters with same parent chapter only"
           inherit_from_parent: "Inherit from parent chapter"
 de:
-  pageflow:
-    chapter_hierachy:
-      feature_name: "Kapitel Hierachie"
-
   activerecord:
     attributes:
       "pageflow/chapter":
-        parent_page_perma_id: "Übergeordnete Seite"
         navigation_bar_mode: "Navigationsleiste"
         display_parent_page_button: "'Übergeordnete Seite'-Button anzeigen"
     values:
@@ -34,6 +23,4 @@ de:
           non: "Ausblenden"
           all: "Alle Seiten zeigen"
           current_chapter: "Nur aktuelles Kapitel"
-          same_parent_page: "Nur Kapitel mit gleicher übergeordneter Seite"
-          same_parent_chapter: "Nur Kapitel mit gleichem übergeordneten Kapitel"
           inherit_from_parent: "Von übergeordnetem Kapitel erben"

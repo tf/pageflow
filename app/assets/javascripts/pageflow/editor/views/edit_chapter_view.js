@@ -29,6 +29,10 @@ pageflow.EditChapterView = Backbone.Marionette.Layout.extend({
       this.input('title', pageflow.TextInputView, {
         model: view.model
       });
+
+      if (pageflow.theming.hasConfigurableParentPageButton()) {
+        this.input('display_parent_page_button', pageflow.CheckBoxInputView);
+      }
     });
   },
 
