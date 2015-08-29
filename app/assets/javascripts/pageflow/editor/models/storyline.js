@@ -24,7 +24,10 @@ pageflow.Storyline = Backbone.Model.extend({
   },
 
   title: function() {
-    return this.configuration.get('title') || I18n.t('pageflow.storylines.untitled');
+    return [
+      this.get('number'),
+      this.configuration.get('title') || I18n.t('pageflow.storylines.untitled')
+    ].join(' ');
   },
 
   addChapter: function(params) {
