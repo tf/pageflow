@@ -31,14 +31,14 @@ pageflow.Entry = Backbone.Model.extend({
 
     var storylineOrdering = new pageflow.StorylineOrdering(this.storylines, this.pages);
 
-    storylineOrdering.apply();
-    this.storylines.sort();
-
-    this.listenTo(this.storylines, 'change:configuration', function() {
-      storylineOrdering.apply();
-      this.storylines.sort();
-      this.storylines.saveOrder();
-    });
+//    storylineOrdering.apply();
+//    this.storylines.sort();
+//
+//    this.listenTo(this.storylines, 'change:configuration', function() {
+//      storylineOrdering.apply();
+//      this.storylines.sort();
+//      this.storylines.saveOrder();
+//    });
 
     pageflow.editor.fileTypes.each(function(fileType) {
       this.watchFileCollection(fileType.collectionName, this.getFileCollection(fileType));
