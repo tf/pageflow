@@ -19,8 +19,10 @@
         var chapterId = pageflow.entryData.getChapterIdByPagePermaId(pagePermaId);
         var chapterConfiguration = pageflow.entryData.getChapterConfiguration(chapterId);
 
-        element.toggle(pageflow.slides.parentPageExists() &&
-                       chapterConfiguration.display_parent_page_button);
+        element.toggleClass('visible',
+                            pageflow.slides.parentPageExists() &&
+                            (!pageflow.entryData.getThemingOption('configurable_parent_page_button') ||
+                             chapterConfiguration.display_parent_page_button));
       }
     }
   });
