@@ -6,6 +6,7 @@
 
       var that = this,
           element = this.element,
+          parentPage = this.element.find('.parent_page'),
           scroller;
 
       $('body').on('touchstart mousedown MSPointerDown pointerdown', function(event) {
@@ -32,6 +33,13 @@
       $('.imprint_mobile a', element).on('click touchstart', function(event) {
         event.stopPropagation();
       });
+
+      this.parentPage = parentPage;
+      parentPage.parentPageButton();
+
+      pageflow.events.on('page:change', function(page) {
+        this._updateParentPage(page);
+      }, this);
 
       $('.wrapper', element).each(function() {
         var sharingMobile = $(this).parents('.sharing_mobile');
@@ -91,14 +99,36 @@
           id = a.attr("data-link");
 
       if (id !== undefined) {
+        this.element.removeClass('active');
         pageflow.slides.goToById(id);
-        $('.navigation_mobile').removeClass('active');
       }
     },
 
     _openLink: function(event) {
       event.preventDefault();
       window.open(this.href, '_blank');
+    },
+
+    _updateParentPage: function(page) {
+      var parentPagePermaId = pageflow.entryData.getParentPagePermaIdByPagePermaId(page.getPermaId());
+
+      if (parentPagePermaId) {
+        var pageLinkHtml = this._pageLinkByPermaId(parentPagePermaId).html();
+        this.parentPage.html(pageLinkHtml);
+      }
+    },
+
+    _pageLinkByPermaId: function(permaId) {
+      if (!this.pageLinksByPermaId) {
+        var pageLinksByPermaId = this.pageLinksByPermaId = {};
+
+        this.element.find('.overview_mobile a').each(function() {
+          var link = $(this);
+          pageLinksByPermaId[parseInt(link.attr('href').replace('#', ''), 10)] = link;
+        });
+      }
+
+      return this.pageLinksByPermaId[permaId];
     }
   });
 }(jQuery));
