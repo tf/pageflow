@@ -22,8 +22,17 @@ pageflow.StorylinePickerView = Backbone.Marionette.Layout.extend({
       propertyName: 'storyline_id',
       values: pageflow.storylines.pluck('id'),
       texts: pageflow.storylines.map(function(storyline) {
-        return storyline.title();
-      })
+        return this.indentation(storyline) + storyline.title();
+      }, this),
+      groups: pageflow.storylines.reduce(function(result, storyline) {
+        if (storyline.isMain() || storyline.parentPage()) {
+           result.push(_.last(result));
+        }
+        else {
+           result.push('Ohne übergeordnete Seite');
+        }
+        return result;
+      }, [])
     }));
 
     this.load();
@@ -35,5 +44,11 @@ pageflow.StorylinePickerView = Backbone.Marionette.Layout.extend({
     this.mainRegion.show(new pageflow.StorylineOutlineView({
       model: storyline
     }));
+  },
+
+  indentation: function(storyline) {
+    return _(storyline.get('level')).times(function() {
+      return '\u00A0\u00A0\u00A0';
+    }).join('');
   }
 });

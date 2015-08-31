@@ -2,6 +2,7 @@ de:
   pageflow:
     storylines:
       untitled: Unbenannter Erzählstrang
+      main: Haupstrang
     editor:
       templates:
         edit_storyline:
@@ -16,6 +17,7 @@ de:
     attributes:
       "pageflow/storyline":
         title: "Titel"
+        main: "Haupterzählstrang"
         parent_page_perma_id: "Übergeordnete Seite"
         navigation_bar_mode: "Navigationsleiste"
     values:

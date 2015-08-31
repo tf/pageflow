@@ -9,6 +9,18 @@ pageflow.StorylinesCollection = Backbone.Collection.extend({
     return '/entries/' + pageflow.entry.get('id') + '/storylines';
   },
 
+  initialize: function() {
+    this.listenTo(this, 'change:main', function(model, value) {
+      if (value) {
+        this.each(function(storyline) {
+          if (storyline.isMain() && storyline !== model) {
+            storyline.configuration.unset('main');
+          }
+        });
+      }
+    });
+  },
+
   main: function() {
     return this.find(function(storyline) {
       return storyline.configuration.get('main');

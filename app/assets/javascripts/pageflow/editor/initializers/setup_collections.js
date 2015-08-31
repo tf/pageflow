@@ -21,6 +21,15 @@ pageflow.app.addInitializer(function(options) {
 
   pageflow.pages.sort();
 
+  pageflow.storylineOrdering = new pageflow.StorylineOrdering(pageflow.storylines, pageflow.pages);
+  pageflow.storylineOrdering.sort({silent: true});
+  pageflow.storylineOrdering.watch();
+
+  // TODO
+  pageflow.storylines.listenTo(this, 'sort', _.debounce(function() {
+    pageflow.storylines.saveOrder();
+  }, 100));
+
   pageflow.editor.failures.watch(pageflow.entry);
   pageflow.editor.failures.watch(pageflow.pages);
   pageflow.editor.failures.watch(pageflow.chapters);
