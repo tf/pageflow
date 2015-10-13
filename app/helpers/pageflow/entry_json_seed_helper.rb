@@ -5,14 +5,17 @@ module Pageflow
   module EntryJsonSeedHelper
     include RenderJsonHelper
 
-    def entry_json_seed(entry)
-      seed = {
+    def entry_seed(entry)
+      {
         theming: entry_theming_seed(entry),
         storyline_configurations: entry_storyline_configurations_seed(entry),
         chapters: entry_chapters_seed(entry),
         pages: entry_pages_seed(entry)
       }
+    end
 
+    def entry_json_seed(entry)
+      seed = entry_seed(entry)
       sanitize_json(seed.to_json).html_safe
     end
 
