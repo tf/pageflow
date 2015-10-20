@@ -73,6 +73,6 @@ pageflow.PageLinksCollection = Backbone.Collection.extend({
       return parseInt(pageLink.id.split(':').pop(), 10);
     })));
 
-    return this.configuration.page.id + ':' + (maxId + 1);
+    return this.configuration.page.get('perma_id') + ':' + (maxId + 1);
   }
 });
