@@ -72,6 +72,7 @@
   @import "./widgets";
   @import "./page_links";
   @import "./storyline_picker";
+  @import "./loading";
 
   a.publish {
     @include eye-icon;
