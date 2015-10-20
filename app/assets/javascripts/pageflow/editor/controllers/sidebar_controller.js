@@ -70,7 +70,7 @@ pageflow.SidebarController = Backbone.Marionette.Controller.extend({
 
   pageLink: function(linkId) {
     var pageId = linkId.split(':')[0];
-    var page = pageflow.pages.get(pageId);
+    var page = pageflow.pages.getByPermaId(pageId);
 
     this.region.show(new pageflow.EditPageLinkView({
       model: page.pageLinks().get(linkId),

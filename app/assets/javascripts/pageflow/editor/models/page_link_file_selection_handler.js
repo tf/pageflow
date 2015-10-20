@@ -1,5 +1,5 @@
 pageflow.PageLinkFileSelectionHandler = function(options) {
-  var page = pageflow.pages.get(options.id.split(':')[0]);
+  var page = pageflow.pages.getByPermaId(options.id.split(':')[0]);
   var pageLink = page.pageLinks().get(options.id);
 
   this.call = function(file) {
