@@ -63,6 +63,6 @@ pageflow.EditStorylineView = Backbone.Marionette.Layout.extend({
   },
 
   goBack: function() {
-    editor.navigate('/', {trigger: true});
+    editor.navigate('/?storyline=' + this.model.id, {trigger: true});
   }
 });
