@@ -190,9 +190,6 @@ pageflow.Slideshow = function($el, configurations) {
 
   $(window).on('resize', this.triggerResizeHooks);
 
-  // prevent page from bouncing in modern browsers
-  $(document).on('touchmove', function (e) { e.preventDefault(); });
-
   $el.addClass('slideshow');
 
   $el.find('.hidden_text_indicator').hiddenTextIndicator({parent : $('body')});

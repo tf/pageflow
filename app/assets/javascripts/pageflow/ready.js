@@ -30,6 +30,7 @@ pageflow.ready = new $.Deferred(function(readyDeferred) {
       });
 
       pageflow.links.setup();
+      pageflow.nativeScrolling.prevent();
     });
   };
 }).promise();
