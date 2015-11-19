@@ -1118,6 +1118,7 @@ en:
         menu_item: Atmo Audio
         text: ! '# Atmo Audio
 
+
           This feature lets you add background audio to every page regardless of its page type. You can define if a sound should play only for one page or continue playing for more pages without interruption. Simply select the same atmo audio file for some adjacent pages.
 
 
@@ -1130,48 +1131,14 @@ en:
           You find the atmo settings on the „Options“ tab of each page.
 
 
-          Should you ever feel distracted by the atmo audio while working on your entry, you can use the hot key „Alt + a“ to temporarily mute it. Simply press „Alt + a“ again to reactivate atmo audio. '
+          Should you ever feel distracted by the atmo audio while working on your entry, you can use the hot key „Alt + a“ to temporarily mute it. Simply press „Alt + a“ again to reactivate atmo audio.'
       built_in_page_type:
         audio:
           menu_item: Audio
-          text: ! '# Audio
-
-
-            Playing audio-files with controls
-
-
-            Here you can combine audio-files with pictures and
-
-            text-content. Controls similar to the page type „Video“
-
-            are shown.  In addition to that you can write a
-
-            description into an „Infobox“.
-
-
-            Examples of application: interviews, direct quotes, music
-
-'
+          text: ! "# Audio\n\n*Playing audio-files with controls*\n    \nHere you can combine audio-files with pictures and\ntext-content. Controls similar to the page type „Video“\nare shown.  In addition to that you can write a\ndescription into an „Infobox“.\n\nExamples of application: interviews, direct quotes, music"
         audio_loop:
           menu_item: Audio Loop
-          text: ! '# Audio Loop
-
-
-            Playing an audio-loop without control (Ambience)
-
-
-            A full-screen photo is shown as a „Background-Image“. The
-
-            difference to the normal Audio-Page is that the user
-
-            cannot influence the audio-file by controlling it. Instead
-
-            it is an endless-loop.
-
-
-            Typical examples of application: Ambience, soundscape, field-recordings
-
-'
+          text: ! "# Audio Loop\n\n*Playing an audio-loop without control (Ambience)*\n    \nA full-screen photo is shown as a „Background-Image“. The\ndifference to the normal Audio-Page is that the user\ncannot influence the audio-file by controlling it. Instead\nit is an endless-loop.\n\nTypical examples of application: Ambience, soundscape, field-recordings"
         background_image:
           menu_item: Background Image
           text: ! '# Background Image
@@ -1207,43 +1174,7 @@ en:
             portrait'
         background_video:
           menu_item: Background Video
-          text: ! '# Background Video
-
-
-            Full-screen video played in a loop without control
-
-
-            This type of page is comparable to „Background-Image“. But
-
-            instead of an image, a video is shown in the
-
-            background. This video starts automatically and is played
-
-            without control. Thus the user cannot influence the start
-
-            and stop of the video. Since the video is played in an
-
-            endless-loop, it should be long enough and it should have
-
-            a proper crossover. The same applies to the soundtrack.
-
-
-            As a hint for the use of Pageflow on a smartphone: In
-
-            order to prevent unintended data consumption, the video is
-
-            not played on smartphones. Instead a poster-image is
-
-            shown, which is generated automatically. You can however
-
-            also choose the image yourself.
-
-
-            Examples of application: intro, chapter cross-fade,
-
-            ambience
-
-'
+          text: ! "# Background Video\n\n*Full-screen video played in a loop without control* \n    \nThis type of page is comparable to „Background-Image“. But\ninstead of an image, a video is shown in the\nbackground. This video starts automatically and is played\nwithout control. Thus the user cannot influence the start\nand stop of the video. Since the video is played in an\nendless-loop, it should be long enough and it should have\na proper crossover. The same applies to the soundtrack.\n\nAs a hint for the use of Pageflow on a smartphone: In\norder to prevent unintended data consumption, the video is\nnot played on smartphones. Instead a poster-image is\nshown, which is generated automatically. You can however\nalso choose the image yourself.\n\nExamples of application: intro, chapter cross-fade,\nambience"
         internal_links:
           menu_item: Internal Links
           text: ! '# Internal Links
@@ -1264,7 +1195,7 @@ en:
 '
         video:
           menu_item: Video
-          text: ! "# Video\n\nPlaying a video with control\n\nIn contrast to „Background-Videos“ the text elements fade\nout after a few seconds, in order to draw attention to the\nvideo. With controls the user can start and pause the\nvideo or even fast-forward and rewind it. You can choose\nwhether the video should start automatically as soon as\nthe page is opened.\n\nAs an alternative to the normal text input, you can write\na description into an „Infobox“ with text.\n\nOn the „Options“ tab you can activate auto-scrolling to the next page at the end of a video. \nThis can be useful to create a seamless transition.\n\nExamples of application: Videos of all kinds, interviews,\nportraits"
+          text: ! "# Video\n\n*Playing a video with control*\n    \nIn contrast to „Background-Videos“ the text elements fade\nout after a few seconds, in order to draw attention to the\nvideo. With controls the user can start and pause the\nvideo or even fast-forward and rewind it. You can choose\nwhether the video should start automatically as soon as\nthe page is opened.\n\nAs an alternative to the normal text input, you can write\na description into an „Infobox“ with text.\n\nOn the „Options“ tab you can activate auto-scrolling to the next page at the end of a video. \nThis can be useful to create a seamless transition.\n\nExamples of application: Videos of all kinds, interviews,\nportraits"
       files:
         menu_item: Manage Files
         text: ! '# Manage Files
@@ -1576,6 +1507,9 @@ en:
       publishing:
         menu_item: Publishing
         text: ! "# Publishing\n\nClick on the „Publish“ button to publish your Pageflow. A\nPageflow can be published at any point in time. \n\nBesides this, there is the possibility to publish Pageflows with \na password protection. Just activate „Protect with password“. \nPageflow uses the name of the account as user name and \nautomatically generates a password, which can be changed afterwords. \n\nAlready published stories can also be protected with a password by \npublishing another version - the other way round works as well. \nFor this please just click on the „Publishing“ button. The following \nsteps will then be shown and explained within the dialog window.\n\nPublished\nPageflows can also be unpublished manually at any time. If a\nPageflow has already been published, changes will not be\nshown until you publish your report again.  A Pageflow can\nonly be edited by one author at one time.\n\nThumbnail for embedding the Pageflow on external websites\nAfter publishing your Pageflow, the system generates a\nthumbnail, which can be embedded as an iframe to the\nhyperlink of another website. By means of the code, the size\nof the iframe can be adjusted. The minimum size is a height\n150px and a width of 220px."
+      storylines:
+        menu_item: Storylines
+        text: ! "# Storylines\n\nBesides the linear narrative form from „top to bottom“, additional storylines and excursions can be used to tell further aspects of a story. For this create a new „internal link“ page and connect these links to a new storyline. Thereby you can choose at which page such a branch will lead back to the main storyline or even links to another part of a story. \n\nCreate these storylines within the „Outline“ by clicking on the plus-button next to the storyline menu. A new chapter will then be added in which you have to create the new pages of your excursion. For every storyline a „Parent page“ can be chosen, to where a user will be led, when he scrolls at the end of a storyline. Define this target page by clicking on the pen symbol.\n\n*Notice: Only the chosen storyline will be shown while editing it. Click the menu „Storyline“ to go back to the other chapters.*"
     helpers:
       entries:
         global_links: Global links
