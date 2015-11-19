@@ -46,7 +46,7 @@ pageflow.Chapter = Backbone.Model.extend({
       position: this.pages.length
     };
 
-    return this.pages.push(_.extend(defaults, attributes));
+    return this.pages.addAndReturnModel(_.extend(defaults, attributes));
   },
 
   toJSON: function() {

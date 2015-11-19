@@ -73,7 +73,7 @@ pageflow.Storyline = Backbone.Model.extend({
       position: this.chapters.length
     };
 
-    return this.chapters.push(_.extend(defaults, attributes));
+    return this.chapters.addAndReturnModel(_.extend(defaults, attributes));
   },
 
   scaffoldChapter: function(options) {

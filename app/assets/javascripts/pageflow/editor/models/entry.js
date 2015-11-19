@@ -67,7 +67,7 @@ pageflow.Entry = Backbone.Model.extend({
       title: '',
     };
 
-    return this.storylines.push(_.extend(defaults, attributes));
+    return this.storylines.addAndReturnModel(_.extend(defaults, attributes));
   },
 
   scaffoldStoryline: function(options) {
