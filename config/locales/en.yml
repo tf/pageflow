@@ -818,6 +818,13 @@ en:
         page_type_description: Video player with controls
     chapter_hierachy:
       feature_name: Chapter Hierachy
+    common_page_link_attributes:
+      label:
+        label: Label
+      page_transition:
+        label: Page transition
+      target_page_id:
+        label: Target page
     delayed_text_fade_in:
       feature_name: Delayed text fade in
     devise:
@@ -938,6 +945,9 @@ en:
           outline: Outline
           retry: Retry
           save_error: There were errors while saving page.
+        edit_page_link:
+          back: Back
+          destroy: Delete
         embedded:
           page_link:
             reset: Reset
@@ -996,6 +1006,7 @@ en:
           save_error: There were errors while saving page.
         page_link_item:
           edit: Edit page
+          remove: Delete
         page_links:
           add: Add
           label: Linked pages
@@ -1035,6 +1046,8 @@ en:
 
 
             This operation cannot be undone.'
+        edit_page_link_view:
+          default_page_transition: (Default)
         edit_page_view:
           confirm_destroy: Really delete this page?
         editor_views:
@@ -1056,61 +1069,6 @@ en:
         page_link_item_view:
           no_page: (No page)
           unnamed: (No title)
-    entries:
-      entry:
-        print_logo: Logo
-        scroll_indicator: Scroll down to continue
-        swipe_indicator: Swipe to continue
-      ie8_hint:
-        close: Close
-        deprecated_browser: <p>Your browser is outdated and this page might not work as intended. We recommend upgrading to a current browser version.</p>
-      mobile_navigation:
-        imprint: Imprint
-        overview: Overview
-        share_with_twitter: Tweet
-      multimedia_alert:
-        alert: Alert
-        close: Continue
-        scroll_hint: Use the mouse wheel or the arrow keys on your keyboard to navigate between pages.
-        sound_hint: This multimedia story format uses video and audio footage. Please make sure your speakers are turned on.
-        swipe_hint: Swipe to navigate between pages.
-      navigation:
-        bar_bottom:
-          close_fullscreen: Exit fullscreen mode
-          hide_text: Hide text
-          mute_off: Unmute
-          mute_on: Mute
-          open_fullscreen: Fullscreen mode
-          scroll_down: Scroll down
-          show_text: Show text
-          volume: Volume
-        bar_top:
-          close_overview: Close overview
-          close_top_navigation: Close navigation
-          imprint: Imprint
-          navigate_top: Goto first page
-          open_overview: Overview
-          open_top_navigation: Open navigation
-          scroll_up: Scroll up
-          share: Share
-          share_with_facebook: Share on Facebook
-          share_with_twitter: Tweet
-        home_button:
-          show_home: Start
-      non_js_hint:
-        js_hint: This application utilizes JavaScript for enhanced functionality and user experience. Your browser may not have JavaScript or it may be disabled.
-      overview:
-        chapter:
-          chapter: Chapter
-        entry:
-          close: Close
-          overview: Overview
-          scroll_left: Scroll left
-          scroll_right: Scroll right
-      skip_links:
-        goto_content: Goto content
-        goto_navigation: Goto navigation
-        goto_topnavigation: Goto main navigation
     entry:
       duplicated_title: Copy of %{title}
     help_entries:
@@ -1523,18 +1481,6 @@ en:
       scroll: Scroll
       scroll_left: Scroll left
       scroll_right: Scroll right
-    pages:
-      templates:
-        audio:
-          hint: Audio
-        background_video:
-          hint: Video loop
-        page:
-          goto_top: Goto first page
-        video:
-          hint: Video
-        video_tag:
-          view_video: Play video
     quotas:
       exhausted: Quota exhausted
     ui:
@@ -1629,12 +1575,6 @@ en:
         analytics: Tracking
         mobile_navigation: Mobile navigation
         navigation: Navigation bar
-      share_menu:
-        current_page: This page
-        entry: This story
-        share_with_facebook: Share on Facebook
-        share_with_google: Share on Google+
-        share_with_twitter: Share on Twitter
       type_names:
         default_mobile_navigation: Navigation bar with thumbnails
         default_navigation: Navigation bar with thumbnails

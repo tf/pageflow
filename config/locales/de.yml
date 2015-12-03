@@ -818,6 +818,13 @@ de:
         page_type_description: Wiedergabe einer Videodatei mit Steuerelementen
     chapter_hierachy:
       feature_name: Kapitel Hierachie
+    common_page_link_attributes:
+      label:
+        label: Bezeichnung
+      page_transition:
+        label: Seitenübergangseffekt
+      target_page_id:
+        label: Zielseite
     delayed_text_fade_in:
       feature_name: Text verzögert einblenden
     devise:
@@ -936,6 +943,9 @@ de:
           outline: Gliederung
           retry: Erneut versuchen
           save_error: Beim Speichern der Seite ist ein Problem aufgetreten.
+        edit_page_link:
+          back: Zurück
+          destroy: Löschen
         embedded:
           page_link:
             reset: Zurücksetzen
@@ -994,6 +1004,7 @@ de:
           save_error: Beim Speichern der Seite ist ein Fehler aufgetreten.
         page_link_item:
           edit: Bearbeiten
+          remove: Löschen
         page_links:
           add: Hinzufügen
           label: Verlinkte Seiten
@@ -1033,6 +1044,8 @@ de:
 
 
             Dieser Schritt kann nicht rückgängig gemacht werden.'
+        edit_page_link_view:
+          default_page_transition: (Standard)
         edit_page_view:
           confirm_destroy: Seite wirklich löschen?
         editor_views:
@@ -1054,61 +1067,6 @@ de:
         page_link_item_view:
           no_page: (Keine Seite)
           unnamed: (Unbenannt)
-    entries:
-      entry:
-        print_logo: Logo
-        scroll_indicator: Scrollen, um weiterzulesen
-        swipe_indicator: Wischen, um Text einzublenden
-      ie8_hint:
-        close: Hinweis schließen
-        deprecated_browser: <p>Liebe Nutzer,</p><p>leider nutzen Sie eine veraltete Version Ihres Browsers. Deshalb können die an dieser Stelle vorgesehenen Inhalte nicht korrekt dargestellt werden. Bitte aktualisieren Sie auf eine aktuelle Version.</p>
-      mobile_navigation:
-        imprint: Impressum
-        overview: Übersicht
-        share_with_twitter: Twittern
-      multimedia_alert:
-        alert: Hinweis
-        close: Los geht's
-        scroll_hint: Mit dem Mausrad oder den Pfeiltasten auf der Tastatur wird die jeweils nächste Kapitelseite aufgerufen.
-        sound_hint: Für dieses multimediale Reportage-Format nutzen wir neben Texten und Fotos auch Audios und Videos. Daher sollten die Lautsprecher des Systems eingeschaltet sein.
-        swipe_hint: Durch Wischen wird die jeweils nächste Kapitelseite aufgerufen.
-      navigation:
-        bar_bottom:
-          close_fullscreen: Vollbilddarstellung beenden
-          hide_text: Text ausblenden
-          mute_off: Ton ein
-          mute_on: Ton aus
-          open_fullscreen: Vollbilddarstellung
-          scroll_down: Runter scrollen
-          show_text: Text wieder einblenden
-          volume: Lautstärke
-        bar_top:
-          close_overview: Übersicht schließen
-          close_top_navigation: Navigation schließen
-          imprint: Impressum
-          navigate_top: Zum Anfang
-          open_overview: Übersicht öffnen
-          open_top_navigation: Navigation öffnen
-          scroll_up: Hoch scrollen
-          share: Teilen
-          share_with_facebook: Auf Facebook teilen
-          share_with_twitter: Twittern
-        home_button:
-          show_home: Zur Startseite
-      non_js_hint:
-        js_hint: Zur korrekten Anzeige der Seite benötigen Sie JavaScript.
-      overview:
-        chapter:
-          chapter: Kapitel
-        entry:
-          close: Schliessen
-          overview: Übersicht
-          scroll_left: Nach links scrollen
-          scroll_right: Nach rechts scrollen
-      skip_links:
-        goto_content: Zum Inhalt
-        goto_navigation: Zur Seitennavigation
-        goto_topnavigation: Zur Dachnavigation
     entry:
       duplicated_title: Kopie von %{title}
     help_entries:
@@ -1729,18 +1687,6 @@ de:
       scroll: Scrollen
       scroll_left: Scrollen (von links)
       scroll_right: Scrollen (von rechts)
-    pages:
-      templates:
-        audio:
-          hint: Audio
-        background_video:
-          hint: Video Loop
-        page:
-          goto_top: zum Anfang
-        video:
-          hint: Video
-        video_tag:
-          view_video: Video ansehen
     quotas:
       exhausted: Quota verbraucht.
     ui:
@@ -1832,12 +1778,6 @@ de:
         analytics: Zählpixel
         mobile_navigation: Mobile Navigation
         navigation: Navigationsleiste
-      share_menu:
-        current_page: Diese Seite
-        entry: Diesen Beitrag
-        share_with_facebook: Auf Facebook teilen
-        share_with_google: Auf Google+ teilen
-        share_with_twitter: Auf Twitter teilen
       type_names:
         default_mobile_navigation: Navigationsmenü mit Thumbnails
         default_navigation: Navigationsleiste mit Thumbnails
