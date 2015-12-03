@@ -1,0 +1,10 @@
+de:
+  pageflow:
+    storylines:
+      feature_name: "Storylines"
+      untitled: Untitled storyline
+      main: Main storyline
+    storyline_attributes:
+      parent_page_perma_id:
+        label: "Parent page"
+        inline_help: "The selection of a „Parent page“ defines, on which page users will land by leaving the last page of a subordinated storyline or by click on the Back-button. By using such a page you can determine the hierachy of chapters, when your Pageflow contains more than two storylines."
