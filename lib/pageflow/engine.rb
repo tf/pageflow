@@ -1,3 +1,4 @@
+require 'yajl'
 require 'state_machine'
 require 'state_machine_job'
 require 'paperclip'
@@ -6,6 +7,7 @@ require 'friendly_id'
 require 'devise'
 require 'cancan'
 require 'jbuilder'
+require 'htmlentities'
 require 'kramdown'
 
 require 'resque_mailer'
