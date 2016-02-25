@@ -91,5 +91,9 @@ module Pageflow
     def resolve_widgets(options = {})
       widgets.resolve(Pageflow.config_for(entry), options)
     end
+
+    def overview_button
+      OverviewButton.new(draft, theming)
+    end
   end
 end

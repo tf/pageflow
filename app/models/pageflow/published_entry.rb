@@ -70,6 +70,10 @@ module Pageflow
       widgets.resolve(Pageflow.config_for(entry), options)
     end
 
+    def overview_button
+      OverviewButton.new(revision, theming)
+    end
+
     private
 
     def custom_revision?
