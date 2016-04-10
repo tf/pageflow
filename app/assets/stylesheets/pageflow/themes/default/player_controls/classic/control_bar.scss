@@ -4,6 +4,15 @@ $classic-player-controls-background-color: #191919 !default;
 /// Color of the border around the control bar.
 $classic-player-controls-border-color: #505050 !default;
 
+/// Width of the border around control bar
+$classic-player-controls-border-width: 3px !default;
+
+/// Width of the border between play button and progress bar
+$classic-player-controls-separator-border-width: 2px !default;
+
+/// Font size of control bar text, current time and duration..
+$classic-player-controls-font-size: 15px !default;
+
 /// Color of control bar text, current time and duration.
 $classic-player-controls-text-color: #ddd !default;
 
@@ -15,6 +24,16 @@ $classic-player-controls-progress-bar-color: $main-color !default;
 
 /// Color of the part of the progress bar indicating the load progress.
 $classic-player-controls-progress-bar-load-progress-color: rgba(255, 255, 255, 0.4) !default;
+
+/// Apply border radius to progress bar elements
+$classic-player-controls-progress-bar-border-radius: 4px !default;
+
+/// Position of current time and duration.
+///
+/// - `"right"`: Both on the right separated by a slash.
+///
+/// - `"split"`: Left and right of the progress bar.
+$classic-player-controls-timestamp-position: "left" !default;
 
 %player_controls {
   &-control_bar {
@@ -29,7 +48,7 @@ $classic-player-controls-progress-bar-load-progress-color: rgba(255, 255, 255, 0
     height: 60px;
 
     background-color: $classic-player-controls-background-color;
-    border: 3px solid $classic-player-controls-border-color;
+    border: $classic-player-controls-border-width solid $classic-player-controls-border-color;
     pointer-events: all;
 
     &:before {
@@ -39,7 +58,7 @@ $classic-player-controls-progress-bar-load-progress-color: rgba(255, 255, 255, 0
       left: 64px;
       width: 0;
       height: 60px;
-      border-right: 2px solid $classic-player-controls-border-color;
+      border-right: $classic-player-controls-separator-border-width solid $classic-player-controls-border-color;
     }
 
     @include phone {
@@ -100,8 +119,6 @@ $classic-player-controls-progress-bar-load-progress-color: rgba(255, 255, 255, 0
 
   &-progress_bar {
     position: absolute;
-    left: 90px;
-    right: 114px;
     top: 25px;
     width: auto;
     height: 9px;
@@ -110,13 +127,13 @@ $classic-player-controls-progress-bar-load-progress-color: rgba(255, 255, 255, 0
 
   &-progress_bar_inner {
     height: 100%;
-    border-radius: 4px;
+    border-radius: $classic-player-controls-progress-bar-border-radius;
     background-color: $classic-player-controls-progress-bar-background-color;
   }
 
   &-play_progress,
   &-load_progress {
-    border-radius: 4px;
+    border-radius: $classic-player-controls-progress-bar-border-radius;
     position: absolute;
     height: 100%;
   }
@@ -147,23 +164,9 @@ $classic-player-controls-progress-bar-load-progress-color: rgba(255, 255, 255, 0
   &-duration {
     position: relative;
     line-height: 3em;
-    font-size: 15px;
+    font-size: $classic-player-controls-font-size;
     margin-top: 7px;
     color: $classic-player-controls-text-color;
-  }
-
-  &-current_time {
-    left: 276px;
-  }
-
-  &-time_separator {
-    float: left;
-    height: 3em;
-    left: 268px;
-  }
-
-  &-duration {
-    left: 260px;
   }
 
   &-loading_spinner {
@@ -196,4 +199,13 @@ $classic-player-controls-progress-bar-load-progress-color: rgba(255, 255, 255, 0
       display: none;
     }
   }
+}
+
+@import "./control_bar/timestamp_position/right";
+@import "./control_bar/timestamp_position/split";
+
+@if $classic-player-controls-timestamp-position == "split" {
+  @include player-controls-classic-controls-bar-timestamps-position-split;
+} @else {
+  @include player-controls-classic-controls-bar-timestamps-position-right;
 }
