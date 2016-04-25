@@ -1,0 +1,10 @@
+groups:
+  standard: "Defaults"
+  widgets: "Widget Defaults"
+  default-navigation-bar: "Default Navigation Bar"
+  overview: "Overview"
+  logo: "Logo"
+  indicators: "Indicators"
+  page-colors: "Page Colors"
+  page-typography: "Page Typography"
+descriptionPath: README.md
