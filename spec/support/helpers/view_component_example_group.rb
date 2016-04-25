@@ -8,22 +8,23 @@ module ViewComponentExampleGroup
     attr_reader :rendered
   end
 
-  def arbre
-    Arbre::Context.new({}, _view)
+  def arbre(&block)
+    Arbre::Context.new({}, _view, &block)
   end
 
   def helper
     _view
   end
 
-  def render(*args)
-    @rendered = arbre.send(described_class.builder_method_name, *args)
+  def render(*args, &block)
+    if block_given?
+      @rendered = arbre(&block).to_s
+    else
+      @rendered = arbre.send(described_class.builder_method_name, *args, &block)
+    end
   end
 end
 
 RSpec.configure do |config|
-  config.include(ViewComponentExampleGroup,
-                 :example_group => lambda { |example_group, metadata|
-                   %r(spec/views/components) =~ example_group[:file_path]
-                 })
+  config.include(ViewComponentExampleGroup, type: :view_component)
 end
