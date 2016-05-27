@@ -50,7 +50,7 @@ module Pageflow
       end
 
       can :see, :accounts do
-        user.admin? || user.memberships.on_accounts.length > 1
+        user.admin? || user.memberships.on_accounts.any?
       end
 
       unless user.admin?
