@@ -70,12 +70,21 @@ module Pageflow
                     of_account: -> (topic) { topic },
                     to: :admin,
                     topic: -> { create(:account) }
+  end
 
-    it_behaves_like 'an admin permission that',
-                    allows_admins_but_forbids_even_managers: true,
-                    of_account: -> (topic) { topic },
-                    to: :index,
-                    topic: -> { create(:account) }
+  describe '.index?' do
+    it 'is permitted when account manager on at least one account' do
+      user = create(:user, :manager, on: create(:account))
+
+      expect(AccountPolicy.new(user, create(:account))).to permit_action(:index)
+    end
+
+    it 'is not permitted when account publisher and entry manager' do
+      user = create(:user, :publisher, on: create(:account))
+      create(:entry, with_manager: user)
+
+      expect(AccountPolicy.new(user, create(:account))).not_to permit_action(:index)
+    end
   end
 
   describe '.resolve' do
