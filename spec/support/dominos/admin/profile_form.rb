@@ -28,6 +28,12 @@ module Dom
           find('a.delete_account')
         end
       end
+
+      def cannot_delete_comment
+        within(id) do
+          find('p.cannot_delete')
+        end
+      end
     end
   end
 end
