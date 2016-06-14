@@ -20,7 +20,7 @@ feature 'deleting own user' do
 
     Pageflow.config.authorize_user_deletion =
       lambda do |user_to_delete|
-        if user_to_delete.account.name == 'Account of deleteable users'
+        if user_to_delete.accounts.any? { |account| account.name == 'Account of deleteable users' }
           true
         else
           'Deletion is only possible for members of a dedicated account'
