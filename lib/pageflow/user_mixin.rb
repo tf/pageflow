@@ -10,6 +10,7 @@ module Pageflow
       has_many :account_memberships,
                -> { where(entity_type: 'Pageflow::Account') },
                class_name: 'Pageflow::Membership'
+      has_many :invitations, dependent: :destroy, class_name: 'Pageflow::Invitation'
       has_many :entries,
                through: :memberships,
                class_name: 'Pageflow::Entry',
@@ -17,6 +18,11 @@ module Pageflow
                source_type: 'Pageflow::Entry'
       has_many :accounts,
                through: :memberships,
+               class_name: 'Pageflow::Account',
+               source: :entity,
+               source_type: 'Pageflow::Account'
+      has_many :invited_accounts,
+               through: :invitations,
                class_name: 'Pageflow::Account',
                source: :entity,
                source_type: 'Pageflow::Account'
