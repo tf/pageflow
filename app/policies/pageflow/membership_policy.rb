@@ -3,8 +3,6 @@ module Pageflow
     class Scope
       include Pageflow::AdmissionPolicyScopeMixin
 
-      @table_name = 'pageflow_memberships'
-
       private
 
       def table_name
@@ -12,5 +10,11 @@ module Pageflow
       end
     end
     include Pageflow::AdmissionPolicyMixin
+
+    private
+
+    def create_admission_for_entry?
+      @admission.user.accounts.include?(@admission.entity.account)
+    end
   end
 end

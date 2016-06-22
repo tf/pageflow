@@ -16,6 +16,11 @@ module Pageflow
                class_name: 'Pageflow::Entry',
                source: :entity,
                source_type: 'Pageflow::Entry'
+      has_many :invited_entries,
+               through: :invitations,
+               class_name: 'Pageflow::Entry',
+               source: :entity,
+               source_type: 'Pageflow::Entry'
       has_many :accounts,
                through: :memberships,
                class_name: 'Pageflow::Account',
@@ -48,6 +53,10 @@ module Pageflow
 
     def locale
       super.presence || I18n.default_locale
+    end
+
+    def accounts_and_invited_accounts
+      accounts + invited_accounts
     end
 
     def update_with_password(attributes)

@@ -24,5 +24,9 @@ module Pageflow
         theming.account = self
       end
     end
+
+    def users_and_invited_users
+      users + invited_users
+    end
   end
 end

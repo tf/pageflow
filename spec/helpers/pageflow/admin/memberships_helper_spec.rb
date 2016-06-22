@@ -18,6 +18,19 @@ module Pageflow
             expect(pairs).to eq([['Doe, Randolph', user.id]])
           end
 
+          it 'also displays users from account invitations for new membership' do
+            user = create(:user, first_name: 'Rupert', last_name: 'Doe')
+            account = create(:account)
+            create(:invitation, entity: account, role: :member, user: user)
+            new_membership = Membership.new
+            entry = create(:entry, account: account)
+            expect(helper).to receive(:current_user).and_return(user)
+
+            pairs = helper.membership_users_collection(entry, new_membership)
+
+            expect(pairs).to eq([['Doe, Rupert', user.id]])
+          end
+
           it 'returns only membership user if membership not new' do
             user = create(:user, first_name: 'Rudolf', last_name: 'Doe')
             account = create(:account)
@@ -42,6 +55,19 @@ module Pageflow
 
             expect(pairs).to eq([])
           end
+
+          it 'filters users that are already invited to parent' do
+            account = create(:account)
+            user = create(:user, first_name: 'John', last_name: 'Doe')
+            entry = create(:entry, account: account)
+            create(:invitation, entity: entry, role: :previewer, user: user)
+            new_membership = Membership.new
+            expect(helper).to receive(:current_user).and_return(user)
+
+            pairs = helper.membership_users_collection(entry, new_membership)
+
+            expect(pairs).to eq([])
+          end
         end
 
         context 'via Users#index' do
@@ -56,6 +82,19 @@ module Pageflow
             pairs = helper.membership_users_collection(user, new_membership)
 
             expect(pairs).to eq([['Doe, Randolph', user.id]])
+          end
+
+          it 'also displays users from account invitations for new membership' do
+            user = create(:user, first_name: 'Reince', last_name: 'Doe')
+            account = create(:account)
+            create(:invitation, entity: account, role: :member, user: user)
+            new_membership = Membership.new
+            create(:entry, account: account)
+            expect(helper).to receive(:current_user).and_return(user)
+
+            pairs = helper.membership_users_collection(user, new_membership)
+
+            expect(pairs).to eq([['Doe, Reince', user.id]])
           end
 
           it 'returns membership user if membership not new' do
@@ -86,6 +125,20 @@ module Pageflow
             expect(pairs).to eq([['Doe, Randolph', user.id]])
           end
 
+          it 'also displays users from account invitations for new membership' do
+            user = create(:user, first_name: 'Randolph', last_name: 'Doe')
+            account_manager = create(:user)
+            account = create(:account, with_manager: account_manager)
+            create(:account, with_member: user, with_manager: account_manager)
+            new_membership = Membership.new
+            create(:entry, account: account)
+            expect(helper).to receive(:current_user).and_return(account_manager)
+
+            pairs = helper.membership_users_collection(account, new_membership)
+
+            expect(pairs).to eq([['Doe, Randolph', user.id]])
+          end
+
           it 'returns only membership user if membership not new' do
             user = create(:user, first_name: 'Rudolf', last_name: 'Doe')
             account = create(:account)
@@ -102,7 +155,20 @@ module Pageflow
             account = create(:account)
             user = create(:user, first_name: 'John', last_name: 'Doe')
             entry = create(:entry, account: account)
-            create(:membership, entity: entry, role: :previewer, user: user)
+            create(:membership, entity: account, role: :member, user: user)
+            new_membership = Membership.new
+            expect(helper).to receive(:current_user).and_return(user)
+
+            pairs = helper.membership_users_collection(account, new_membership)
+
+            expect(pairs).to eq([])
+          end
+
+          it 'filters users that are already invited members of parent' do
+            account = create(:account)
+            user = create(:user, first_name: 'John', last_name: 'Doe')
+            entry = create(:entry, account: account)
+            create(:invitation, entity: account, role: :member, user: user)
             new_membership = Membership.new
             expect(helper).to receive(:current_user).and_return(user)
 
@@ -144,6 +210,19 @@ module Pageflow
             account_manager = create(:user)
             account = create(:account, name: 'Mediacorp', with_manager: account_manager)
             create(:membership, entity: account, role: :member, user: user)
+            new_membership = Membership.new
+            expect(helper).to receive(:current_user).and_return(account_manager)
+
+            pairs = helper.membership_accounts_collection(user, new_membership)
+
+            expect(pairs).to eq([])
+          end
+
+          it 'filters accounts that are already invited members of parent' do
+            user = create(:user)
+            account_manager = create(:user)
+            account = create(:account, name: 'Mediacorp', with_manager: account_manager)
+            create(:invitation, entity: account, role: :member, user: user)
             new_membership = Membership.new
             expect(helper).to receive(:current_user).and_return(account_manager)
 
@@ -205,10 +284,37 @@ module Pageflow
           expect(collection).to include('My Pageflow')
         end
 
+        it 'returns selection including account and entry referrer ' \
+           'with User as parent for new membership, also for account invitations' do
+          account = create(:account, name: 'Codevise Ltd.')
+          create(:entry, account: account, title: 'My Pageflow')
+          user = create(:user, :invited_member, on: account)
+          new_membership = Membership.new
+          expect(helper).to receive(:current_user).and_return(create(:user, :manager, on: account))
+
+          collection = helper.membership_entries_collection(user, new_membership)
+
+          expect(collection).to include('Codevise Ltd.')
+          expect(collection).to include('My Pageflow')
+        end
+
         it 'returns selection including account and entry referrer of only membership entry ' \
            'with User as parent for new membership' do
           account = create(:account, name: 'Codevise Ltd.')
           user = create(:user)
+          entry = create(:entry, account: account, title: 'My Pageflow')
+          create(:entry, title: 'Raucous title', with_previewer: user)
+          membership = create(:membership, user: user, role: :previewer, entity: entry)
+
+          pairs = helper.membership_entries_collection(user, membership)
+
+          expect(pairs).to eq([['My Pageflow', entry.id]])
+        end
+
+        it 'returns selection including account and entry referrer of only membership entry ' \
+           'on invited account with User as parent for new membership' do
+          user = create(:user)
+          account = create(:account, name: 'Codevise Ltd.', invite_member: user)
           entry = create(:entry, account: account, title: 'My Pageflow')
           create(:entry, title: 'Raucous title', with_previewer: user)
           membership = create(:membership, user: user, role: :previewer, entity: entry)
@@ -224,6 +330,20 @@ module Pageflow
           create(:entry, account: account, title: 'Not mine')
           user = create(:user)
           create(:membership, entity: entry, role: :previewer, user: user)
+          new_membership = Membership.new
+          expect(helper).to receive(:current_user).and_return(create(:user, :manager, on: account))
+
+          pairs = helper.membership_entries_collection(user, new_membership)
+
+          expect(pairs).not_to include('My Pageflow')
+        end
+
+        it 'filters entries that the user is already invited member of' do
+          account = create(:account, name: 'Pageflowcorp')
+          entry = create(:entry, account: account, title: 'My Pageflow')
+          create(:entry, account: account, title: 'Not mine')
+          user = create(:user)
+          create(:invitation, entity: entry, role: :previewer, user: user)
           new_membership = Membership.new
           expect(helper).to receive(:current_user).and_return(create(:user, :manager, on: account))
 

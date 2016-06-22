@@ -21,6 +21,7 @@ module Pageflow
     has_many :memberships, as: :entity, dependent: :destroy
     has_many :invitations, as: :entity, dependent: :destroy
     has_many :users, :through => :memberships, :class_name => '::User'
+    has_many :invited_users, :through => :invitations, :class_name => '::User', source: :user
 
     has_many :image_files
     has_many :video_files
@@ -104,6 +105,10 @@ module Pageflow
 
     def slug_candidates
       [:title, [:title, :id]]
+    end
+
+    def users_and_invited_users
+      users + invited_users
     end
 
     def self.ransackable_scopes(_)

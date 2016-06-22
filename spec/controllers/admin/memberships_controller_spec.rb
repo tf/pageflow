@@ -41,6 +41,20 @@ describe Admin::MembershipsController do
         end.not_to change { entry.users.count }
       end
 
+      it 'does not allow to add user of other invited account to entry' do
+        user = create(:user)
+        entry = create(:entry)
+        create(:account, invite_manager: user)
+
+        sign_in(create(:user, :admin))
+
+        expect do
+          post :create,
+               entry_id: entry.id,
+               membership: {user_id: user, role: :previewer}
+        end.not_to change { entry.invited_users.count }
+      end
+
       it 'does not allow to add entry of other account to user' do
         user = create(:user)
         entry = create(:entry)
@@ -53,6 +67,20 @@ describe Admin::MembershipsController do
                user_id: user,
                membership: {entity_id: entry.id, entity_type: 'Pageflow::Entry', role: :previewer}
         end.not_to change { user.entries.count }
+      end
+
+      it 'does not allow to add entry of other invited account to user' do
+        user = create(:user)
+        entry = create(:entry)
+        create(:account, invite_manager: user)
+
+        sign_in(create(:user, :admin))
+
+        expect do
+          post :create,
+               user_id: user,
+               membership: {entity_id: entry.id, entity_type: 'Pageflow::Entry', role: :previewer}
+        end.not_to change { user.invited_entries.count }
       end
 
       it 'allows to add entry of member account to user' do
@@ -69,6 +97,21 @@ describe Admin::MembershipsController do
         end.to change { user.entries.count }
       end
 
+      it 'allows to add entry of invited member account to user' do
+        account = create(:account)
+        user = create(:user, :invited_member, on: account)
+        entry = create(:entry, account: account)
+
+        sign_in(create(:user, :admin))
+
+        expect do
+          post :create, user_id: user, membership: {entity_id: entry.id,
+                                                    entity_type: 'Pageflow::Entry',
+                                                    role: :manager}
+
+        end.to change { user.invited_entries.count }
+      end
+
       it 'allows to add user of member account to entry' do
         account = create(:account)
         user = create(:user, :member, on: account)
@@ -81,6 +124,20 @@ describe Admin::MembershipsController do
                entry_id: entry.id,
                membership: {user_id: user, role: :manager}
         end.to change { entry.users.count }
+      end
+
+      it 'allows to add user of invited member account to entry' do
+        account = create(:account)
+        user = create(:user, :invited_member, on: account)
+        entry = create(:entry, account: account)
+
+        sign_in(create(:user, :admin))
+
+        expect do
+          post :create,
+               entry_id: entry.id,
+               membership: {user_id: user, role: :manager}
+        end.to change { entry.invited_users.count }
       end
     end
 
@@ -186,6 +243,20 @@ describe Admin::MembershipsController do
         end.not_to change { entry.users.count }
       end
 
+      it 'does not allow to add user to entry in other invited account' do
+        entry_admin = create(:user)
+        account = create(:account, with_manager: entry_admin)
+        other_account = create(:account, with_manager: entry_admin)
+        user = create(:user, :invited_manager, on: account)
+        entry = create(:entry, account: other_account, with_manager: entry_admin)
+
+        sign_in(entry_admin)
+
+        expect do
+          post :create, entry_id: entry, membership: {user_id: user, role: :previewer}
+        end.not_to change { entry.invited_users.count }
+      end
+
       it 'does not allow to add entry to user in other account' do
         entry_admin = create(:user)
         account = create(:account, with_manager: entry_admin)
@@ -202,6 +273,22 @@ describe Admin::MembershipsController do
         end.not_to change { user.entries.count }
       end
 
+      it 'does not allow to add entry to user in other invited account' do
+        entry_admin = create(:user)
+        account = create(:account, with_manager: entry_admin)
+        other_account = create(:account, with_manager: entry_admin)
+        user = create(:user, :invited_manager, on: account)
+        entry = create(:entry, account: other_account, with_manager: entry_admin)
+
+        sign_in(entry_admin)
+
+        expect do
+          post :create, user_id: user, membership: {entity_id: entry.id,
+                                                    entity_type: 'Pageflow::Entry',
+                                                    role: :previewer}
+        end.not_to change { user.invited_entries.count }
+      end
+
       it 'does not allow to add user to entry for entry admin on other entry' do
         entry_admin = create(:user)
         account = create(:account)
@@ -214,6 +301,20 @@ describe Admin::MembershipsController do
         expect do
           post :create, entry_id: entry, membership: {user_id: user, role: :previewer}
         end.not_to change { entry.users.count }
+      end
+
+      it 'does not allow to invite user to entry for entry admin on other entry' do
+        entry_admin = create(:user)
+        account = create(:account)
+        create(:entry, with_manager: entry_admin)
+        user = create(:user, :invited_member, on: account)
+        entry = create(:entry, account: account)
+
+        sign_in(entry_admin)
+
+        expect do
+          post :create, entry_id: entry, membership: {user_id: user, role: :previewer}
+        end.not_to change { entry.invited_users.count }
       end
 
       it 'does not allow to add entry to user for entry admin on other entry' do
@@ -232,6 +333,22 @@ describe Admin::MembershipsController do
         end.not_to change { user.entries.count }
       end
 
+      it 'does not allow to add invited entry to user for entry admin on other entry' do
+        entry_admin = create(:user)
+        account = create(:account)
+        create(:entry, with_manager: entry_admin)
+        user = create(:user, :invited_member, on: account)
+        entry = create(:entry, account: account)
+
+        sign_in(entry_admin)
+
+        expect do
+          post :create, user_id: user, membership: {entity_id: entry.id,
+                                                    entity_type: 'Pageflow::Entry',
+                                                    role: :previewer}
+        end.not_to change { user.invited_entries.count }
+      end
+
       it 'allows to add user to entry in correct account' do
         entry_admin = create(:user)
         account = create(:account)
@@ -243,6 +360,19 @@ describe Admin::MembershipsController do
         expect do
           post :create, entry_id: entry, membership: {user_id: user, role: :manager}
         end.to change { entry.users.count }
+      end
+
+      it 'allows to add user to entry in correct invited account' do
+        entry_admin = create(:user)
+        account = create(:account)
+        user = create(:user, :invited_member, on: account)
+        entry = create(:entry, account: account, with_manager: entry_admin)
+
+        sign_in(entry_admin)
+
+        expect do
+          post :create, entry_id: entry, membership: {user_id: user, role: :manager}
+        end.to change { entry.invited_users.count }
       end
 
       it 'allows to add entry to user in correct account' do
@@ -258,6 +388,21 @@ describe Admin::MembershipsController do
                                                     entity_type: 'Pageflow::Entry',
                                                     role: :manager}
         end.to change { user.entries.count }
+      end
+
+      it 'allows to add entry to user in correct invited account' do
+        entry_admin = create(:user)
+        account = create(:account)
+        user = create(:user, :invited_member, on: account)
+        entry = create(:entry, account: account, with_manager: entry_admin)
+
+        sign_in(entry_admin)
+
+        expect do
+          post :create, user_id: user, membership: {entity_id: entry.id,
+                                                    entity_type: 'Pageflow::Entry',
+                                                    role: :manager}
+        end.to change { user.invited_entries.count }
       end
     end
 
@@ -275,6 +420,19 @@ describe Admin::MembershipsController do
         end.not_to change { entry.users.count }
       end
 
+      it 'does not allow to add user to entry in correct invited account' do
+        entry_publisher = create(:user)
+        account = create(:account)
+        user = create(:user, :invited_manager, on: account)
+        entry = create(:entry, account: account, with_publisher: entry_publisher)
+
+        sign_in(entry_publisher)
+
+        expect do
+          post :create, entry_id: entry, membership: {user_id: user, role: :manager}
+        end.not_to change { entry.invited_users.count }
+      end
+
       it 'does not allow to add entry to user in correct account' do
         entry_publisher = create(:user)
         account = create(:account)
@@ -288,6 +446,21 @@ describe Admin::MembershipsController do
                                                     entity_type: 'Pageflow::Entry',
                                                     role: :manager}
         end.not_to change { user.entries.count }
+      end
+
+      it 'does not allow to add entry to user in correct invited account' do
+        entry_publisher = create(:user)
+        account = create(:account)
+        user = create(:user, :invited_manager, on: account)
+        entry = create(:entry, account: account, with_publisher: entry_publisher)
+
+        sign_in(entry_publisher)
+
+        expect do
+          post :create, user_id: user, membership: {entity_id: entry.id,
+                                                    entity_type: 'Pageflow::Entry',
+                                                    role: :manager}
+        end.not_to change { user.invited_entries.count }
       end
     end
   end

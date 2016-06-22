@@ -29,7 +29,9 @@ module Pageflow
         invitation.entity.nil? ||
           invitation.user.nil? ||
           (!(invitation.user.entries.include?(invitation.entity) ||
-             invitation.user.accounts.include?(invitation.entity))) &&
+             invitation.user.invited_entries.include?(invitation.entity) ||
+             invitation.user.accounts.include?(invitation.entity) ||
+             invitation.user.invited_accounts.include?(invitation.entity))) &&
             InvitationPolicy.new(user, invitation).create?
       end
 
@@ -47,8 +49,11 @@ module Pageflow
         membership.entity.nil? ||
           membership.user.nil? ||
           (!(membership.user.entries.include?(membership.entity) ||
-             membership.user.accounts.include?(membership.entity))) &&
-            MembershipPolicy.new(user, membership).create?
+             membership.user.invited_entries.include?(membership.entity) ||
+             membership.user.accounts.include?(membership.entity) ||
+             membership.user.invited_accounts.include?(membership.entity))) &&
+            (MembershipPolicy.new(user, membership).create? ||
+           InvitationPolicy.new(user, membership).create?)
       end
 
       can :index, Membership, MembershipPolicy::Scope.new(user, Membership).indexable

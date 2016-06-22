@@ -34,8 +34,7 @@ module Pageflow
     private
 
     def create_for_entry?
-      EntryPolicy.new(@user, @admission.entity).add_member_to? &&
-        @admission.user.accounts.include?(@admission.entity.account)
+      EntryPolicy.new(@user, @admission.entity).add_member_to? && create_admission_for_entry?
     end
 
     def create_for_account?
@@ -60,6 +59,10 @@ module Pageflow
     def destroy_for_account?
       @user.admin? ||
         AccountPolicy.new(@user, @admission.entity).destroy_admission_on?
+    end
+
+    def create_admission_for_entry?
+      raise 'To be implemented'
     end
   end
 end

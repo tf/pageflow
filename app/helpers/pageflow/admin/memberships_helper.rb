@@ -5,7 +5,7 @@ module Pageflow
         if resource.new_record?
           if parent.is_a?(User)
             accounts = AccountPolicy::Scope.new(current_user, Pageflow::Account)
-                       .entry_creatable
+                       .member_addable
             MembershipFormCollection.new(parent,
                                          resource: resource,
                                          collection_method: :entries,
@@ -30,7 +30,7 @@ module Pageflow
             accounts = AccountPolicy::Scope
                        .new(current_user, Account).member_addable.load
             MembershipFormCollection.new(parent,
-                                         collection_method: :accounts,
+                                         collection_method: :accounts_and_invited_accounts,
                                          display_method: :name,
                                          order: 'name ASC',
                                          managed_accounts: accounts).pairs
@@ -85,9 +85,9 @@ module Pageflow
 
         def collection_for_entries
           accounts = options[:managed_accounts]
-                     .where(accounts_ids_in_parent_accounts_ids)
+                     .where(accounts_ids_in_parent_accounts_ids_or_invited_accounts_ids)
                      .includes(:entries).where('pageflow_entries.id IS NOT NULL')
-                     .where(entries_ids_not_in_parent_entries_ids)
+                     .where(entries_ids_not_in_parent_entries_ids_or_invited_entries_ids)
                      .order(:name, 'pageflow_entries.title')
 
           option_groups_from_collection_for_select(accounts, :entries, :name, :id, :title)
@@ -115,7 +115,8 @@ module Pageflow
 
         def items_in_account
           if options[:collection_method] == :users
-            parent.account.users.order(options[:order])
+            users_related_to_account = parent.account.users_and_invited_users
+            User.where(id: users_related_to_account.map(&:id)).order(options[:order])
           elsif parent.is_a?(User)
             options[:resource].entity.send(options[:collection_method]).order(options[:order])
           else
@@ -124,24 +125,36 @@ module Pageflow
         end
 
         def items_in_parent
-          parent.respond_to?(options[:collection_method]) ? parent.send(options[:collection_method]) : []
+          if parent.respond_to?(options[:collection_method])
+            if options[:collection_method] == :users && parent.class.to_s == 'Pageflow::Entry'
+              parent.send(:users_and_invited_users)
+            else
+              parent.send(options[:collection_method])
+            end
+          else
+            []
+          end
         end
 
-        def accounts_ids_in_parent_accounts_ids
+        def accounts_ids_in_parent_accounts_ids_or_invited_accounts_ids
           parent_accounts_ids = parent.accounts.map(&:id)
-          if parent_accounts_ids.any?
-            sanitize_sql_array(['pageflow_accounts.id IN (:parent_accounts_ids)',
-                                parent_accounts_ids: parent_accounts_ids])
+          parent_invited_accounts_ids = @parent.invited_accounts.map(&:id)
+          parent_accounts_and_invited_ids = parent_accounts_ids + parent_invited_accounts_ids
+          if parent_accounts_and_invited_ids.any?
+            sanitize_sql_array(['pageflow_accounts.id IN (:parent_accounts_and_invited_ids)',
+                                parent_accounts_and_invited_ids: parent_accounts_and_invited_ids])
           else
             false
           end
         end
 
-        def entries_ids_not_in_parent_entries_ids
+        def entries_ids_not_in_parent_entries_ids_or_invited_entries_ids
           parent_entries_ids = items_in_parent.map(&:id)
-          if parent_entries_ids.any?
-            sanitize_sql_array(['pageflow_entries.id NOT IN (:parent_entries_ids)',
-                                parent_entries_ids: parent_entries_ids])
+          parent_invited_entries_ids = @parent.invited_entries.map(&:id)
+          parent_entries_and_invited_ids = parent_entries_ids + parent_invited_entries_ids
+          if parent_entries_and_invited_ids.any?
+            sanitize_sql_array(['pageflow_entries.id NOT IN (:parent_entries_and_invited_ids)',
+                                parent_entries_and_invited_ids: parent_entries_and_invited_ids])
           else
             true
           end

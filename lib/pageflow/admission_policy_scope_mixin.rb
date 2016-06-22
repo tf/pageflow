@@ -45,5 +45,9 @@ module Pageflow
     def admission_is_present
       "#{@table_name}.entity_id IS NOT NULL"
     end
+
+    def table_name
+      raise 'To be implemented'
+    end
   end
 end

@@ -30,6 +30,20 @@ module Pageflow
         end
       end
 
+      def create_resource(membership)
+        if membership.entity_type == 'Pageflow::Entry' &&
+           membership.user.invited_accounts.include?(Entry.find(membership.entity_id).account)
+          Invitation.create(user: membership.user,
+                            entity_id: membership.entity_id,
+                            entity_type: 'Pageflow::Entry',
+                            first_name: membership.user.first_name,
+                            last_name: membership.user.last_name,
+                            role: membership.role).errors.inspect.to_s
+        else
+          super
+        end
+      end
+
       def destroy
         if resource.entity_type == 'Pageflow::Account'
           resource.entity.entry_memberships.where(user: resource.user).destroy_all
