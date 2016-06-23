@@ -39,9 +39,9 @@ module Dom
         end
       end
 
-      def resend_invitation_link
+      def resend_welcome_mail_link
         within(node) do
-          find('[data-rel=resend_invitation]')
+          find('[data-rel=resend_welcome_mail]')
         end
       end
 

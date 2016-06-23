@@ -37,5 +37,76 @@ module Pageflow
         end.to change { entry.invited_users_count }.by(-1)
       end
     end
+
+    describe '#turn_into_membership' do
+      it 'turns the invitation into a membership' do
+        account = create(:account)
+        invitation = create(:invitation, entity: account)
+
+        expect do
+          invitation.turn_into_membership
+        end.to change { account.memberships.count }.by(1)
+      end
+
+      it 'destroys the invitation after creating the membership' do
+        account = create(:account)
+        invitation = create(:invitation, entity: account)
+
+        expect do
+          invitation.turn_into_membership
+        end.to change { account.invitations.count }.by(-1)
+      end
+    end
+
+    describe '@turn_into_memberships' do
+      it 'turns the invitations collection into a memberships' do
+        account = create(:account)
+        create(:invitation, entity: account)
+        create(:invitation, entity: account)
+
+        expect do
+          account.invitations.turn_into_memberships
+        end.to change { account.memberships.count }.by(2)
+      end
+
+      it 'destroys the invitations after creating the memberships' do
+        account = create(:account)
+        create(:invitation, entity: account)
+        create(:invitation, entity: account)
+
+        expect do
+          account.invitations.turn_into_memberships
+        end.to change { account.invitations.count }.by(-2)
+      end
+    end
+
+    describe 'after_create callback' do
+      describe 'for an account' do
+        it 'delivers invitation email' do
+          account = create(:account)
+          user = create(:user)
+          invitation = create(:invitation, entity: account, user: user)
+
+          expect(UserMailer).to receive(:invitation)
+            .with('user_id' => invitation.user_id, 'account_id' => invitation.entity_id)
+            .and_return(double(deliver: true))
+
+          invitation.send_invitation!
+        end
+      end
+
+      describe 'for an entry' do
+        it 'does not delivers invitation email' do
+          entry = create(:entry)
+          user = create(:user)
+          invitation = create(:invitation, entity: entry, user: user, role: :manager)
+
+          expect(UserMailer).not_to receive(:invitation)
+            .with('user_id' => invitation.user_id, 'account_id' => invitation.entity_id)
+
+          invitation.send_invitation!
+        end
+      end
+    end
   end
 end

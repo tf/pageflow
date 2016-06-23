@@ -4,18 +4,18 @@ module Pageflow
   class InvitedUser < User
     attr_accessor :initial_account, :initial_role
 
-    before_create :prepare_invitation
-    after_create :send_invitation
+    before_create :prepare_welcome_mail
+    after_create :send_welcome_mail
 
-    def send_invitation!
-      prepare_invitation
+    def send_welcome_mail!
+      prepare_welcome_mail
       save(validate: false)
-      send_invitation
+      send_welcome_mail
     end
 
     private
 
-    def prepare_invitation
+    def prepare_welcome_mail
       @token = generate_reset_password_token
     end
 
@@ -32,8 +32,8 @@ module Pageflow
       false
     end
 
-    def send_invitation
-      UserMailer.invitation('user_id' => id, 'password_token' => @token).deliver
+    def send_welcome_mail
+      UserMailer.welcome_mail('user_id' => id, 'password_token' => @token).deliver
     end
   end
 end

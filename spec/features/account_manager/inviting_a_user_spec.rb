@@ -10,7 +10,7 @@ feature 'as account manager, inviting a user' do
     Dom::Admin::UserForm.first.submit_with(first_name: 'John',
                                            last_name: 'Doe',
                                            email: 'sepp@example.com')
-    visit(MailClient.of('sepp@example.com').receive_invitation_link)
+    visit(MailClient.of('sepp@example.com').receive_welcome_mail_link)
     Dom::Admin::NewPasswordForm.first.submit_with(password: '@new12345')
 
     expect(Dom::Admin::Page).to be_accessible_with(email: 'sepp@example.com', password: '@new12345')
@@ -22,8 +22,8 @@ feature 'as account manager, inviting a user' do
 
     Dom::Admin::Page.sign_in_as(:manager, on: account)
     visit(admin_user_path(user))
-    Dom::Admin::UserPage.first.resend_invitation_link.click
-    visit(MailClient.of('heinz@example.com').receive_invitation_link)
+    Dom::Admin::UserPage.first.resend_welcome_mail_link.click
+    visit(MailClient.of('heinz@example.com').receive_welcome_mail_link)
     Dom::Admin::NewPasswordForm.first.submit_with(password: '@new12345')
 
     expect(Dom::Admin::Page).to be_accessible_with(email: 'heinz@example.com',

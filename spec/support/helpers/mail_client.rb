@@ -28,12 +28,24 @@ class MailClient
     fetch_link_from(invitation_mail) { raise("Expected to find link in invitation mail.") }
   end
 
+  def welcome_mail
+    delivery_by_subject('pageflow.user_mailer.welcome_mail.subject')
+  end
+
+  def receive_welcome_mail_link
+    fetch_link_from(welcome_mail) do
+      raise('Expected to find the password reset link in welcome mail.')
+    end
+  end
+
   def password_reset_mail
     delivery_by_subject('devise.mailer.reset_password_instructions.subject')
   end
 
   def receive_password_reset_link
-    fetch_link_from(password_reset_mail) { raise("Expected to find link in password reset mail.") }
+    fetch_link_from(password_reset_mail) do
+      raise('Expected to find link in password reset mail.')
+    end
   end
 
   def self.of(email)
