@@ -12,7 +12,20 @@ feature 'as entry manager, managing user roles' do
       Dom::Admin::EntryPage.first.add_member_link.click
       Dom::Admin::MembershipForm.first.submit_with(role: 'publisher',
                                                    entity: entry)
-      expect(Dom::Admin::EntryPage.first).to have_role_flag('publisher')
+      expect(Dom::Admin::EntryPage.first).to have_role_flag_in_memberships('publisher')
+    end
+
+    scenario 'giving an invited member on the account of entry permissions on that entry' do
+      entry = create(:entry)
+      create(:user, :invited_member, on: entry.account)
+      Dom::Admin::Page.sign_in_as(:manager, on: entry)
+
+      visit(admin_entry_path(entry))
+
+      Dom::Admin::EntryPage.first.add_member_link.click
+      Dom::Admin::MembershipForm.first.submit_with(role: 'publisher',
+                                                   entity: entry)
+      expect(Dom::Admin::EntryPage.first).to have_role_flag_in_invitations('publisher')
     end
 
     scenario 'editing permissions of a user on an entry' do
@@ -24,7 +37,19 @@ feature 'as entry manager, managing user roles' do
 
       Dom::Admin::EntryPage.first.edit_role_link('previewer').click
       Dom::Admin::MembershipForm.first.submit_with(role: 'publisher')
-      expect(Dom::Admin::EntryPage.first).to have_role_flag('publisher')
+      expect(Dom::Admin::EntryPage.first).to have_role_flag_in_memberships('publisher')
+    end
+
+    scenario 'editing permissions of an invited user on an entry' do
+      entry = create(:entry)
+      create(:user, :invited_previewer, on: entry)
+      Dom::Admin::Page.sign_in_as(:manager, on: entry)
+
+      visit(admin_entry_path(entry))
+
+      Dom::Admin::EntryPage.first.edit_invitation_role_link('previewer').click
+      Dom::Admin::InvitationForm.first.submit_with(role: 'publisher')
+      expect(Dom::Admin::EntryPage.first).to have_role_flag_in_invitations('publisher')
     end
 
     scenario 'deleting permissions of a user on an entry' do
@@ -36,7 +61,19 @@ feature 'as entry manager, managing user roles' do
 
       Dom::Admin::EntryPage.first.delete_member_link('previewer').click
 
-      expect(Dom::Admin::EntryPage.first).not_to have_role_flag('previewer')
+      expect(Dom::Admin::EntryPage.first).not_to have_role_flag_in_memberships('previewer')
+    end
+
+    scenario 'deleting permissions of an invited user on an entry' do
+      entry = create(:entry)
+      create(:user, :invited_previewer, on: entry)
+      Dom::Admin::Page.sign_in_as(:manager, on: entry)
+
+      visit(admin_entry_path(entry))
+
+      Dom::Admin::EntryPage.first.delete_invitation_link('previewer').click
+
+      expect(Dom::Admin::EntryPage.first).not_to have_role_flag_in_invitations('previewer')
     end
   end
 end

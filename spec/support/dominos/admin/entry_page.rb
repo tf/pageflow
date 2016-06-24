@@ -37,6 +37,12 @@ module Dom
         end
       end
 
+      def edit_invitation_role_link(role)
+        within(node) do
+          find("[data-rel=edit_entry_invitation_#{role}]")
+        end
+      end
+
       def delete_entry_link
         within(node) do
           find_link(I18n.t('active_admin.delete_model',
@@ -47,6 +53,12 @@ module Dom
       def delete_member_link(role)
         within(node) do
           find("[data-rel=delete_membership_#{role}]")
+        end
+      end
+
+      def delete_invitation_link(role)
+        within(node) do
+          find("[data-rel=delete_invitation_#{role}]")
         end
       end
 
@@ -67,9 +79,15 @@ module Dom
         visit(url_helpers.admin_entry_path(entry, tab: 'revisions'))
       end
 
-      def has_role_flag?(role)
+      def has_role_flag_in_memberships?(role)
         within(node) do
           has_selector?(".memberships .#{role}")
+        end
+      end
+
+      def has_role_flag_in_invitations?(role)
+        within(node) do
+          has_selector?(".invitations .#{role}")
         end
       end
     end

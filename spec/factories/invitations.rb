@@ -8,7 +8,7 @@ module Pageflow
       last_name 'Doe'
       before(:create) do |invitation|
         if invitation.entity_type != 'Pageflow::Account' &&
-           !invitation.user.accounts.include?(invitation.entity.account) &&
+           !invitation.user.invited_accounts.include?(invitation.entity.account) &&
            !invitation.entity.account.nil?
           create(:invitation,
                  user: invitation.user,
@@ -25,7 +25,7 @@ module Pageflow
       first_name 'John'
       last_name 'Doe'
       before(:create) do |invitation|
-        if !invitation.user.accounts.include?(invitation.entity.account) &&
+        if !invitation.user.invited_accounts.include?(invitation.entity.account) &&
            !invitation.entity.account.nil?
           create(:invitation,
                  user: invitation.user,

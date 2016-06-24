@@ -51,15 +51,33 @@ module Dom
         end
       end
 
+      def add_entry_invitation_link
+        within(node) do
+          find('[data-rel=add_entry_invitation]')
+        end
+      end
+
       def edit_entry_role_link(role)
         within(node) do
           find("[data-rel=edit_entry_role_#{role}]")
         end
       end
 
+      def edit_entry_invitation_role_link(role)
+        within(node) do
+          find("[data-rel=edit_entry_role_invitation_#{role}]")
+        end
+      end
+
       def delete_member_on_entry_link(role)
         within(node) do
           find("[data-rel=delete_entry_membership_#{role}]")
+        end
+      end
+
+      def delete_invitation_on_entry_link(role)
+        within(node) do
+          find("[data-rel=delete_entry_invitation_#{role}]")
         end
       end
 
@@ -75,9 +93,21 @@ module Dom
         end
       end
 
+      def add_account_invitation_link
+        within(node) do
+          find('[data-rel=add_account_invitation]')
+        end
+      end
+
       def edit_account_role_link(role)
         within(node) do
           find("[data-rel=edit_account_role_#{role}]")
+        end
+      end
+
+      def edit_account_invitation_role_link(role)
+        within(node) do
+          find("[data-rel=edit_account_invitation_role_#{role}]")
         end
       end
 
@@ -87,15 +117,27 @@ module Dom
         end
       end
 
+      def delete_invited_member_on_account_link(role)
+        within(node) do
+          find("[data-rel=delete_account_invitation_#{role}]")
+        end
+      end
+
       def has_admin_flag?
         within(node) do
           has_selector?('.attributes_table .status_tag.admin')
         end
       end
 
-      def has_role_flag?(role)
+      def has_role_flag_in_memberships?(role)
         within(node) do
-          has_selector?(".memberships .#{role}") || has_selector?(".invitations .#{role}")
+          has_selector?(".memberships .#{role}")
+        end
+      end
+
+      def has_role_flag_in_invitations?(role)
+        within(node) do
+          has_selector?(".invitations .#{role}")
         end
       end
     end

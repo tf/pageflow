@@ -25,22 +25,32 @@ FactoryGirl.define do
       create(:invitation,
              entity: account,
              user: evaluator.invite_member,
+             first_name: evaluator.invite_member.first_name,
+             last_name: evaluator.invite_member.last_name,
              role: :member) if evaluator.invite_member
       create(:invitation,
              entity: account,
              user: evaluator.invite_previewer,
+             first_name: evaluator.invite_previewer.first_name,
+             last_name: evaluator.invite_previewer.last_name,
              role: :previewer) if evaluator.invite_previewer
       create(:invitation,
              entity: account,
              user: evaluator.invite_editor,
+             first_name: evaluator.invite_editor.first_name,
+             last_name: evaluator.invite_editor.last_name,
              role: :editor) if evaluator.invite_editor
       create(:invitation,
              entity: account,
              user: evaluator.invite_publisher,
+             first_name: evaluator.invite_publisher.first_name,
+             last_name: evaluator.invite_publisher.last_name,
              role: :publisher) if evaluator.invite_publisher
       create(:invitation,
              entity: account,
              user: evaluator.invite_manager,
+             first_name: evaluator.invite_manager.first_name,
+             last_name: evaluator.invite_manager.last_name,
              role: :manager) if evaluator.invite_manager
       create(:membership,
              entity: account,

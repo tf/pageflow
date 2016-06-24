@@ -64,7 +64,7 @@ module Pageflow
                                                            invitation,
                                                            entity_type: :account),
                         data: {
-                          rel: "edit_account_role_#{invitation.role}"
+                          rel: "edit_account_invitation_role_#{invitation.role}"
                         })
               end
             end

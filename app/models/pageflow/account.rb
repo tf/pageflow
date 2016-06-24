@@ -9,6 +9,7 @@ module Pageflow
     has_many :users, through: :memberships, source: :user, class_name: '::User'
     has_many :invited_users, through: :invitations, source: :user, class_name: '::User'
     has_many :entry_memberships, through: :entries, source: :memberships
+    has_many :entry_invitations, through: :entries, source: :invitations
 
     has_many :themings, dependent: :destroy
     belongs_to :default_theming, :class_name => 'Theming'

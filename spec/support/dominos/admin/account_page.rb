@@ -33,9 +33,21 @@ module Dom
         end
       end
 
+      def add_account_invitation_link
+        within(node) do
+          find('[data-rel=invite_member]')
+        end
+      end
+
       def edit_account_role_link(role)
         within(node) do
           find("[data-rel=edit_account_role_#{role}]")
+        end
+      end
+
+      def edit_account_invitation_role_link(role)
+        within(node) do
+          find("[data-rel=edit_account_invitation_role_#{role}]")
         end
       end
 
@@ -45,9 +57,21 @@ module Dom
         end
       end
 
-      def has_role_flag?(role)
+      def delete_invited_member_on_account_link(role)
         within(node) do
-          has_selector?(".memberships .#{role}") || has_selector?(".invitations .#{role}")
+          find("[data-rel=delete_account_invitation_#{role}]")
+        end
+      end
+
+      def has_role_flag_in_memberships?(role)
+        within(node) do
+          has_selector?(".memberships .#{role}")
+        end
+      end
+
+      def has_role_flag_in_invitations?(role)
+        within(node) do
+          has_selector?(".invitations .#{role}")
         end
       end
     end

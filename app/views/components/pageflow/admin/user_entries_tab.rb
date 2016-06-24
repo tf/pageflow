@@ -71,7 +71,7 @@ module Pageflow
                 link_to(t('pageflow.admin.users.edit_role'),
                         edit_admin_user_invitation_path(user, invitation, entity_type: :entry),
                         data: {
-                          rel: "edit_entry_role_#{invitation.role}"
+                          rel: "edit_entry_role_invitation_#{invitation.role}"
                         })
               end
             end

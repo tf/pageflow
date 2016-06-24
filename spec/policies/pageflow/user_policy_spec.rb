@@ -133,7 +133,7 @@ module Pageflow
 
       it 'does not include invited user with nil id' do
         account_manager = create(:user)
-        managed_user = User.new
+        managed_user = User.new(first_name: 'John', last_name: 'Doe')
         create(:account, with_manager: account_manager)
         create(:account, invite_member: managed_user)
 

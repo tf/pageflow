@@ -2,7 +2,7 @@ module Pageflow
   ActiveAdmin.register Invitation, as: 'Invitation' do
     menu false
 
-    actions :new, :create
+    actions :new, :create, :edit, :update, :destroy
 
     form partial: 'admin/memberships/form'
 
@@ -34,6 +34,26 @@ module Pageflow
           redirect_to admin_entry_url(params[:entry_id])
         else
           redirect_to admin_account_url(params[:account_id])
+        end
+      end
+
+      def destroy
+        if resource.entity_type == 'Pageflow::Account'
+          resource.entity.entry_invitations.where(user: resource.user).destroy_all
+        end
+
+        destroy! do
+          if authorized?(:redirect_to_user, resource.user) && params[:user_id]
+            admin_user_url(resource.user)
+          elsif authorized?(:redirect_to_user, resource.user) && params[:entry_id]
+            admin_entry_url(resource.entity)
+          elsif params[:user_id] && authorized?(:index, resource.user)
+            admin_users_url
+          elsif params[:account_id]
+            admin_accounts_url
+          else
+            admin_entries_url
+          end
         end
       end
 
