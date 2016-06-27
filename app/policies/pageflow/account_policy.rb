@@ -12,8 +12,7 @@ module Pageflow
         if user.admin?
           scope.all
         else
-          scope.joins(memberships_for_account(user)).joins(invitations_for_account(user))
-            .where(membership_or_invitation_is_present)
+          scope.joins(memberships_for_account(user)).where(membership_is_present)
         end
       end
 
@@ -77,10 +76,6 @@ module Pageflow
 
       def membership_is_present
         'pageflow_memberships.entity_id IS NOT NULL'
-      end
-
-      def membership_or_invitation_is_present
-        'pageflow_memberships.entity_id IS NOT NULL OR pageflow_invitations.entity_id IS NOT NULL'
       end
     end
 

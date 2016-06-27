@@ -30,7 +30,8 @@ feature 'as account manager, managing user roles' do
     scenario 'editing permissions of an invited user on an account' do
       user = create(:user)
       account = create(:account, invite_member: user)
-      Dom::Admin::Page.sign_in_as(:manager, on: account)
+      account_manager = Dom::Admin::Page.sign_in_as(:manager, on: account)
+      create(:account, with_member: user, with_manager: account_manager)
 
       visit(admin_user_path(user))
 
@@ -74,19 +75,6 @@ feature 'as account manager, managing user roles' do
 
       Dom::Admin::UserPage.first.delete_member_on_account_link('member').click
       expect(Dom::Admin::UserPage.first).not_to have_content('Marco')
-    end
-
-    scenario 'deleting last invitation of a user on an account they have in common with the ' \
-             'account manager, while there is no common membership' do
-      user = create(:user, first_name: 'Polo')
-      account = create(:account, invite_member: user)
-      Dom::Admin::Page.sign_in_as(:manager, on: account)
-
-      visit(admin_user_path(user))
-      expect(Dom::Admin::UserPage.first).to have_content('Polo')
-
-      Dom::Admin::UserPage.first.delete_invited_member_on_account_link('member').click
-      expect(Dom::Admin::UserPage.first).not_to have_content('Polo')
     end
   end
 
@@ -197,7 +185,8 @@ feature 'as account manager, managing user roles' do
     scenario 'giving an invited member on the account of entry permissions on that entry' do
       entry = create(:entry)
       user = create(:user, :invited_member, on: entry.account)
-      Dom::Admin::Page.sign_in_as(:manager, on: entry.account)
+      account_manager = Dom::Admin::Page.sign_in_as(:manager, on: entry.account)
+      create(:account, with_member: user, with_manager: account_manager)
 
       visit(admin_user_path(user))
 
@@ -222,7 +211,8 @@ feature 'as account manager, managing user roles' do
     scenario 'editing permissions of an invited user on an entry' do
       entry = create(:entry)
       user = create(:user, :invited_previewer, on: entry)
-      Dom::Admin::Page.sign_in_as(:manager, on: entry.account)
+      account_manager = Dom::Admin::Page.sign_in_as(:manager, on: entry.account)
+      create(:account, with_member: user, with_manager: account_manager)
 
       visit(admin_user_path(user))
 
@@ -246,7 +236,8 @@ feature 'as account manager, managing user roles' do
     scenario 'deleting permissions of an invited user on an entry' do
       entry = create(:entry)
       user = create(:user, :invited_previewer, on: entry)
-      Dom::Admin::Page.sign_in_as(:manager, on: entry.account)
+      account_manager = Dom::Admin::Page.sign_in_as(:manager, on: entry.account)
+      create(:account, with_member: user, with_manager: account_manager)
 
       visit(admin_user_path(user))
 

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Pageflow
-  describe Membership do
+  describe Invitation do
     describe 'invited_users_count callback' do
       it 'updates account attribute upon Invitation.create on account' do
         account = create(:account)
