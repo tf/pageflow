@@ -232,7 +232,7 @@ module Pageflow
     #
     # @example
     #
-    #     config.authorize_user_deletion =
+    #     Pageflow.config.authorize_user_deletion =
     #       lambda do |user_to_delete|
     #         if user_to_delete.accounts.all? { |account| account.users.size > 1 }
     #           true
@@ -242,6 +242,11 @@ module Pageflow
     #       end
     # @since edge
     attr_accessor :authorize_user_deletion
+
+    # Require user confirmation before adding a user to a new
+    # account. Enable inviting users to entries before they are
+    # members on the respective account. Defaults to true.
+    attr_accessor :invitation_workflows
 
     def initialize
       @paperclip_filesystem_default_options = {validate_media_type: false}
@@ -282,6 +287,8 @@ module Pageflow
       @default_publisher_meta_tag = 'Pageflow'
 
       @authorize_user_deletion = lambda { |_user| true }
+
+      @invitation_workflows = true
     end
 
     # Activate a plugin.
