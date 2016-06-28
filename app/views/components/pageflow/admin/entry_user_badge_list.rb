@@ -9,8 +9,10 @@ module Pageflow
             build_membership_badge(membership)
           end
 
-          entry_invited_users(entry).each do |invitation|
-            build_invitation_badge(invitation)
+          if Pageflow.config.invitation_workflows
+            entry_invited_users(entry).each do |invitation|
+              build_invitation_badge(invitation)
+            end
           end
         end
       end
