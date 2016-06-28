@@ -11,9 +11,11 @@ module Pageflow
             end
           end
 
-          user_account_invitations(user).each do |invitation|
-            if authorized?(:see_badge_belonging_to, invitation.entity)
-              build_badge(invitation, ", #{I18n.t('activerecord.attributes.user.invited?')}")
+          if Pageflow.config.invitation_workflows
+            user_account_invitations(user).each do |invitation|
+              if authorized?(:see_badge_belonging_to, invitation.entity)
+                build_badge(invitation, ", #{I18n.t('activerecord.attributes.user.invited?')}")
+              end
             end
           end
 
