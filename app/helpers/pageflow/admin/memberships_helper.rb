@@ -29,8 +29,13 @@ module Pageflow
           if parent.is_a?(User)
             accounts = AccountPolicy::Scope
                        .new(current_user, Account).member_addable.load
+            if Pageflow.config.invitation_workflows
+              collection_method = :accounts_and_invited_accounts
+            else
+              collection_method = :accounts
+            end
             MembershipFormCollection.new(parent,
-                                         collection_method: :accounts_and_invited_accounts,
+                                         collection_method: collection_method,
                                          display_method: :name,
                                          order: 'name ASC',
                                          managed_accounts: accounts).pairs
@@ -115,7 +120,11 @@ module Pageflow
 
         def items_in_account
           if options[:collection_method] == :users
-            users_related_to_account = parent.account.users_and_invited_users
+            if Pageflow.config.invitation_workflows
+              users_related_to_account = parent.account.users_and_invited_users
+            else
+              users_related_to_account = parent.account.users
+            end
             User.where(id: users_related_to_account.map(&:id)).order(options[:order])
           elsif parent.is_a?(User)
             options[:resource].entity.send(options[:collection_method]).order(options[:order])
@@ -126,7 +135,9 @@ module Pageflow
 
         def items_in_parent
           if parent.respond_to?(options[:collection_method])
-            if options[:collection_method] == :users && parent.class.to_s == 'Pageflow::Entry'
+            if Pageflow.config.invitation_workflows &&
+               options[:collection_method] == :users &&
+               parent.class.to_s == 'Pageflow::Entry'
               parent.send(:users_and_invited_users)
             else
               parent.send(options[:collection_method])
@@ -137,9 +148,10 @@ module Pageflow
         end
 
         def accounts_ids_in_parent_accounts_ids_or_invited_accounts_ids
-          parent_accounts_ids = parent.accounts.map(&:id)
-          parent_invited_accounts_ids = @parent.invited_accounts.map(&:id)
-          parent_accounts_and_invited_ids = parent_accounts_ids + parent_invited_accounts_ids
+          parent_accounts_and_invited_ids = parent.accounts.map(&:id)
+          if Pageflow.config.invitation_workflows
+            parent_accounts_and_invited_ids += @parent.invited_accounts.map(&:id)
+          end
           if parent_accounts_and_invited_ids.any?
             sanitize_sql_array(['pageflow_accounts.id IN (:parent_accounts_and_invited_ids)',
                                 parent_accounts_and_invited_ids: parent_accounts_and_invited_ids])
@@ -149,9 +161,10 @@ module Pageflow
         end
 
         def entries_ids_not_in_parent_entries_ids_or_invited_entries_ids
-          parent_entries_ids = items_in_parent.map(&:id)
-          parent_invited_entries_ids = @parent.invited_entries.map(&:id)
-          parent_entries_and_invited_ids = parent_entries_ids + parent_invited_entries_ids
+          parent_entries_and_invited_ids = items_in_parent.map(&:id)
+          if Pageflow.config.invitation_workflows
+            parent_entries_and_invited_ids += @parent.invited_entries.map(&:id)
+          end
           if parent_entries_and_invited_ids.any?
             sanitize_sql_array(['pageflow_entries.id NOT IN (:parent_entries_and_invited_ids)',
                                 parent_entries_and_invited_ids: parent_entries_and_invited_ids])
