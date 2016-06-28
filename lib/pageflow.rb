@@ -19,16 +19,18 @@ module Pageflow
           resources :memberships
         end
 
-        resources :users do
-          resources :invitations
-        end
+        if Pageflow.config.invitation_workflows
+          resources :users do
+            resources :invitations
+          end
 
-        resources :entries do
-          resources :invitations
-        end
+          resources :entries do
+            resources :invitations
+          end
 
-        resources :accounts do
-          resources :invitations
+          resources :accounts do
+            resources :invitations
+          end
         end
       end
 
