@@ -144,16 +144,7 @@ module Pageflow
       def create_resource(user)
         verify_quota!(:users, params[:user][:account])
         known_user = User.find_by(email: resource.email)
-        invited_user = known_user ? known_user : resource
-        invitation_params = {user: invited_user,
-                             entity_id: resource.initial_account,
-                             entity_type: 'Pageflow::Account',
-                             first_name: resource.first_name,
-                             last_name: resource.last_name}
-        if resource.initial_role.present?
-          invitation_params.merge!(role: resource.initial_role.to_sym)
-        end
-        Invitation.create(invitation_params)
+        create_admission(known_user)
         if known_user
           known_user
         else
@@ -186,6 +177,37 @@ module Pageflow
       end
 
       private
+
+      def create_admission(known_user)
+        admitted_user = known_user ? known_user : resource
+        if Pageflow.config.invitation_workflows
+          create_invitation(admitted_user)
+        else
+          create_membership(admitted_user)
+        end
+      end
+
+      def create_invitation(invited_user)
+        invitation_params = {user: invited_user,
+                             entity_id: resource.initial_account,
+                             entity_type: 'Pageflow::Account',
+                             first_name: resource.first_name,
+                             last_name: resource.last_name}
+        if resource.initial_role.present?
+          invitation_params.merge!(role: resource.initial_role.to_sym)
+        end
+        Invitation.create(invitation_params)
+      end
+
+      def create_membership(membership_user)
+        membership_params = {user: membership_user,
+                             entity_id: resource.initial_account,
+                             entity_type: 'Pageflow::Account'}
+        if resource.initial_role.present?
+          membership_params.merge!(role: resource.initial_role.to_sym)
+        end
+        Membership.create(membership_params)
+      end
 
       def restrict_attributes(_id, attributes)
         unless authorized?(:set_admin, current_user)
