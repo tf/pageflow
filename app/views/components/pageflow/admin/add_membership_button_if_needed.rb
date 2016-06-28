@@ -9,17 +9,23 @@ module Pageflow
           if entity_type.to_sym == :entry
             path = new_admin_user_membership_path(parent, entity_type: :entry)
             rel = "add_#{entity_type}_membership"
-          else
+          elsif Pageflow.config.invitation_workflows
             path = new_admin_user_invitation_path(parent, entity_type: :account)
             rel = "add_#{entity_type}_invitation"
+          else
+            path = new_admin_user_membership_path(parent, entity_type: :account)
+            rel = "add_#{entity_type}_membership"
           end
           data_tooltip = I18n.t("pageflow.admin.#{entity_type}.none_addable_tooltip")
         elsif parent.is_a?(Entry)
           path = new_admin_entry_membership_path(parent, entity_type: entity_type.to_sym)
           rel = 'add_member'
-        else
+        elsif Pageflow.config.invitation_workflows
           path = new_admin_account_invitation_path(parent, entity_type: entity_type.to_sym)
           rel = 'invite_member'
+        else
+          path = new_admin_account_membership_path(parent, entity_type: entity_type.to_sym)
+          rel = 'add_member'
         end
 
         unless parent.is_a?(User)
