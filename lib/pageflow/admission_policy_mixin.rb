@@ -8,10 +8,14 @@ module Pageflow
     end
 
     def create?
-      if @admission.entity_type == 'Pageflow::Account'
-        create_for_account?
+      if @admission.is_a?(Invitation) && !Pageflow.config.invitation_workflows
+        false
       else
-        create_for_entry?
+        if @admission.entity_type == 'Pageflow::Account'
+          create_for_account?
+        else
+          create_for_entry?
+        end
       end
     end
 

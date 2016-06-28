@@ -14,7 +14,11 @@ module Pageflow
     private
 
     def create_admission_for_entry?
-      @admission.user.invited_accounts.include?(@admission.entity.account)
+      if Pageflow.config.invitation_workflows
+        @admission.user.invited_accounts.include?(@admission.entity.account)
+      else
+        false
+      end
     end
   end
 end
