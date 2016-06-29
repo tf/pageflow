@@ -27,6 +27,14 @@ module Pageflow
       [last_name, first_name] * ', '
     end
 
+    def display_name
+      if entity.is_a?(Account)
+        entity.name
+      else
+        entity.title
+      end
+    end
+
     private
 
     def account_membership_or_invitation_exists
