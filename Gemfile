@@ -16,5 +16,9 @@ gem 'teaspoon', '~> 0.9.0'
 gem 'spring-commands-rspec', group: :development
 gem 'spring-commands-teaspoon', group: :development
 
+gem 'pageflow-theme-doc-publisher', git: 'https://github.com/tf/pageflow-theme-doc-publisher'
+
+gem 'coveralls', require: false
+
 # Early failure output
 gem 'rspec-instafail', '~> 0.4.0', require: false
