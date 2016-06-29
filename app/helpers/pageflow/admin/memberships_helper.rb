@@ -89,13 +89,17 @@ module Pageflow
         end
 
         def collection_for_entries
-          accounts = options[:managed_accounts]
-                     .where(accounts_ids_in_parent_accounts_ids_or_invited_accounts_ids)
-                     .includes(:entries).where('pageflow_entries.id IS NOT NULL')
-                     .where(entries_ids_not_in_parent_entries_ids_or_invited_entries_ids)
-                     .order(:name, 'pageflow_entries.title')
-
-          option_groups_from_collection_for_select(accounts, :entries, :name, :id, :title)
+          accounts_ids_sql = accounts_ids_in_parent_accounts_ids_or_invited_accounts_ids
+          if accounts_ids_sql
+            accounts = options[:managed_accounts]
+                       .where(accounts_ids_in_parent_accounts_ids_or_invited_accounts_ids)
+                       .includes(:entries).where('pageflow_entries.id IS NOT NULL')
+                       .where(entries_ids_not_in_parent_entries_ids_or_invited_entries_ids)
+                       .order(:name, 'pageflow_entries.title')
+            option_groups_from_collection_for_select(accounts, :entries, :name, :id, :title)
+          else
+            []
+          end
         end
 
         private
@@ -137,7 +141,7 @@ module Pageflow
           if parent.respond_to?(options[:collection_method])
             if Pageflow.config.invitation_workflows &&
                options[:collection_method] == :users &&
-               parent.class.to_s == 'Pageflow::Entry'
+               (parent.is_a?(Entry) || parent.is_a?(Account))
               parent.send(:users_and_invited_users)
             else
               parent.send(options[:collection_method])
