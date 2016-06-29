@@ -26,6 +26,32 @@ describe Admin::InvitationsController do
                                                     role: :manager}
         end.to change { user.invited_accounts.count }
       end
+
+      it 'does not allow to invite user to account with invitation workflows turned off' do
+        Pageflow.config.invitation_workflows = false
+        user = create(:user)
+        account = create(:account)
+
+        sign_in(create(:user, :admin))
+
+        expect do
+          post :create, account_id: account, invitation: {user_id: user, role: :manager}
+        end.not_to change { account.invited_users.count }
+      end
+
+      it 'does not allow to add invited account to user with invitation workflows turned off' do
+        Pageflow.config.invitation_workflows = false
+        user = create(:user)
+        account = create(:account)
+
+        sign_in(create(:user, :admin))
+
+        expect do
+          post :create, user_id: user, invitation: {entity_id: account.id,
+                                                    entity_type: 'Pageflow::Account',
+                                                    role: :manager}
+        end.not_to change { user.invited_accounts.count }
+      end
     end
 
     describe 'as account admin' do

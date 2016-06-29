@@ -15,6 +15,20 @@ feature 'as account manager, managing user roles' do
       expect(Dom::Admin::UserPage.first).to have_role_flag_in_invitations('publisher')
     end
 
+    scenario 'giving a user account permissions with invitations switched off' do
+      Pageflow.config.invitation_workflows = false
+      account = create(:account)
+      user = create(:user)
+      account_manager = Dom::Admin::Page.sign_in_as(:manager, on: account)
+      create(:account, with_member: user, with_manager: account_manager)
+
+      visit(admin_user_path(user))
+
+      Dom::Admin::UserPage.first.add_account_membership_link.click
+      Dom::Admin::MembershipForm.first.submit_with(role: 'publisher', entity: account)
+      expect(Dom::Admin::UserPage.first).to have_role_flag_in_memberships('publisher')
+    end
+
     scenario 'editing permissions of a user on an account' do
       user = create(:user)
       account = create(:account, with_member: user)
@@ -90,6 +104,20 @@ feature 'as account manager, managing user roles' do
       Dom::Admin::AccountPage.first.add_account_invitation_link.click
       Dom::Admin::InvitationForm.first.submit_with(role: 'publisher', entity: account)
       expect(Dom::Admin::AccountPage.first).to have_role_flag_in_invitations('publisher')
+    end
+
+    scenario 'giving a user account permissions with invitations switched off' do
+      Pageflow.config.invitation_workflows = false
+      account = create(:account)
+      user = create(:user)
+      account_manager = Dom::Admin::Page.sign_in_as(:manager, on: account)
+      create(:account, with_member: user, with_manager: account_manager)
+
+      visit(admin_account_path(account))
+
+      Dom::Admin::AccountPage.first.add_account_membership_link.click
+      Dom::Admin::MembershipForm.first.submit_with(role: 'publisher', entity: account)
+      expect(Dom::Admin::AccountPage.first).to have_role_flag_in_memberships('publisher')
     end
 
     scenario 'editing permissions of a user on an account' do

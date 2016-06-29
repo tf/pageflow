@@ -139,6 +139,36 @@ describe Admin::MembershipsController do
                membership: {user_id: user, role: :manager}
         end.to change { entry.invited_users.count }
       end
+
+      it 'does not allow to add user to entry in correct invited account with invitations '\
+         'switched off' do
+        Pageflow.config.invitation_workflows = false
+        account = create(:account)
+        user = create(:user, :invited_member, on: account)
+        entry = create(:entry, account: account)
+
+        sign_in(create(:user, :admin))
+
+        expect do
+          post :create, entry_id: entry, membership: {user_id: user, role: :previewer}
+        end.not_to change { entry.invited_users.count }
+      end
+
+      it 'does not allow to add entry to user in correct invited account with invitations '\
+         'switched off' do
+        Pageflow.config.invitation_workflows = false
+        account = create(:account)
+        user = create(:user, :invited_member, on: account)
+        entry = create(:entry, account: account)
+
+        sign_in(create(:user, :admin))
+
+        expect do
+          post :create, user_id: user, membership: {entity_id: entry.id,
+                                                    entity_type: 'Pageflow::Entry',
+                                                    role: :previewer}
+        end.not_to change { user.invited_entries.count }
+      end
     end
 
     describe 'as account admin' do

@@ -31,6 +31,21 @@ module Pageflow
             expect(pairs).to eq([['Doe, Rupert', user.id]])
           end
 
+          it 'does not display users from account invitations for new membership if invitation '\
+             'workflows are switched off' do
+            Pageflow.config.invitation_workflows = false
+            user = create(:user, first_name: 'Rupert', last_name: 'Doe')
+            account = create(:account)
+            create(:invitation, entity: account, role: :member, user: user)
+            new_membership = Membership.new
+            entry = create(:entry, account: account)
+            expect(helper).to receive(:current_user).and_return(user)
+
+            pairs = helper.membership_users_collection(entry, new_membership)
+
+            expect(pairs).to eq([])
+          end
+
           it 'returns only membership user if membership not new' do
             user = create(:user, first_name: 'Rudolf', last_name: 'Doe')
             account = create(:account)
@@ -82,19 +97,6 @@ module Pageflow
             pairs = helper.membership_users_collection(user, new_membership)
 
             expect(pairs).to eq([['Doe, Randolph', user.id]])
-          end
-
-          it 'also displays users from account invitations for new membership' do
-            user = create(:user, first_name: 'Reince', last_name: 'Doe')
-            account = create(:account)
-            create(:invitation, entity: account, role: :member, user: user)
-            new_membership = Membership.new
-            create(:entry, account: account)
-            expect(helper).to receive(:current_user).and_return(user)
-
-            pairs = helper.membership_users_collection(user, new_membership)
-
-            expect(pairs).to eq([['Doe, Reince', user.id]])
           end
 
           it 'returns membership user if membership not new' do

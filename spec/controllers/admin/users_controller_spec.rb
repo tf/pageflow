@@ -154,6 +154,24 @@ module Pageflow
         end.to change { account.invited_users.count }
       end
 
+      it 'creates account membership if e-mail unknown but quota allows it, and invitations '\
+         'workflows are switched off' do
+        Pageflow.config.invitation_workflows = false
+        account = create(:account)
+
+        sign_in(create(:user, :manager, on: account))
+
+        expect do
+          request.env['HTTP_REFERER'] = admin_users_path
+          post :create,
+               user: {email: 'new_user@example.com',
+                      first_name: 'Adelheid',
+                      last_name: 'Doe',
+                      initial_role: :member,
+                      initial_account: account}
+        end.to change { account.users.count }
+      end
+
       it 'creates invited user if e-mail unknown but quota allows it' do
         account = create(:account)
 
