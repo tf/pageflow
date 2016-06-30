@@ -6,6 +6,31 @@ module Pageflow
 
     form partial: 'form'
 
+    breadcrumb do
+      if params[:account_id].present?
+        [
+          link_to('admin', admin_root_path),
+          link_to(I18n.t('pageflow.admin.accounts.other'), admin_accounts_path),
+          link_to(Account.find(params[:account_id]).name, admin_account_path(params[:account_id])),
+          link_to(I18n.t('pageflow.admin.memberships.other'), admin_memberships_path)
+        ]
+      elsif params[:user_id].present?
+        [
+          link_to('admin', admin_root_path),
+          link_to(I18n.t('pageflow.admin.users.other'), admin_users_path),
+          link_to(User.find(params[:user_id]).full_name, admin_user_path(params[:user_id])),
+          link_to(I18n.t('pageflow.admin.memberships.other'), admin_memberships_path)
+        ]
+      else
+        [
+          link_to('admin', admin_root_path),
+          link_to(I18n.t('pageflow.admin.entries.other'), admin_entries_path),
+          link_to(Entry.find(params[:entry_id]).title, admin_entry_path(params[:entry_id])),
+          link_to(I18n.t('pageflow.admin.memberships.other'), admin_memberships_path)
+        ]
+      end
+    end
+
     controller do
       belongs_to :entry, parent_class: Pageflow::Entry, polymorphic: true
       belongs_to :account, parent_class: Pageflow::Account, polymorphic: true

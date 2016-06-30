@@ -1,0 +1,18 @@
+en:
+  pageflow:
+    admin:
+      accounts:
+        one: Account
+        other: Accounts
+      entries:
+        one: Story
+        other: Stories
+      invitations:
+        one: Invitation
+        other: Invitations
+      memberships:
+        one: Membership
+        other: Memberships
+      users:
+        one: User
+        other: Users

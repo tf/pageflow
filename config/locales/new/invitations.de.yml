@@ -1,0 +1,18 @@
+de:
+  pageflow:
+    admin:
+      accounts:
+        one: Konto
+        other: Konten
+      entries:
+        one: Beitrag
+        other: Beiträge
+      invitations:
+        one: Einladung
+        other: Einladungen
+      memberships:
+        one: Mitgliedschaft
+        other: Mitgliedschaften
+      users:
+        one: Nutzer
+        other: Nutzer
