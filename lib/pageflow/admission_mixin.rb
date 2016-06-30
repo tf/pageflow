@@ -8,10 +8,12 @@ module Pageflow
       validates :user, :entity, :role, presence: true
       validates :user_id, uniqueness: {scope: [:entity_type, :entity_id]}
       validates :role,
-                inclusion: {in: %w(previewer editor publisher manager).map(&:to_sym)},
+                inclusion: {in: %w(previewer editor publisher manager)
+                  .map { |role| [role, role.to_sym] }.flatten},
                 if: :on_entry?
       validates :role,
-                inclusion: {in: %w(member previewer editor publisher manager).map(&:to_sym)},
+                inclusion: {in: %w(member previewer editor publisher manager)
+                  .map { |role| [role, role.to_sym] }.flatten},
                 if: :on_account?
 
       scope :on_entries, -> { where(entity_type: 'Pageflow::Entry') }

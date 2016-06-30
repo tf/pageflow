@@ -58,16 +58,8 @@ module Pageflow
       end
 
       def permitted_params
-        result = params.permit(invitation: [:user_id, :entity_id, :entity_type, :role,
-                                            :first_name, :last_name])
-        restrict_attributes(result[:invitation]) if result[:invitation]
-        result
-      end
-
-      private
-
-      def restrict_attributes(attributes)
-        attributes[:role] = attributes[:role].to_sym if !attributes[:role].nil?
+        params.permit(invitation:
+                        [:user_id, :entity_id, :entity_type, :role, :first_name, :last_name])
       end
     end
   end
