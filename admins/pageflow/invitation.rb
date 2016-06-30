@@ -62,20 +62,77 @@ module Pageflow
         end
       end
 
+      def create
+        if params[:invitation][:entity_type] == 'Pageflow::Account'
+          params.merge!(entity_type: :accounts)
+        else
+          params.merge!(entity_type: :entries)
+        end
+
+        create! do
+          if params[:user_id].present? &&
+             authorized?(:redirect_to_user, User.find(params[:user_id]))
+            admin_user_url(params[:user_id], tab: "#{params[:entity_type]}")
+          elsif params[:user_id].present? && authorized?(:index, User.find(params[:user_id]))
+            admin_users_url
+          elsif params[:account_id].present? &&
+                authorized?(:read, Account.find(params[:account_id]))
+            admin_account_url(params[:account_id], tab: :users)
+          elsif params[:account_id].present? && authorized?(:index, :accounts)
+            admin_accounts_url
+          elsif params[:entry_id].present?
+            admin_entry_url(resource.entity)
+          else
+            admin_entries_url
+          end
+        end
+      end
+
+      def update
+        if resource.entity_type == 'Pageflow::Account'
+          params.merge!(entity_type: :accounts)
+        else
+          params.merge!(entity_type: :entries)
+        end
+
+        update! do
+          if params[:user_id].present? && authorized?(:redirect_to_user, resource.user)
+            admin_user_url(params[:user_id], tab: "#{params[:entity_type]}")
+          elsif params[:user_id].present? && authorized?(:index, resource.user)
+            admin_users_url
+          elsif params[:account_id].present? &&
+                authorized?(:read, Account.find(params[:account_id]))
+            admin_account_url(params[:account_id], tab: :users)
+          elsif params[:account_id].present? && authorized?(:index, :accounts)
+            admin_accounts_url
+          elsif params[:entry_id].present?
+            admin_entry_url(resource.entity)
+          else
+            admin_entries_url
+          end
+        end
+      end
+
       def destroy
         if resource.entity_type == 'Pageflow::Account'
           resource.entity.entry_invitations.where(user: resource.user).destroy_all
+          params.merge!(entity_type: :accounts)
+        else
+          params.merge!(entity_type: :entries)
         end
 
         destroy! do
-          if authorized?(:redirect_to_user, resource.user) && params[:user_id]
-            admin_user_url(resource.user)
-          elsif authorized?(:redirect_to_user, resource.user) && params[:entry_id]
-            admin_entry_url(resource.entity)
-          elsif params[:user_id] && authorized?(:index, resource.user)
+          if params[:user_id].present? && authorized?(:redirect_to_user, resource.user)
+            admin_user_url(params[:user_id], tab: "#{params[:entity_type]}")
+          elsif params[:user_id].present? && authorized?(:index, resource.user)
             admin_users_url
-          elsif params[:account_id]
+          elsif params[:account_id].present? &&
+                authorized?(:read, Account.find(params[:account_id]))
+            admin_account_url(params[:account_id], tab: :users)
+          elsif params[:account_id].present? && authorized?(:index, :accounts)
             admin_accounts_url
+          elsif params[:entry_id].present?
+            admin_entry_url(resource.entity)
           else
             admin_entries_url
           end
