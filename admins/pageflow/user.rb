@@ -45,9 +45,9 @@ module Pageflow
         end
 
         para do
-          link_to I18n.t('pageflow.admin.users.resend_invitation'),
-                  resend_invitation_admin_user_path(user),
-                  method: :post, class: 'button', data: {rel: 'resend_invitation'}
+          link_to I18n.t('pageflow.admin.users.resend_welcome_mail'),
+                  resend_welcome_mail_admin_user_path(user),
+                  method: :post, class: 'button', data: {rel: 'resend_welcome_mail'}
         end
       end
 
@@ -110,9 +110,9 @@ module Pageflow
       end
     end
 
-    member_action :resend_invitation, method: :post do
-      InvitedUser.find(params[:id]).send_invitation!
-      redirect_to :back, notice: I18n.t('pageflow.admin.users.resent_invitation')
+    member_action :resend_welcome_mail, method: :post do
+      InvitedUser.find(params[:id]).send_welcome_mail!
+      redirect_to :back, notice: I18n.t('pageflow.admin.users.resent_welcome_mail')
     end
 
     member_action :suspend, method: :post do

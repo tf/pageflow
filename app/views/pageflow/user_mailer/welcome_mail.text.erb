@@ -2,7 +2,7 @@
 
 <%= t('.instruction') %>
 
-<%= main_app.confirm_admin_invitations_url(account_id: @account_id) %>
+<%= main_app.edit_user_password_url(@user, reset_password_token: @password_token) %>
 
 <%= t('.ending') %>
 

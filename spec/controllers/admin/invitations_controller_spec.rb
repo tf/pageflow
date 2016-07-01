@@ -657,4 +657,65 @@ describe Admin::InvitationsController do
       end
     end
   end
+
+  describe '#confirm' do
+    it 'redirects with warning when there is no invitation for the user/account' do
+      account = create(:account)
+      user = create(:user)
+
+      sign_in(user)
+      request.env['HTTP_REFERER'] = admin_users_path
+
+      get(:confirm, account_id: account.id)
+
+      expect(flash[:alert]).to eq(I18n.t('pageflow.admin.invitations.non_available'))
+    end
+
+    it 'redirects with confirmation message that the invitations were turned into memberships' do
+      account = create(:account)
+      user = create(:user)
+      create(:invitation, entity: account, user: user)
+
+      sign_in(user)
+      request.env['HTTP_REFERER'] = admin_users_path
+
+      get(:confirm, account_id: account.id)
+
+      expect(flash[:notice]).to eq(I18n.t('pageflow.admin.invitations.confirmed'))
+    end
+
+    it 'only confirms invitations of the current user and leaves alone invitations to the same '\
+       'account for other users' do
+      account = create(:account)
+
+      user = create(:user)
+      create(:invitation, entity: account, user: user)
+
+      user2 = create(:user)
+      create(:invitation, entity: account, user: user2)
+
+      sign_in(user)
+
+      get(:confirm, account_id: account.id)
+
+      expect(account.invitations.for_user(user2).size).to eq(1)
+    end
+
+    it 'only confirms invitations to the given account if the user has pending invitations for'\
+       ' other accounts' do
+      user = create(:user)
+
+      account = create(:account)
+      account2 = create(:account)
+
+      create(:invitation, entity: account, user: user)
+      create(:invitation, entity: account2, user: user)
+
+      sign_in(user)
+
+      get(:confirm, account_id: account.id)
+
+      expect(account2.invitations.for_user(user).size).to eq(1)
+    end
+  end
 end

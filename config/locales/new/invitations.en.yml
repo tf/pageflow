@@ -16,3 +16,20 @@ en:
       users:
         one: User
         other: Users
+        resend_invitation: DELETED
+        resent_invitation: DELETED
+        resend_welcome_mail: Resend invitation email
+        resent_welcome_mail: The invitation email has been resent.
+      invitations:
+        confirm: CONFIRM_INVITATIONS
+        confirmed: INVITATIONS_CONFIRMED
+        non_available: NO_INVITATIONS_AVAILABLE
+    user_mailer:
+      invitation:
+        instruction: Welcome to Pageflow. Please use the following link to confirm your membership.
+      welcome_mail:
+        ending: Thank you and have fun,
+        greeting: Your Pageflow Team
+        instruction: Welcome to Pageflow. Please use the following link to set your personal password. You may use your email address to sign-in.
+        salutation: Hello %{first_name}
+        subject: Reset password instructions
