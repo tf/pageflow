@@ -38,10 +38,7 @@ module Pageflow
             link_to(button_label, path, class: 'button', data: {rel: rel})
           end
         else
-          para(content_tag('a',
-                           button_label,
-                           class: 'button disabled',
-                           data: {rel: rel}),
+          para(content_tag('a', button_label, class: 'button disabled', data: {rel: rel}),
                'data-tooltip' => data_tooltip)
         end
       end

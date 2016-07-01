@@ -13,7 +13,7 @@ module Pageflow
             end
 
             def self.name
-              'TabViewComponet'
+              'TabViewComponent'
             end
           end
         end

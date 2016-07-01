@@ -58,7 +58,7 @@ describe Admin::EntriesController do
           end
 
           def self.name
-            'TabViewComponet'
+            'TabViewComponent'
           end
         end
       end

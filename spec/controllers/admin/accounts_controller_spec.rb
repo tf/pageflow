@@ -5,6 +5,16 @@ module Admin
     describe '#show' do
       render_views
 
+      describe 'add entry button' do
+        it 'is present' do
+          account = create(:account)
+          sign_in(create(:user, :manager, on: account))
+          get(:show, id: account.id)
+
+          expect(response.body).to have_selector('.create_entry')
+        end
+      end
+
       describe 'additional admin resource tab' do
         let(:tab_view_component) do
           Class.new(Pageflow::ViewComponent) do
@@ -13,7 +23,7 @@ module Admin
             end
 
             def self.name
-              'TabViewComponet'
+              'TabViewComponent'
             end
           end
         end

@@ -13,6 +13,12 @@ module Pageflow
             column :updated_at
           end
         end
+        para do
+          button_label = I18n.t('pageflow.admin.entries.new')
+          path = new_admin_entry_path(account_id: theming.account.id)
+          rel = 'create_entry'
+          link_to(button_label, path, class: 'button create_entry', data: {rel: rel})
+        end
       end
     end
   end

@@ -27,6 +27,12 @@ module Dom
         end
       end
 
+      def create_entry_link
+        within(node) do
+          find('[data-rel=create_entry]')
+        end
+      end
+
       def add_account_membership_link
         within(node) do
           find('[data-rel=add_member]')
