@@ -58,7 +58,6 @@ module Pageflow
       }
     end
 
-    def mp4_4k_definition
     def mp4_highdef_definitions
       return [] unless video_file.entry.feature_state('highdef_video_encoding')
       [transferable(mp4_4k_definition), transferable(mp4_fullhd_definition)]
@@ -67,34 +66,34 @@ module Pageflow
     def mp4_4k_definition
       {
         label: '4k',
-        format: 'mp4',
+        prepare_for_segmenting: ['hls', 'dash'],
         path: video_file.mp4_4k.path,
-        h264_profile: 'main',
-        size: '3840x2160',
+        video_bitrate: 28540,
+        decoder_bitrate_cap: 31680,
+        decoder_buffer_size: 47520,
+        audio_bitrate: 320,
+        size: '3839x2160',
         skip: {
-          min_size: '1921x1080'
+          min_size: '1920x1080'
         },
         public: 1,
-        forced_keyframe_rate: '0.5',
-        tuning: 'film',
-        sharpen: true
       }
     end
 
     def mp4_fullhd_definition
       {
         label: 'fullhd',
-        format: 'mp4',
+        prepare_for_segmenting: ['hls', 'dash'],
         path: video_file.mp4_fullhd.path,
-        h264_profile: 'main',
-        size: '1920x1080',
+        video_bitrate: 7552,
+        decoder_bitrate_cap: 8383,
+        decoder_buffer_size: 12574,
+        audio_bitrate: 192,
+        size: '1919x1080',
         skip: {
           min_size: '1281x720'
         },
         public: 1,
-        forced_keyframe_rate: '0.5',
-        tuning: 'film',
-        sharpen: true
       }
     end
 
@@ -247,7 +246,7 @@ module Pageflow
         {
           path: video_file.mp4_high.url(host: :hls_origin, default_protocol: 'http'),
           bandwidth: 3750
-      )
+        }
       ]
     end
 
