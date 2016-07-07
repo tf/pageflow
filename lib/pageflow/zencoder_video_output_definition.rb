@@ -58,7 +58,6 @@ module Pageflow
       }
     end
 
-    def mp4_4k_definition
     def mp4_highdef_definitions
       return [] unless video_file.entry.feature_state('highdef_video_encoding')
       [transferable(mp4_4k_definition), transferable(mp4_fullhd_definition)]
@@ -247,7 +246,7 @@ module Pageflow
         {
           path: video_file.mp4_high.url(host: :hls_origin, default_protocol: 'http'),
           bandwidth: 3750
-      )
+        }
       ]
     end
 
