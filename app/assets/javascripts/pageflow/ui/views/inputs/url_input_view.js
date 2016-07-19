@@ -1,7 +1,7 @@
 /**
  * Input view for URLs.
  *
- * @see pageflow.ui.inputView
+ * @see {@link pageflow.ui.inputView} for common options
  * @class
  * @alias pageflow.ui.inputs.UrlInputView
  */
