@@ -35,13 +35,13 @@ pageflow.EditorApi = pageflow.Object.extend(
     /**
      * Setup editor integration for page types.
      * @alias pageTypes
-     * @memberof pageflow.EditorApi#
+     * @memberof module:pageflow/editor.pageflow.EditorApi#
      */
     this.pageTypes = new pageflow.PageTypes();
 
     /**
      * @alias fileTypes
-     * @memberof pageflow.EditorApi#
+     * @memberof module:pageflow/editor.pageflow.EditorApi#
      */
     this.fileTypes = new pageflow.FileTypes();
   },
