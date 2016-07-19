@@ -1,9 +1,10 @@
+/** @module pageflow/ui */
+
 /**
  * Input view for boolean values.
  *
- * @see pageflow.ui.inputView
+ * @see pageflow.inputView
  * @class
- * @alias pageflow.ui.inputs.CheckBoxInputView
  */
 pageflow.CheckBoxInputView = Backbone.Marionette.ItemView.extend({
   mixins: [pageflow.inputView],
