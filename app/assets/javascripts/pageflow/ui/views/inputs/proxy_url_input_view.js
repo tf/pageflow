@@ -4,11 +4,13 @@
  * Input view that verifies that a certain URL is reachable via a
  * proxy.
  *
- * @see pageflow.ui.inputView
+ * @see {@link module:pageflow/ui.pageflow.inputView pageflow.inputView}
  * @class
- * @alias pageflow.ui.inputs.ProxyUrlInputView
+ * @memberof module:pageflow/ui
  */
-pageflow.ProxyUrlInputView = pageflow.UrlInputView.extend({
+pageflow.ProxyUrlInputView = pageflow.UrlInputView.extend(
+  /** @lends module:pageflow/ui.pageflow.ProxyUrlInputView */{
+
   /** @override */
   validateUrl: function(url) {
     var view = this;
