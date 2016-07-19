@@ -7,7 +7,7 @@
  * @memberof module:pageflow/editor
  */
 pageflow.EditorApi = pageflow.Object.extend(
-/** @lends pageflow.EditorApi# */{
+/** @lends module:pageflow/editor.pageflow.EditorApi# */{
 
   initialize: function() {
     this.sideBarRoutings = [];
