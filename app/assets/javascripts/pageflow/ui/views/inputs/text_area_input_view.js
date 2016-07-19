@@ -3,9 +3,9 @@
 /**
  * Input view for multi line text with simple formatting options.
  *
- * @see pageflow.ui.inputView
+ * @see {@link module:pageflow/ui.pageflow.inputView pageflow.inputView}
  * @class
- * @alias pageflow.ui.inputs.TextAreaInputView
+ * @memberof module:pageflow/ui
  */
 pageflow.TextAreaInputView = Backbone.Marionette.ItemView.extend({
   mixins: [pageflow.inputView],

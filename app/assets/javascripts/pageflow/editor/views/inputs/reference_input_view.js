@@ -51,9 +51,6 @@ pageflow.ReferenceInputView = Backbone.Marionette.ItemView.extend(
     throw 'Not implemented: Override ReferenceInputView#getTarget';
   },
 
-  /**
-   * Overr
-   */
   createThumbnailView: function(target) {
     return new pageflow.ModelThumbnailView({
       model: target
