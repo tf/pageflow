@@ -4,6 +4,7 @@
    * Wrapper widget around iScroll adding special bump events which
    * are triggered when scrolling to the very top or very bottom
    * (called boundary posititon below).
+   * @private
    */
   $.widget('pageflow.scroller', {
     dragThreshold: 50,
