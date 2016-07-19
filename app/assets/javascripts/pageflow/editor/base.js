@@ -58,11 +58,16 @@
 //= require ./initializers/additional_initializers
 //= require ./initializers/boot
 
+/**
+ * The Pageflow editor.
+ * @module pageflow/editor
+ */
+
 pageflow.app = new Backbone.Marionette.Application();
 
 /**
  * Interface for engines providing editor extensions.
- * @see pageflow.editor.EditorApi
+ * @see {@link module:pageflow/editor.pageflow.EditorApi pageflow.EditorApi}
  */
 pageflow.editor = new pageflow.EditorApi();
 

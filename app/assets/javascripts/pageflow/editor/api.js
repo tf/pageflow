@@ -4,7 +4,7 @@
 /**
  * Interface for engines providing editor extensions.
  * @class
- * @alias pageflow.EditorApi
+ * @memberof module:pageflow/editor
  */
 pageflow.EditorApi = pageflow.Object.extend(
 /** @lends pageflow.EditorApi# */{
