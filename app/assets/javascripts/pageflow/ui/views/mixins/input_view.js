@@ -64,7 +64,9 @@
  *     pageflow.ui.inline_help.post.title
  *     pageflow.ui.inline_help.post.title_disabled
  *
- * @option propertyName [String]
+ * ### Common Options
+ *
+ * - `propertyName` {String}
  *   Name of the attribute on the model to display and edit.
  *
  * @option label [String]
@@ -89,6 +91,9 @@
  * @option visibleBindingValue [Any]
  *   Input will be visible whenever the value of the `visibleBinding`
  *   attribute equals the value of this option.
+ *
+ * @mixin
+ * @alias pageflow.ui.inputView
  */
 pageflow.inputView = {
   ui: {
