@@ -4,7 +4,7 @@
 /**
  * Interface for engines providing editor extensions.
  * @class
- * @alias pageflow.editor.EditorApi
+ * @alias pageflow.EditorApi
  */
 pageflow.EditorApi = pageflow.Object.extend({
   initialize: function() {
@@ -16,6 +16,8 @@ pageflow.EditorApi = pageflow.Object.extend({
     /**
      *  Display Backbone/Marionette View inside the main panel
      *  of the editor.
+     * @alias showViewInMainPanel
+     * @memberof pageflow.EditorApi#
      */
     this.showViewInMainPanel = function(view) {
       pageflow.app.mainRegion.show(view);
@@ -23,6 +25,8 @@ pageflow.EditorApi = pageflow.Object.extend({
 
     /**
      *  Display the Pageflow-Preview inside the main panel.
+     * @alias showPreview
+     * @memberof pageflow.EditorApi#
      */
     this.showPreview = function() {
       pageflow.app.mainRegion.$el.empty();
@@ -34,6 +38,9 @@ pageflow.EditorApi = pageflow.Object.extend({
      * Supported options:
      * - router: constructor function of Backbone Marionette app router
      * - controller: constructor function of Backbone Marionette controller
+     *
+     * @alias registerSideBarRouting
+     * @memberof pageflow.EditorApi#
      */
     this.registerSideBarRouting = function(options) {
       this.sideBarRoutings.push(options);
@@ -43,6 +50,9 @@ pageflow.EditorApi = pageflow.Object.extend({
      * Set the name of the help entry that shall be selected by
      * default when the help view is opened. This value is
      * automatically reset when navigation occurs.
+     *
+     * @alias setDefaultHelpEntry
+     * @memberof pageflow.EditorApi#
      */
     this.setDefaultHelpEntry = function(name) {
       this.nextDefaultHelpEntry = name;
