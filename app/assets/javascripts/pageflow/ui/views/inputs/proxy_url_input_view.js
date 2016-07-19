@@ -1,7 +1,17 @@
 //= require ./url_input_view
 
-pageflow.ProxyUrlInputView = pageflow.UrlInputView.extend({
-  /** @override */
+/**
+ * Input view that verifies that a certain URL is reachable via a
+ * proxy.
+ *
+ * @see {@link module:pageflow/ui.pageflow.inputView pageflow.inputView}
+ * @class
+ * @memberof module:pageflow/ui
+ */
+pageflow.ProxyUrlInputView = pageflow.UrlInputView.extend(
+  /** @lends module:pageflow/ui.pageflow.ProxyUrlInputView# */{
+
+  // @override
   validateUrl: function(url) {
     var view = this;
 
@@ -19,12 +29,12 @@ pageflow.ProxyUrlInputView = pageflow.UrlInputView.extend({
     }).promise();
   },
 
-  /** @override */
+  // @override
   transformPropertyValue: function(url) {
     return this.rewriteUrl(url);
   },
 
-  /** @override */
+  // @override
   supportedHosts: function() {
     return _.pluck(this.options.proxies, 'url');
   },

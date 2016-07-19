@@ -64,7 +64,9 @@
  *     pageflow.ui.inline_help.post.title
  *     pageflow.ui.inline_help.post.title_disabled
  *
- * @option propertyName [String]
+ * ### Common Options
+ *
+ * - `propertyName` {String}
  *   Name of the attribute on the model to display and edit.
  *
  * @option label [String]
@@ -89,6 +91,9 @@
  * @option visibleBindingValue [Any]
  *   Input will be visible whenever the value of the `visibleBinding`
  *   attribute equals the value of this option.
+ *
+ * @mixin
+ * @memberof module:pageflow/ui
  */
 pageflow.inputView = {
   ui: {
@@ -100,18 +105,19 @@ pageflow.inputView = {
    * Returns an array of translation keys based on the propertyName
    * options and the given prefixes.
    *
-   * @param keyName [String]
+   * @param {String} keyName
    *   Suffix to append to prefixes.
    *
-   * @option attributeTranslationKeyPrefixes [Array<String>]
+   * @param {String[]} options.attributeTranslationKeyPrefixes
    *   An array of strings to use as prefixes to constructs
    *   translation keys.
    *
-   * @option fallbackPrefix [String]
+   * @param {String} options.fallbackPrefix
    *   Optional additional prefix to form a model based translation
    *   key of the form `prefix.modelI18nKey.propertyName.keyName
    *
-   * @api edge
+   * @since 0.9
+   * @member
    */
   attributeTranslationKeys: function(keyName, options) {
     var result = [];

@@ -1,3 +1,10 @@
+/**
+ * A drop down with support for grouped items.
+ *
+ * @see {@link module:pageflow/ui.pageflow.inputView pageflow.inputView}
+ * @class
+ * @memberof module:pageflow/ui
+ */
 pageflow.SelectInputView = Backbone.Marionette.ItemView.extend({
   mixins: [pageflow.inputView],
 

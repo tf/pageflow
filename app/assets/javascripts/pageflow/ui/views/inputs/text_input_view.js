@@ -1,3 +1,10 @@
+/**
+ * Input view for a single line of text.
+ *
+ * @see {@link module:pageflow/ui.pageflow.inputView pageflow.inputView}
+ * @class
+ * @memberof module:pageflow/ui
+ */
 pageflow.TextInputView = Backbone.Marionette.ItemView.extend({
   mixins: [pageflow.inputView],
 
