@@ -3,8 +3,8 @@
 
 /**
  * Interface for engines providing editor extensions.
- * @alias pageflow.editor.EditorApi
  * @class
+ * @alias pageflow.editor.EditorApi
  */
 pageflow.EditorApi = pageflow.Object.extend({
   initialize: function() {
