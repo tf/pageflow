@@ -105,18 +105,18 @@ pageflow.inputView = {
    * Returns an array of translation keys based on the propertyName
    * options and the given prefixes.
    *
-   * @param keyName [String]
+   * @param {String} keyName
    *   Suffix to append to prefixes.
    *
-   * @option attributeTranslationKeyPrefixes [Array<String>]
+   * @param {String[]} options.attributeTranslationKeyPrefixes
    *   An array of strings to use as prefixes to constructs
    *   translation keys.
    *
-   * @option fallbackPrefix [String]
+   * @param {String} options.fallbackPrefix
    *   Optional additional prefix to form a model based translation
    *   key of the form `prefix.modelI18nKey.propertyName.keyName
    *
-   * @api edge
+   * @since 0.9
    * @member
    */
   attributeTranslationKeys: function(keyName, options) {
