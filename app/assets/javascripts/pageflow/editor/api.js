@@ -6,7 +6,7 @@
  * @module pageflow.editor
  * @class
  */
-pageflow.EditorApi = pageflow.Object.extend(/** @lends pageflow.editor.EditorApi */{
+pageflow.EditorApi = pageflow.Object.extend({
   initialize: function() {
     this.sideBarRoutings = [];
     this.mainMenuItems = [];
@@ -16,6 +16,7 @@ pageflow.EditorApi = pageflow.Object.extend(/** @lends pageflow.editor.EditorApi
     /**
      *  Display Backbone/Marionette View inside the main panel
      *  of the editor.
+     * @memberof Observable#
      */
     this.showViewInMainPanel = function(view) {
       pageflow.app.mainRegion.show(view);
@@ -23,6 +24,7 @@ pageflow.EditorApi = pageflow.Object.extend(/** @lends pageflow.editor.EditorApi
 
     /**
      *  Display the Pageflow-Preview inside the main panel.
+     * @memberof Observable
      */
     this.showPreview = function() {
       pageflow.app.mainRegion.$el.empty();
@@ -34,6 +36,8 @@ pageflow.EditorApi = pageflow.Object.extend(/** @lends pageflow.editor.EditorApi
      * Supported options:
      * - router: constructor function of Backbone Marionette app router
      * - controller: constructor function of Backbone Marionette controller
+     *
+     * @memberof Observable.prototype
      */
     this.registerSideBarRouting = function(options) {
       this.sideBarRoutings.push(options);
