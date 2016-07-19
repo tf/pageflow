@@ -3,7 +3,7 @@
  *
  * @see pageflow.ui.inputView
  * @class
- * @alias pageflow.ui.inputs.CheckBoxInputView
+ * @alias pageflow.ui.inputs.UrlInputView
  */
 pageflow.UrlInputView = Backbone.Marionette.Layout.extend({
   mixins: [pageflow.inputView],

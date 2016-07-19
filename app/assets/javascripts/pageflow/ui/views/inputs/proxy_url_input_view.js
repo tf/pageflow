@@ -6,7 +6,7 @@
  *
  * @see pageflow.ui.inputView
  * @class
- * @alias pageflow.ui.inputs.SelectInputView
+ * @alias pageflow.ui.inputs.ProxyUrlInputView
  */
 pageflow.ProxyUrlInputView = pageflow.UrlInputView.extend({
   /** @override */
