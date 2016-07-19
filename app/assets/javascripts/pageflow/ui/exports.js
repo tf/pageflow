@@ -1,11 +1,11 @@
 /**
  * Reusable Backbone views for the editor and admin interface.
- * @module
+ * @module pageflow.ui
  */
 pageflow.ui = {
   /**
    * Basic input views for forms.
-   * @module
+   * @module pageflow.ui.inputs
    */
   inputs: {
     CheckBoxInputView: pageflow.CheckBoxInputView,
