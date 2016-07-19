@@ -1,5 +1,6 @@
 /**
  * Reusable Backbone views for the editor and admin interface.
+ * @module pageflow/ui
  */
 pageflow.ui = {
   /**

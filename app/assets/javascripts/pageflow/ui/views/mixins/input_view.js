@@ -1,5 +1,3 @@
-/** @module pageflow/ui */
-
 /**
  * Mixin for input views handling common concerns like labels,
  * inline help, visiblity and disabling.
@@ -95,6 +93,7 @@
  *   attribute equals the value of this option.
  *
  * @mixin
+ * @memberof module:pageflow/ui
  */
 pageflow.inputView = {
   ui: {
