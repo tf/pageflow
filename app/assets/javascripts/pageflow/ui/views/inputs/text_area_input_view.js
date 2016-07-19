@@ -1,5 +1,12 @@
-/*global wysihtml5, wysihtml5ParserRules*/
+/*global wysihtml5*/
 
+/**
+ * Input view for multi line text with simple formatting options.
+ *
+ * @see pageflow.ui.inputView
+ * @class
+ * @alias pageflow.ui.inputs.TextAreaInputView
+ */
 pageflow.TextAreaInputView = Backbone.Marionette.ItemView.extend({
   mixins: [pageflow.inputView],
 

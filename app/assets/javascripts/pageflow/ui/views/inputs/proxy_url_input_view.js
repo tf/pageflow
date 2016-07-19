@@ -1,5 +1,13 @@
 //= require ./url_input_view
 
+/**
+ * Input view that verifies that a certain URL is reachable via a
+ * proxy.
+ *
+ * @see pageflow.ui.inputView
+ * @class
+ * @alias pageflow.ui.inputs.SelectInputView
+ */
 pageflow.ProxyUrlInputView = pageflow.UrlInputView.extend({
   /** @override */
   validateUrl: function(url) {
