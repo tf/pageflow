@@ -28,7 +28,7 @@ pageflow.EditorApi = pageflow.Object.extend(
      *     pageflow.editor.failures.add(new pageflow.OrderingFailure(model, collection));
      *
      * @alias failures
-     * @memberof pageflow.EditorApi#
+     * @memberof module:pageflow/editor.pageflow.EditorApi#
      */
     this.failures = new pageflow.FailuresAPI();
 
