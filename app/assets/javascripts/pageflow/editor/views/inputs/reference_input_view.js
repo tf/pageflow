@@ -1,6 +1,6 @@
 /**
  * Foo foo
- * @module pageflow.editor
+ * @alias pageflow.editor.ReferenceInputView
  */
 pageflow.ReferenceInputView = Backbone.Marionette.ItemView.extend({
   mixins: [pageflow.inputView],
