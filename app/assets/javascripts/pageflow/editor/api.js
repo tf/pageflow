@@ -17,7 +17,6 @@ pageflow.EditorApi = pageflow.Object.extend({
      *  Display Backbone/Marionette View inside the main panel
      *  of the editor.
      * @alias showViewInMainPanel
-     * @memberof pageflow.editor.EditorApi#
      */
     this.showViewInMainPanel = function(view) {
       pageflow.app.mainRegion.show(view);
@@ -26,7 +25,6 @@ pageflow.EditorApi = pageflow.Object.extend({
     /**
      *  Display the Pageflow-Preview inside the main panel.
      * @alias showPreview
-     * @memberof pageflow.editor.EditorApi
      */
     this.showPreview = function() {
       pageflow.app.mainRegion.$el.empty();
@@ -40,7 +38,6 @@ pageflow.EditorApi = pageflow.Object.extend({
      * - controller: constructor function of Backbone Marionette controller
      *
      * @alias registerSideBarRouting
-     * @memberof pageflow.editor.EditorApi.prototype
      */
     this.registerSideBarRouting = function(options) {
       this.sideBarRoutings.push(options);
@@ -52,7 +49,6 @@ pageflow.EditorApi = pageflow.Object.extend({
      * automatically reset when navigation occurs.
      *
      * @alias setDefaultHelpEntry
-     * @memberof pageflow.editor.EditorApi.prototype
      */
     this.setDefaultHelpEntry = function(name) {
       this.nextDefaultHelpEntry = name;
