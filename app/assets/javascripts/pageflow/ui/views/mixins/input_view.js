@@ -117,6 +117,7 @@ pageflow.inputView = {
    *   key of the form `prefix.modelI18nKey.propertyName.keyName
    *
    * @api edge
+   * @member
    */
   attributeTranslationKeys: function(keyName, options) {
     var result = [];
