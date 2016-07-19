@@ -1,7 +1,7 @@
 /**
  * Input view for boolean values.
  *
- * @see pageflow.inputView
+ * @see module:pageflow/ui.pageflow.inputView
  * @class
  * @memberof module:pageflow/ui
  */
