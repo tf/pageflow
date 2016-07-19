@@ -1,5 +1,6 @@
 /**
  * Foo foo
+ * @class
  * @alias pageflow.editor.ReferenceInputView
  */
 pageflow.ReferenceInputView = Backbone.Marionette.ItemView.extend({
