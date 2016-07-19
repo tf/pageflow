@@ -3,8 +3,9 @@
 
 /**
  * Interface for engines providing editor extensions.
+ * @module pageflow.editor
  */
-pageflow.EditorApi = pageflow.Object.extend({
+pageflow.EditorApi = pageflow.Object.extend(/** @lends pageflow.editor.EditorApi */{
   initialize: function() {
     this.sideBarRoutings = [];
     this.mainMenuItems = [];
