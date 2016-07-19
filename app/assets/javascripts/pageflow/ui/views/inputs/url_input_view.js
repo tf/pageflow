@@ -6,7 +6,7 @@
  * @memberof module:pageflow/ui
  */
 pageflow.UrlInputView = Backbone.Marionette.Layout.extend(
-  /** @lends module:pageflow/ui.pageflow.UrlInputView */{
+  /** @lends module:pageflow/ui.pageflow.UrlInputView# */{
 
   mixins: [pageflow.inputView],
 

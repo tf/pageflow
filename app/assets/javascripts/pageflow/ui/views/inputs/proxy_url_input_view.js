@@ -9,9 +9,9 @@
  * @memberof module:pageflow/ui
  */
 pageflow.ProxyUrlInputView = pageflow.UrlInputView.extend(
-  /** @lends module:pageflow/ui.pageflow.ProxyUrlInputView */{
+  /** @lends module:pageflow/ui.pageflow.ProxyUrlInputView# */{
 
-  /** @override */
+  // @override
   validateUrl: function(url) {
     var view = this;
 
@@ -29,12 +29,12 @@ pageflow.ProxyUrlInputView = pageflow.UrlInputView.extend(
     }).promise();
   },
 
-  /** @override */
+  // @override
   transformPropertyValue: function(url) {
     return this.rewriteUrl(url);
   },
 
-  /** @override */
+  // @override
   supportedHosts: function() {
     return _.pluck(this.options.proxies, 'url');
   },
