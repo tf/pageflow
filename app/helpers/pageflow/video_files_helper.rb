@@ -75,6 +75,8 @@ module Pageflow
         options[:data][:height] = video_file.height
       end
 
+      options[:crossorigin] = 'anonymous'
+
       render('pageflow/video_files/video_tag',
              video_file: video_file,
              options: options,

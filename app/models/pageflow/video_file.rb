@@ -69,23 +69,23 @@ module Pageflow
     end
 
     def dash_4k
-      ZencoderAttachment.new(self, 'dash-4k.mpd')
+      ZencoderAttachment.new(self, 'dash/4k/rendition.mpd')
     end
 
     def dash_fullhd
-      ZencoderAttachment.new(self, 'dash-fullhd.mpd')
+      ZencoderAttachment.new(self, 'dash/fullhd/rendition.mpd')
     end
 
     def dash_high
-      ZencoderAttachment.new(self, 'dash-high.mpd')
+      ZencoderAttachment.new(self, 'dash/high/rendition.mpd')
     end
 
     def dash_medium
-      ZencoderAttachment.new(self, 'dash-medium.mpd')
+      ZencoderAttachment.new(self, 'dash/medium/rendition.mpd')
     end
 
     def dash_low
-      ZencoderAttachment.new(self, 'dash-low.mpd')
+      ZencoderAttachment.new(self, 'dash/low/rendition.mpd')
     end
 
     def hls_low
@@ -100,8 +100,16 @@ module Pageflow
       ZencoderAttachment.new(self, 'hls-high.m3u8')
     end
 
+    def hls_fullhd
+      ZencoderAttachment.new(self, 'hls-fullhd.m3u8')
+    end
+
+    def hls_4k
+      ZencoderAttachment.new(self, 'hls-4k.m3u8')
+    end
+
     def dash_playlist
-      ZencoderAttachment.new(self, 'dash-playlist.mpd')
+      ZencoderAttachment.new(self, 'dash/manifest.mpd')
     end
 
     def hls_playlist
