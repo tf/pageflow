@@ -55,6 +55,17 @@ module Pageflow
           expect(result[:locale]).to eq('fr')
         end
       end
+
+      describe '["file_url_templates"]' do
+        it 'contains video file url templates' do
+          entry = PublishedEntry.new(create(:entry, :published))
+
+          result = common_entry_seed(entry)
+          template = result[:file_url_templates][:video_files][:high]
+
+          expect(template).to include('pageflow/video_files/:id_partition/high.mp4')
+        end
+      end
     end
   end
 end
