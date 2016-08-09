@@ -3,12 +3,14 @@ $player-controls-typography: () !default;
 // Prevent unstyled player controls from being displayed inside editor
 // while widget presence css classes have not yet been set:
 
+.player_controls-menu_bar,
 %player_controls-container {
   display: none;
 }
 
 .widget_slim_player_controls_present,
 .widget_classic_player_controls_present {
+  .player_controls-menu_bar,
   %player_controls-container {
     display: block;
   }
