@@ -9,11 +9,13 @@ $classic-player-controls-icons: "icon-font" !default;
 $classic-player-controls-icon-font-option: () !default;
 
 $classic-player-controls-images: "default" !default;
+$slim-player-controls-color: #fff;
 
 @import "./classic/container";
 @import "./classic/control_bar";
 @import "./classic/info_box";
 @import "./classic/close_button";
+@import "./slim/quality_menu";
 
 @import "./classic/icons/icon_font";
 @import "./classic/icons/sprite";
