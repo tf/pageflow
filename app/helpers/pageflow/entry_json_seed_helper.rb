@@ -16,7 +16,8 @@ module Pageflow
         storyline_configurations: entry_storyline_configurations_seed(entry),
         chapters: entry_chapters_seed(entry),
         pages: entry_pages_seed(entry),
-        file_ids: entry_file_ids_seed(entry)
+        file_ids: entry_file_ids_seed(entry),
+        video_file_variants: entry_video_files_seed(entry)
       )
     end
 
@@ -47,6 +48,12 @@ module Pageflow
     def entry_file_ids_seed(entry)
       Pageflow.config.file_types.with_thumbnail_support.each_with_object({}) do |file_type, result|
         result[file_type.collection_name] = entry.files(file_type.model).map(&:id)
+      end
+    end
+
+    def entry_video_files_seed(entry)
+      entry.video_files.map do |video_file|
+        {id: video_file.id, variants: video_file.outputs_present}
       end
     end
 
