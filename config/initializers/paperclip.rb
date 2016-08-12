@@ -7,7 +7,7 @@ Pageflow.configure do |config|
   if Rails.env.test?
     config.paperclip_s3_default_options.merge!({
       :storage => :filesystem,
-      :path => ':rails_root/tmp/attachments/test/s3/:class/:attachment/:id_partition/:style/:filename'
+      :path => ':rails_root/tmp/attachments/test/s3/:class/:attachment/:id_partition/:style/:normalized_filename'
     })
   else
     config.paperclip_s3_default_options.merge!({
@@ -16,7 +16,7 @@ Pageflow.configure do |config|
       :s3_options => {:max_retries => 10},
 
       :url => ':s3_alias_url',
-      :path => ':host/:class_basename/:attachment/:id_partition/:pageflow_attachments_version:style/:filename',
+      :path => ':host/:class_basename/:attachment/:id_partition/:pageflow_attachments_version:style/:normalized_filename',
 
       # Paperclip deletes and reuploads the original on
       # reprocess. Sometimes S3 seems to change the order of commands
@@ -29,7 +29,7 @@ Pageflow.configure do |config|
 
   config.paperclip_filesystem_default_options.merge!({
     :storage => :filesystem,
-    :path => ':pageflow_filesystem_root/:class/:attachment/:id_partition/:style/:filename',
+    :path => ':pageflow_filesystem_root/:class/:attachment/:id_partition/:style/:normalized_filename',
     :url => 'not_uploaded_yet'
   })
 
@@ -113,6 +113,14 @@ end
 
 Paperclip.interpolates(:pageflow_placeholder) do |attachment, style|
   "pageflow/placeholder_#{style}.jpg"
+end
+
+Paperclip.interpolates(:normalized_filename) do |attachment, style|
+  if style.to_s == 'ultra'
+    'image.JPG'
+  else
+    filename(attachment, style)
+  end
 end
 
 Paperclip.interpolates(:pageflow_attachments_version) do |attachment, style|

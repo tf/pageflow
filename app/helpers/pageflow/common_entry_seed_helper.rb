@@ -25,10 +25,16 @@ module Pageflow
 
       def video_file_url_templates
         {
+          poster: video_file_poster_url_template(:ultra),
+
           high: video_file_url_template(:mp4_high),
           fullhd: video_file_url_template(:mp4_fullhd),
-          :'4k' => video_file_url_template(:mp4_4k)
+          :'4k' => video_file_url_template(:mp4_4k),
         }
+      end
+
+      def video_file_poster_url_template(style)
+        file_url_template(video_file.poster.url(style))
       end
 
       def video_file_url_template(variant)
@@ -40,7 +46,7 @@ module Pageflow
       end
 
       def video_file
-        @video_file ||= VideoFile.new(id: 0)
+        @video_file ||= VideoFile.new(id: 0, poster_file_name: 'image.jpg')
       end
     end
 
