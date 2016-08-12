@@ -13,6 +13,16 @@ $slim-player-controls-quality-menu-annotation-color: #ff0000 !default;
     right: 20px;
     z-index: 10;
     pointer-events: all;
+
+    @include transition(opacity 0.5s, visibility 0.5s);
+  }
+
+  &-menu_bar-hidden_on_phone {
+    @include phone {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
   }
 
   &-menu_bar_button {
