@@ -57,6 +57,15 @@ module Pageflow
       end
 
       describe '["file_url_templates"]' do
+        it 'contains url template for large poster' do
+          entry = PublishedEntry.new(create(:entry, :published))
+
+          result = common_entry_seed(entry)
+          template = result[:file_url_templates][:video_files][:poster]
+
+          expect(template).to include('pageflow/video_files/posters/:id_partition/ultra/image.JPG')
+        end
+
         it 'contains video file url templates' do
           entry = PublishedEntry.new(create(:entry, :published))
 
