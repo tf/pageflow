@@ -17,7 +17,7 @@ module Pageflow
         chapters: entry_chapters_seed(entry),
         pages: entry_pages_seed(entry),
         file_ids: entry_file_ids_seed(entry),
-        video_file_variants: entry_video_files_seed(entry)
+        video_files: entry_video_files_seed(entry)
       )
     end
 
@@ -53,7 +53,10 @@ module Pageflow
 
     def entry_video_files_seed(entry)
       entry.video_files.map do |video_file|
-        {id: video_file.id, variants: video_file.outputs_present}
+        {
+          id: video_file.id,
+          variants: video_file.outputs_present
+        }
       end
     end
 
