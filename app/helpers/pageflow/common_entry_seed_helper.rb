@@ -26,8 +26,12 @@ module Pageflow
       def video_file_url_templates
         {
           high: video_file_url_template(:mp4_high),
+          medium: video_file_url_template(:mp4_medium),
           fullhd: video_file_url_template(:mp4_fullhd),
-          :'4k' => video_file_url_template(:mp4_4k)
+          :'4k' => video_file_url_template(:mp4_4k),
+
+          webm_medium: video_file_url_template(:webm_medium),
+          webm_high: video_file_url_template(:webm_high),
         }
       end
 
