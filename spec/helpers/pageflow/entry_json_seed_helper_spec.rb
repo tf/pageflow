@@ -92,13 +92,13 @@ module Pageflow
         entry = PublishedEntry.new(create(:entry, :published))
         create(:video_file,
                used_in: entry.revision,
-               outputs_definition: {
+               output_presences: {
                  'fullhd' => true,
                  '4k' => true
                })
         create(:video_file,
                used_in: entry.revision,
-               outputs_definition: {
+               output_presences: {
                  'fullhd' => false,
                  '4k' => false
                })
