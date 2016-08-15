@@ -55,7 +55,7 @@ module Pageflow
       entry.video_files.map do |video_file|
         {
           id: video_file.id,
-          variants: video_file.outputs_present
+          variants: video_file.present_outputs
         }
       end
     end
