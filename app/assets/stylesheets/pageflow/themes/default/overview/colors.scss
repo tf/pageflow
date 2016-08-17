@@ -44,7 +44,7 @@ $overview-close-button-text-shadow-color: #2b2b2b !default;
 $overview-active-close-button-text-shadow-color: $overview-close-button-text-shadow-color !default;
 
 /// Pictogram visiblity.
-$overview-pictrogram-visibility: visible !default;
+$overview-pictogram-visibility: $standard-page-pictogram-visibility !default;
 
 &.active:after {
   background-color: $overview-backdrop-color;
@@ -90,7 +90,7 @@ h2 {
   }
 
   .pictogram {
-    visibility: $overview-pictrogram-visibility;
+    visibility: $overview-pictogram-visibility;
   }
 }
 
