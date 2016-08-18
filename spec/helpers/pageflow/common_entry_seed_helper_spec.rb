@@ -57,22 +57,35 @@ module Pageflow
       end
 
       describe '["file_url_templates"]' do
-        it 'contains url template for large poster' do
-          entry = PublishedEntry.new(create(:entry, :published))
+        describe '["video_files"]' do
+          it 'contains url template for large poster' do
+            entry = PublishedEntry.new(create(:entry, :published))
 
-          result = common_entry_seed(entry)
-          template = result[:file_url_templates][:video_files][:poster]
+            result = common_entry_seed(entry)
+            template = result[:file_url_templates][:video_files][:poster]
 
-          expect(template).to include('pageflow/video_files/posters/:id_partition/ultra/image.JPG')
+            expect(template).to include('pageflow/video_files/posters/:id_partition/ultra/image.JPG')
+          end
+
+          it 'contains video file url templates' do
+            entry = PublishedEntry.new(create(:entry, :published))
+
+            result = common_entry_seed(entry)
+            template = result[:file_url_templates][:video_files][:high]
+
+            expect(template).to include('pageflow/video_files/:id_partition/high.mp4')
+          end
         end
 
-        it 'contains video file url templates' do
-          entry = PublishedEntry.new(create(:entry, :published))
+        describe '["image_files"]' do
+          it 'contains url template for ultra style' do
+            entry = PublishedEntry.new(create(:entry, :published))
 
-          result = common_entry_seed(entry)
-          template = result[:file_url_templates][:video_files][:high]
+            result = common_entry_seed(entry)
+            template = result[:file_url_templates][:image_files][:ultra]
 
-          expect(template).to include('pageflow/video_files/:id_partition/high.mp4')
+            expect(template).to include('pageflow/image_files/processed_attachments/:id_partition/ultra/image.JPG')
+          end
         end
       end
     end
