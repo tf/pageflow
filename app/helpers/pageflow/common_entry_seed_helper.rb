@@ -17,7 +17,8 @@ module Pageflow
 
       def as_json
         {
-          video_files: video_file_url_templates
+          video_files: video_file_url_templates,
+          image_files: image_file_url_templates
         }
       end
 
@@ -31,6 +32,16 @@ module Pageflow
           fullhd: video_file_url_template(:mp4_fullhd),
           :'4k' => video_file_url_template(:mp4_4k),
         }
+      end
+
+      def image_file_url_templates
+        {
+          ultra: image_file_poster_url_template(:ultra)
+        }
+      end
+
+      def image_file_poster_url_template(style)
+        file_url_template(image_file.attachment.url(style))
       end
 
       def video_file_poster_url_template(style)
@@ -47,6 +58,10 @@ module Pageflow
 
       def video_file
         @video_file ||= VideoFile.new(id: 0, poster_file_name: 'image.jpg')
+      end
+
+      def image_file
+        @image_file ||= ImageFile.new(id: 0, processed_attachment_file_name: 'image.jpg')
       end
     end
 

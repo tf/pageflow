@@ -17,7 +17,8 @@ module Pageflow
         chapters: entry_chapters_seed(entry),
         pages: entry_pages_seed(entry),
         file_ids: entry_file_ids_seed(entry),
-        video_files: entry_video_files_seed(entry)
+        video_files: entry_video_files_seed(entry),
+        image_files: entry_image_files_seed(entry),
       )
     end
 
@@ -55,7 +56,16 @@ module Pageflow
       entry.video_files.map do |video_file|
         {
           id: video_file.id,
-          variants: video_file.present_outputs
+          variants: video_file.present_outputs << :poster
+        }
+      end
+    end
+
+    def entry_image_files_seed(entry)
+      entry.image_files.map do |image_file|
+        {
+          id: image_file.id,
+          variants: [:ultra]
         }
       end
     end

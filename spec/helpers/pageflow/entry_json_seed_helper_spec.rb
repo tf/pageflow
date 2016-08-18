@@ -114,6 +114,18 @@ module Pageflow
       end
     end
 
+    describe '#entry_image_files_seed' do
+      it 'contains variant names for each image file' do
+        entry = PublishedEntry.new(create(:entry, :published))
+        create(:image_file, used_in: entry.revision)
+
+        result = entry_image_files_seed(entry)
+        variants = result[0][:variants]
+
+        expect(variants).to include(:ultra)
+      end
+    end
+
     describe '#entry_audio_files_json_seed' do
       before { helper.extend(AudioFilesHelper) }
 
