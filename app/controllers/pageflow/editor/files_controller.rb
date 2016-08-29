@@ -54,7 +54,7 @@ module Pageflow
       def file_params
         params.require(file_type.param_key)
           .permit(:attachment => [:tmp_path, :original_name, :content_type])
-          .merge(params.require(file_type.param_key).permit(:attachment))
+          .merge(params.require(file_type.param_key).permit(:attachment, :parent_id, :parent_type))
       end
 
       def update_params
