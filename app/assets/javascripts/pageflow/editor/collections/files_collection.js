@@ -5,6 +5,7 @@ pageflow.FilesCollection = Backbone.Collection.extend({
     this.entry = options.entry;
     this.fileType = options.fileType;
     this.name = options.fileType.collectionName;
+    this.parentFile = options.parentFile;
   },
 
   comparator: function(file) {
