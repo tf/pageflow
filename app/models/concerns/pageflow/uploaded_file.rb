@@ -34,6 +34,14 @@ module Pageflow
       @usage_id || read_attribute(:usage_id)
     end
 
+    def nested_files(model)
+      model_table_name = model.table_name
+      model
+        .select("#{model_table_name}.*")
+        .where("#{model_table_name}.parent_file_id = #{id} AND "\
+              "#{model_table_name}.parent_file_type = '#{self.class.name}'")
+    end
+
     private
 
     def parent_nested_file_types
