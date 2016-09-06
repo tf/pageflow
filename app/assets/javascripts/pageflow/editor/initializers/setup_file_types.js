@@ -17,5 +17,11 @@ pageflow.app.addInitializer(function(options) {
     matchUpload: /^audio/
   });
 
+  pageflow.editor.fileTypes.register('text_track_files', {
+    model: pageflow.TextTrackFile,
+    matchUpload: /vtt$/,
+    settingsDialogTabs: [pageflow.TextTrackTabView]
+  });
+
   pageflow.editor.fileTypes.setup(options.config.fileTypes);
 });
