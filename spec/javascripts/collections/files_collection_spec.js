@@ -1,5 +1,6 @@
 describe('FileCollection', function() {
   var f = support.factories;
+  var Model = pageflow.UploadedFile.extend({});
 
   describe('.createForFileTypes', function() {
     it('creates file collections index by collection name', function() {
@@ -33,6 +34,19 @@ describe('FileCollection', function() {
       var collection = pageflow.FilesCollection.createForFileTypes([fileType], files);
 
       expect(collection.image_files.first().fileType()).to.eq(fileType);
+    });
+  });
+
+  describe('.createForFileType', function() {
+    it('passes fileType to files', function() {
+      var fileType = new pageflow.FileType({collectionName: 'image_files',
+                                            model: Model,
+                                            matchUpload: /^image/});
+      var files = [{file_name: 'image.png'}];
+      var entry = {};
+      var collection = pageflow.FilesCollection.createForFileType(fileType, files, {entry: entry});
+
+      expect(collection.first().fileType()).to.eq(fileType);
     });
   });
 
