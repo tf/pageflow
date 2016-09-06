@@ -29,26 +29,41 @@ pageflow.FileTypes = pageflow.Object.extend({
   },
 
   setup: function(serverSideConfigs) {
+    var clientSideConfigs = this.clientSideConfigs;
     this._setup = true;
 
-    this.fileTypes = _.map(serverSideConfigs, function(serverSideConfig) {
-      var clientSideConfig = this.clientSideConfigs[serverSideConfig.collectionName];
+    this.fileTypes = new pageflow.
+      FileTypesCollection(_.map(serverSideConfigs, function(serverSideConfig) {
+        var clientSideConfig = clientSideConfigs[serverSideConfig.collectionName];
 
-      if (!clientSideConfig) {
-        throw 'Missing client side config for file type "' + serverSideConfig.collectionName + '"';
+        if (!clientSideConfig) {
+          throw 'Missing client side config for file type "' +
+            serverSideConfig.collectionName + '"';
+        }
+
+        _(this.clientSideConfigModifications[serverSideConfig.collectionName])
+          .each(function(modification) {
+            this.lintModification(modification, serverSideConfig.collectionName);
+            this.applyModification(clientSideConfig, modification);
+          }, this);
+
+        return new pageflow.FileType(_.extend({}, serverSideConfig, clientSideConfig));
+      }, this));
+    var those = this;
+
+    _.map(serverSideConfigs, function(serverSideConfig) {
+      if (serverSideConfig.nestedFileTypes && serverSideConfig.nestedFileTypes.length > 0) {
+        var fileType = those.fileTypes.findByCollectionName(serverSideConfig.collectionName);
+        fileType.nestedFileTypes = new pageflow.FileTypesCollection(
+          _.map(serverSideConfig.nestedFileTypes, function(nestedFileType) {
+            return those.fileTypes.findByCollectionName(nestedFileType.collectionName);
+          })
+        );
       }
-
-      _(this.clientSideConfigModifications[serverSideConfig.collectionName])
-        .each(function(modification) {
-          this.lintModifcation(modification, serverSideConfig.collectionName);
-          this.applyModifiaction(clientSideConfig, modification);
-        }, this);
-
-      return new pageflow.FileType(_.extend({}, serverSideConfig, clientSideConfig));
-    }, this);
+    });
   },
 
-  lintModifcation: function(modification, collectionName) {
+  lintModification: function(modification, collectionName) {
     var unmodifyableProperties = _.difference(_.keys(modification), this.modifyableProperties);
 
     if (unmodifyableProperties.length) {
@@ -62,54 +77,20 @@ pageflow.FileTypes = pageflow.Object.extend({
     }
   },
 
-  applyModifiaction: function(target, modification) {
+  applyModification: function(target, modification) {
     _(this.modifyableProperties).each(function(property) {
       target[property] = (target[property] || []).concat(modification[property] || []);
     });
-  },
-
-  findByUpload: function(upload) {
-    var result = this.find(function(fileType) {
-      return fileType.matchUpload(upload);
-    });
-
-    if (!result) {
-      throw(new pageflow.FileTypes.UnmatchedUploadError(upload));
-    }
-
-    return result;
-  },
-
-  findByCollectionName: function(collectionName) {
-    var result = this.find(function(fileType) {
-      return fileType.collectionName === collectionName;
-    });
-
-    if (!result) {
-      throw('Could not find file type by collection name "' + collectionName +'"');
-    }
-
-    return result;
   }
 });
 
-_.each(['each', 'map', 'reduce', 'first', 'find'], function(method) {
-  pageflow.FileTypes.prototype[method] = function() {
-    if (!this._setup) {
-      throw  'File types are not yet set up.';
-    }
+_.each(['each', 'map', 'reduce', 'first', 'find', 'findByUpload', 'findByCollectionName'],
+       function(method) {
+         pageflow.FileTypes.prototype[method] = function() {
+           if (!this._setup) {
+             throw  'File types are not yet set up.';
+           }
 
-    var args = Array.prototype.slice.call(arguments);
-    args.unshift(this.fileTypes);
-    return _[method].apply(_, args);
-  };
-});
-
-pageflow.FileTypes.UnmatchedUploadError = pageflow.Object.extend({
-  name: 'UnmatchedUploadError',
-
-  initialize: function(upload) {
-    this.upload = upload;
-    this.message = 'No matching file type found for upload "' + upload.name + '" of type "' + upload.type +'".';
-  }
-});
+           return this.fileTypes[method].apply(this.fileTypes, arguments);
+         };
+       });
