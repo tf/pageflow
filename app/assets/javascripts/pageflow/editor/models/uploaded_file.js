@@ -2,7 +2,7 @@ pageflow.UploadedFile = Backbone.Model.extend({
   mixins: [pageflow.stageProvider, pageflow.retryable],
 
   initialize: function(attributes, options) {
-    this.options = options;
+    this.options = options || {};
 
     this.configuration = new pageflow.FileConfiguration(
       this.get('configuration') || {}
@@ -40,6 +40,15 @@ pageflow.UploadedFile = Backbone.Model.extend({
 
   thumbnailFile: function() {
     return this;
+  },
+
+  nestedFiles: function(collectionName) {
+    this.nestedFilesCollections = this.nestedFilesCollections || {};
+    var nestedFileType = this.fileType().nestedFileTypes.findByCollectionName(collectionName);
+    this.nestedFilesCollections[collectionName] = this.nestedFilesCollections[collectionName] ||
+      pageflow.FilesCollection.createForFileType(nestedFileType,
+                                                 this.get('nested_files')[collectionName]);
+    return this.nestedFilesCollections[collectionName];
   },
 
   isUploading: function() {

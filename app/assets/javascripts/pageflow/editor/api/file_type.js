@@ -6,10 +6,13 @@ pageflow.FileType = pageflow.Object.extend({
     this.collectionName = options.collectionName;
     this.paramKey = options.paramKey;
     this.i18nKey = options.i18nKey;
+    this.nestedFileTypes = new pageflow.FileTypesCollection(options.nestedFileTypes);
 
     this.confirmUploadTableColumns = options.confirmUploadTableColumns || [];
     this.configurationEditorInputs = [].concat(options.configurationEditorInputs || []);
     this.configurationUpdaters = options.configurationUpdaters || [];
+    this.nestedFileTableColumns = options.nestedFileTableColumns || [];
+    this.skipUploadConfirmation = options.skipUploadConfirmation || false;
     this.metaDataAttributes = options.metaDataAttributes || [];
     this.filters = options.filters || [];
 
