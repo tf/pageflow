@@ -10,18 +10,17 @@
  *
  * @since edge
  */
-pageflow.TableCellView = Backbone.Marionette.View.extend({
+pageflow.TableCellView = Backbone.Marionette.ItemView.extend({
   tagName: 'td',
+  template: 'templates/table_cell',
 
   className: function() {
     return this.options.className;
   },
 
-  render: function() {
+  onRender: function() {
     this.listenTo(this.getModel(), 'change:' + this.options.column.name, this.update);
     this.update();
-
-    return this;
   },
 
   /**

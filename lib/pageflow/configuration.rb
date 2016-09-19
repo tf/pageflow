@@ -243,6 +243,8 @@ module Pageflow
     # @since 0.11
     attr_accessor :authorize_user_deletion
 
+    attr_reader :available_text_track_kinds
+
     def initialize
       @paperclip_filesystem_default_options = {validate_media_type: false}
       @paperclip_s3_default_options = {validate_media_type: false}
@@ -282,6 +284,8 @@ module Pageflow
       @default_publisher_meta_tag = 'Pageflow'
 
       @authorize_user_deletion = lambda { |_user| true }
+
+      @available_text_track_kinds = [:captions, :subtitles, :descriptions]
     end
 
     # Activate a plugin.
