@@ -10,6 +10,13 @@ pageflow.UploadedFile = Backbone.Model.extend({
 
     this.configuration.i18nKey = this.i18nKey;
 
+    if (pageflow.editor.nextUploadTargetFile){
+      this.set({parent_file_id: pageflow.editor.nextUploadTargetFile.get('id'),
+                parent_file_model_type: pageflow.editor.nextUploadTargetFile.fileType().typeName});
+      this.collection = pageflow.editor.nextUploadTargetFile
+        .nestedFiles(this.fileType().collectionName);
+    }
+
     this.listenTo(this.configuration, 'change', function() {
       this.trigger('change:configuration', this);
 

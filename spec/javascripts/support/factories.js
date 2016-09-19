@@ -12,6 +12,49 @@ support.factories = {
   },
 
   fileTypesWithImageFileType: function(options) {
+    options = options || {};
+    var fileTypes = new pageflow.FileTypes();
+    var fileTypesSetupArray = [
+      {
+        collectionName: 'image_files',
+        typeName: 'Pageflow::ImageFile'
+      }
+    ];
+
+    fileTypes.register('image_files', _.extend({
+      model: pageflow.ImageFile,
+      matchUpload: /^image/
+    }, options));
+
+    if (options.addVideoAndTextTrackFileTypes) {
+      fileTypes.register('video_files', _.extend({
+        model: pageflow.VideoFile,
+        matchUpload: /^video/,
+        nestedFileTypes: ['text_track_files']
+      }, options));
+
+      fileTypes.register('text_track_files', _.extend({
+        model: pageflow.TextTrackFile,
+        matchUpload: /vtt$/
+      }, options));
+
+      fileTypesSetupArray = fileTypesSetupArray.concat([
+        {
+          collectionName: 'video_files',
+          typeName: 'Pageflow::VideoFile'
+        },
+        {
+          collectionName: 'text_track_files',
+          typeName: 'Pageflow::TextTrackFile'
+        }
+      ]);
+    }
+    fileTypes.setup(fileTypesSetupArray);
+
+    return fileTypes;
+  },
+
+  fileTypesWithoutAudioFileType: function(options) {
     var fileTypes = new pageflow.FileTypes();
 
     fileTypes.register('image_files', _.extend({
@@ -19,10 +62,31 @@ support.factories = {
       matchUpload: /^image/
     }, options));
 
-    fileTypes.setup([{
-      collectionName: 'image_files',
-      typeName: 'Pageflow::ImageFile'
-    }]);
+    fileTypes.register('video_files', _.extend({
+      model: pageflow.VideoFile,
+      matchUpload: /^video/,
+      nestedFileTypes: ['text_track_files']
+    }, options));
+
+    fileTypes.register('text_track_files', _.extend({
+      model: pageflow.TextTrackFile,
+      matchUpload: /vtt$/
+    }, options));
+
+    fileTypes.setup([
+      {
+        collectionName: 'image_files',
+        typeName: 'Pageflow::ImageFile'
+      },
+      {
+        collectionName: 'video_files',
+        typeName: 'Pageflow::VideoFile'
+      },
+      {
+        collectionName: 'text_track_files',
+        typeName: 'Pageflow::TextTrackFile'
+      }
+    ]);
 
     return fileTypes;
   },
