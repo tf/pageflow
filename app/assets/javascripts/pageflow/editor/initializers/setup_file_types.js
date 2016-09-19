@@ -1,4 +1,5 @@
 pageflow.app.addInitializer(function(options) {
+
   pageflow.editor.fileTypes.register('image_files', {
     model: pageflow.ImageFile,
     metaDataAttributes: ['dimensions'],

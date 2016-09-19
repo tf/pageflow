@@ -9,6 +9,7 @@ pageflow.FileType = pageflow.Object.extend({
     this.nestedFileTypes = new pageflow.FileTypesCollection(options.nestedFileTypes);
 
     this.metaDataAttributes = options.metaDataAttributes || [];
+    this.settingsDialogTabConstructors = options.settingsDialogTabConstructors || [];
 
     if (typeof options.matchUpload === 'function') {
       this.matchUpload = options.matchUpload;
