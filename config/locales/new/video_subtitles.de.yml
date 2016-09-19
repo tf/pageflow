@@ -1,0 +1,17 @@
+de:
+  pageflow:
+    editor:
+      file_settings_dialog:
+        tabs:
+          text_track_tab: Untertitel
+          video_settings_tab: Video-Details
+      templates:
+        background_positioning:
+          close: Schließen
+        file_item:
+          alt_text: Alt-Text
+          settings: Einstellungen
+        text_track_tab:
+          kind: Art
+          label: Label
+          srclang: Sprache

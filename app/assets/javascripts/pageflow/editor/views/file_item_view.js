@@ -35,6 +35,8 @@ pageflow.FileItemView = Backbone.Marionette.ItemView.extend({
 
     'click .remove': 'destroy',
 
+    'click .settings': 'edit',
+
     'click .retry': 'retry',
 
     'click .file_thumbnail': 'toggleExpanded',
@@ -127,5 +129,12 @@ pageflow.FileItemView = Backbone.Marionette.ItemView.extend({
 
   retry: function() {
     this.model.retry();
+  },
+
+  edit: function() {
+    pageflow.FileSettingsDialogView.open({
+      model: this.model,
+      tabName: 'video_settings_tab'
+    });
   }
 });
