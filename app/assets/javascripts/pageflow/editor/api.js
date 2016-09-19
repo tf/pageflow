@@ -37,6 +37,10 @@ pageflow.EditorApi = pageflow.Object.extend({
       this.sideBarRoutings.push(options);
     };
 
+    this.setUploadTargetFile = function(file) {
+      this.nextUploadTargetFile = file;
+    };
+
     /**
      * Set the name of the help entry that shall be selected by
      * default when the help view is opened. This value is
