@@ -15,7 +15,7 @@ pageflow.FileTypes = pageflow.Object.extend({
     var clientSideConfigs = this.clientSideConfigs;
     this._setup = true;
 
-    this.fileTypes = _.map(serverSideConfigs, function(serverSideConfig) {
+    this.fileTypes = new pageflow.FileTypesCollection(_.map(serverSideConfigs, function(serverSideConfig) {
       var clientSideConfig = clientSideConfigs[serverSideConfig.collectionName];
 
       if (!clientSideConfig) {
@@ -23,51 +23,29 @@ pageflow.FileTypes = pageflow.Object.extend({
       }
 
       return new pageflow.FileType(_.extend({}, serverSideConfig, clientSideConfig));
+    }));
+
+    _.map(this.fileTypes.fileTypes, function(fileType) {
+      if(fileType && fileType.nestedFileTypes.fileTypes){
+        fileType.nestedFileTypes = new pageflow.FileTypesCollection(
+          _.map(fileType.nestedFileTypes.fileTypes, function(nestedFileType) {
+          var clientSideConfig = clientSideConfigs[nestedFileType];
+          var serverSideConfig = _.find(serverSideConfigs, function(config) {
+            return config.collectionName === nestedFileType;
+          });
+          return new pageflow.FileType(_.extend({}, serverSideConfig, clientSideConfig));
+        }));
+      };
     });
-  },
-
-  findByUpload: function(upload) {
-    var result = this.find(function(fileType) {
-      return fileType.matchUpload(upload);
-    });
-
-    if (!result) {
-      throw(new pageflow.FileTypes.UnmatchedUploadError(upload));
-    }
-
-    return result;
-  },
-
-  findByCollectionName: function(collectionName) {
-    var result = this.find(function(fileType) {
-      return fileType.collectionName === collectionName;
-    });
-
-    if (!result) {
-      throw('Could not find file type by collection name "' + collectionName +'"');
-    }
-
-    return result;
   }
 });
 
-_.each(['each', 'map', 'reduce', 'first', 'find'], function(method) {
+_.each(['each', 'map', 'reduce', 'first', 'find', 'findByUpload', 'findByCollectionName'], function(method) {
   pageflow.FileTypes.prototype[method] = function() {
     if (!this._setup) {
       throw  'File types are not yet set up.';
     }
 
-    var args = Array.prototype.slice.call(arguments);
-    args.unshift(this.fileTypes);
-    return _[method].apply(_, args);
+    return this.fileTypes[method].apply(this.fileTypes, arguments);
   };
-});
-
-pageflow.FileTypes.UnmatchedUploadError = pageflow.Object.extend({
-  name: 'UnmatchedUploadError',
-
-  initialize: function(upload) {
-    this.upload = upload;
-    this.message = 'No matching file type found for upload "' + upload.name + '" of type "' + upload.type +'".';
-  }
 });

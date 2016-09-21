@@ -59,7 +59,7 @@ module Pageflow
       end
 
       def update_params
-        params.require(file_type.param_key).permit(:rights)
+        params.require(file_type.param_key).permit(:rights, :alt_text)
       end
     end
   end

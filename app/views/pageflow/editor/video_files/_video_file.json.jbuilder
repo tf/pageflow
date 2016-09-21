@@ -1,4 +1,4 @@
-json.(video_file, :width, :height)
+json.(video_file, :width, :height, :alt_text)
 json.encoding_progress(video_file.encoding_progress.to_i)
 
 json.format(file_format(video_file))

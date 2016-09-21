@@ -52,12 +52,17 @@ ul.files {
   a.cancel,
   a.confirm,
   a.remove,
-  a.retry {
+  a.retry,
+  a.settings{
     @include icon-only-button(#aaa);
   }
 
   a.remove {
     @include trash-icon;
+  }
+
+  a.settings {
+    @include pencil-icon;
   }
 
   a.cancel {
