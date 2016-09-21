@@ -17,6 +17,7 @@ pageflow.FileItemView = Backbone.Marionette.ItemView.extend({
     stageItems: '.file_stage_items',
 
     rights: 'input.rights',
+    altText: 'input.alt_text',
     metaData: 'tbody.attributes',
     downloads: 'tbody.downloads',
     downloadLink: 'a.original'
@@ -74,6 +75,8 @@ pageflow.FileItemView = Backbone.Marionette.ItemView.extend({
     this.ui.rights.val(this.model.get('rights'));
     this.ui.rights.attr('placeholder', pageflow.entry.get('default_file_rights'));
 
+    this.ui.altText.val(this.model.get('alt_text'));
+
     this.ui.downloadLink.attr('href', this.model.get('original_url'));
     this.ui.downloads.toggle(this.model.isUploaded());
 
@@ -89,7 +92,8 @@ pageflow.FileItemView = Backbone.Marionette.ItemView.extend({
 
   save: function() {
     this.model.save({
-      rights: this.ui.rights.val()
+      rights: this.ui.rights.val(),
+      alt_text: this.ui.altText.val()
     });
   },
 
