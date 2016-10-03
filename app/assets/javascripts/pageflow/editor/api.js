@@ -134,7 +134,17 @@ pageflow.EditorApi = pageflow.Object.extend({
      *     pageflow.editor.selectFile('image_files', 'my_file_selection_handler', {some: 'option for handler'});
      */
     this.selectFile = function(fileType, handlerName, payload) {
-      this.navigate('/files/' + fileType + '?handler=' + handlerName + '&payload=' + encodeURIComponent(JSON.stringify(payload)), {trigger: true});
+      if (typeof fileType === 'string') {
+        fileType = {
+          name: fileType
+        };
+      }
+
+      this.navigate('/files/' + fileType.name +
+                    '?handler=' + handlerName +
+                    '&payload=' + encodeURIComponent(JSON.stringify(payload)) +
+                    (fileType.filter ? '&filter=' + fileType.filter : ''),
+                    {trigger: true});
     };
 
     /**

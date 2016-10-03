@@ -10,6 +10,7 @@ pageflow.FileType = pageflow.Object.extend({
     this.confirmUploadTableColumns = options.confirmUploadTableColumns || [];
     this.configurationEditorInputs = options.configurationEditorInputs || [];
     this.metaDataAttributes = options.metaDataAttributes || [];
+    this.filters = options.filters || [];
 
     this.settingsDialogTabs = [
       {
@@ -37,5 +38,17 @@ pageflow.FileType = pageflow.Object.extend({
     this.model.prototype.modelName = this.model.prototype.modelName || this.paramKey;
     this.model.prototype.paramRoot = this.model.prototype.paramRoot || this.paramKey;
     this.model.prototype.i18nKey = this.model.prototype.i18nKey || this.i18nKey;
+  },
+
+  getFilter: function(name) {
+    var result =  _(this.filters).find(function(filter) {
+      return filter.name === name;
+    });
+
+    if (!result) {
+      throw new Error('Unknown filter "' + name + '" for file type "' + this.collectionName + '".');
+    }
+
+    return result;
   }
 });
