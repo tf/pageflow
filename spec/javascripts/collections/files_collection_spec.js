@@ -1,5 +1,5 @@
 describe('FileCollection', function() {
-  var Model = Backbone.Model.extend({});
+  var Model = pageflow.UploadedFile.extend({});
 
   describe('.createForFileTypes', function() {
     it('creates file collections index by collection name', function() {
@@ -42,6 +42,39 @@ describe('FileCollection', function() {
 
       var uploadableFiles = collection.uploadable();
       collection.first().set('state', 'uploadable');
+
+      expect(uploadableFiles.length).to.eq(1);
+    });
+  });
+
+  describe('#withFilter', function() {
+    it('always contains subset of files matching given filter', function() {
+      var fileType = new pageflow.FileType({
+        collectionName: 'image_files',
+        model: Model,
+        matchUpload: /^image/,
+        filters: [
+          {
+            name: 'with_custom_field',
+            matches: function(file) {
+              return !!file.configuration.get('custom');
+            }
+          }
+        ]
+      });
+      var files = [
+        {
+          file_name: 'image.png'
+        },
+        {
+          file_name: 'other.png'
+        }
+      ];
+      var entry = {};
+      var collection = pageflow.FilesCollection.createForFileType(fileType, files, {entry: entry});
+
+      var uploadableFiles = collection.withFilter('with_custom_field');
+      collection.first().configuration.set('custom', 'some value');
 
       expect(uploadableFiles.length).to.eq(1);
     });
