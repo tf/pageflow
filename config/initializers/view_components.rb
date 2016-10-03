@@ -9,3 +9,7 @@ Rails.application.config.to_prepare do
     class_name.constantize
   end
 end
+
+class ActiveRecord::ConnectionAdapters::AbstractMysqlAdapter
+  NATIVE_DATABASE_TYPES[:primary_key] = "int(11) auto_increment PRIMARY KEY"
+end
