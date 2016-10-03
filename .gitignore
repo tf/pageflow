@@ -5,6 +5,7 @@ log/*.log
 pkg/
 tmp/
 spec/dummy/*
+/coverage
 .idea
 
 .localeapp
