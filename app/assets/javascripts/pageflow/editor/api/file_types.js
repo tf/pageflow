@@ -1,4 +1,10 @@
 pageflow.FileTypes = pageflow.Object.extend({
+  modifyableProperties: [
+    'configurationEditorInputs',
+    'confirmUploadTableColumns',
+    'filters'
+  ],
+
   initialize: function() {
     this.clientSideConfigs = [];
     this.clientSideConfigModifications = {};
@@ -33,24 +39,32 @@ pageflow.FileTypes = pageflow.Object.extend({
 
       _(this.clientSideConfigModifications[serverSideConfig.collectionName])
         .each(function(modification) {
-          clientSideConfig.configurationEditorInputs =
-            (clientSideConfig.configurationEditorInputs || []).concat(
-              modification.configurationEditorInputs || []
-            );
-
-          clientSideConfig.confirmUploadTableColumns =
-            (clientSideConfig.confirmUploadTableColumns || []).concat(
-              modification.confirmUploadTableColumns || []
-            );
-
-          clientSideConfig.filters  =
-            (clientSideConfig.filters || []).concat(
-              modification.filters || []
-            );
-        });
+          this.lintModifcation(modification, serverSideConfig.collectionName);
+          this.applyModifiaction(clientSideConfig, modification);
+        }, this);
 
       return new pageflow.FileType(_.extend({}, serverSideConfig, clientSideConfig));
     }, this);
+  },
+
+  lintModifcation: function(modification, collectionName) {
+    var unmodifyableProperties = _.difference(_.keys(modification), this.modifyableProperties);
+
+    if (unmodifyableProperties.length) {
+      throw 'Only the following properties are allowed in FileTypes#modify: ' +
+        this.modifyableProperties.join(', ') +
+        '. Given in modification for ' +
+        collectionName +
+        ': ' +
+        unmodifyableProperties.join(', ') +
+        '.';
+    }
+  },
+
+  applyModifiaction: function(target, modification) {
+    _(this.modifyableProperties).each(function(property) {
+      target[property] = (target[property] || []).concat(modification[property] || []);
+    });
   },
 
   findByUpload: function(upload) {

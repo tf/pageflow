@@ -75,6 +75,28 @@ describe('FileTypes', function() {
 
       expect(columnNames).to.eql(['custom_field', 'other_field']);
     });
+
+    it('throws error when trying to modify unsupported property', function() {
+      var fileTypes = new pageflow.FileTypes();
+
+      fileTypes.register('image_files', {
+        model: pageflow.ImageFile,
+        matchUpload: /^image/,
+        confirmUploadTableColumns: [
+          {
+            name: 'custom_field',
+            cellView: pageflow.TextTableCellView
+          }
+        ]
+      });
+      fileTypes.modify('image_files', {
+        somethingElse: [{}]
+      });
+
+      expect(function() {
+        fileTypes.setup([{collectionName: 'image_files'}]);
+      }).to.throw(/Given in modification for image_files: somethingElse/);
+    });
   });
 
   describe('#findByUpload', function() {
