@@ -28,5 +28,5 @@ pageflow.FileSettingsDialogView = Backbone.Marionette.ItemView.extend({
 });
 
 pageflow.FileSettingsDialogView.open = function(options) {
-  pageflow.app.dialogRegion.show(new pageflow.FileSettingsDialogView(options).render());
+  pageflow.app.dialogRegion.show(new pageflow.FileSettingsDialogView(options));
 };
