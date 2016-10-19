@@ -8,9 +8,10 @@ support.factories = {
   },
 
   fileType: function(options) {
+    options = options || {};
     var fileTypes = new pageflow.FileTypes();
 
-    fileTypes.register('image_files', _.extend({
+    fileTypes.register(options.collectionName || 'image_files', _.extend({
       model: pageflow.ImageFile,
       matchUpload: /^image/
     }, options || {}));
