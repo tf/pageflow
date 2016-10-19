@@ -21,6 +21,10 @@ pageflow.FilteredFilesView = Backbone.Marionette.ItemView.extend({
     var blankSlateText = I18n.t('pageflow.editor.templates.files_blank_slate.no_files');
 
     if (this.options.filterName) {
+      if (this.filteredCollection) {
+        this.filteredCollection.dispose();
+      }
+
       collection = this.filteredCollection = collection.withFilter(this.options.filterName);
       blankSlateText = this.filterTranslation('blank_slate');
     }
