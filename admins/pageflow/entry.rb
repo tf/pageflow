@@ -138,6 +138,7 @@ module Pageflow
     controller do
       helper FoldersHelper
       helper EntriesHelper
+      helper Pageflow::EmbedCodeHelper
       helper Pageflow::Admin::EntriesHelper
       helper Pageflow::Admin::FeaturesHelper
       helper Pageflow::Admin::RevisionsHelper

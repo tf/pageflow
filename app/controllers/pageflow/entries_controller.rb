@@ -7,6 +7,8 @@ module Pageflow
 
     before_filter :check_public_https_mode, only: [:index, :show], unless: lambda { |controller| controller.request.format.json? }
 
+    after_action :allow_iframe_for_embed, only: :show
+
     helper_method :render_to_string
 
     helper PagesHelper
@@ -91,6 +93,12 @@ module Pageflow
 
     def entry_request_scope
       Pageflow.config.public_entry_request_scope.call(Entry, request)
+    end
+
+    def allow_iframe_for_embed
+      if params[:embed]
+        response.headers.except! 'X-Frame-Options'
+      end
     end
   end
 end
