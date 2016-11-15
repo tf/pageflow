@@ -51,11 +51,17 @@ pageflow.AudioPlayer = function(sources, options) {
   pageflow.AudioPlayer.rewindMethod(audio);
 
   audio.src = function(sources) {
+    console.log('src called with ' + JSON.stringify(sources || {}));
+
     ready.then(function() {
+      console.log('codec: ' + audio.settings.player.codec);
+
       var source = _.detect(sources || [], function(source) {
         if (codecMapping[audio.settings.player.codec] === source.type) {
+          console.log('match: ' + source.type);
           return source.src;
         }
+        console.log('no match: ' + source.type);
       });
 
       audio.load(source ? source.src : '');
