@@ -7,8 +7,45 @@ module Pageflow
     def common_entry_seed(entry)
       {
         locale: entry.locale,
-        page_types: PageTypesSeed.new(entry, Pageflow.config_for(entry)).as_json
+        page_types: PageTypesSeed.new(entry, Pageflow.config_for(entry)).as_json,
+        file_url_templates: FileUrlTemplatesSeed.as_json
       }
+    end
+
+    module FileUrlTemplatesSeed
+      extend self
+
+      def as_json
+        {
+          video_files: video_file_url_templates
+        }
+      end
+
+      private
+
+      def video_file_url_templates
+        {
+          high: video_file_url_template(:mp4_high),
+          medium: video_file_url_template(:mp4_medium),
+          fullhd: video_file_url_template(:mp4_fullhd),
+          :'4k' => video_file_url_template(:mp4_4k),
+
+          webm_medium: video_file_url_template(:webm_medium),
+          webm_high: video_file_url_template(:webm_high),
+        }
+      end
+
+      def video_file_url_template(variant)
+        file_url_template(video_file.send(variant).url)
+      end
+
+      def file_url_template(url)
+        url.gsub(%r'(\d{3}/)+', ':id_partition/')
+      end
+
+      def video_file
+        @video_file ||= VideoFile.new(id: 0)
+      end
     end
 
     class PageTypesSeed

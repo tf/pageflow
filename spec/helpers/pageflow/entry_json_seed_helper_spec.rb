@@ -87,6 +87,33 @@ module Pageflow
       end
     end
 
+    describe '#entry_video_files_seed' do
+      it 'contains present variant names for each video file' do
+        entry = PublishedEntry.new(create(:entry, :published))
+        create(:video_file,
+               used_in: entry.revision,
+               output_presences: {
+                 'fullhd' => true,
+                 '4k' => true
+               })
+        create(:video_file,
+               used_in: entry.revision,
+               output_presences: {
+                 'fullhd' => false,
+                 '4k' => false
+               })
+
+        result = entry_video_files_seed(entry)
+        highdef_variants = result[0][:variants]
+        no_highdef_variants = result[1][:variants]
+
+        expect(highdef_variants).to include(:fullhd)
+        expect(highdef_variants).to include(:'4k')
+        expect(no_highdef_variants).not_to include(:fullhd)
+        expect(no_highdef_variants).not_to include(:'4k')
+      end
+    end
+
     describe '#entry_audio_files_json_seed' do
       before { helper.extend(AudioFilesHelper) }
 
