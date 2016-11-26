@@ -62,6 +62,27 @@ module Pageflow
         end
       end
 
+      describe '["file_url_templates"]' do
+        it 'contains url templates of registered file types' do
+          url_template = 'files/:id_partition/video.mp4'
+          file_type = FileType.new(model: 'Pageflow::VideoFile',
+                                   collection_name: 'test_files',
+                                   url_templates: ->() { {original: url_template} })
+
+          pageflow_configure do |config|
+            config.page_types.clear
+            config.page_types.register(page_type.new(file_types: [file_type]))
+          end
+
+          entry = PublishedEntry.new(create(:entry, :published))
+
+          result = common_entry_seed(entry)
+          template = result[:file_url_templates]['test_files'][:original]
+
+          expect(template).to eq(url_template)
+        end
+      end
+
       describe '["file_model_types"]' do
         it 'contains mapping of file type collection name to model type name' do
           file_type = FileType.new(model: 'Pageflow::VideoFile',
