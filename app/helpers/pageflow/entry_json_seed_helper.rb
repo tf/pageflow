@@ -7,18 +7,11 @@ module Pageflow
     include CommonEntrySeedHelper
 
     def entry_json_seed(entry)
-      sanitize_json(entry_seed(entry).to_json).html_safe
+      sanitize_json(entry_seed(entry)).html_safe
     end
 
     def entry_seed(entry)
-      common_entry_seed(entry).merge(
-        theming: entry_theming_seed(entry),
-        storyline_configurations: entry_storyline_configurations_seed(entry),
-        chapters: entry_chapters_seed(entry),
-        pages: entry_pages_seed(entry),
-        file_ids: entry_file_ids_seed(entry),
-        video_files: entry_video_files_seed(entry)
-      )
+      render('pageflow/entry_json_seed/entry', entry: entry)
     end
 
     def entry_theming_seed(entry)

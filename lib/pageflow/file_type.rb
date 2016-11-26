@@ -5,8 +5,13 @@ module Pageflow
     class NotFoundError < RuntimeError
     end
 
-    # Path of the partial used to render a json representation of the
-    # file.
+    # Path of a partial rendered in the json representation of the
+    # file in both the editor and published entries
+    # @return {String}
+    attr_reader :common_partial
+
+    # Path of a partial rendered in the json representation of the
+    # file inside the editor.
     # @return {String}
     attr_reader :editor_partial
 
@@ -18,6 +23,8 @@ module Pageflow
     # another file type?
     # @return {Boolean}
     attr_reader :top_level_type
+
+    attr_reader :url_templates
 
     # Create file type to be returned in {PageType#file_types}.
     #
@@ -38,10 +45,12 @@ module Pageflow
     #   Optional. Array of FileTypes allowed for nested files. Defaults to [].
     def initialize(options)
       @model_string_or_reference = options.fetch(:model)
+      @common_partial = options[:common_partial]
       @editor_partial = options[:editor_partial]
       @collection_name_or_blank = options[:collection_name]
       @nested_file_types = options.fetch(:nested_file_types, [])
       @top_level_type = options.fetch(:top_level_type, false)
+      @url_templates = options.fetch(:url_templates, ->() { {} })
     end
 
     # ActiveRecord model that represents the files of this type.

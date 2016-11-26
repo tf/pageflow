@@ -5,54 +5,36 @@ module Pageflow
   # @api private
   module CommonEntrySeedHelper
     def common_entry_seed(entry)
+      config = Pageflow.config_for(entry)
+
       {
         locale: entry.locale,
-        page_types: PageTypesSeed.new(entry, Pageflow.config_for(entry)).as_json,
-        file_url_templates: FileUrlTemplatesSeed.as_json
+        page_types: PageTypesSeed.new(config).as_json,
+        file_url_templates: FileUrlTemplatesSeed.new(config).as_json,
+        file_model_types: config.file_types
+                                .index_by(&:collection_name)
+                                .transform_values { |file_type| file_type.model.name }
       }
     end
 
-    module FileUrlTemplatesSeed
-      extend self
+    class FileUrlTemplatesSeed
+      attr_reader :config
+
+      def initialize(config)
+        @config = config
+      end
 
       def as_json
-        {
-          video_files: video_file_url_templates
-        }
-      end
-
-      private
-
-      def video_file_url_templates
-        {
-          high: video_file_url_template(:mp4_high),
-          medium: video_file_url_template(:mp4_medium),
-          fullhd: video_file_url_template(:mp4_fullhd),
-          :'4k' => video_file_url_template(:mp4_4k),
-
-          webm_medium: video_file_url_template(:webm_medium),
-          webm_high: video_file_url_template(:webm_high),
-        }
-      end
-
-      def video_file_url_template(variant)
-        file_url_template(video_file.send(variant).url)
-      end
-
-      def file_url_template(url)
-        url.gsub(%r'(\d{3}/)+', ':id_partition/')
-      end
-
-      def video_file
-        @video_file ||= VideoFile.new(id: 0)
+        config.file_types.each_with_object({}) do |file_type, result|
+          result[file_type.collection_name] = file_type.url_templates.call
+        end
       end
     end
 
     class PageTypesSeed
-      attr_reader :entry, :config
+      attr_reader :config
 
-      def initialize(entry, config)
-        @entry = entry
+      def initialize(config)
         @config = config
       end
 
