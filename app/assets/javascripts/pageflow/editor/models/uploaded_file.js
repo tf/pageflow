@@ -123,7 +123,8 @@ pageflow.UploadedFile = Backbone.Model.extend({
     return new pageflow.SubsetCollection(
       {parentModel: this,
        filter: function(item) {
-         return item.get('parent_file_id') === this.parentModel.get('id');
+         return item.get('parent_file_id') === this.parentModel.get('id') &&
+           item.get('parent_file_model_type').toLowerCase().indexOf(this.parentModel.modelName.replace('_', '')) >= 0;
        },
        parent: supersetCollection}
     );
