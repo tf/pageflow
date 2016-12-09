@@ -3,6 +3,8 @@ json.merge! common_entry_seed(entry)
 json.theming entry_theming_seed(entry)
 
 json.storyline_configurations entry_storyline_configurations_seed(entry)
+
+json.storylines entry_storylines_seed(entry)
 json.chapters entry_chapters_seed(entry)
 json.pages entry_pages_seed(entry)
 

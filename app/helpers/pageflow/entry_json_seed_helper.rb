@@ -8,7 +8,7 @@ module Pageflow
 
     def entry_json_seed(entry)
       sanitize_json(render_json_partial('pageflow/entry_json_seed/entry',
-                                        entry: entry))
+                                        entry: entry)).html_safe
     end
 
     def entry_theming_seed(entry)
@@ -23,6 +23,11 @@ module Pageflow
       entry.storylines.each_with_object({}) do |storyline, result|
         result[storyline.id] = storyline.configuration
       end
+    end
+
+    def entry_storylines_seed(entry)
+      attributes = [:id, :configuration]
+      entry.storylines.as_json(only: attributes)
     end
 
     def entry_chapters_seed(entry)

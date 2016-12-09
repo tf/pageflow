@@ -35,6 +35,11 @@ $slim-player-controls-quality-menu-annotation-color: #ff0000 !default;
     margin-right: 10px;
   }
 
+  &-menu_bar_button_link {
+    display: block;
+    height: 100%;
+  }
+
   &-menu_bar_button_icon {
     position: absolute;
     top: 50%;
