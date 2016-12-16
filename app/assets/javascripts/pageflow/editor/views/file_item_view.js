@@ -78,7 +78,7 @@ pageflow.FileItemView = Backbone.Marionette.ItemView.extend({
     this.ui.fileName.text(this.model.get('file_name') || '(Unbekannt)');
 
     this.ui.downloadLink.attr('href', this.model.get('original_url'));
-    this.ui.downloads.toggle(this.model.isUploaded());
+    this.ui.downloads.toggle(this.model.isUploaded() && !_.isEmpty(this.model.get('original_url')));
 
     this.ui.selectButton.toggle(!!this.options.selectionHandler);
     this.ui.settingsButton.toggle(!this.model.isNew());
@@ -94,11 +94,17 @@ pageflow.FileItemView = Backbone.Marionette.ItemView.extend({
   metaDataViews: function() {
     var model = this.model;
 
-    return _.map(this.options.metaDataAttributes, function(attribute) {
-      return new pageflow.FileMetaDataItemView({
-        model: model,
-        attribute: attribute
-      });
+    return _.map(this.options.metaDataAttributes, function(options) {
+      if (typeof options === 'string') {
+        options = {
+          name: options,
+          valueView: pageflow.TextFileMetaDataItemValueView
+        };
+      }
+
+      return new pageflow.FileMetaDataItemView(_.extend({
+        model: model
+      }, options));
     });
   },
 

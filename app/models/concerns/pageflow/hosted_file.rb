@@ -53,6 +53,10 @@ module Pageflow
       can_retry?
     end
 
+    def basename
+      File.basename(attachment.original_filename, '.*')
+    end
+
     def url
       if attachment_on_s3.present?
         attachment.url
@@ -63,6 +67,7 @@ module Pageflow
       url
     end
 
+    # @deprecated Write a migration instead
     def self.columns(t)
       t.belongs_to(:entry, index: true)
       t.belongs_to(:uploader, index: true)

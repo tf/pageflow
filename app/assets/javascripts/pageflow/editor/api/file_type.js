@@ -1,17 +1,29 @@
 pageflow.FileType = pageflow.Object.extend({
   initialize: function(options) {
     this.model = options.model;
-
     this.typeName = options.typeName;
     this.collectionName = options.collectionName;
+    this.topLevelType = options.topLevelType;
     this.paramKey = options.paramKey;
     this.i18nKey = options.i18nKey;
-
+    this.nestedFileTypes = [];
     this.confirmUploadTableColumns = options.confirmUploadTableColumns || [];
     this.configurationEditorInputs = [].concat(options.configurationEditorInputs || []);
     this.configurationUpdaters = options.configurationUpdaters || [];
-    this.metaDataAttributes = options.metaDataAttributes || [];
+    this.nestedFileTableColumns = options.nestedFileTableColumns || [];
+    this.nestedFilesOrder = options.nestedFilesOrder;
+    this.skipUploadConfirmation = options.skipUploadConfirmation || false;
     this.filters = options.filters || [];
+
+    this.metaDataAttributes = [
+      {
+        name: 'rights',
+        valueView: pageflow.TextFileMetaDataItemValueView,
+        valueViewOptions: {
+          settingsDialogTabLink: 'general'
+        }
+      },
+    ].concat(options.metaDataAttributes || []);
 
     this.settingsDialogTabs = [
       {
@@ -39,6 +51,10 @@ pageflow.FileType = pageflow.Object.extend({
     this.model.prototype.modelName = this.model.prototype.modelName || this.paramKey;
     this.model.prototype.paramRoot = this.model.prototype.paramRoot || this.paramKey;
     this.model.prototype.i18nKey = this.model.prototype.i18nKey || this.i18nKey;
+  },
+
+  setNestedFileTypes: function(fileTypesCollection) {
+    this.nestedFileTypes = fileTypesCollection;
   },
 
   getFilter: function(name) {
