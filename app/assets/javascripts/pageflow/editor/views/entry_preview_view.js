@@ -114,6 +114,7 @@ pageflow.EntryPreviewView = Backbone.Marionette.ItemView.extend({
     this.ui.entry.before(this.widgets);
 
     pageflow.widgetTypes.enhance(this.$el);
+    pageflow.events.trigger('widgets:update');
   },
 
   updatePresentWidgetsCssClasses: function(newWidgets) {
