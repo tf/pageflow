@@ -9,12 +9,17 @@ $slim-player-controls-quality-menu-annotation-color: #ff0000 !default;
 .player_controls {
   &-menu_bar {
     position: absolute;
-    bottom: 5px;
-    right: 20px;
+    bottom: 0;
+    right: 90px;
     z-index: 10;
     pointer-events: all;
 
     @include transition(opacity 0.5s, visibility 0.5s);
+  }
+
+  &-menu_bar-stand_alone {
+    right: 20px;
+    bottom: 5px;
   }
 
   &-menu_bar-hidden_on_phone {
