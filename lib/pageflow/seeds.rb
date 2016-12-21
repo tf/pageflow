@@ -125,7 +125,7 @@ module Pageflow
         chapter.pages.create!(template: 'background_image')
 
         chapter = storyline.chapters.create!(title: 'Chapter 2', position: 1)
-        chapter.pages.create!(template: 'video')
+        chapter.pages.create!(template: 'background_image')
       end
 
       entry

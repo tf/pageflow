@@ -54,6 +54,28 @@ prepend_to_file('config/initializers/pageflow.rb', <<-END)
   ActiveAdmin.application.load_paths.unshift(Dir[Rails.root.join('app/admin')].first)\n
 END
 
+# Register test page type
+
+copy_file('test_page_type.rb', 'lib/test_page_type.rb')
+copy_file('test_page_type.js', 'app/assets/javascripts/test_page_type.js')
+copy_file('test_page_type_editor.js', 'app/assets/javascripts/test_page_type/editor.js')
+
+inject_into_file('config/initializers/pageflow.rb',
+                 "  require 'test_page_type'\n  config.page_types.register(TestPageType.new)\n",
+                 after: "Pageflow.configure do |config|\n")
+
+create_file('app/views/test_page_types/_background_image.html.erb', '')
+
+append_to_file('app/assets/javascripts/pageflow/application.js', <<-END)
+
+//= require test_page_type
+END
+
+append_to_file('app/assets/javascripts/pageflow/editor.js', <<-END)
+
+//= require test_page_type/editor
+END
+
 # Create database tables for fake hosted files and revision components.
 
 copy_file('create_test_hosted_file.rb', 'db/migrate/00000000000000_create_test_hosted_file.rb')
