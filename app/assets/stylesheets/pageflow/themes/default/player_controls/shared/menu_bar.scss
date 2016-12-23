@@ -62,7 +62,7 @@ $player-controls-quality-menu-annotation-color: #ff0000 !default;
     @include transform(translate(-50%, -50%) rotate(40deg));
   }
 
-  &-quality_menu_button_sub_menu_item_annotation {
+  &-menu_bar_button_sub_menu_item_annotation {
     color: $player-controls-quality-menu-annotation-color;
     font-size: 70%;
     vertical-align: 5px;
@@ -83,7 +83,6 @@ $player-controls-quality-menu-annotation-color: #ff0000 !default;
 
     background-color: $player-controls-menu-popup-background-color;
     border-radius: 2px;
-    text-align: right;
   }
 
   &-menu_bar_button-sub_menu_visible .player_controls-menu_bar_button_sub_menu {
