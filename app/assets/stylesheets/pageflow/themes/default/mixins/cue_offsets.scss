@@ -14,14 +14,12 @@
     .cue_offset_#{$i} {
       %text_track_display {
         @include transform(translateY(-(10px * $i + $base-offset + $controls-offset)));
-        color: darken(red, $i * 5%);
       }
     }
 
     .is_control_bar_hidden .cue_offset_#{$i} {
       %text_track_display {
         @include transform(translateY(-(10px * $i + $base-offset)));
-        color: green;
       }
     }
   }
