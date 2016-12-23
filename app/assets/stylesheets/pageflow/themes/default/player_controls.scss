@@ -16,6 +16,8 @@ $player-controls-typography: () !default;
   }
 }
 
+@import "./player_controls/shared/menu_bar";
+
 // Define placeholders scoped by widget presence css class:
 
 .widget_classic_player_controls_present {
