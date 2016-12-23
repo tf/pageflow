@@ -1,5 +1,6 @@
-video::cue,
+video::-webkit-media-text-track-display,
 .vjs-text-track-display div {
-//  font-size: 14px !important;
- // font-family: $standard-font !important;
+  font-size: 27px !important;
+  font-family: $standard-font !important;
+  line-height: 40px  !important;
 }
