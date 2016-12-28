@@ -104,12 +104,35 @@ module Pageflow
     # a registered {FileType}. The first file found is used as
     # thumbnail.
     #
-    # @example Default return value
-    #
     #     [
     #       {attribute: 'thumbnail_image_id', file_collection: 'image_files'},
     #       {attribute: 'background_image_id', file_collection: 'image_files'}
     #     ]
+    #
+    # It is possible to specify further conditions under which the
+    # candidate may be used via `if` or `unless` keys:
+    #
+    #     [
+    #       {
+    #         attribute: 'video_id',
+    #         file_collection: 'video_files',
+    #         if: {
+    #           attribute: 'background_type',
+    #           value: 'video',
+    #         }
+    #       },
+    #       {
+    #         attribute: 'image_id',
+    #         file_collection: 'image_files',
+    #         unless: {
+    #           attribute: 'background_type',
+    #           value: 'video',
+    #         }
+    #       }
+    #     ]
+    #
+    # The candidate will only be used if the given attribute has the
+    # given value.
     #
     # @returns {Array<Hash>}
     def thumbnail_candidates
