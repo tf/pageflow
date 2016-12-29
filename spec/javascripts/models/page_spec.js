@@ -27,7 +27,7 @@ describe('Page', function() {
                 condition: {
                   attribute: 'background_type',
                   value: 'image',
-                  negate: true
+                  negated: true
                 }
               }
             ]
