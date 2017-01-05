@@ -1,23 +1,28 @@
 pageflow.ConfigurationEditorTabView.groups.define('background', function(options) {
-  this.input('background_type', pageflow.SelectInputView, {
+  options = options || {};
+
+  var prefix = options.propertyNamePrefix ? options.propertyNamePrefix + '_' : '';
+  var backgroundTypeProperty = prefix + 'background_type';
+
+  this.input(backgroundTypeProperty, pageflow.SelectInputView, {
     values: ['image', 'video'],
     ensureValueDefined: true
   });
-  this.input('background_image_id', pageflow.FileInputView, {
+  this.input(prefix + 'background_image_id', pageflow.FileInputView, {
     collection: pageflow.imageFiles,
-    visibleBinding: 'background_type',
+    visibleBinding: backgroundTypeProperty,
     visibleBindingValue: 'image',
     fileSelectionHandlerOptions: options
   });
-  this.input('video_file_id', pageflow.FileInputView, {
+  this.input(prefix + 'video_file_id', pageflow.FileInputView, {
     collection: pageflow.videoFiles,
-    visibleBinding: 'background_type',
+    visibleBinding: backgroundTypeProperty,
     visibleBindingValue: 'video',
     fileSelectionHandlerOptions: options
   });
-  this.input('poster_image_id', pageflow.FileInputView, {
+  this.input(prefix + 'poster_image_id', pageflow.FileInputView, {
     collection: pageflow.imageFiles,
-    visibleBinding: 'background_type',
+    visibleBinding: backgroundTypeProperty,
     visibleBindingValue: 'video',
     fileSelectionHandlerOptions: options
   });
