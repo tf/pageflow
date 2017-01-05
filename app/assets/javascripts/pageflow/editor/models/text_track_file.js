@@ -7,13 +7,13 @@ pageflow.TextTrackFile = pageflow.HostedFile.extend({
 
   processingStages: [
     {
-      name: 'converting',
-      activeStates: ['converting'],
-      failedStates: ['converting_failed']
+      name: 'processing',
+      activeStates: ['processing'],
+      failedStates: ['processing_failed']
     }
   ],
 
-  readyState: 'converted',
+  readyState: 'processed',
 
   initialize: function(attributes, options) {
     pageflow.UploadedFile.prototype.initialize.apply(this, arguments);
