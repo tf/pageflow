@@ -137,8 +137,34 @@ module Pageflow
     # @returns {Array<Hash>}
     def thumbnail_candidates
       [
-        {attribute: 'thumbnail_image_id', file_collection: 'image_files'},
-        {attribute: 'background_image_id', file_collection: 'image_files'}
+        {
+          file_collection: 'image_files',
+          attribute: 'thumbnail_image_id'
+        },
+        {
+          file_collection: 'image_files',
+          attribute: 'background_image_id',
+          unless: {
+            attribute: 'background_type',
+            value: 'video'
+          }
+        },
+        {
+          file_collection: 'image_files',
+          attribute: 'poster_image_id',
+          if: {
+            attribute: 'background_type',
+            value: 'video'
+          }
+        },
+        {
+          file_collection: 'video_files',
+          attribute: 'video_file_id',
+          if: {
+            attribute: 'background_type',
+            value: 'video'
+          }
+        }
       ]
     end
 
