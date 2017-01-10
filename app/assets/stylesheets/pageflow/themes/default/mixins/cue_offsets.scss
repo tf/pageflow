@@ -1,0 +1,31 @@
+@mixin cue-offsets($base-offset, $controls-offset) {
+  %text_track_display {
+    @include transform(translateY(-($base-offset + $controls-offset)));
+    @include transition(transform 0.001s ease);
+  }
+
+  .is_control_bar_hidden {
+    %text_track_display {
+      @include transform(translateY(-$base-offset));
+    }
+  }
+
+  @for $i from 1 through 20 {
+    .cue_offset_#{$i} {
+      %text_track_display {
+        @include transform(translateY(-(10px * $i + $base-offset + $controls-offset)));
+      }
+    }
+
+    .is_control_bar_hidden .cue_offset_#{$i} {
+      %text_track_display {
+        @include transform(translateY(-(10px * $i + $base-offset)));
+      }
+    }
+  }
+
+  video::-webkit-media-text-track-display,
+  .vjs-text-track-display {
+    @extend %text_track_display;
+  }
+}
