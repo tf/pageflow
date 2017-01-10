@@ -42,10 +42,7 @@ pageflow.PagesCollection = Backbone.Collection.extend({
       });
 
       this.listenTo(this, 'change:id', function(model) {
-        console.log('page got id',  model.get('id'), model.get('perma_id'));
-
         setTimeout(_.bind(function() {
-          console.log('addes persisted page',  model.get('perma_id'));
           this._persisted.add(model);
         }, this), 0);
       });
