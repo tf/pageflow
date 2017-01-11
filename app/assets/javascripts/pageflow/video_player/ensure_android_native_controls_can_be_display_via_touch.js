@@ -1,0 +1,1 @@
+videojs.getTech('Html5').prototype.emitTapEvents = function() {};
