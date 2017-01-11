@@ -26,4 +26,10 @@ pageflow.ConfigurationEditorTabView.groups.define('background', function(options
     visibleBindingValue: 'video',
     fileSelectionHandlerOptions: options
   });
+  this.input(prefix + 'mobile_poster_image_id', pageflow.FileInputView, {
+    collection: pageflow.imageFiles,
+    visibleBinding: backgroundTypeProperty,
+    visibleBindingValue: 'video',
+    fileSelectionHandlerOptions: options
+  });
 });
