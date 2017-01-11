@@ -114,3 +114,11 @@
 .js .non_js_video {
   display: none;
 }
+
+.videoPage {
+  @include desktop {
+    .background_image {
+      display: none;
+    }
+  }
+}
