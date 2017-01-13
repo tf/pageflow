@@ -1,6 +1,18 @@
-video::-webkit-media-text-track-display,
-.vjs-text-track-display div {
+// scss-lint:disable ImportantRule
+
+%text_track_display {
   font-size: 27px !important;
   font-family: $standard-font !important;
   line-height: 40px  !important;
+}
+
+.vjs-paused %text_track_display {
+  @include transition(opacity 0.2s, visibility 0.2s);
+  opacity: 0;
+  visibility: hidden !important;
+}
+
+video::-webkit-media-text-track-display,
+.vjs-text-track-display div {
+  @extend %text_track_display;
 }
