@@ -1,6 +1,7 @@
 .videoWrapper {
   @extend %pageflow_widget_margin_right !optional;
 
+  overflow: hidden;
 //  @include desktop {
     position: relative;
     height: 100%;
