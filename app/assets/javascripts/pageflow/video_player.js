@@ -8,6 +8,7 @@
 //= require ./video_player/prebuffering
 //= require ./video_player/buffer_underrun_waiting
 //= require ./video_player/request_native_player_on_phone_method
+//= require ./video_player/cue_settings_methods
 //= require ./video_player/filter_sources
 //= require ./video_player/lazy
 
@@ -19,6 +20,7 @@ pageflow.VideoPlayer = function(element, options) {
 
   pageflow.VideoPlayer.prebuffering(player);
   pageflow.VideoPlayer.requestNativePlayerOnPhoneMethod(player);
+  pageflow.VideoPlayer.cueSettingsMethods(player);
 
   if (options.mediaEvents) {
     pageflow.VideoPlayer.mediaEvents(player, options.context);
