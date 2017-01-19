@@ -31,6 +31,15 @@ $slim-player-controls-progress-bar-load-progress-color: rgba(255, 255, 255, 0.2)
 
     @include phone {
       z-index: 2;
+
+      &.with_quality_menu_present,
+      &.with_text_tracks_menu_present {
+        padding-right: 60px;
+      }
+
+      &.with_quality_menu_present.with_text_tracks_menu_present {
+        padding-right: 110px;
+      }
     }
   }
 
@@ -131,15 +140,21 @@ $slim-player-controls-progress-bar-load-progress-color: rgba(255, 255, 255, 0.2)
     display: none;
   }
 
+  &-progress {
+    position: relative;
+  }
+
   &-progress_bar {
     position: absolute;
-    bottom: 55px;
-    left: 16px;
-    right: 20px;
+    bottom: 40px;
+    left: -4px;
+    right: 0;
     height: 20px;
 
     @include phone {
-      display: none;
+      bottom: 0;
+      left: 30px;
+      right: 80px;
     }
 
     &:before {
@@ -229,9 +244,19 @@ $slim-player-controls-progress-bar-load-progress-color: rgba(255, 255, 255, 0.2)
   &-time_separator,
   &-duration,
   &-skip_button,
-  &-menu_bar,
-  &-loading_spinner {
+  &-menu_bar {
     @include transition(opacity 0.2s linear, visibility 0.2s linear);
+  }
+
+  &-progress_bar,
+  &-current_time,
+  &-time_separator,
+  &-duration,
+  &-skip_button,
+  &-menu_bar {
+    .has_native_video_player & {
+      display: none;
+    }
   }
 
   &-container-paused {
@@ -240,8 +265,7 @@ $slim-player-controls-progress-bar-load-progress-color: rgba(255, 255, 255, 0.2)
     %player_controls-time_separator,
     %player_controls-duration,
     %player_controls-skip_button,
-    %player_controls-menu_bar,
-    %player_controls-loading_spinner {
+    %player_controls-menu_bar {
       opacity: 0;
       visibility: hidden;
       @include transition-delay(0.2s);
