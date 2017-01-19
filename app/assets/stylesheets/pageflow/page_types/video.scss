@@ -1,6 +1,6 @@
 @import "./video/content_hiding";
 
-.has_phone_platform .page .videoPage .videoWrapper {
+.has_iphone_platform .page .videoPage .videoWrapper {
   margin-right: 0;
   position: initial;
   height: 100%;
@@ -115,10 +115,6 @@
   display: none;
 }
 
-.videoPage {
-  @include desktop {
-    .background_image {
-      display: none;
-    }
-  }
+.has_no_iphone_platform .videoPage .background_image {
+  display: none;
 }
