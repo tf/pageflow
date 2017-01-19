@@ -28,3 +28,7 @@ pageflow.browser.feature('mute video autoplay support', function(has) {
     }, 300);
   }).promise();
 });
+
+pageflow.browser.feature('autoplay support', function(has) {
+  return has.not('mobile platform');
+});
