@@ -1,9 +1,13 @@
-pageflow.VideoPlayer.requestNativePlayerOnPhoneMethod = function(player) {
+pageflow.VideoPlayer.fullscreenDuringPhonePlayback = function(player) {
   var fullscreenChangeEvent = 'fullscreenchange mozfullscreenchange webkitfullscreenchange';
+  var originalPlay = player.play;
 
-  player.requestNativePlayerOnPhone = function() {
-    if (pageflow.browser.has('phone platform')) {
-      var el = player.tech({IWillNotUseThisInPlugins: true}).el();
+  player.play = function() {
+    if (pageflow.browser.has('phone platform') &&
+        !pageflow.browser.has('iphone platform') &&
+        !player.isAudio()) {
+
+      var el = $(player.tech({IWillNotUseThisInPlugins: true}).el()).parents('section')[0];
 
       if (el.requestFullscreen) {
         el.requestFullscreen();
@@ -19,7 +23,21 @@ pageflow.VideoPlayer.requestNativePlayerOnPhoneMethod = function(player) {
       }
 
       $(document).on(fullscreenChangeEvent, pauseOnExitFullscreen);
+
+      player.one('pause', function() {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+        else if (document.mozExitFullScreen) {
+          document.mozExitFullScreen();
+        }
+        else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        }
+      });
     }
+
+    originalPlay.apply(this, arguments);
   };
 
   function pauseOnExitFullscreen() {
