@@ -56,6 +56,7 @@
 //= require ./multimedia_alert
 //= require ./native_scrolling
 //= require ./focus_outline
+//= require ./phone_landscape_fullscreen
 
 //= require ./settings
 
