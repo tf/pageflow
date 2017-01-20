@@ -248,13 +248,13 @@ $slim-player-controls-progress-bar-load-progress-color: rgba(255, 255, 255, 0.2)
     @include transition(opacity 0.2s linear, visibility 0.2s linear);
   }
 
-  &-progress_bar,
-  &-current_time,
-  &-time_separator,
-  &-duration,
-  &-skip_button,
-  &-menu_bar {
-    .has_native_video_player & {
+  .has_native_video_player &-container-video {
+    %player_controls-progress_bar,
+    %player_controls-current_time,
+    %player_controls-time_separator,
+    %player_controls-duration,
+    %player_controls-skip_button,
+    %player_controls-menu_bar {
       display: none;
     }
   }
