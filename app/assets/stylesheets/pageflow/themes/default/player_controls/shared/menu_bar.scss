@@ -17,7 +17,7 @@ $player-controls-quality-menu-annotation-color: #ff0000 !default;
 
     @include transition(opacity 0.5s, visibility 0.5s);
 
-    .has_native_video_player & {
+    .has_native_video_player %player_controls-container-video & {
       display: none;
     }
   }
