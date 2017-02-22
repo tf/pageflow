@@ -1,5 +1,9 @@
+import {has} from 'utils';
+
 export default function(videoFile, quality) {
   quality = quality || 'auto';
+
+  const fallbackQuality = has('high bandwidth') ? 'high' : 'medium';
 
   if (quality == 'auto') {
     let result = [
@@ -9,7 +13,7 @@ export default function(videoFile, quality) {
       },
       {
         type: 'video/mp4',
-        src: `${videoFile.urls.high}?u=1`
+        src: `${videoFile.urls[fallbackQuality]}?u=1`
       }
     ];
 
@@ -26,7 +30,7 @@ export default function(videoFile, quality) {
   }
   else {
     if (!videoFile.urls[quality]) {
-      quality = 'high';
+      quality = fallbackQuality;
     }
 
     return [
