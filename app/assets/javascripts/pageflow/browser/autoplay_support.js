@@ -20,7 +20,6 @@ pageflow.browser.feature('mute video autoplay support', function(has) {
     });
 
     video.appendTo('body');
-    video[0].play();
 
     var timeout = setTimeout(function() {
       video.remove();
