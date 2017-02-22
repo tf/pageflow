@@ -21549,7 +21549,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	      value: function render() {
 	        return _react2.default.createElement(_MediaTag2.default, { tagName: tagName,
 
-	          sources: sources(this.props.file, this.props.quality),
+	          sources: sources(this.props.file, this.props.quality, { hasHighBandwidth: this.props.hasHighBandwidth }),
 	          tracks: (0, _textTracks.textTracksFromFiles)(this.props.textTracks.files, this.props.textTracksEnabled),
 	          poster: poster(this.props.file, this.props.posterImageFile),
 	          loop: this.props.loop,
@@ -21587,6 +21587,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	    }),
 	    quality: (0, _selectors2.setting)({ property: 'videoQuality' }),
 	    hasNativeVideoPlayer: (0, _selectors4.has)('native video player'),
+	    hasHighBandwidth: (0, _selectors4.has)('high bandwidth'),
 	    textTrackPosition: textTrackPosition
 	  }), {
 	    updateTextTrackSettings: _actions.updateTextTrackSettings
@@ -22208,15 +22209,20 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 
 	exports.default = function (videoFile, quality) {
+	  var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+	      hasHighBandwidth = _ref.hasHighBandwidth;
+
 	  quality = quality || 'auto';
 
 	  if (quality == 'auto') {
+	    var fallbackQuality = hasHighBandwidth ? 'high' : 'medium';
+
 	    var result = [{
 	      type: 'application/x-mpegURL',
 	      src: videoFile.urls['hls-playlist'] + '?u=1'
 	    }, {
 	      type: 'video/mp4',
-	      src: videoFile.urls.high + '?u=1'
+	      src: videoFile.urls[fallbackQuality] + '?u=1'
 	    }];
 
 	    if (videoFile.urls['dash-playlist']) {
