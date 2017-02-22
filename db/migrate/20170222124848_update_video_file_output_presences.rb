@@ -4,7 +4,6 @@ class UpdateVideoFileOutputPresences < ActiveRecord::Migration
       UPDATE pageflow_video_files
         SET output_presences = '{"high":true,"medium":true,"low":true}'
         WHERE output_presences IS NULL;
-      );
     SQL
   end
 
