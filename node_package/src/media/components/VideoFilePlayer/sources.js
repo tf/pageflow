@@ -1,11 +1,9 @@
-import {has} from 'utils';
-
-export default function(videoFile, quality) {
+export default function(videoFile, quality, {hasHighBandwidth} = {}) {
   quality = quality || 'auto';
 
-  const fallbackQuality = has('high bandwidth') ? 'high' : 'medium';
-
   if (quality == 'auto') {
+    let fallbackQuality = hasHighBandwidth ? 'high' : 'medium';
+
     let result = [
       {
         type: 'application/x-mpegURL',
@@ -30,7 +28,7 @@ export default function(videoFile, quality) {
   }
   else {
     if (!videoFile.urls[quality]) {
-      quality = fallbackQuality;
+      quality = 'high';
     }
 
     return [
