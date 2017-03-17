@@ -24,40 +24,7 @@ export default function memoizedSelector(...args) {
 
 export function combine(selectors, name) {
   return mark(function combinedSelectorCreator() {
-    const s = unwrapAll(replaceScalarsWithConstantFunctions(selectors));
-    const keys = Object.keys(s);
-
-    const i = keys.map(key => s[key]);
-
-    let last;
-
-    return createSelector(
-      state => state.__pages_connectedId,
-      ...i,
-      function(cid, ...r) {
-        if (last) {
-          const changed = [];
-
-          r.forEach((rr, i) => {
-            if (rr !== last[i]) {
-              changed.push(keys[i]);
-            }
-          });
-
-          console.log('calc', name, cid, changed);
-        }
-        else {
-          console.log('calc', name, cid);
-        }
-
-        last = r;
-
-        return keys.reduce((result, key, i) => {
-          result[key]= r [i];
-          return result;
-        }, {});
-      }
-    );
+    return createStructuredSelector(unwrapAll(replaceScalarsWithConstantFunctions(selectors)));
   });
 }
 
