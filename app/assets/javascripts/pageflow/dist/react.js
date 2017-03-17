@@ -8205,33 +8205,33 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var components = _interopRequireWildcard(_components);
 
-	var _selectors = __webpack_require__(433);
+	var _selectors = __webpack_require__(443);
 
 	var selectors = _interopRequireWildcard(_selectors);
 
-	var _media = __webpack_require__(439);
+	var _media = __webpack_require__(449);
 
-	var _interactivePageBackground = __webpack_require__(478);
+	var _interactivePageBackground = __webpack_require__(488);
 
 	var _pages = __webpack_require__(310);
 
-	var _registerPageType = __webpack_require__(483);
+	var _registerPageType = __webpack_require__(493);
 
 	var _registerPageType2 = _interopRequireDefault(_registerPageType);
 
-	var _registerPageTypeWithDefaultBackground = __webpack_require__(485);
+	var _registerPageTypeWithDefaultBackground = __webpack_require__(495);
 
 	var _registerPageTypeWithDefaultBackground2 = _interopRequireDefault(_registerPageTypeWithDefaultBackground);
 
-	var _registerWidgetType = __webpack_require__(486);
+	var _registerWidgetType = __webpack_require__(496);
 
 	var _registerWidgetType2 = _interopRequireDefault(_registerWidgetType);
 
-	var _mapping = __webpack_require__(404);
+	var _mapping = __webpack_require__(414);
 
 	var _mapping2 = _interopRequireDefault(_mapping);
 
-	var _Container = __webpack_require__(407);
+	var _Container = __webpack_require__(417);
 
 	var _Container2 = _interopRequireDefault(_Container);
 
@@ -8243,19 +8243,19 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _reactRedux = __webpack_require__(359);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
-	var _ServerSidePage = __webpack_require__(487);
+	var _ServerSidePage = __webpack_require__(497);
 
 	var _ServerSidePage2 = _interopRequireDefault(_ServerSidePage);
 
-	var _builtInPageTypes = __webpack_require__(515);
+	var _builtInPageTypes = __webpack_require__(525);
 
-	var _pageflow = __webpack_require__(521);
+	var _pageflow = __webpack_require__(531);
 
 	var _pageflow2 = _interopRequireDefault(_pageflow);
 
-	var _boot = __webpack_require__(488);
+	var _boot = __webpack_require__(498);
 
 	var _boot2 = _interopRequireDefault(_boot);
 
@@ -8535,63 +8535,63 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _PageBackgroundImage2 = _interopRequireDefault(_PageBackgroundImage);
 
-	var _PageShadow = __webpack_require__(384);
+	var _PageShadow = __webpack_require__(394);
 
 	var _PageShadow2 = _interopRequireDefault(_PageShadow);
 
-	var _PageContent = __webpack_require__(385);
+	var _PageContent = __webpack_require__(395);
 
 	var _PageContent2 = _interopRequireDefault(_PageContent);
 
-	var _PageForeground = __webpack_require__(386);
+	var _PageForeground = __webpack_require__(396);
 
 	var _PageForeground2 = _interopRequireDefault(_PageForeground);
 
-	var _PageScroller = __webpack_require__(387);
+	var _PageScroller = __webpack_require__(397);
 
 	var _PageScroller2 = _interopRequireDefault(_PageScroller);
 
-	var _PageHeader = __webpack_require__(389);
+	var _PageHeader = __webpack_require__(399);
 
 	var _PageHeader2 = _interopRequireDefault(_PageHeader);
 
-	var _PageText = __webpack_require__(390);
+	var _PageText = __webpack_require__(400);
 
 	var _PageText2 = _interopRequireDefault(_PageText);
 
-	var _PageLink = __webpack_require__(391);
+	var _PageLink = __webpack_require__(401);
 
 	var _PageLink2 = _interopRequireDefault(_PageLink);
 
-	var _PageThumbnail = __webpack_require__(393);
+	var _PageThumbnail = __webpack_require__(403);
 
 	var _PageThumbnail2 = _interopRequireDefault(_PageThumbnail);
 
-	var _LazyLoadedPageThumbnail = __webpack_require__(398);
+	var _LazyLoadedPageThumbnail = __webpack_require__(408);
 
 	var _LazyLoadedPageThumbnail2 = _interopRequireDefault(_LazyLoadedPageThumbnail);
 
-	var _PlayerControls = __webpack_require__(399);
+	var _PlayerControls = __webpack_require__(409);
 
 	var _PlayerControls2 = _interopRequireDefault(_PlayerControls);
 
-	var _CloseButton = __webpack_require__(431);
+	var _CloseButton = __webpack_require__(441);
 
 	var _CloseButton2 = _interopRequireDefault(_CloseButton);
 
-	var _MenuBar = __webpack_require__(427);
+	var _MenuBar = __webpack_require__(437);
 
 	var _MenuBar2 = _interopRequireDefault(_MenuBar);
 
-	var _Icon = __webpack_require__(403);
+	var _Icon = __webpack_require__(413);
 
 	var _Icon2 = _interopRequireDefault(_Icon);
 
-	var _editorOnly = __webpack_require__(432);
+	var _editorOnly = __webpack_require__(442);
 
 	var _editorOnly2 = _interopRequireDefault(_editorOnly);
 
-	var _reactDraggable = __webpack_require__(419);
+	var _reactDraggable = __webpack_require__(429);
 
 	var _reactDraggable2 = _interopRequireDefault(_reactDraggable);
 
@@ -8840,7 +8840,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _LazyBackgroundImage2 = _interopRequireDefault(_LazyBackgroundImage);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8926,11 +8926,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _selectors = __webpack_require__(337);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = (0, _pages.connectInPage)((0, _utils.combine)({
+	exports.default = (0, _pages.connectInPage)((0, _utils.combineSelectors)({
 	  loaded: (0, _selectors.pageIsPreloaded)()
 	}))(_BackgroundImage2.default);
 
@@ -9064,11 +9064,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _createPageSaga2 = _interopRequireDefault(_createPageSaga);
 
-	var _createPageType = __webpack_require__(380);
+	var _createPageType = __webpack_require__(390);
 
 	var _createPageType2 = _interopRequireDefault(_createPageType);
 
-	var _mergePageTypes = __webpack_require__(383);
+	var _mergePageTypes = __webpack_require__(393);
 
 	var _mergePageTypes2 = _interopRequireDefault(_mergePageTypes);
 
@@ -10535,11 +10535,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _selectors = __webpack_require__(337);
 
-	var _scheduleUnprepare = __webpack_require__(378);
+	var _scheduleUnprepare = __webpack_require__(388);
 
 	var _scheduleUnprepare2 = _interopRequireDefault(_scheduleUnprepare);
 
-	var _updating = __webpack_require__(379);
+	var _updating = __webpack_require__(389);
 
 	var _updating2 = _interopRequireDefault(_updating);
 
@@ -10561,9 +10561,6 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  value: true
 	});
 	exports.selector = undefined;
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	exports.pageAttribute = pageAttribute;
 	exports.pageAttributes = pageAttributes;
 	exports.pageState = pageState;
@@ -10575,24 +10572,26 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _collections = __webpack_require__(338);
 
+	var _utils = __webpack_require__(380);
+
 	var selector = exports.selector = (0, _collections.createItemSelector)('pages');
 
 	function pageAttribute(property, options) {
-	  return selector(_extends({ map: function map(page) {
-	      return page.attributes[property];
-	    } }, options));
+	  return (0, _utils.memoizedSelector)(selector(options), function (page) {
+	    return page && page.attributes[property];
+	  });
 	}
 
 	function pageAttributes(options) {
-	  return selector(_extends({ map: function map(page) {
-	      return page.attributes;
-	    } }, options));
+	  return (0, _utils.memoizedSelector)(selector(options), function (page) {
+	    return page && page.attributes;
+	  });
 	}
 
 	function pageState(property, options) {
-	  return selector(_extends({ map: function map(page) {
-	      return page.state.custom[property];
-	    } }, options));
+	  return (0, _utils.memoizedSelector)(selector(options), function (page) {
+	    return page && page.state.custom[property];
+	  });
 	}
 
 	function pageIsActive(options) {
@@ -10616,9 +10615,9 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 	function commonPageState(property, options) {
-	  return selector(_extends({ map: function map(page) {
-	      return page.state.common[property];
-	    } }, options));
+	  return (0, _utils.memoizedSelector)(selector(options), function (page) {
+	    return page && page.state.common[property];
+	  });
 	}
 
 /***/ },
@@ -10652,11 +10651,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _createItemScopeConnector2 = _interopRequireDefault(_createItemScopeConnector);
 
-	var _createItemScopeProvider = __webpack_require__(368);
+	var _createItemScopeProvider = __webpack_require__(376);
 
 	var _createItemScopeProvider2 = _interopRequireDefault(_createItemScopeProvider);
 
-	var _watch = __webpack_require__(369);
+	var _watch = __webpack_require__(377);
 
 	var _watch2 = _interopRequireDefault(_watch);
 
@@ -10681,7 +10680,18 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 
 	exports.default = function (collectionName) {
+	  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+	      namespace = _ref.namespace;
+
 	  return function itemsSelector(state) {
+	    if (namespace) {
+	      if (!state[namespace]) {
+	        throw new Error("Cannot select from unknown namespace " + namespace + ".");
+	      }
+
+	      state = state[namespace];
+	    }
+
 	    return state[collectionName] || {};
 	  };
 	};
@@ -10697,18 +10707,26 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 
 	exports.default = function (collectionName) {
+	  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+	      namespace = _ref.namespace;
+
 	  return function () {
-	    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-	        id = _ref.id,
-	        _ref$map = _ref.map,
-	        map = _ref$map === undefined ? function (r) {
-	      return r;
-	    } : _ref$map;
+	    var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+	        id = _ref2.id;
 
 	    return function (state, props) {
 	      var modelId = id;
+	      var namespacedState = state;
 
-	      if (!state[collectionName]) {
+	      if (namespace) {
+	        if (!state[namespace]) {
+	          throw new Error('Cannot select from unknown namespace ' + namespace + '.');
+	        }
+
+	        namespacedState = state[namespace];
+	      }
+
+	      if (!namespacedState[collectionName]) {
 	        throw new Error('Cannot select from unknown collection ' + collectionName + '.');
 	      }
 
@@ -10722,9 +10740,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	        return null;
 	      }
 
-	      var model = state[collectionName][modelId];
-
-	      return model && map(model);
+	      return namespacedState[collectionName][modelId];
 	    };
 	  };
 	};
@@ -13305,7 +13321,15 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	  return function connectInItemScope(mapStateToProps, mapDispatchToProps, mergeProps) {
 	    var connecter = (0, _reactRedux.connect)(mapStateToProps ? function (state, props) {
-	      return mapStateToProps((0, _itemScopeHelpers.addItemScope)(state, collectionName, props[itemScopeProperty]), props);
+	      var result = mapStateToProps((0, _itemScopeHelpers.addItemScope)(state, collectionName, props[itemScopeProperty]), props);
+
+	      if (typeof result == 'function') {
+	        return function (state, props) {
+	          return result((0, _itemScopeHelpers.addItemScope)(state, collectionName, props[itemScopeProperty]), props);
+	        };
+	      }
+
+	      return result;
 	    } : null, mapDispatchToProps ? function (dispatch, props) {
 	      var wrappedDispatch = function wrappedDispatch(action) {
 	        (0, _itemActionHelpers.ensureItemActionId)(action, collectionName, props[itemScopeProperty]);
@@ -13379,20 +13403,25 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	'use strict';
 
 	exports.__esModule = true;
-	exports.connect = exports.Provider = undefined;
+	exports.connect = exports.connectAdvanced = exports.Provider = undefined;
 
 	var _Provider = __webpack_require__(360);
 
 	var _Provider2 = _interopRequireDefault(_Provider);
 
-	var _connect = __webpack_require__(363);
+	var _connectAdvanced = __webpack_require__(363);
+
+	var _connectAdvanced2 = _interopRequireDefault(_connectAdvanced);
+
+	var _connect = __webpack_require__(367);
 
 	var _connect2 = _interopRequireDefault(_connect);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.Provider = _Provider2["default"];
-	exports.connect = _connect2["default"];
+	exports.Provider = _Provider2.default;
+	exports.connectAdvanced = _connectAdvanced2.default;
+	exports.connect = _connect2.default;
 
 /***/ },
 /* 360 */
@@ -13401,19 +13430,17 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	'use strict';
 
 	exports.__esModule = true;
-	exports["default"] = undefined;
+	exports.default = undefined;
 
 	var _react = __webpack_require__(304);
 
-	var _storeShape = __webpack_require__(361);
-
-	var _storeShape2 = _interopRequireDefault(_storeShape);
+	var _PropTypes = __webpack_require__(361);
 
 	var _warning = __webpack_require__(362);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -13428,14 +13455,14 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  }
 	  didWarnAboutReceivingStore = true;
 
-	  (0, _warning2["default"])('<Provider> does not support changing `store` on the fly. ' + 'It is most likely that you see this error because you updated to ' + 'Redux 2.x and React Redux 2.x which no longer hot reload reducers ' + 'automatically. See https://github.com/reactjs/react-redux/releases/' + 'tag/v2.0.0 for the migration instructions.');
+	  (0, _warning2.default)('<Provider> does not support changing `store` on the fly. ' + 'It is most likely that you see this error because you updated to ' + 'Redux 2.x and React Redux 2.x which no longer hot reload reducers ' + 'automatically. See https://github.com/reactjs/react-redux/releases/' + 'tag/v2.0.0 for the migration instructions.');
 	}
 
 	var Provider = function (_Component) {
 	  _inherits(Provider, _Component);
 
 	  Provider.prototype.getChildContext = function getChildContext() {
-	    return { store: this.store };
+	    return { store: this.store, storeSubscription: null };
 	  };
 
 	  function Provider(props, context) {
@@ -13454,7 +13481,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  return Provider;
 	}(_react.Component);
 
-	exports["default"] = Provider;
+	exports.default = Provider;
 
 
 	if (false) {
@@ -13470,12 +13497,14 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 	Provider.propTypes = {
-	  store: _storeShape2["default"].isRequired,
+	  store: _PropTypes.storeShape.isRequired,
 	  children: _react.PropTypes.element.isRequired
 	};
 	Provider.childContextTypes = {
-	  store: _storeShape2["default"].isRequired
+	  store: _PropTypes.storeShape.isRequired,
+	  storeSubscription: _PropTypes.subscriptionShape
 	};
+	Provider.displayName = 'Provider';
 
 /***/ },
 /* 361 */
@@ -13484,10 +13513,18 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	'use strict';
 
 	exports.__esModule = true;
+	exports.storeShape = exports.subscriptionShape = undefined;
 
 	var _react = __webpack_require__(304);
 
-	exports["default"] = _react.PropTypes.shape({
+	var subscriptionShape = exports.subscriptionShape = _react.PropTypes.shape({
+	  trySubscribe: _react.PropTypes.func.isRequired,
+	  tryUnsubscribe: _react.PropTypes.func.isRequired,
+	  notifyNestedSubs: _react.PropTypes.func.isRequired,
+	  isSubscribed: _react.PropTypes.func.isRequired
+	});
+
+	var storeShape = exports.storeShape = _react.PropTypes.shape({
 	  subscribe: _react.PropTypes.func.isRequired,
 	  dispatch: _react.PropTypes.func.isRequired,
 	  getState: _react.PropTypes.func.isRequired
@@ -13500,7 +13537,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	'use strict';
 
 	exports.__esModule = true;
-	exports["default"] = warning;
+	exports.default = warning;
 	/**
 	 * Prints a warning in the console if it exists.
 	 *
@@ -13533,39 +13570,25 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	exports["default"] = connect;
+	exports.default = connectAdvanced;
 
-	var _react = __webpack_require__(304);
-
-	var _storeShape = __webpack_require__(361);
-
-	var _storeShape2 = _interopRequireDefault(_storeShape);
-
-	var _shallowEqual = __webpack_require__(364);
-
-	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
-
-	var _wrapActionCreators = __webpack_require__(365);
-
-	var _wrapActionCreators2 = _interopRequireDefault(_wrapActionCreators);
-
-	var _warning = __webpack_require__(362);
-
-	var _warning2 = _interopRequireDefault(_warning);
-
-	var _isPlainObject = __webpack_require__(315);
-
-	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
-
-	var _hoistNonReactStatics = __webpack_require__(366);
+	var _hoistNonReactStatics = __webpack_require__(364);
 
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
-	var _invariant = __webpack_require__(367);
+	var _invariant = __webpack_require__(365);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	var _react = __webpack_require__(304);
+
+	var _Subscription = __webpack_require__(366);
+
+	var _Subscription2 = _interopRequireDefault(_Subscription);
+
+	var _PropTypes = __webpack_require__(361);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -13573,82 +13596,94 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var defaultMapStateToProps = function defaultMapStateToProps(state) {
-	  return {};
-	}; // eslint-disable-line no-unused-vars
-	var defaultMapDispatchToProps = function defaultMapDispatchToProps(dispatch) {
-	  return { dispatch: dispatch };
-	};
-	var defaultMergeProps = function defaultMergeProps(stateProps, dispatchProps, parentProps) {
-	  return _extends({}, parentProps, stateProps, dispatchProps);
-	};
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-	function getDisplayName(WrappedComponent) {
-	  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+	var hotReloadingVersion = 0;
+	var dummyState = {};
+	function noop() {}
+	function makeSelectorStateful(sourceSelector, store) {
+	  // wrap the selector in an object that tracks its results between runs.
+	  var selector = {
+	    run: function runComponentSelector(props) {
+	      try {
+	        var nextProps = sourceSelector(store.getState(), props);
+	        if (nextProps !== selector.props || selector.error) {
+	          selector.shouldComponentUpdate = true;
+	          selector.props = nextProps;
+	          selector.error = null;
+	        }
+	      } catch (error) {
+	        selector.shouldComponentUpdate = true;
+	        selector.error = error;
+	      }
+	    }
+	  };
+
+	  return selector;
 	}
 
-	var errorObject = { value: null };
-	function tryCatch(fn, ctx) {
-	  try {
-	    return fn.apply(ctx);
-	  } catch (e) {
-	    errorObject.value = e;
-	    return errorObject;
-	  }
-	}
+	function connectAdvanced(
+	/*
+	  selectorFactory is a func that is responsible for returning the selector function used to
+	  compute new props from state, props, and dispatch. For example:
+	     export default connectAdvanced((dispatch, options) => (state, props) => ({
+	      thing: state.things[props.thingId],
+	      saveThing: fields => dispatch(actionCreators.saveThing(props.thingId, fields)),
+	    }))(YourComponent)
+	   Access to dispatch is provided to the factory so selectorFactories can bind actionCreators
+	  outside of their selector as an optimization. Options passed to connectAdvanced are passed to
+	  the selectorFactory, along with displayName and WrappedComponent, as the second argument.
+	   Note that selectorFactory is responsible for all caching/memoization of inbound and outbound
+	  props. Do not use connectAdvanced directly without memoizing results between calls to your
+	  selector, otherwise the Connect component will re-render on every state or props change.
+	*/
+	selectorFactory) {
+	  var _contextTypes, _childContextTypes;
 
-	// Helps track hot reloading.
-	var nextVersion = 0;
+	  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+	      _ref$getDisplayName = _ref.getDisplayName,
+	      getDisplayName = _ref$getDisplayName === undefined ? function (name) {
+	    return 'ConnectAdvanced(' + name + ')';
+	  } : _ref$getDisplayName,
+	      _ref$methodName = _ref.methodName,
+	      methodName = _ref$methodName === undefined ? 'connectAdvanced' : _ref$methodName,
+	      _ref$renderCountProp = _ref.renderCountProp,
+	      renderCountProp = _ref$renderCountProp === undefined ? undefined : _ref$renderCountProp,
+	      _ref$shouldHandleStat = _ref.shouldHandleStateChanges,
+	      shouldHandleStateChanges = _ref$shouldHandleStat === undefined ? true : _ref$shouldHandleStat,
+	      _ref$storeKey = _ref.storeKey,
+	      storeKey = _ref$storeKey === undefined ? 'store' : _ref$storeKey,
+	      _ref$withRef = _ref.withRef,
+	      withRef = _ref$withRef === undefined ? false : _ref$withRef,
+	      connectOptions = _objectWithoutProperties(_ref, ['getDisplayName', 'methodName', 'renderCountProp', 'shouldHandleStateChanges', 'storeKey', 'withRef']);
 
-	function connect(mapStateToProps, mapDispatchToProps, mergeProps) {
-	  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+	  var subscriptionKey = storeKey + 'Subscription';
+	  var version = hotReloadingVersion++;
 
-	  var shouldSubscribe = Boolean(mapStateToProps);
-	  var mapState = mapStateToProps || defaultMapStateToProps;
-
-	  var mapDispatch = void 0;
-	  if (typeof mapDispatchToProps === 'function') {
-	    mapDispatch = mapDispatchToProps;
-	  } else if (!mapDispatchToProps) {
-	    mapDispatch = defaultMapDispatchToProps;
-	  } else {
-	    mapDispatch = (0, _wrapActionCreators2["default"])(mapDispatchToProps);
-	  }
-
-	  var finalMergeProps = mergeProps || defaultMergeProps;
-	  var _options$pure = options.pure,
-	      pure = _options$pure === undefined ? true : _options$pure,
-	      _options$withRef = options.withRef,
-	      withRef = _options$withRef === undefined ? false : _options$withRef;
-
-	  var checkMergedEquals = pure && finalMergeProps !== defaultMergeProps;
-
-	  // Helps track hot reloading.
-	  var version = nextVersion++;
+	  var contextTypes = (_contextTypes = {}, _contextTypes[storeKey] = _PropTypes.storeShape, _contextTypes[subscriptionKey] = _PropTypes.subscriptionShape, _contextTypes);
+	  var childContextTypes = (_childContextTypes = {}, _childContextTypes[subscriptionKey] = _PropTypes.subscriptionShape, _childContextTypes);
 
 	  return function wrapWithConnect(WrappedComponent) {
-	    var connectDisplayName = 'Connect(' + getDisplayName(WrappedComponent) + ')';
+	    (0, _invariant2.default)(typeof WrappedComponent == 'function', 'You must pass a component to the function returned by ' + ('connect. Instead received ' + JSON.stringify(WrappedComponent)));
 
-	    function checkStateShape(props, methodName) {
-	      if (!(0, _isPlainObject2["default"])(props)) {
-	        (0, _warning2["default"])(methodName + '() in ' + connectDisplayName + ' must return a plain object. ' + ('Instead received ' + props + '.'));
-	      }
-	    }
+	    var wrappedComponentName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
 
-	    function computeMergedProps(stateProps, dispatchProps, parentProps) {
-	      var mergedProps = finalMergeProps(stateProps, dispatchProps, parentProps);
-	      if (false) {
-	        checkStateShape(mergedProps, 'mergeProps');
-	      }
-	      return mergedProps;
-	    }
+	    var displayName = getDisplayName(wrappedComponentName);
+
+	    var selectorFactoryOptions = _extends({}, connectOptions, {
+	      getDisplayName: getDisplayName,
+	      methodName: methodName,
+	      renderCountProp: renderCountProp,
+	      shouldHandleStateChanges: shouldHandleStateChanges,
+	      storeKey: storeKey,
+	      withRef: withRef,
+	      displayName: displayName,
+	      wrappedComponentName: wrappedComponentName,
+	      WrappedComponent: WrappedComponent
+	    });
 
 	    var Connect = function (_Component) {
 	      _inherits(Connect, _Component);
-
-	      Connect.prototype.shouldComponentUpdate = function shouldComponentUpdate() {
-	        return !pure || this.haveOwnPropsChanged || this.hasStoreStateChanged;
-	      };
 
 	      function Connect(props, context) {
 	        _classCallCheck(this, Connect);
@@ -13656,323 +13691,171 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	        var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
 
 	        _this.version = version;
-	        _this.store = props.store || context.store;
+	        _this.state = {};
+	        _this.renderCount = 0;
+	        _this.store = props[storeKey] || context[storeKey];
+	        _this.propsMode = Boolean(props[storeKey]);
+	        _this.setWrappedInstance = _this.setWrappedInstance.bind(_this);
 
-	        (0, _invariant2["default"])(_this.store, 'Could not find "store" in either the context or ' + ('props of "' + connectDisplayName + '". ') + 'Either wrap the root component in a <Provider>, ' + ('or explicitly pass "store" as a prop to "' + connectDisplayName + '".'));
+	        (0, _invariant2.default)(_this.store, 'Could not find "' + storeKey + '" in either the context or props of ' + ('"' + displayName + '". Either wrap the root component in a <Provider>, ') + ('or explicitly pass "' + storeKey + '" as a prop to "' + displayName + '".'));
 
-	        var storeState = _this.store.getState();
-	        _this.state = { storeState: storeState };
-	        _this.clearCache();
+	        _this.initSelector();
+	        _this.initSubscription();
 	        return _this;
 	      }
 
-	      Connect.prototype.computeStateProps = function computeStateProps(store, props) {
-	        if (!this.finalMapStateToProps) {
-	          return this.configureFinalMapState(store, props);
-	        }
+	      Connect.prototype.getChildContext = function getChildContext() {
+	        var _ref2;
 
-	        var state = store.getState();
-	        var stateProps = this.doStatePropsDependOnOwnProps ? this.finalMapStateToProps(state, props) : this.finalMapStateToProps(state);
-
-	        if (false) {
-	          checkStateShape(stateProps, 'mapStateToProps');
-	        }
-	        return stateProps;
-	      };
-
-	      Connect.prototype.configureFinalMapState = function configureFinalMapState(store, props) {
-	        var mappedState = mapState(store.getState(), props);
-	        var isFactory = typeof mappedState === 'function';
-
-	        this.finalMapStateToProps = isFactory ? mappedState : mapState;
-	        this.doStatePropsDependOnOwnProps = this.finalMapStateToProps.length !== 1;
-
-	        if (isFactory) {
-	          return this.computeStateProps(store, props);
-	        }
-
-	        if (false) {
-	          checkStateShape(mappedState, 'mapStateToProps');
-	        }
-	        return mappedState;
-	      };
-
-	      Connect.prototype.computeDispatchProps = function computeDispatchProps(store, props) {
-	        if (!this.finalMapDispatchToProps) {
-	          return this.configureFinalMapDispatch(store, props);
-	        }
-
-	        var dispatch = store.dispatch;
-
-	        var dispatchProps = this.doDispatchPropsDependOnOwnProps ? this.finalMapDispatchToProps(dispatch, props) : this.finalMapDispatchToProps(dispatch);
-
-	        if (false) {
-	          checkStateShape(dispatchProps, 'mapDispatchToProps');
-	        }
-	        return dispatchProps;
-	      };
-
-	      Connect.prototype.configureFinalMapDispatch = function configureFinalMapDispatch(store, props) {
-	        var mappedDispatch = mapDispatch(store.dispatch, props);
-	        var isFactory = typeof mappedDispatch === 'function';
-
-	        this.finalMapDispatchToProps = isFactory ? mappedDispatch : mapDispatch;
-	        this.doDispatchPropsDependOnOwnProps = this.finalMapDispatchToProps.length !== 1;
-
-	        if (isFactory) {
-	          return this.computeDispatchProps(store, props);
-	        }
-
-	        if (false) {
-	          checkStateShape(mappedDispatch, 'mapDispatchToProps');
-	        }
-	        return mappedDispatch;
-	      };
-
-	      Connect.prototype.updateStatePropsIfNeeded = function updateStatePropsIfNeeded() {
-	        var nextStateProps = this.computeStateProps(this.store, this.props);
-	        if (this.stateProps && (0, _shallowEqual2["default"])(nextStateProps, this.stateProps)) {
-	          return false;
-	        }
-
-	        this.stateProps = nextStateProps;
-	        return true;
-	      };
-
-	      Connect.prototype.updateDispatchPropsIfNeeded = function updateDispatchPropsIfNeeded() {
-	        var nextDispatchProps = this.computeDispatchProps(this.store, this.props);
-	        if (this.dispatchProps && (0, _shallowEqual2["default"])(nextDispatchProps, this.dispatchProps)) {
-	          return false;
-	        }
-
-	        this.dispatchProps = nextDispatchProps;
-	        return true;
-	      };
-
-	      Connect.prototype.updateMergedPropsIfNeeded = function updateMergedPropsIfNeeded() {
-	        var nextMergedProps = computeMergedProps(this.stateProps, this.dispatchProps, this.props);
-	        if (this.mergedProps && checkMergedEquals && (0, _shallowEqual2["default"])(nextMergedProps, this.mergedProps)) {
-	          return false;
-	        }
-
-	        this.mergedProps = nextMergedProps;
-	        return true;
-	      };
-
-	      Connect.prototype.isSubscribed = function isSubscribed() {
-	        return typeof this.unsubscribe === 'function';
-	      };
-
-	      Connect.prototype.trySubscribe = function trySubscribe() {
-	        if (shouldSubscribe && !this.unsubscribe) {
-	          this.unsubscribe = this.store.subscribe(this.handleChange.bind(this));
-	          this.handleChange();
-	        }
-	      };
-
-	      Connect.prototype.tryUnsubscribe = function tryUnsubscribe() {
-	        if (this.unsubscribe) {
-	          this.unsubscribe();
-	          this.unsubscribe = null;
-	        }
+	        // If this component received store from props, its subscription should be transparent
+	        // to any descendants receiving store+subscription from context; it passes along
+	        // subscription passed to it. Otherwise, it shadows the parent subscription, which allows
+	        // Connect to control ordering of notifications to flow top-down.
+	        var subscription = this.propsMode ? null : this.subscription;
+	        return _ref2 = {}, _ref2[subscriptionKey] = subscription || this.context[subscriptionKey], _ref2;
 	      };
 
 	      Connect.prototype.componentDidMount = function componentDidMount() {
-	        this.trySubscribe();
+	        if (!shouldHandleStateChanges) return;
+
+	        // componentWillMount fires during server side rendering, but componentDidMount and
+	        // componentWillUnmount do not. Because of this, trySubscribe happens during ...didMount.
+	        // Otherwise, unsubscription would never take place during SSR, causing a memory leak.
+	        // To handle the case where a child component may have triggered a state change by
+	        // dispatching an action in its componentWillMount, we have to re-run the select and maybe
+	        // re-render.
+	        this.subscription.trySubscribe();
+	        this.selector.run(this.props);
+	        if (this.selector.shouldComponentUpdate) this.forceUpdate();
 	      };
 
 	      Connect.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	        if (!pure || !(0, _shallowEqual2["default"])(nextProps, this.props)) {
-	          this.haveOwnPropsChanged = true;
-	        }
+	        this.selector.run(nextProps);
+	      };
+
+	      Connect.prototype.shouldComponentUpdate = function shouldComponentUpdate() {
+	        return this.selector.shouldComponentUpdate;
 	      };
 
 	      Connect.prototype.componentWillUnmount = function componentWillUnmount() {
-	        this.tryUnsubscribe();
-	        this.clearCache();
-	      };
-
-	      Connect.prototype.clearCache = function clearCache() {
-	        this.dispatchProps = null;
-	        this.stateProps = null;
-	        this.mergedProps = null;
-	        this.haveOwnPropsChanged = true;
-	        this.hasStoreStateChanged = true;
-	        this.haveStatePropsBeenPrecalculated = false;
-	        this.statePropsPrecalculationError = null;
-	        this.renderedElement = null;
-	        this.finalMapDispatchToProps = null;
-	        this.finalMapStateToProps = null;
-	      };
-
-	      Connect.prototype.handleChange = function handleChange() {
-	        if (!this.unsubscribe) {
-	          return;
-	        }
-
-	        var storeState = this.store.getState();
-	        var prevStoreState = this.state.storeState;
-	        if (pure && prevStoreState === storeState) {
-	          return;
-	        }
-
-	        if (pure && !this.doStatePropsDependOnOwnProps) {
-	          var haveStatePropsChanged = tryCatch(this.updateStatePropsIfNeeded, this);
-	          if (!haveStatePropsChanged) {
-	            return;
-	          }
-	          if (haveStatePropsChanged === errorObject) {
-	            this.statePropsPrecalculationError = errorObject.value;
-	          }
-	          this.haveStatePropsBeenPrecalculated = true;
-	        }
-
-	        this.hasStoreStateChanged = true;
-	        this.setState({ storeState: storeState });
+	        if (this.subscription) this.subscription.tryUnsubscribe();
+	        this.subscription = null;
+	        this.notifyNestedSubs = noop;
+	        this.store = null;
+	        this.selector.run = noop;
+	        this.selector.shouldComponentUpdate = false;
 	      };
 
 	      Connect.prototype.getWrappedInstance = function getWrappedInstance() {
-	        (0, _invariant2["default"])(withRef, 'To access the wrapped instance, you need to specify ' + '{ withRef: true } as the fourth argument of the connect() call.');
+	        (0, _invariant2.default)(withRef, 'To access the wrapped instance, you need to specify ' + ('{ withRef: true } in the options argument of the ' + methodName + '() call.'));
+	        return this.wrappedInstance;
+	      };
 
-	        return this.refs.wrappedInstance;
+	      Connect.prototype.setWrappedInstance = function setWrappedInstance(ref) {
+	        this.wrappedInstance = ref;
+	      };
+
+	      Connect.prototype.initSelector = function initSelector() {
+	        var sourceSelector = selectorFactory(this.store.dispatch, selectorFactoryOptions);
+	        this.selector = makeSelectorStateful(sourceSelector, this.store);
+	        this.selector.run(this.props);
+	      };
+
+	      Connect.prototype.initSubscription = function initSubscription() {
+	        if (!shouldHandleStateChanges) return;
+
+	        // parentSub's source should match where store came from: props vs. context. A component
+	        // connected to the store via props shouldn't use subscription from context, or vice versa.
+	        var parentSub = (this.propsMode ? this.props : this.context)[subscriptionKey];
+	        this.subscription = new _Subscription2.default(this.store, parentSub, this.onStateChange.bind(this));
+
+	        // `notifyNestedSubs` is duplicated to handle the case where the component is  unmounted in
+	        // the middle of the notification loop, where `this.subscription` will then be null. An
+	        // extra null check every change can be avoided by copying the method onto `this` and then
+	        // replacing it with a no-op on unmount. This can probably be avoided if Subscription's
+	        // listeners logic is changed to not call listeners that have been unsubscribed in the
+	        // middle of the notification loop.
+	        this.notifyNestedSubs = this.subscription.notifyNestedSubs.bind(this.subscription);
+	      };
+
+	      Connect.prototype.onStateChange = function onStateChange() {
+	        this.selector.run(this.props);
+
+	        if (!this.selector.shouldComponentUpdate) {
+	          this.notifyNestedSubs();
+	        } else {
+	          this.componentDidUpdate = this.notifyNestedSubsOnComponentDidUpdate;
+	          this.setState(dummyState);
+	        }
+	      };
+
+	      Connect.prototype.notifyNestedSubsOnComponentDidUpdate = function notifyNestedSubsOnComponentDidUpdate() {
+	        // `componentDidUpdate` is conditionally implemented when `onStateChange` determines it
+	        // needs to notify nested subs. Once called, it unimplements itself until further state
+	        // changes occur. Doing it this way vs having a permanent `componentDidMount` that does
+	        // a boolean check every time avoids an extra method call most of the time, resulting
+	        // in some perf boost.
+	        this.componentDidUpdate = undefined;
+	        this.notifyNestedSubs();
+	      };
+
+	      Connect.prototype.isSubscribed = function isSubscribed() {
+	        return Boolean(this.subscription) && this.subscription.isSubscribed();
+	      };
+
+	      Connect.prototype.addExtraProps = function addExtraProps(props) {
+	        if (!withRef && !renderCountProp && !(this.propsMode && this.subscription)) return props;
+	        // make a shallow copy so that fields added don't leak to the original selector.
+	        // this is especially important for 'ref' since that's a reference back to the component
+	        // instance. a singleton memoized selector would then be holding a reference to the
+	        // instance, preventing the instance from being garbage collected, and that would be bad
+	        var withExtras = _extends({}, props);
+	        if (withRef) withExtras.ref = this.setWrappedInstance;
+	        if (renderCountProp) withExtras[renderCountProp] = this.renderCount++;
+	        if (this.propsMode && this.subscription) withExtras[subscriptionKey] = this.subscription;
+	        return withExtras;
 	      };
 
 	      Connect.prototype.render = function render() {
-	        var haveOwnPropsChanged = this.haveOwnPropsChanged,
-	            hasStoreStateChanged = this.hasStoreStateChanged,
-	            haveStatePropsBeenPrecalculated = this.haveStatePropsBeenPrecalculated,
-	            statePropsPrecalculationError = this.statePropsPrecalculationError,
-	            renderedElement = this.renderedElement;
+	        var selector = this.selector;
+	        selector.shouldComponentUpdate = false;
 
-
-	        this.haveOwnPropsChanged = false;
-	        this.hasStoreStateChanged = false;
-	        this.haveStatePropsBeenPrecalculated = false;
-	        this.statePropsPrecalculationError = null;
-
-	        if (statePropsPrecalculationError) {
-	          throw statePropsPrecalculationError;
-	        }
-
-	        var shouldUpdateStateProps = true;
-	        var shouldUpdateDispatchProps = true;
-	        if (pure && renderedElement) {
-	          shouldUpdateStateProps = hasStoreStateChanged || haveOwnPropsChanged && this.doStatePropsDependOnOwnProps;
-	          shouldUpdateDispatchProps = haveOwnPropsChanged && this.doDispatchPropsDependOnOwnProps;
-	        }
-
-	        var haveStatePropsChanged = false;
-	        var haveDispatchPropsChanged = false;
-	        if (haveStatePropsBeenPrecalculated) {
-	          haveStatePropsChanged = true;
-	        } else if (shouldUpdateStateProps) {
-	          haveStatePropsChanged = this.updateStatePropsIfNeeded();
-	        }
-	        if (shouldUpdateDispatchProps) {
-	          haveDispatchPropsChanged = this.updateDispatchPropsIfNeeded();
-	        }
-
-	        var haveMergedPropsChanged = true;
-	        if (haveStatePropsChanged || haveDispatchPropsChanged || haveOwnPropsChanged) {
-	          haveMergedPropsChanged = this.updateMergedPropsIfNeeded();
+	        if (selector.error) {
+	          throw selector.error;
 	        } else {
-	          haveMergedPropsChanged = false;
+	          return (0, _react.createElement)(WrappedComponent, this.addExtraProps(selector.props));
 	        }
-
-	        if (!haveMergedPropsChanged && renderedElement) {
-	          return renderedElement;
-	        }
-
-	        if (withRef) {
-	          this.renderedElement = (0, _react.createElement)(WrappedComponent, _extends({}, this.mergedProps, {
-	            ref: 'wrappedInstance'
-	          }));
-	        } else {
-	          this.renderedElement = (0, _react.createElement)(WrappedComponent, this.mergedProps);
-	        }
-
-	        return this.renderedElement;
 	      };
 
 	      return Connect;
 	    }(_react.Component);
 
-	    Connect.displayName = connectDisplayName;
 	    Connect.WrappedComponent = WrappedComponent;
-	    Connect.contextTypes = {
-	      store: _storeShape2["default"]
-	    };
-	    Connect.propTypes = {
-	      store: _storeShape2["default"]
-	    };
+	    Connect.displayName = displayName;
+	    Connect.childContextTypes = childContextTypes;
+	    Connect.contextTypes = contextTypes;
+	    Connect.propTypes = contextTypes;
 
 	    if (false) {
 	      Connect.prototype.componentWillUpdate = function componentWillUpdate() {
-	        if (this.version === version) {
-	          return;
-	        }
-
 	        // We are hot reloading!
-	        this.version = version;
-	        this.trySubscribe();
-	        this.clearCache();
+	        if (this.version !== version) {
+	          this.version = version;
+	          this.initSelector();
+
+	          if (this.subscription) this.subscription.tryUnsubscribe();
+	          this.initSubscription();
+	          if (shouldHandleStateChanges) this.subscription.trySubscribe();
+	        }
 	      };
 	    }
 
-	    return (0, _hoistNonReactStatics2["default"])(Connect, WrappedComponent);
+	    return (0, _hoistNonReactStatics2.default)(Connect, WrappedComponent);
 	  };
 	}
 
 /***/ },
 /* 364 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	exports.__esModule = true;
-	exports["default"] = shallowEqual;
-	function shallowEqual(objA, objB) {
-	  if (objA === objB) {
-	    return true;
-	  }
-
-	  var keysA = Object.keys(objA);
-	  var keysB = Object.keys(objB);
-
-	  if (keysA.length !== keysB.length) {
-	    return false;
-	  }
-
-	  // Test for A's keys different from B.
-	  var hasOwn = Object.prototype.hasOwnProperty;
-	  for (var i = 0; i < keysA.length; i++) {
-	    if (!hasOwn.call(objB, keysA[i]) || objA[keysA[i]] !== objB[keysA[i]]) {
-	      return false;
-	    }
-	  }
-
-	  return true;
-	}
-
-/***/ },
-/* 365 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports["default"] = wrapActionCreators;
-
-	var _redux = __webpack_require__(313);
-
-	function wrapActionCreators(actionCreators) {
-	  return function (dispatch) {
-	    return (0, _redux.bindActionCreators)(actionCreators, dispatch);
-	  };
-	}
-
-/***/ },
-/* 366 */
 /***/ function(module, exports) {
 
 	/**
@@ -14028,7 +13911,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 
 /***/ },
-/* 367 */
+/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14085,7 +13968,654 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 
 /***/ },
+/* 366 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	exports.__esModule = true;
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	// encapsulates the subscription logic for connecting a component to the redux store, as
+	// well as nesting subscriptions of descendant components, so that we can ensure the
+	// ancestor components re-render before descendants
+
+	var CLEARED = null;
+	var nullListeners = {
+	  notify: function notify() {}
+	};
+
+	function createListenerCollection() {
+	  // the current/next pattern is copied from redux's createStore code.
+	  // TODO: refactor+expose that code to be reusable here?
+	  var current = [];
+	  var next = [];
+
+	  return {
+	    clear: function clear() {
+	      next = CLEARED;
+	      current = CLEARED;
+	    },
+	    notify: function notify() {
+	      var listeners = current = next;
+	      for (var i = 0; i < listeners.length; i++) {
+	        listeners[i]();
+	      }
+	    },
+	    subscribe: function subscribe(listener) {
+	      var isSubscribed = true;
+	      if (next === current) next = current.slice();
+	      next.push(listener);
+
+	      return function unsubscribe() {
+	        if (!isSubscribed || current === CLEARED) return;
+	        isSubscribed = false;
+
+	        if (next === current) next = current.slice();
+	        next.splice(next.indexOf(listener), 1);
+	      };
+	    }
+	  };
+	}
+
+	var Subscription = function () {
+	  function Subscription(store, parentSub, onStateChange) {
+	    _classCallCheck(this, Subscription);
+
+	    this.store = store;
+	    this.parentSub = parentSub;
+	    this.onStateChange = onStateChange;
+	    this.unsubscribe = null;
+	    this.listeners = nullListeners;
+	  }
+
+	  Subscription.prototype.addNestedSub = function addNestedSub(listener) {
+	    this.trySubscribe();
+	    return this.listeners.subscribe(listener);
+	  };
+
+	  Subscription.prototype.notifyNestedSubs = function notifyNestedSubs() {
+	    this.listeners.notify();
+	  };
+
+	  Subscription.prototype.isSubscribed = function isSubscribed() {
+	    return Boolean(this.unsubscribe);
+	  };
+
+	  Subscription.prototype.trySubscribe = function trySubscribe() {
+	    if (!this.unsubscribe) {
+	      this.unsubscribe = this.parentSub ? this.parentSub.addNestedSub(this.onStateChange) : this.store.subscribe(this.onStateChange);
+
+	      this.listeners = createListenerCollection();
+	    }
+	  };
+
+	  Subscription.prototype.tryUnsubscribe = function tryUnsubscribe() {
+	    if (this.unsubscribe) {
+	      this.unsubscribe();
+	      this.unsubscribe = null;
+	      this.listeners.clear();
+	      this.listeners = nullListeners;
+	    }
+	  };
+
+	  return Subscription;
+	}();
+
+	exports.default = Subscription;
+
+/***/ },
+/* 367 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports.createConnect = createConnect;
+
+	var _connectAdvanced = __webpack_require__(363);
+
+	var _connectAdvanced2 = _interopRequireDefault(_connectAdvanced);
+
+	var _shallowEqual = __webpack_require__(368);
+
+	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
+
+	var _mapDispatchToProps = __webpack_require__(369);
+
+	var _mapDispatchToProps2 = _interopRequireDefault(_mapDispatchToProps);
+
+	var _mapStateToProps = __webpack_require__(372);
+
+	var _mapStateToProps2 = _interopRequireDefault(_mapStateToProps);
+
+	var _mergeProps = __webpack_require__(373);
+
+	var _mergeProps2 = _interopRequireDefault(_mergeProps);
+
+	var _selectorFactory = __webpack_require__(374);
+
+	var _selectorFactory2 = _interopRequireDefault(_selectorFactory);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+	/*
+	  connect is a facade over connectAdvanced. It turns its args into a compatible
+	  selectorFactory, which has the signature:
+
+	    (dispatch, options) => (nextState, nextOwnProps) => nextFinalProps
+	  
+	  connect passes its args to connectAdvanced as options, which will in turn pass them to
+	  selectorFactory each time a Connect component instance is instantiated or hot reloaded.
+
+	  selectorFactory returns a final props selector from its mapStateToProps,
+	  mapStateToPropsFactories, mapDispatchToProps, mapDispatchToPropsFactories, mergeProps,
+	  mergePropsFactories, and pure args.
+
+	  The resulting final props selector is called by the Connect component instance whenever
+	  it receives new props or store state.
+	 */
+
+	function match(arg, factories, name) {
+	  for (var i = factories.length - 1; i >= 0; i--) {
+	    var result = factories[i](arg);
+	    if (result) return result;
+	  }
+
+	  return function (dispatch, options) {
+	    throw new Error('Invalid value of type ' + typeof arg + ' for ' + name + ' argument when connecting component ' + options.wrappedComponentName + '.');
+	  };
+	}
+
+	function strictEqual(a, b) {
+	  return a === b;
+	}
+
+	// createConnect with default args builds the 'official' connect behavior. Calling it with
+	// different options opens up some testing and extensibility scenarios
+	function createConnect() {
+	  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+	      _ref$connectHOC = _ref.connectHOC,
+	      connectHOC = _ref$connectHOC === undefined ? _connectAdvanced2.default : _ref$connectHOC,
+	      _ref$mapStateToPropsF = _ref.mapStateToPropsFactories,
+	      mapStateToPropsFactories = _ref$mapStateToPropsF === undefined ? _mapStateToProps2.default : _ref$mapStateToPropsF,
+	      _ref$mapDispatchToPro = _ref.mapDispatchToPropsFactories,
+	      mapDispatchToPropsFactories = _ref$mapDispatchToPro === undefined ? _mapDispatchToProps2.default : _ref$mapDispatchToPro,
+	      _ref$mergePropsFactor = _ref.mergePropsFactories,
+	      mergePropsFactories = _ref$mergePropsFactor === undefined ? _mergeProps2.default : _ref$mergePropsFactor,
+	      _ref$selectorFactory = _ref.selectorFactory,
+	      selectorFactory = _ref$selectorFactory === undefined ? _selectorFactory2.default : _ref$selectorFactory;
+
+	  return function connect(mapStateToProps, mapDispatchToProps, mergeProps) {
+	    var _ref2 = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {},
+	        _ref2$pure = _ref2.pure,
+	        pure = _ref2$pure === undefined ? true : _ref2$pure,
+	        _ref2$areStatesEqual = _ref2.areStatesEqual,
+	        areStatesEqual = _ref2$areStatesEqual === undefined ? strictEqual : _ref2$areStatesEqual,
+	        _ref2$areOwnPropsEqua = _ref2.areOwnPropsEqual,
+	        areOwnPropsEqual = _ref2$areOwnPropsEqua === undefined ? _shallowEqual2.default : _ref2$areOwnPropsEqua,
+	        _ref2$areStatePropsEq = _ref2.areStatePropsEqual,
+	        areStatePropsEqual = _ref2$areStatePropsEq === undefined ? _shallowEqual2.default : _ref2$areStatePropsEq,
+	        _ref2$areMergedPropsE = _ref2.areMergedPropsEqual,
+	        areMergedPropsEqual = _ref2$areMergedPropsE === undefined ? _shallowEqual2.default : _ref2$areMergedPropsE,
+	        extraOptions = _objectWithoutProperties(_ref2, ['pure', 'areStatesEqual', 'areOwnPropsEqual', 'areStatePropsEqual', 'areMergedPropsEqual']);
+
+	    var initMapStateToProps = match(mapStateToProps, mapStateToPropsFactories, 'mapStateToProps');
+	    var initMapDispatchToProps = match(mapDispatchToProps, mapDispatchToPropsFactories, 'mapDispatchToProps');
+	    var initMergeProps = match(mergeProps, mergePropsFactories, 'mergeProps');
+
+	    return connectHOC(selectorFactory, _extends({
+	      // used in error messages
+	      methodName: 'connect',
+
+	      // used to compute Connect's displayName from the wrapped component's displayName.
+	      getDisplayName: function getDisplayName(name) {
+	        return 'Connect(' + name + ')';
+	      },
+
+	      // if mapStateToProps is falsy, the Connect component doesn't subscribe to store state changes
+	      shouldHandleStateChanges: Boolean(mapStateToProps),
+
+	      // passed through to selectorFactory
+	      initMapStateToProps: initMapStateToProps,
+	      initMapDispatchToProps: initMapDispatchToProps,
+	      initMergeProps: initMergeProps,
+	      pure: pure,
+	      areStatesEqual: areStatesEqual,
+	      areOwnPropsEqual: areOwnPropsEqual,
+	      areStatePropsEqual: areStatePropsEqual,
+	      areMergedPropsEqual: areMergedPropsEqual
+
+	    }, extraOptions));
+	  };
+	}
+
+	exports.default = createConnect();
+
+/***/ },
 /* 368 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.default = shallowEqual;
+	var hasOwn = Object.prototype.hasOwnProperty;
+
+	function is(x, y) {
+	  if (x === y) {
+	    return x !== 0 || y !== 0 || 1 / x === 1 / y;
+	  } else {
+	    return x !== x && y !== y;
+	  }
+	}
+
+	function shallowEqual(objA, objB) {
+	  if (is(objA, objB)) return true;
+
+	  if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
+	    return false;
+	  }
+
+	  var keysA = Object.keys(objA);
+	  var keysB = Object.keys(objB);
+
+	  if (keysA.length !== keysB.length) return false;
+
+	  for (var i = 0; i < keysA.length; i++) {
+	    if (!hasOwn.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
+	      return false;
+	    }
+	  }
+
+	  return true;
+	}
+
+/***/ },
+/* 369 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.whenMapDispatchToPropsIsFunction = whenMapDispatchToPropsIsFunction;
+	exports.whenMapDispatchToPropsIsMissing = whenMapDispatchToPropsIsMissing;
+	exports.whenMapDispatchToPropsIsObject = whenMapDispatchToPropsIsObject;
+
+	var _redux = __webpack_require__(313);
+
+	var _wrapMapToProps = __webpack_require__(370);
+
+	function whenMapDispatchToPropsIsFunction(mapDispatchToProps) {
+	  return typeof mapDispatchToProps === 'function' ? (0, _wrapMapToProps.wrapMapToPropsFunc)(mapDispatchToProps, 'mapDispatchToProps') : undefined;
+	}
+
+	function whenMapDispatchToPropsIsMissing(mapDispatchToProps) {
+	  return !mapDispatchToProps ? (0, _wrapMapToProps.wrapMapToPropsConstant)(function (dispatch) {
+	    return { dispatch: dispatch };
+	  }) : undefined;
+	}
+
+	function whenMapDispatchToPropsIsObject(mapDispatchToProps) {
+	  return mapDispatchToProps && typeof mapDispatchToProps === 'object' ? (0, _wrapMapToProps.wrapMapToPropsConstant)(function (dispatch) {
+	    return (0, _redux.bindActionCreators)(mapDispatchToProps, dispatch);
+	  }) : undefined;
+	}
+
+	exports.default = [whenMapDispatchToPropsIsFunction, whenMapDispatchToPropsIsMissing, whenMapDispatchToPropsIsObject];
+
+/***/ },
+/* 370 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.wrapMapToPropsConstant = wrapMapToPropsConstant;
+	exports.getDependsOnOwnProps = getDependsOnOwnProps;
+	exports.wrapMapToPropsFunc = wrapMapToPropsFunc;
+
+	var _verifyPlainObject = __webpack_require__(371);
+
+	var _verifyPlainObject2 = _interopRequireDefault(_verifyPlainObject);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function wrapMapToPropsConstant(getConstant) {
+	  return function initConstantSelector(dispatch, options) {
+	    var constant = getConstant(dispatch, options);
+
+	    function constantSelector() {
+	      return constant;
+	    }
+	    constantSelector.dependsOnOwnProps = false;
+	    return constantSelector;
+	  };
+	}
+
+	// dependsOnOwnProps is used by createMapToPropsProxy to determine whether to pass props as args
+	// to the mapToProps function being wrapped. It is also used by makePurePropsSelector to determine
+	// whether mapToProps needs to be invoked when props have changed.
+	// 
+	// A length of one signals that mapToProps does not depend on props from the parent component.
+	// A length of zero is assumed to mean mapToProps is getting args via arguments or ...args and
+	// therefore not reporting its length accurately..
+	function getDependsOnOwnProps(mapToProps) {
+	  return mapToProps.dependsOnOwnProps !== null && mapToProps.dependsOnOwnProps !== undefined ? Boolean(mapToProps.dependsOnOwnProps) : mapToProps.length !== 1;
+	}
+
+	// Used by whenMapStateToPropsIsFunction and whenMapDispatchToPropsIsFunction,
+	// this function wraps mapToProps in a proxy function which does several things:
+	// 
+	//  * Detects whether the mapToProps function being called depends on props, which
+	//    is used by selectorFactory to decide if it should reinvoke on props changes.
+	//    
+	//  * On first call, handles mapToProps if returns another function, and treats that
+	//    new function as the true mapToProps for subsequent calls.
+	//    
+	//  * On first call, verifies the first result is a plain object, in order to warn
+	//    the developer that their mapToProps function is not returning a valid result.
+	//    
+	function wrapMapToPropsFunc(mapToProps, methodName) {
+	  return function initProxySelector(dispatch, _ref) {
+	    var displayName = _ref.displayName;
+
+	    var proxy = function mapToPropsProxy(stateOrDispatch, ownProps) {
+	      return proxy.dependsOnOwnProps ? proxy.mapToProps(stateOrDispatch, ownProps) : proxy.mapToProps(stateOrDispatch);
+	    };
+
+	    // allow detectFactoryAndVerify to get ownProps
+	    proxy.dependsOnOwnProps = true;
+
+	    proxy.mapToProps = function detectFactoryAndVerify(stateOrDispatch, ownProps) {
+	      proxy.mapToProps = mapToProps;
+	      proxy.dependsOnOwnProps = getDependsOnOwnProps(mapToProps);
+	      var props = proxy(stateOrDispatch, ownProps);
+
+	      if (typeof props === 'function') {
+	        proxy.mapToProps = props;
+	        proxy.dependsOnOwnProps = getDependsOnOwnProps(props);
+	        props = proxy(stateOrDispatch, ownProps);
+	      }
+
+	      if (false) (0, _verifyPlainObject2.default)(props, displayName, methodName);
+
+	      return props;
+	    };
+
+	    return proxy;
+	  };
+	}
+
+/***/ },
+/* 371 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.default = verifyPlainObject;
+
+	var _isPlainObject = __webpack_require__(315);
+
+	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
+
+	var _warning = __webpack_require__(362);
+
+	var _warning2 = _interopRequireDefault(_warning);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function verifyPlainObject(value, displayName, methodName) {
+	  if (!(0, _isPlainObject2.default)(value)) {
+	    (0, _warning2.default)(methodName + '() in ' + displayName + ' must return a plain object. Instead received ' + value + '.');
+	  }
+	}
+
+/***/ },
+/* 372 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.whenMapStateToPropsIsFunction = whenMapStateToPropsIsFunction;
+	exports.whenMapStateToPropsIsMissing = whenMapStateToPropsIsMissing;
+
+	var _wrapMapToProps = __webpack_require__(370);
+
+	function whenMapStateToPropsIsFunction(mapStateToProps) {
+	  return typeof mapStateToProps === 'function' ? (0, _wrapMapToProps.wrapMapToPropsFunc)(mapStateToProps, 'mapStateToProps') : undefined;
+	}
+
+	function whenMapStateToPropsIsMissing(mapStateToProps) {
+	  return !mapStateToProps ? (0, _wrapMapToProps.wrapMapToPropsConstant)(function () {
+	    return {};
+	  }) : undefined;
+	}
+
+	exports.default = [whenMapStateToPropsIsFunction, whenMapStateToPropsIsMissing];
+
+/***/ },
+/* 373 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports.defaultMergeProps = defaultMergeProps;
+	exports.wrapMergePropsFunc = wrapMergePropsFunc;
+	exports.whenMergePropsIsFunction = whenMergePropsIsFunction;
+	exports.whenMergePropsIsOmitted = whenMergePropsIsOmitted;
+
+	var _verifyPlainObject = __webpack_require__(371);
+
+	var _verifyPlainObject2 = _interopRequireDefault(_verifyPlainObject);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function defaultMergeProps(stateProps, dispatchProps, ownProps) {
+	  return _extends({}, ownProps, stateProps, dispatchProps);
+	}
+
+	function wrapMergePropsFunc(mergeProps) {
+	  return function initMergePropsProxy(dispatch, _ref) {
+	    var displayName = _ref.displayName,
+	        pure = _ref.pure,
+	        areMergedPropsEqual = _ref.areMergedPropsEqual;
+
+	    var hasRunOnce = false;
+	    var mergedProps = void 0;
+
+	    return function mergePropsProxy(stateProps, dispatchProps, ownProps) {
+	      var nextMergedProps = mergeProps(stateProps, dispatchProps, ownProps);
+
+	      if (hasRunOnce) {
+	        if (!pure || !areMergedPropsEqual(nextMergedProps, mergedProps)) mergedProps = nextMergedProps;
+	      } else {
+	        hasRunOnce = true;
+	        mergedProps = nextMergedProps;
+
+	        if (false) (0, _verifyPlainObject2.default)(mergedProps, displayName, 'mergeProps');
+	      }
+
+	      return mergedProps;
+	    };
+	  };
+	}
+
+	function whenMergePropsIsFunction(mergeProps) {
+	  return typeof mergeProps === 'function' ? wrapMergePropsFunc(mergeProps) : undefined;
+	}
+
+	function whenMergePropsIsOmitted(mergeProps) {
+	  return !mergeProps ? function () {
+	    return defaultMergeProps;
+	  } : undefined;
+	}
+
+	exports.default = [whenMergePropsIsFunction, whenMergePropsIsOmitted];
+
+/***/ },
+/* 374 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.impureFinalPropsSelectorFactory = impureFinalPropsSelectorFactory;
+	exports.pureFinalPropsSelectorFactory = pureFinalPropsSelectorFactory;
+	exports.default = finalPropsSelectorFactory;
+
+	var _verifySubselectors = __webpack_require__(375);
+
+	var _verifySubselectors2 = _interopRequireDefault(_verifySubselectors);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+	function impureFinalPropsSelectorFactory(mapStateToProps, mapDispatchToProps, mergeProps, dispatch) {
+	  return function impureFinalPropsSelector(state, ownProps) {
+	    return mergeProps(mapStateToProps(state, ownProps), mapDispatchToProps(dispatch, ownProps), ownProps);
+	  };
+	}
+
+	function pureFinalPropsSelectorFactory(mapStateToProps, mapDispatchToProps, mergeProps, dispatch, _ref) {
+	  var areStatesEqual = _ref.areStatesEqual,
+	      areOwnPropsEqual = _ref.areOwnPropsEqual,
+	      areStatePropsEqual = _ref.areStatePropsEqual;
+
+	  var hasRunAtLeastOnce = false;
+	  var state = void 0;
+	  var ownProps = void 0;
+	  var stateProps = void 0;
+	  var dispatchProps = void 0;
+	  var mergedProps = void 0;
+
+	  function handleFirstCall(firstState, firstOwnProps) {
+	    state = firstState;
+	    ownProps = firstOwnProps;
+	    stateProps = mapStateToProps(state, ownProps);
+	    dispatchProps = mapDispatchToProps(dispatch, ownProps);
+	    mergedProps = mergeProps(stateProps, dispatchProps, ownProps);
+	    hasRunAtLeastOnce = true;
+	    return mergedProps;
+	  }
+
+	  function handleNewPropsAndNewState() {
+	    stateProps = mapStateToProps(state, ownProps);
+
+	    if (mapDispatchToProps.dependsOnOwnProps) dispatchProps = mapDispatchToProps(dispatch, ownProps);
+
+	    mergedProps = mergeProps(stateProps, dispatchProps, ownProps);
+	    return mergedProps;
+	  }
+
+	  function handleNewProps() {
+	    if (mapStateToProps.dependsOnOwnProps) stateProps = mapStateToProps(state, ownProps);
+
+	    if (mapDispatchToProps.dependsOnOwnProps) dispatchProps = mapDispatchToProps(dispatch, ownProps);
+
+	    mergedProps = mergeProps(stateProps, dispatchProps, ownProps);
+	    return mergedProps;
+	  }
+
+	  function handleNewState() {
+	    var nextStateProps = mapStateToProps(state, ownProps);
+	    var statePropsChanged = !areStatePropsEqual(nextStateProps, stateProps);
+	    stateProps = nextStateProps;
+
+	    if (statePropsChanged) mergedProps = mergeProps(stateProps, dispatchProps, ownProps);
+
+	    return mergedProps;
+	  }
+
+	  function handleSubsequentCalls(nextState, nextOwnProps) {
+	    var propsChanged = !areOwnPropsEqual(nextOwnProps, ownProps);
+	    var stateChanged = !areStatesEqual(nextState, state);
+	    state = nextState;
+	    ownProps = nextOwnProps;
+
+	    if (propsChanged && stateChanged) return handleNewPropsAndNewState();
+	    if (propsChanged) return handleNewProps();
+	    if (stateChanged) return handleNewState();
+	    return mergedProps;
+	  }
+
+	  return function pureFinalPropsSelector(nextState, nextOwnProps) {
+	    return hasRunAtLeastOnce ? handleSubsequentCalls(nextState, nextOwnProps) : handleFirstCall(nextState, nextOwnProps);
+	  };
+	}
+
+	// TODO: Add more comments
+
+	// If pure is true, the selector returned by selectorFactory will memoize its results,
+	// allowing connectAdvanced's shouldComponentUpdate to return false if final
+	// props have not changed. If false, the selector will always return a new
+	// object and shouldComponentUpdate will always return true.
+
+	function finalPropsSelectorFactory(dispatch, _ref2) {
+	  var initMapStateToProps = _ref2.initMapStateToProps,
+	      initMapDispatchToProps = _ref2.initMapDispatchToProps,
+	      initMergeProps = _ref2.initMergeProps,
+	      options = _objectWithoutProperties(_ref2, ['initMapStateToProps', 'initMapDispatchToProps', 'initMergeProps']);
+
+	  var mapStateToProps = initMapStateToProps(dispatch, options);
+	  var mapDispatchToProps = initMapDispatchToProps(dispatch, options);
+	  var mergeProps = initMergeProps(dispatch, options);
+
+	  if (false) {
+	    (0, _verifySubselectors2.default)(mapStateToProps, mapDispatchToProps, mergeProps, options.displayName);
+	  }
+
+	  var selectorFactory = options.pure ? pureFinalPropsSelectorFactory : impureFinalPropsSelectorFactory;
+
+	  return selectorFactory(mapStateToProps, mapDispatchToProps, mergeProps, dispatch, options);
+	}
+
+/***/ },
+/* 375 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.default = verifySubselectors;
+
+	var _warning = __webpack_require__(362);
+
+	var _warning2 = _interopRequireDefault(_warning);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function verify(selector, methodName, displayName) {
+	  if (!selector) {
+	    throw new Error('Unexpected value for ' + methodName + ' in ' + displayName + '.');
+	  } else if (methodName === 'mapStateToProps' || methodName === 'mapDispatchToProps') {
+	    if (!selector.hasOwnProperty('dependsOnOwnProps')) {
+	      (0, _warning2.default)('The selector for ' + methodName + ' of ' + displayName + ' did not specify a value for dependsOnOwnProps.');
+	    }
+	  }
+	}
+
+	function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, displayName) {
+	  verify(mapStateToProps, 'mapStateToProps', displayName);
+	  verify(mapDispatchToProps, 'mapDispatchToProps', displayName);
+	  verify(mergeProps, 'mergeProps', displayName);
+	}
+
+/***/ },
+/* 376 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14143,7 +14673,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /***/ },
-/* 369 */
+/* 377 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14169,22 +14699,22 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  });
 	};
 
-	var _watchBackboneCollection = __webpack_require__(370);
+	var _watchBackboneCollection = __webpack_require__(378);
 
 	var _watchBackboneCollection2 = _interopRequireDefault(_watchBackboneCollection);
 
-	var _loadFromSeed = __webpack_require__(376);
+	var _loadFromSeed = __webpack_require__(386);
 
 	var _loadFromSeed2 = _interopRequireDefault(_loadFromSeed);
 
-	var _backbone = __webpack_require__(377);
+	var _backbone = __webpack_require__(387);
 
 	var _backbone2 = _interopRequireDefault(_backbone);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 370 */
+/* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14273,14 +14803,14 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _actions = __webpack_require__(335);
 
-	var _pickAttributes = __webpack_require__(371);
+	var _pickAttributes = __webpack_require__(379);
 
 	var _pickAttributes2 = _interopRequireDefault(_pickAttributes);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 371 */
+/* 379 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14313,10 +14843,10 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  return result;
 	};
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
 /***/ },
-/* 372 */
+/* 380 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14324,17 +14854,21 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.has = exports.combine = exports.camelize = undefined;
+	exports.has = exports.memoizedSelector = exports.combineSelectors = exports.combine = exports.camelize = undefined;
 
-	var _camelize = __webpack_require__(373);
+	var _camelize = __webpack_require__(381);
 
 	var _camelize2 = _interopRequireDefault(_camelize);
 
-	var _combine = __webpack_require__(374);
+	var _combine = __webpack_require__(382);
 
 	var _combine2 = _interopRequireDefault(_combine);
 
-	var _has = __webpack_require__(375);
+	var _memoizedSelector = __webpack_require__(383);
+
+	var _memoizedSelector2 = _interopRequireDefault(_memoizedSelector);
+
+	var _has = __webpack_require__(385);
 
 	var _has2 = _interopRequireDefault(_has);
 
@@ -14342,10 +14876,12 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	exports.camelize = _camelize2.default;
 	exports.combine = _combine2.default;
+	exports.combineSelectors = _memoizedSelector.combine;
+	exports.memoizedSelector = _memoizedSelector2.default;
 	exports.has = _has2.default;
 
 /***/ },
-/* 373 */
+/* 381 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14397,7 +14933,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.default = camelize;
 
 /***/ },
-/* 374 */
+/* 382 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14425,7 +14961,204 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 375 */
+/* 383 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = memoizedSelector;
+	exports.combine = combine;
+	exports.unwrap = unwrap;
+
+	var _reselect = __webpack_require__(384);
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	var SELECTOR_FACTORY = Symbol('selectorFactory');
+	var CREATE_SELECTOR = Symbol('createSelector');
+
+	function memoizedSelector() {
+	  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	    args[_key] = arguments[_key];
+	  }
+
+	  return mark(function selectorCreator(stateOrCreateSelectorSymbol, props) {
+	    var inputSelectors = args.slice(0, -1).map(unwrap);
+	    var transform = args.slice(-1)[0];
+
+	    var selector = _reselect.createSelector.apply(undefined, _toConsumableArray(inputSelectors).concat([transform]));
+
+	    if (stateOrCreateSelectorSymbol === CREATE_SELECTOR) {
+	      return selector;
+	    } else if (stateOrCreateSelectorSymbol) {
+	      return selector(stateOrCreateSelectorSymbol, props);
+	    } else {
+	      throw 'Missing state argument for selector.';
+	    }
+	  });
+	}
+
+	function combine(selectors, name) {
+	  return mark(function combinedSelectorCreator() {
+	    return (0, _reselect.createStructuredSelector)(unwrapAll(replaceScalarsWithConstantFunctions(selectors)));
+	  });
+	}
+
+	function unwrapAll(selectors) {
+	  return Object.keys(selectors).reduce(function (result, key) {
+	    result[key] = unwrap(selectors[key]);
+	    return result;
+	  }, {});
+	}
+
+	function replaceScalarsWithConstantFunctions(object) {
+	  return Object.keys(object).reduce(function (result, key) {
+	    if (typeof object[key] == 'function') {
+	      result[key] = object[key];
+	    } else {
+	      result[key] = function () {
+	        return object[key];
+	      };
+	    }
+
+	    return result;
+	  }, {});
+	}
+
+	function unwrap(selector) {
+	  if (typeof selector == 'function' && selector[SELECTOR_FACTORY]) {
+	    return selector(CREATE_SELECTOR);
+	  } else {
+	    return selector;
+	  }
+	}
+
+	function mark(selectorFactory) {
+	  selectorFactory[SELECTOR_FACTORY] = true;
+	  return selectorFactory;
+	}
+
+/***/ },
+/* 384 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.defaultMemoize = defaultMemoize;
+	exports.createSelectorCreator = createSelectorCreator;
+	exports.createStructuredSelector = createStructuredSelector;
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	function defaultEqualityCheck(a, b) {
+	  return a === b;
+	}
+
+	function defaultMemoize(func) {
+	  var equalityCheck = arguments.length <= 1 || arguments[1] === undefined ? defaultEqualityCheck : arguments[1];
+
+	  var lastArgs = null;
+	  var lastResult = null;
+	  return function () {
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    if (lastArgs === null || lastArgs.length !== args.length || !args.every(function (value, index) {
+	      return equalityCheck(value, lastArgs[index]);
+	    })) {
+	      lastResult = func.apply(undefined, args);
+	    }
+	    lastArgs = args;
+	    return lastResult;
+	  };
+	}
+
+	function getDependencies(funcs) {
+	  var dependencies = Array.isArray(funcs[0]) ? funcs[0] : funcs;
+
+	  if (!dependencies.every(function (dep) {
+	    return typeof dep === 'function';
+	  })) {
+	    var dependencyTypes = dependencies.map(function (dep) {
+	      return typeof dep;
+	    }).join(', ');
+	    throw new Error('Selector creators expect all input-selectors to be functions, ' + ('instead received the following types: [' + dependencyTypes + ']'));
+	  }
+
+	  return dependencies;
+	}
+
+	function createSelectorCreator(memoize) {
+	  for (var _len2 = arguments.length, memoizeOptions = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+	    memoizeOptions[_key2 - 1] = arguments[_key2];
+	  }
+
+	  return function () {
+	    for (var _len3 = arguments.length, funcs = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+	      funcs[_key3] = arguments[_key3];
+	    }
+
+	    var recomputations = 0;
+	    var resultFunc = funcs.pop();
+	    var dependencies = getDependencies(funcs);
+
+	    var memoizedResultFunc = memoize.apply(undefined, [function () {
+	      recomputations++;
+	      return resultFunc.apply(undefined, arguments);
+	    }].concat(memoizeOptions));
+
+	    var selector = function selector(state, props) {
+	      for (var _len4 = arguments.length, args = Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
+	        args[_key4 - 2] = arguments[_key4];
+	      }
+
+	      var params = dependencies.map(function (dependency) {
+	        return dependency.apply(undefined, [state, props].concat(args));
+	      });
+	      return memoizedResultFunc.apply(undefined, _toConsumableArray(params));
+	    };
+
+	    selector.resultFunc = resultFunc;
+	    selector.recomputations = function () {
+	      return recomputations;
+	    };
+	    selector.resetRecomputations = function () {
+	      return recomputations = 0;
+	    };
+	    return selector;
+	  };
+	}
+
+	var createSelector = exports.createSelector = createSelectorCreator(defaultMemoize);
+
+	function createStructuredSelector(selectors) {
+	  var selectorCreator = arguments.length <= 1 || arguments[1] === undefined ? createSelector : arguments[1];
+
+	  if (typeof selectors !== 'object') {
+	    throw new Error('createStructuredSelector expects first argument to be an object ' + ('where each property is a selector, instead received a ' + typeof selectors));
+	  }
+	  var objectKeys = Object.keys(selectors);
+	  return selectorCreator(objectKeys.map(function (key) {
+	    return selectors[key];
+	  }), function () {
+	    for (var _len5 = arguments.length, values = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+	      values[_key5] = arguments[_key5];
+	    }
+
+	    return values.reduce(function (composition, value, index) {
+	      composition[objectKeys[index]] = value;
+	      return composition;
+	    }, {});
+	  });
+	}
+
+/***/ },
+/* 385 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -14441,7 +15174,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 376 */
+/* 386 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14470,20 +15203,20 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _actions = __webpack_require__(335);
 
-	var _pickAttributes = __webpack_require__(371);
+	var _pickAttributes = __webpack_require__(379);
 
 	var _pickAttributes2 = _interopRequireDefault(_pickAttributes);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 377 */
+/* 387 */
 /***/ function(module, exports) {
 
 	module.exports = Backbone;
 
 /***/ },
-/* 378 */
+/* 388 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14543,7 +15276,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 379 */
+/* 389 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14561,7 +15294,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _effects = __webpack_require__(345);
 
-	var _backbone = __webpack_require__(377);
+	var _backbone = __webpack_require__(387);
 
 	var _backbone2 = _interopRequireDefault(_backbone);
 
@@ -14672,7 +15405,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 380 */
+/* 390 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14749,7 +15482,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _actions = __webpack_require__(300);
 
-	var _MediaContextProvider = __webpack_require__(381);
+	var _MediaContextProvider = __webpack_require__(391);
 
 	var _MediaContextProvider2 = _interopRequireDefault(_MediaContextProvider);
 
@@ -14757,7 +15490,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(382);
+	var _reactDom = __webpack_require__(392);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -14772,7 +15505,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 381 */
+/* 391 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14829,13 +15562,13 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 382 */
+/* 392 */
 /***/ function(module, exports) {
 
 	module.exports = ReactDOM;
 
 /***/ },
-/* 383 */
+/* 393 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14867,7 +15600,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 384 */
+/* 394 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14944,7 +15677,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	;
 
 /***/ },
-/* 385 */
+/* 395 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14965,18 +15698,18 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  );
 	};
 
-	var _PageForeground = __webpack_require__(386);
+	var _PageForeground = __webpack_require__(396);
 
 	var _PageForeground2 = _interopRequireDefault(_PageForeground);
 
-	var _PageScroller = __webpack_require__(387);
+	var _PageScroller = __webpack_require__(397);
 
 	var _PageScroller2 = _interopRequireDefault(_PageScroller);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 386 */
+/* 396 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -15000,7 +15733,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 387 */
+/* 397 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15015,7 +15748,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Scroller = __webpack_require__(388);
+	var _Scroller = __webpack_require__(398);
 
 	var _Scroller2 = _interopRequireDefault(_Scroller);
 
@@ -15023,7 +15756,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _selectors = __webpack_require__(337);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15108,13 +15841,13 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  pageScroller: _react2.default.PropTypes.object
 	};
 
-	exports.default = (0, _pages.connectInPage)((0, _utils.combine)({
+	exports.default = (0, _pages.connectInPage)((0, _utils.combineSelectors)({
 	  enabled: (0, _selectors.pageIsActivated)(),
 	  initialScrollerPosition: (0, _selectors.initialScrollerPosition)()
 	}))(PageScroller);
 
 /***/ },
-/* 388 */
+/* 398 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15127,7 +15860,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _react = __webpack_require__(304);
 
-	var _reactDom = __webpack_require__(382);
+	var _reactDom = __webpack_require__(392);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -15211,7 +15944,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.default = Scroller;
 
 /***/ },
-/* 389 */
+/* 399 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -15291,7 +16024,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	;
 
 /***/ },
-/* 390 */
+/* 400 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -15354,7 +16087,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.default = PageText;
 
 /***/ },
-/* 391 */
+/* 401 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15371,9 +16104,9 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _reactRedux = __webpack_require__(359);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
-	var _selectors = __webpack_require__(392);
+	var _selectors = __webpack_require__(402);
 
 	var _selectors2 = __webpack_require__(337);
 
@@ -15434,12 +16167,12 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  return PageLink;
 	}(_react2.default.Component);
 
-	exports.default = (0, _reactRedux.connect)((0, _utils.combine)({
+	exports.default = (0, _reactRedux.connect)((0, _utils.combineSelectors)({
 	  targetPage: (0, _selectors2.pageAttributes)({ id: (0, _selectors.prop)('pageLink.targetPageId') })
 	}))(PageLink);
 
 /***/ },
-/* 392 */
+/* 402 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15448,10 +16181,9 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  value: true
 	});
 	exports.prop = prop;
-	exports.map = map;
 	exports.has = has;
 
-	var _has = __webpack_require__(375);
+	var _has = __webpack_require__(385);
 
 	var _has2 = _interopRequireDefault(_has);
 
@@ -15471,13 +16203,6 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  };
 	}
 
-	function map(selector, fn) {
-	  return function (state, props) {
-	    var result = selector(state, props);
-	    return fn(result);
-	  };
-	}
-
 	function has(featureName) {
 	  return function (_props, _state, browser) {
 	    return (0, _has2.default)(featureName, browser);
@@ -15485,7 +16210,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 393 */
+/* 403 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15501,11 +16226,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _pages = __webpack_require__(310);
 
-	var _selectors = __webpack_require__(394);
+	var _selectors = __webpack_require__(404);
 
-	var _selectors2 = __webpack_require__(395);
+	var _selectors2 = __webpack_require__(405);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15580,7 +16305,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  return 'id' in candidate ? candidate.id : props.page[(0, _utils.camelize)(candidate.attribute)];
 	}
 
-	exports.default = (0, _pages.connectInPage)((0, _utils.combine)({
+	exports.default = (0, _pages.connectInPage)((0, _utils.combineSelectors)({
 	  pageType: (0, _selectors.pageType)({ page: function page(props) {
 	      return props.page;
 	    } }),
@@ -15588,7 +16313,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}))(PageThumbnail);
 
 /***/ },
-/* 394 */
+/* 404 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15598,7 +16323,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 	exports.pageType = pageType;
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
 	function pageType(_ref) {
 	  var page = _ref.page;
@@ -15611,7 +16336,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 395 */
+/* 405 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15625,33 +16350,36 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _collections = __webpack_require__(338);
 
-	var _expandUrls = __webpack_require__(396);
+	var _utils = __webpack_require__(380);
+
+	var _expandUrls = __webpack_require__(406);
 
 	var _expandUrls2 = _interopRequireDefault(_expandUrls);
 
-	var _addTypeInfo = __webpack_require__(397);
+	var _addTypeInfo = __webpack_require__(407);
 
 	var _addTypeInfo2 = _interopRequireDefault(_addTypeInfo);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function file(collectionName, options) {
-	  var selector = (0, _collections.createItemSelector)(collectionName)(options);
-
-	  return function (state, props) {
-	    return extendFile(collectionName, selector(state, props), state);
-	  };
+	  return (0, _utils.memoizedSelector)((0, _collections.createItemSelector)(collectionName, { namespace: 'files' })(options), function (state) {
+	    return state.fileUrlTemplates;
+	  }, function (state) {
+	    return state.modelTypes;
+	  }, function (file, fileUrlTemplates, modelTypes) {
+	    return extendFile(collectionName, file, fileUrlTemplates, modelTypes);
+	  });
 	}
 
 	function nestedFiles(collectionName, _ref) {
 	  var parent = _ref.parent;
 
-	  var itemsSelector = (0, _collections.createItemsSelector)(collectionName);
-
-	  return function (state, props) {
-	    var files = itemsSelector(state, props);
-	    var parentFile = parent(state, props);
-
+	  return (0, _utils.memoizedSelector)((0, _collections.createItemsSelector)(collectionName, { namespace: 'files' }), parent, function (state) {
+	    return state.fileUrlTemplates;
+	  }, function (state) {
+	    return state.modelTypes;
+	  }, function (files, parentFile, fileUrlTemplates, modelTypes) {
 	    if (!parentFile) {
 	      return [];
 	    }
@@ -15660,28 +16388,31 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	      var file = files[fileId];
 
 	      if (file.id && file.parentFileId == parentFile.id && file.parentFileModelType == parentFile.modelType) {
-	        result.push(extendFile(collectionName, file, state));
+
+	        result.push(extendFile(collectionName, file, fileUrlTemplates, modelTypes));
 	      }
 
 	      return result;
 	    }, []);
-	  };
+	  });
 	}
 
 	function fileExists() {
-	  return function (state, props) {
+	  return (0, _utils.memoizedSelector)(function (state) {
+	    return state.files;
+	  }, function (files) {
 	    return function (collectionName, id) {
-	      return id && !!(0, _collections.createItemSelector)(collectionName)({ id: id })(state, props);
+	      return id && !!(0, _collections.createItemSelector)(collectionName)({ id: id })(files);
 	    };
-	  };
+	  });
 	}
 
-	function extendFile(collectionName, file, state) {
-	  return (0, _addTypeInfo2.default)(collectionName, (0, _expandUrls2.default)(collectionName, file, state.fileUrlTemplates), state.modelTypes);
+	function extendFile(collectionName, file, fileUrlTemplates, modelTypes) {
+	  return (0, _addTypeInfo2.default)(collectionName, (0, _expandUrls2.default)(collectionName, file, fileUrlTemplates), modelTypes);
 	}
 
 /***/ },
-/* 396 */
+/* 406 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15743,7 +16474,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 397 */
+/* 407 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15770,7 +16501,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 398 */
+/* 408 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15779,7 +16510,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  value: true
 	});
 
-	var _PageThumbnail = __webpack_require__(393);
+	var _PageThumbnail = __webpack_require__(403);
 
 	var _PageThumbnail2 = _interopRequireDefault(_PageThumbnail);
 
@@ -15787,17 +16518,17 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _selectors = __webpack_require__(337);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = (0, _pages.connectInPage)((0, _utils.combine)({
+	exports.default = (0, _pages.connectInPage)((0, _utils.combineSelectors)({
 	  loaded: (0, _selectors.pageIsPreloaded)(),
 	  lazy: true
 	}))(_PageThumbnail2.default);
 
 /***/ },
-/* 399 */
+/* 409 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15814,39 +16545,39 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _InfoBox = __webpack_require__(400);
+	var _InfoBox = __webpack_require__(410);
 
 	var _InfoBox2 = _interopRequireDefault(_InfoBox);
 
-	var _Container = __webpack_require__(401);
+	var _Container = __webpack_require__(411);
 
 	var _Container2 = _interopRequireDefault(_Container);
 
-	var _LoadingSpinner = __webpack_require__(402);
+	var _LoadingSpinner = __webpack_require__(412);
 
 	var _LoadingSpinner2 = _interopRequireDefault(_LoadingSpinner);
 
-	var _PlayButton = __webpack_require__(412);
+	var _PlayButton = __webpack_require__(422);
 
 	var _PlayButton2 = _interopRequireDefault(_PlayButton);
 
-	var _CurrentTime = __webpack_require__(414);
+	var _CurrentTime = __webpack_require__(424);
 
 	var _CurrentTime2 = _interopRequireDefault(_CurrentTime);
 
-	var _TimeDivider = __webpack_require__(416);
+	var _TimeDivider = __webpack_require__(426);
 
 	var _TimeDivider2 = _interopRequireDefault(_TimeDivider);
 
-	var _Duration = __webpack_require__(417);
+	var _Duration = __webpack_require__(427);
 
 	var _Duration2 = _interopRequireDefault(_Duration);
 
-	var _ProgressSlider = __webpack_require__(418);
+	var _ProgressSlider = __webpack_require__(428);
 
 	var _ProgressSlider2 = _interopRequireDefault(_ProgressSlider);
 
-	var _MenuBar = __webpack_require__(427);
+	var _MenuBar = __webpack_require__(437);
 
 	var _MenuBar2 = _interopRequireDefault(_MenuBar);
 
@@ -15936,7 +16667,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.default = PlayerControls;
 
 /***/ },
-/* 400 */
+/* 410 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15983,7 +16714,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 401 */
+/* 411 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16013,7 +16744,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 402 */
+/* 412 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -16030,14 +16761,14 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  );
 	};
 
-	var _Icon = __webpack_require__(403);
+	var _Icon = __webpack_require__(413);
 
 	var _Icon2 = _interopRequireDefault(_Icon);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 403 */
+/* 413 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16051,7 +16782,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _mapping = __webpack_require__(404);
+	var _mapping = __webpack_require__(414);
 
 	var _mapping2 = _interopRequireDefault(_mapping);
 
@@ -16082,7 +16813,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 404 */
+/* 414 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16091,7 +16822,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  value: true
 	});
 
-	var _icons = __webpack_require__(405);
+	var _icons = __webpack_require__(415);
 
 	var _icons2 = _interopRequireDefault(_icons);
 
@@ -16123,7 +16854,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 405 */
+/* 415 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16132,23 +16863,23 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  value: true
 	});
 
-	var _Checkmark = __webpack_require__(406);
+	var _Checkmark = __webpack_require__(416);
 
 	var _Checkmark2 = _interopRequireDefault(_Checkmark);
 
-	var _CircleWithNotch = __webpack_require__(408);
+	var _CircleWithNotch = __webpack_require__(418);
 
 	var _CircleWithNotch2 = _interopRequireDefault(_CircleWithNotch);
 
-	var _Disk = __webpack_require__(409);
+	var _Disk = __webpack_require__(419);
 
 	var _Disk2 = _interopRequireDefault(_Disk);
 
-	var _Gear = __webpack_require__(410);
+	var _Gear = __webpack_require__(420);
 
 	var _Gear2 = _interopRequireDefault(_Gear);
 
-	var _Subtitles = __webpack_require__(411);
+	var _Subtitles = __webpack_require__(421);
 
 	var _Subtitles2 = _interopRequireDefault(_Subtitles);
 
@@ -16163,7 +16894,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 406 */
+/* 416 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -16182,14 +16913,14 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  );
 	};
 
-	var _Container = __webpack_require__(407);
+	var _Container = __webpack_require__(417);
 
 	var _Container2 = _interopRequireDefault(_Container);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 407 */
+/* 417 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -16266,7 +16997,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.default = Container;
 
 /***/ },
-/* 408 */
+/* 418 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -16285,14 +17016,14 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  );
 	};
 
-	var _Container = __webpack_require__(407);
+	var _Container = __webpack_require__(417);
 
 	var _Container2 = _interopRequireDefault(_Container);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 409 */
+/* 419 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -16311,14 +17042,14 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  );
 	};
 
-	var _Container = __webpack_require__(407);
+	var _Container = __webpack_require__(417);
 
 	var _Container2 = _interopRequireDefault(_Container);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 410 */
+/* 420 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -16343,14 +17074,14 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  ;
 	};
 
-	var _Container = __webpack_require__(407);
+	var _Container = __webpack_require__(417);
 
 	var _Container2 = _interopRequireDefault(_Container);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 411 */
+/* 421 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -16370,14 +17101,14 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  );
 	};
 
-	var _Container = __webpack_require__(407);
+	var _Container = __webpack_require__(417);
 
 	var _Container2 = _interopRequireDefault(_Container);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 412 */
+/* 422 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16390,11 +17121,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _Icon = __webpack_require__(403);
+	var _Icon = __webpack_require__(413);
 
 	var _Icon2 = _interopRequireDefault(_Icon);
 
-	var _pageSkipLinkTarget = __webpack_require__(413);
+	var _pageSkipLinkTarget = __webpack_require__(423);
 
 	var _pageSkipLinkTarget2 = _interopRequireDefault(_pageSkipLinkTarget);
 
@@ -16439,7 +17170,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 413 */
+/* 423 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16449,8 +17180,8 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 
 	exports.default = function (Component) {
-	  return (0, _pages.connectInPage)((0, _utils.combine)({
-	    id: (0, _selectors2.map)((0, _selectors.pageIsActive)(), function (isActive) {
+	  return (0, _pages.connectInPage)((0, _utils.combineSelectors)({
+	    id: (0, _utils.memoizedSelector)((0, _selectors.pageIsActive)(), function (isActive) {
 	      return isActive ? 'firstContent' : undefined;
 	    })
 	  }))(Component);
@@ -16460,12 +17191,10 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _selectors = __webpack_require__(337);
 
-	var _utils = __webpack_require__(372);
-
-	var _selectors2 = __webpack_require__(392);
+	var _utils = __webpack_require__(380);
 
 /***/ },
-/* 414 */
+/* 424 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -16478,14 +17207,14 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  return React.createElement(_TimeDisplay2.default, { className: "vjs-current-time", value: props.currentTime });
 	};
 
-	var _TimeDisplay = __webpack_require__(415);
+	var _TimeDisplay = __webpack_require__(425);
 
 	var _TimeDisplay2 = _interopRequireDefault(_TimeDisplay);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 415 */
+/* 425 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16530,7 +17259,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 416 */
+/* 426 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -16548,7 +17277,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 417 */
+/* 427 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -16561,14 +17290,14 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  return React.createElement(_TimeDisplay2.default, { className: "vjs-duration", value: props.duration });
 	};
 
-	var _TimeDisplay = __webpack_require__(415);
+	var _TimeDisplay = __webpack_require__(425);
 
 	var _TimeDisplay2 = _interopRequireDefault(_TimeDisplay);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 418 */
+/* 428 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16583,13 +17312,13 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDraggable = __webpack_require__(419);
+	var _reactDraggable = __webpack_require__(429);
 
-	var _reactMeasure = __webpack_require__(420);
+	var _reactMeasure = __webpack_require__(430);
 
 	var _reactMeasure2 = _interopRequireDefault(_reactMeasure);
 
-	var _keyCodes = __webpack_require__(426);
+	var _keyCodes = __webpack_require__(436);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16731,12 +17460,12 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 419 */
+/* 429 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
 		if(true)
-			module.exports = factory(__webpack_require__(304), __webpack_require__(382));
+			module.exports = factory(__webpack_require__(304), __webpack_require__(392));
 		else if(typeof define === 'function' && define.amd)
 			define(["react", "react-dom"], factory);
 		else if(typeof exports === 'object')
@@ -18343,7 +19072,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	//# sourceMappingURL=react-draggable.js.map
 
 /***/ },
-/* 420 */
+/* 430 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18353,7 +19082,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 	exports.default = undefined;
 
-	var _Measure = __webpack_require__(421);
+	var _Measure = __webpack_require__(431);
 
 	var _Measure2 = _interopRequireDefault(_Measure);
 
@@ -18363,7 +19092,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	module.exports = exports['default'];
 
 /***/ },
-/* 421 */
+/* 431 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18380,15 +19109,15 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(382);
+	var _reactDom = __webpack_require__(392);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _resizeObserverPolyfill = __webpack_require__(422);
+	var _resizeObserverPolyfill = __webpack_require__(432);
 
 	var _resizeObserverPolyfill2 = _interopRequireDefault(_resizeObserverPolyfill);
 
-	var _getNodeDimensions = __webpack_require__(423);
+	var _getNodeDimensions = __webpack_require__(433);
 
 	var _getNodeDimensions2 = _interopRequireDefault(_getNodeDimensions);
 
@@ -18558,7 +19287,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	module.exports = exports['default'];
 
 /***/ },
-/* 422 */
+/* 432 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {(function (global, factory) {
@@ -19756,7 +20485,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 423 */
+/* 433 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19768,11 +20497,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _getCloneDimensions = __webpack_require__(424);
+	var _getCloneDimensions = __webpack_require__(434);
 
 	var _getCloneDimensions2 = _interopRequireDefault(_getCloneDimensions);
 
-	var _getMargin = __webpack_require__(425);
+	var _getMargin = __webpack_require__(435);
 
 	var _getMargin2 = _interopRequireDefault(_getMargin);
 
@@ -19817,7 +20546,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	module.exports = exports['default'];
 
 /***/ },
-/* 424 */
+/* 434 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19829,7 +20558,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _getMargin = __webpack_require__(425);
+	var _getMargin = __webpack_require__(435);
 
 	var _getMargin2 = _interopRequireDefault(_getMargin);
 
@@ -19895,7 +20624,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	module.exports = exports['default'];
 
 /***/ },
-/* 425 */
+/* 435 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -19920,7 +20649,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	module.exports = exports["default"];
 
 /***/ },
-/* 426 */
+/* 436 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -19935,7 +20664,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	var TAB = exports.TAB = 9;
 
 /***/ },
-/* 427 */
+/* 437 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19949,15 +20678,15 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _QualityMenu = __webpack_require__(428);
+	var _QualityMenu = __webpack_require__(438);
 
 	var _QualityMenu2 = _interopRequireDefault(_QualityMenu);
 
-	var _TextTracksMenu = __webpack_require__(430);
+	var _TextTracksMenu = __webpack_require__(440);
 
 	var _TextTracksMenu2 = _interopRequireDefault(_TextTracksMenu);
 
-	var _MenuBarButton = __webpack_require__(429);
+	var _MenuBarButton = __webpack_require__(439);
 
 	var _MenuBarButton2 = _interopRequireDefault(_MenuBarButton);
 
@@ -20025,7 +20754,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 428 */
+/* 438 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20035,7 +20764,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 	exports.default = QualityMenu;
 
-	var _MenuBarButton = __webpack_require__(429);
+	var _MenuBarButton = __webpack_require__(439);
 
 	var _MenuBarButton2 = _interopRequireDefault(_MenuBarButton);
 
@@ -20064,7 +20793,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 429 */
+/* 439 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20079,7 +20808,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _Icon = __webpack_require__(403);
+	var _Icon = __webpack_require__(413);
 
 	var _Icon2 = _interopRequireDefault(_Icon);
 
@@ -20272,7 +21001,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 430 */
+/* 440 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20282,7 +21011,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 	exports.default = TextTracksMenu;
 
-	var _MenuBarButton = __webpack_require__(429);
+	var _MenuBarButton = __webpack_require__(439);
 
 	var _MenuBarButton2 = _interopRequireDefault(_MenuBarButton);
 
@@ -20311,7 +21040,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 431 */
+/* 441 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -20336,7 +21065,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 432 */
+/* 442 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -20356,7 +21085,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 433 */
+/* 443 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20368,15 +21097,15 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _selectors = __webpack_require__(337);
 
-	var _selectors2 = __webpack_require__(434);
+	var _selectors2 = __webpack_require__(444);
 
-	var _selectors3 = __webpack_require__(437);
+	var _selectors3 = __webpack_require__(447);
 
-	var _selectors4 = __webpack_require__(438);
+	var _selectors4 = __webpack_require__(448);
 
-	var _selectors5 = __webpack_require__(395);
+	var _selectors5 = __webpack_require__(405);
 
-	var _selectors6 = __webpack_require__(392);
+	var _selectors6 = __webpack_require__(402);
 
 	exports.pageAttribute = _selectors.pageAttribute;
 	exports.pageAttributes = _selectors.pageAttributes;
@@ -20390,7 +21119,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.prop = _selectors6.prop;
 
 /***/ },
-/* 434 */
+/* 444 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20403,9 +21132,9 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _selectors = __webpack_require__(337);
 
-	var _selectors2 = __webpack_require__(435);
+	var _selectors2 = __webpack_require__(445);
 
-	var _selectors3 = __webpack_require__(436);
+	var _selectors3 = __webpack_require__(446);
 
 	function currentParentChapterAttributes() {
 	  return function (state, props) {
@@ -20440,7 +21169,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 435 */
+/* 445 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20449,25 +21178,24 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  value: true
 	});
 	exports.chapterAttributes = exports.selector = undefined;
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	exports.chapterAttribute = chapterAttribute;
 
 	var _collections = __webpack_require__(338);
 
+	var _utils = __webpack_require__(380);
+
 	var selector = exports.selector = (0, _collections.createItemSelector)('chapters');
 
 	function chapterAttribute(name, options) {
-	  return selector(_extends({ map: function map(chapter) {
-	      return chapter[name];
-	    } }, options));
+	  return (0, _utils.memoizedSelector)(selector(options), function (chapter) {
+	    return chapter && chapter[name];
+	  });
 	}
 
 	var chapterAttributes = exports.chapterAttributes = selector;
 
 /***/ },
-/* 436 */
+/* 446 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20476,47 +21204,49 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  value: true
 	});
 	exports.selector = undefined;
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	exports.storylineAttribute = storylineAttribute;
 
 	var _collections = __webpack_require__(338);
 
+	var _utils = __webpack_require__(380);
+
 	var selector = exports.selector = (0, _collections.createItemSelector)('storylines');
 
 	function storylineAttribute(name, options) {
-	  return selector(_extends({ map: function map(storyline) {
-	      return storyline[name];
-	    } }, options));
+	  return (0, _utils.memoizedSelector)(selector(options), function (storyline) {
+	    return storyline && storyline[name];
+	  });
 	}
 
 /***/ },
-/* 437 */
-/***/ function(module, exports) {
+/* 447 */
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.t = undefined;
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	exports.t = t;
 	exports.locale = locale;
-	function t(state) {
+
+	var _utils = __webpack_require__(380);
+
+	var t = exports.t = (0, _utils.memoizedSelector)(locale, function (locale) {
 	  return function (key, options) {
-	    return I18n.t(key, _extends({ locale: state.i18n.locale }, options));
+	    return I18n.t(key, _extends({ locale: locale }, options));
 	  };
-	}
+	});
 
 	function locale(state) {
 	  return state.i18n.locale;
 	}
 
 /***/ },
-/* 438 */
+/* 448 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -20534,7 +21264,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 439 */
+/* 449 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20545,47 +21275,47 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.PageBackground = exports.PageBackgroundAsset = exports.PageBackgroundVideo = exports.PagePrintImage = exports.MobilePageVideoPoster = exports.PageVideoPlayer = exports.Page = exports.pageBackgroundReduxModule = undefined;
 	exports.reduxModule = reduxModule;
 
-	var _Page = __webpack_require__(440);
+	var _Page = __webpack_require__(450);
 
 	var _Page2 = _interopRequireDefault(_Page);
 
-	var _PageVideoPlayer = __webpack_require__(447);
+	var _PageVideoPlayer = __webpack_require__(457);
 
 	var _PageVideoPlayer2 = _interopRequireDefault(_PageVideoPlayer);
 
-	var _MobilePageVideoPoster = __webpack_require__(460);
+	var _MobilePageVideoPoster = __webpack_require__(470);
 
 	var _MobilePageVideoPoster2 = _interopRequireDefault(_MobilePageVideoPoster);
 
-	var _PageBackgroundVideo = __webpack_require__(461);
+	var _PageBackgroundVideo = __webpack_require__(471);
 
 	var _PageBackgroundVideo2 = _interopRequireDefault(_PageBackgroundVideo);
 
-	var _PageBackgroundAsset = __webpack_require__(462);
+	var _PageBackgroundAsset = __webpack_require__(472);
 
 	var _PageBackgroundAsset2 = _interopRequireDefault(_PageBackgroundAsset);
 
-	var _PageBackground = __webpack_require__(463);
+	var _PageBackground = __webpack_require__(473);
 
 	var _PageBackground2 = _interopRequireDefault(_PageBackground);
 
-	var _PagePrintImage = __webpack_require__(464);
+	var _PagePrintImage = __webpack_require__(474);
 
 	var _PagePrintImage2 = _interopRequireDefault(_PagePrintImage);
 
-	var _createReducer = __webpack_require__(465);
+	var _createReducer = __webpack_require__(475);
 
 	var _createReducer2 = _interopRequireDefault(_createReducer);
 
-	var _sagas = __webpack_require__(467);
+	var _sagas = __webpack_require__(477);
 
 	var _sagas2 = _interopRequireDefault(_sagas);
 
-	var _fadeInWhenPageWillActivate = __webpack_require__(477);
+	var _fadeInWhenPageWillActivate = __webpack_require__(487);
 
 	var _fadeInWhenPageWillActivate2 = _interopRequireDefault(_fadeInWhenPageWillActivate);
 
-	var _fadeOutWhenPageWillDeactivate = __webpack_require__(473);
+	var _fadeOutWhenPageWillDeactivate = __webpack_require__(483);
 
 	var _fadeOutWhenPageWillDeactivate2 = _interopRequireDefault(_fadeOutWhenPageWillDeactivate);
 
@@ -20646,7 +21376,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.PageBackground = _PageBackground2.default;
 
 /***/ },
-/* 440 */
+/* 450 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20658,25 +21388,25 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _components = __webpack_require__(302);
 
-	var _media = __webpack_require__(439);
+	var _media = __webpack_require__(449);
 
-	var _PlayerControls = __webpack_require__(441);
+	var _PlayerControls = __webpack_require__(451);
 
 	var _PlayerControls2 = _interopRequireDefault(_PlayerControls);
 
-	var _NonJsLinks = __webpack_require__(445);
+	var _NonJsLinks = __webpack_require__(455);
 
 	var _NonJsLinks2 = _interopRequireDefault(_NonJsLinks);
 
-	var _playerStateClassNames = __webpack_require__(442);
+	var _playerStateClassNames = __webpack_require__(452);
 
 	var _playerStateClassNames2 = _interopRequireDefault(_playerStateClassNames);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
-	var _selectors = __webpack_require__(392);
+	var _selectors = __webpack_require__(402);
 
-	var _selectors2 = __webpack_require__(443);
+	var _selectors2 = __webpack_require__(453);
 
 	var _classnames = __webpack_require__(305);
 
@@ -20732,7 +21462,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  );
 	}
 
-	exports.default = (0, _reactRedux.connect)((0, _utils.combine)({
+	exports.default = (0, _reactRedux.connect)((0, _utils.combineSelectors)({
 	  textTracks: (0, _selectors2.textTracks)({
 	    file: (0, _selectors.prop)('file'),
 	    defaultTextTrackFileId: (0, _selectors.prop)('page.defaultTextTrackFileId')
@@ -20758,7 +21488,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 441 */
+/* 451 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20771,21 +21501,21 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	exports.MediaPlayerControls = MediaPlayerControls;
 
-	var _playerStateClassNames = __webpack_require__(442);
+	var _playerStateClassNames = __webpack_require__(452);
 
 	var _playerStateClassNames2 = _interopRequireDefault(_playerStateClassNames);
 
-	var _PlayerControls = __webpack_require__(399);
+	var _PlayerControls = __webpack_require__(409);
 
 	var _PlayerControls2 = _interopRequireDefault(_PlayerControls);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
-	var _selectors = __webpack_require__(443);
+	var _selectors = __webpack_require__(453);
 
-	var _selectors2 = __webpack_require__(437);
+	var _selectors2 = __webpack_require__(447);
 
-	var _actions = __webpack_require__(444);
+	var _actions = __webpack_require__(454);
 
 	var _react = __webpack_require__(304);
 
@@ -20854,7 +21584,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  }
 	};
 
-	exports.default = (0, _reactRedux.connect)((0, _utils.combine)({
+	exports.default = (0, _reactRedux.connect)((0, _utils.combineSelectors)({
 	  activeQuality: (0, _selectors.videoQualitySetting)(),
 	  t: _selectors2.t
 	}), {
@@ -20919,7 +21649,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 442 */
+/* 452 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20943,7 +21673,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 443 */
+/* 453 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20959,15 +21689,17 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.textTracks = textTracks;
 	exports.videoQualitySetting = videoQualitySetting;
 
-	var _actions = __webpack_require__(444);
+	var _actions = __webpack_require__(454);
 
-	var _selectors = __webpack_require__(395);
+	var _selectors = __webpack_require__(405);
 
 	var _selectors2 = __webpack_require__(337);
 
-	var _selectors3 = __webpack_require__(438);
+	var _selectors3 = __webpack_require__(448);
 
-	var _selectors4 = __webpack_require__(437);
+	var _selectors4 = __webpack_require__(447);
+
+	var _utils = __webpack_require__(380);
 
 	var _redux = __webpack_require__(313);
 
@@ -20994,22 +21726,17 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	      _ref3$defaultTextTrac = _ref3.defaultTextTrackFileId,
 	      defaultTextTrackFileId = _ref3$defaultTextTrac === undefined ? function () {} : _ref3$defaultTextTrac;
 
-	  var textTrackSettingsSelector = (0, _selectors3.setting)({ property: 'textTrack' });
-	  var volumeSelector = (0, _selectors3.setting)({ property: 'volume' });
-	  var filesSelector = (0, _selectors.nestedFiles)('textTrackFiles', {
+	  return (0, _utils.memoizedSelector)((0, _selectors3.setting)({ property: 'textTrack' }), (0, _selectors3.setting)({ property: 'volume' }), _selectors4.t, _selectors4.locale, (0, _selectors.nestedFiles)('textTrackFiles', {
 	    parent: file
-	  });
-
-	  return function (state, props) {
-	    var textTrackSettings = textTrackSettingsSelector(state, props) || {};
-	    var translate = (0, _selectors4.t)(state, props);
-	    var files = filesSelector(state, props).map(function (textTrackFile) {
+	  }), defaultTextTrackFileId, function (textTrackSettings, volume, translate, currentLocale, textTrackFiles, defaultTextTrackFileId) {
+	    textTrackSettings = textTrackSettings || {};
+	    var files = textTrackFiles.map(function (textTrackFile) {
 	      return _extends({
 	        displayLabel: displayLabel(textTrackFile, translate)
 	      }, textTrackFile);
 	    });
 
-	    var autoFile = autoTextTrackFile(files, defaultTextTrackFileId(state, props), (0, _selectors4.locale)(state), volumeSelector(state, props));
+	    var autoFile = autoTextTrackFile(files, defaultTextTrackFileId, currentLocale, volume);
 
 	    return {
 	      files: files.sort(function (file1, file2) {
@@ -21019,7 +21746,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	      activeFileId: getActiveTextTrackFileId(files, autoFile, textTrackSettings),
 	      mode: textTrackSettings.kind == 'off' ? 'off' : textTrackSettings.kind ? 'user' : 'auto'
 	    };
-	  };
+	  });
 	}
 
 	function autoTextTrackFile(textTrackFiles, defaultTextTrackFileId, locale, volume) {
@@ -21069,7 +21796,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 444 */
+/* 454 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21275,7 +22002,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 445 */
+/* 455 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21285,11 +22012,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 	exports.NonJsLinks = NonJsLinks;
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
-	var _selectors = __webpack_require__(437);
+	var _selectors = __webpack_require__(447);
 
-	var _selectors2 = __webpack_require__(446);
+	var _selectors2 = __webpack_require__(456);
 
 	var _reactRedux = __webpack_require__(359);
 
@@ -21325,13 +22052,13 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  return t('pageflow.public.open_' + type);
 	}
 
-	exports.default = (0, _reactRedux.connect)((0, _utils.combine)({
+	exports.default = (0, _reactRedux.connect)((0, _utils.combineSelectors)({
 	  t: _selectors.t,
 	  entrySlug: (0, _selectors2.entryAttribute)('slug')
 	}))(NonJsLinks);
 
 /***/ },
-/* 446 */
+/* 456 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -21347,7 +22074,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 447 */
+/* 457 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21358,25 +22085,25 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.VideoPlayer = undefined;
 	exports.default = PageVideoPlayer;
 
-	var _VideoFilePlayer = __webpack_require__(448);
+	var _VideoFilePlayer = __webpack_require__(458);
 
 	var _VideoFilePlayer2 = _interopRequireDefault(_VideoFilePlayer);
 
-	var _createPageFilePlayer = __webpack_require__(459);
+	var _createPageFilePlayer = __webpack_require__(469);
 
 	var _createPageFilePlayer2 = _interopRequireDefault(_createPageFilePlayer);
 
-	var _selectors = __webpack_require__(395);
+	var _selectors = __webpack_require__(405);
 
-	var _selectors2 = __webpack_require__(433);
+	var _selectors2 = __webpack_require__(443);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
 	var _reactRedux = __webpack_require__(359);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var VideoPlayer = exports.VideoPlayer = (0, _reactRedux.connect)((0, _utils.combine)({
+	var VideoPlayer = exports.VideoPlayer = (0, _reactRedux.connect)((0, _utils.combineSelectors)({
 	  file: (0, _selectors.file)('videoFiles', { id: (0, _selectors2.prop)('videoFileId') }),
 	  posterImageFile: (0, _selectors.file)('imageFiles', { id: (0, _selectors2.prop)('posterImageFileId') })
 	}))((0, _createPageFilePlayer2.default)(_VideoFilePlayer2.default));
@@ -21406,7 +22133,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 448 */
+/* 458 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21432,19 +22159,19 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  );
 	};
 
-	var _createFilePlayer = __webpack_require__(449);
+	var _createFilePlayer = __webpack_require__(459);
 
 	var _createFilePlayer2 = _interopRequireDefault(_createFilePlayer);
 
-	var _Positioner = __webpack_require__(455);
+	var _Positioner = __webpack_require__(465);
 
 	var _Positioner2 = _interopRequireDefault(_Positioner);
 
-	var _sources = __webpack_require__(458);
+	var _sources = __webpack_require__(468);
 
 	var _sources2 = _interopRequireDefault(_sources);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21458,7 +22185,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 
 /***/ },
-/* 449 */
+/* 459 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21501,7 +22228,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	        (0, _handlePlayerState.initPlayer)(_this.player, function () {
 	          return _this.props.playerState;
-	        }, _this.prevFileId, _this.props.file.id);
+	        }, _this.props.playerActions, _this.prevFileId, _this.props.file.id);
 
 	        if (!_this.displaysTextTracksInNativePlayer) {
 	          (0, _textTracks.initTextTracks)(_this.player, function () {
@@ -21580,7 +22307,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	    file: _react2.default.PropTypes.object.isRequired
 	  };
 
-	  var result = (0, _reactRedux.connect)((0, _utils.combine)({
+	  var result = (0, _reactRedux.connect)((0, _utils.combineSelectors)({
 	    textTracks: (0, _selectors.textTracks)({
 	      file: (0, _selectors3.prop)('file'),
 	      defaultTextTrackFileId: (0, _selectors3.prop)('defaultTextTrackFileId')
@@ -21598,37 +22325,37 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  return result;
 	};
 
-	var _MediaTag = __webpack_require__(450);
+	var _MediaTag = __webpack_require__(460);
 
 	var _MediaTag2 = _interopRequireDefault(_MediaTag);
 
-	var _createPageflowPlayer = __webpack_require__(451);
+	var _createPageflowPlayer = __webpack_require__(461);
 
 	var _createPageflowPlayer2 = _interopRequireDefault(_createPageflowPlayer);
 
-	var _watchPlayer = __webpack_require__(452);
+	var _watchPlayer = __webpack_require__(462);
 
 	var _watchPlayer2 = _interopRequireDefault(_watchPlayer);
 
-	var _actions = __webpack_require__(444);
+	var _actions = __webpack_require__(454);
 
-	var _handlePlayerState = __webpack_require__(453);
+	var _handlePlayerState = __webpack_require__(463);
 
-	var _textTracks = __webpack_require__(454);
+	var _textTracks = __webpack_require__(464);
 
-	var _selectors = __webpack_require__(443);
+	var _selectors = __webpack_require__(453);
 
-	var _selectors2 = __webpack_require__(438);
+	var _selectors2 = __webpack_require__(448);
 
-	var _selectors3 = __webpack_require__(433);
+	var _selectors3 = __webpack_require__(443);
 
-	var _selectors4 = __webpack_require__(392);
+	var _selectors4 = __webpack_require__(402);
 
 	var _react = __webpack_require__(304);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
 	var _reactRedux = __webpack_require__(359);
 
@@ -21647,7 +22374,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 450 */
+/* 460 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21837,7 +22564,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 451 */
+/* 461 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21891,7 +22618,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 452 */
+/* 462 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21932,7 +22659,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 453 */
+/* 463 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21942,13 +22669,17 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 	exports.initPlayer = initPlayer;
 	exports.updatePlayer = updatePlayer;
-	function initPlayer(player, getPlayerState, prevFileId, fileId) {
+	function initPlayer(player, getPlayerState, playerActions, prevFileId, fileId) {
 	  var playerState = getPlayerState();
 
 	  if (fileId === prevFileId) {
 	    if (playerState.currentTime > 0) {
 	      player.currentTime(playerState.currentTime);
 	    }
+	  }
+
+	  if (playerState.shouldPrebuffer) {
+	    player.prebuffer().then(playerActions.prebuffered);
 	  }
 
 	  if (playerState.isPlaying) {
@@ -21987,7 +22718,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 454 */
+/* 464 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22054,7 +22785,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 455 */
+/* 465 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22067,11 +22798,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	exports.default = Positioner;
 
-	var _getDimensions = __webpack_require__(456);
+	var _getDimensions = __webpack_require__(466);
 
 	var _getDimensions2 = _interopRequireDefault(_getDimensions);
 
-	var _getCueOffsetClassName = __webpack_require__(457);
+	var _getCueOffsetClassName = __webpack_require__(467);
 
 	var _getCueOffsetClassName2 = _interopRequireDefault(_getCueOffsetClassName);
 
@@ -22079,7 +22810,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactMeasure = __webpack_require__(420);
+	var _reactMeasure = __webpack_require__(430);
 
 	var _reactMeasure2 = _interopRequireDefault(_reactMeasure);
 
@@ -22122,7 +22853,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 456 */
+/* 466 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22176,7 +22907,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 457 */
+/* 467 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22199,7 +22930,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 458 */
+/* 468 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22246,7 +22977,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 459 */
+/* 469 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22275,7 +23006,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	    }
 	  }
 
-	  return (0, _pages.connectInPage)((0, _utils.combine)({
+	  return (0, _pages.connectInPage)((0, _utils.combineSelectors)({
 	    pageIsPrepared: (0, _selectors.pageIsPrepared)(),
 	    atmoDuringPlayback: (0, _selectors.pageAttribute)('atmoDuringPlayback'),
 	    defaultTextTrackFileId: (0, _selectors.pageAttribute)('defaultTextTrackFileId')
@@ -22286,10 +23017,10 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _selectors = __webpack_require__(337);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
 /***/ },
-/* 460 */
+/* 470 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22301,9 +23032,9 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _components = __webpack_require__(302);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
-	var _selectors = __webpack_require__(395);
+	var _selectors = __webpack_require__(405);
 
 	var _reactRedux = __webpack_require__(359);
 
@@ -22338,12 +23069,12 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  }];
 	}
 
-	exports.default = (0, _reactRedux.connect)((0, _utils.combine)({
+	exports.default = (0, _reactRedux.connect)((0, _utils.combineSelectors)({
 	  fileExists: (0, _selectors.fileExists)()
 	}))(MobilePageVideoPoster);
 
 /***/ },
-/* 461 */
+/* 471 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22356,19 +23087,19 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	exports.PageBackgroundVideo = PageBackgroundVideo;
 
-	var _PageVideoPlayer = __webpack_require__(447);
+	var _PageVideoPlayer = __webpack_require__(457);
 
 	var _PageVideoPlayer2 = _interopRequireDefault(_PageVideoPlayer);
 
-	var _MobilePageVideoPoster = __webpack_require__(460);
+	var _MobilePageVideoPoster = __webpack_require__(470);
 
 	var _MobilePageVideoPoster2 = _interopRequireDefault(_MobilePageVideoPoster);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
-	var _selectors = __webpack_require__(395);
+	var _selectors = __webpack_require__(405);
 
-	var _selectors2 = __webpack_require__(392);
+	var _selectors2 = __webpack_require__(402);
 
 	var _reactRedux = __webpack_require__(359);
 
@@ -22393,14 +23124,14 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  return props.fileExists('imageFiles', props.page[property]);
 	}
 
-	exports.default = (0, _reactRedux.connect)((0, _utils.combine)({
+	exports.default = (0, _reactRedux.connect)((0, _utils.combineSelectors)({
 	  fileExists: (0, _selectors.fileExists)(),
 	  hasMobilePlatform: (0, _selectors2.has)('mobile platform'),
 	  hasMuteVideoAutoplaySupport: (0, _selectors2.has)('mute video autoplay support')
 	}))(PageBackgroundVideo);
 
 /***/ },
-/* 462 */
+/* 472 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22412,17 +23143,17 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _components = __webpack_require__(302);
 
-	var _PageBackgroundVideo = __webpack_require__(461);
+	var _PageBackgroundVideo = __webpack_require__(471);
 
 	var _PageBackgroundVideo2 = _interopRequireDefault(_PageBackgroundVideo);
 
-	var _selectors = __webpack_require__(443);
+	var _selectors = __webpack_require__(453);
 
 	var _pages = __webpack_require__(310);
 
 	var _selectors2 = __webpack_require__(337);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22446,7 +23177,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  }
 	}
 
-	exports.default = (0, _pages.connectInPage)((0, _utils.combine)({
+	exports.default = (0, _pages.connectInPage)((0, _utils.combineSelectors)({
 	  page: (0, _selectors2.pageAttributes)(),
 	  playerState: (0, _selectors.playerState)({ scope: 'background' })
 	}), (0, _utils.combine)({
@@ -22454,7 +23185,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}))(PageBackgroundAsset);
 
 /***/ },
-/* 463 */
+/* 473 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22466,7 +23197,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _components = __webpack_require__(302);
 
-	var _PageBackgroundAsset = __webpack_require__(462);
+	var _PageBackgroundAsset = __webpack_require__(472);
 
 	var _PageBackgroundAsset2 = _interopRequireDefault(_PageBackgroundAsset);
 
@@ -22482,7 +23213,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 464 */
+/* 474 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22498,9 +23229,9 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _selectors = __webpack_require__(337);
 
-	var _selectors2 = __webpack_require__(433);
+	var _selectors2 = __webpack_require__(443);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
 	function PagePrintImage(_ref) {
 	  var page = _ref.page;
@@ -22512,7 +23243,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  }
 	}
 
-	var PrintVideoPoster = (0, _reactRedux.connect)((0, _utils.combine)({
+	var PrintVideoPoster = (0, _reactRedux.connect)((0, _utils.combineSelectors)({
 	  videoFile: (0, _selectors2.file)('videoFiles', {
 	    id: (0, _selectors2.prop)('videoId')
 	  }),
@@ -22530,7 +23261,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  }
 	});
 
-	var PrintImage = (0, _pages.connectInPage)((0, _utils.combine)({
+	var PrintImage = (0, _pages.connectInPage)((0, _utils.combineSelectors)({
 	  file: (0, _selectors2.file)('imageFiles', {
 	    id: (0, _selectors2.prop)('imageId')
 	  }),
@@ -22550,7 +23281,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 465 */
+/* 475 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22739,14 +23470,14 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  };
 	};
 
-	var _actions = __webpack_require__(444);
+	var _actions = __webpack_require__(454);
 
-	var _actions2 = __webpack_require__(466);
+	var _actions2 = __webpack_require__(476);
 
 	var _actions3 = __webpack_require__(300);
 
 /***/ },
-/* 466 */
+/* 476 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22776,7 +23507,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 467 */
+/* 477 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22786,39 +23517,39 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 	exports.default = _callee;
 
-	var _togglePlaying = __webpack_require__(468);
+	var _togglePlaying = __webpack_require__(478);
 
 	var _togglePlaying2 = _interopRequireDefault(_togglePlaying);
 
-	var _handlePageDidActivate = __webpack_require__(469);
+	var _handlePageDidActivate = __webpack_require__(479);
 
 	var _handlePageDidActivate2 = _interopRequireDefault(_handlePageDidActivate);
 
-	var _disableScrollIndicatorDuringPlayback = __webpack_require__(470);
+	var _disableScrollIndicatorDuringPlayback = __webpack_require__(480);
 
 	var _disableScrollIndicatorDuringPlayback2 = _interopRequireDefault(_disableScrollIndicatorDuringPlayback);
 
-	var _hasNotBeenPlayingForAMoment = __webpack_require__(471);
+	var _hasNotBeenPlayingForAMoment = __webpack_require__(481);
 
 	var _hasNotBeenPlayingForAMoment2 = _interopRequireDefault(_hasNotBeenPlayingForAMoment);
 
-	var _idling = __webpack_require__(472);
+	var _idling = __webpack_require__(482);
 
 	var _idling2 = _interopRequireDefault(_idling);
 
-	var _fadeOutWhenPageWillDeactivate = __webpack_require__(473);
+	var _fadeOutWhenPageWillDeactivate = __webpack_require__(483);
 
 	var _fadeOutWhenPageWillDeactivate2 = _interopRequireDefault(_fadeOutWhenPageWillDeactivate);
 
-	var _goToNextPageOnEnd = __webpack_require__(474);
+	var _goToNextPageOnEnd = __webpack_require__(484);
 
 	var _goToNextPageOnEnd2 = _interopRequireDefault(_goToNextPageOnEnd);
 
-	var _controlsHidden = __webpack_require__(475);
+	var _controlsHidden = __webpack_require__(485);
 
 	var _controlsHidden2 = _interopRequireDefault(_controlsHidden);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22858,7 +23589,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 468 */
+/* 478 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22868,11 +23599,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 	exports.default = _callee;
 
-	var _actions = __webpack_require__(444);
+	var _actions = __webpack_require__(454);
 
-	var _actions2 = __webpack_require__(466);
+	var _actions2 = __webpack_require__(476);
 
-	var _selectors = __webpack_require__(443);
+	var _selectors = __webpack_require__(453);
 
 	var _reduxSaga = __webpack_require__(349);
 
@@ -22935,7 +23666,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 469 */
+/* 479 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22951,7 +23682,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _actions = __webpack_require__(300);
 
-	var _actions2 = __webpack_require__(444);
+	var _actions2 = __webpack_require__(454);
 
 	var _selectors = __webpack_require__(337);
 
@@ -23041,7 +23772,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 470 */
+/* 480 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23055,7 +23786,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _effects = __webpack_require__(345);
 
-	var _actions = __webpack_require__(444);
+	var _actions = __webpack_require__(454);
 
 	var _selectors = __webpack_require__(337);
 
@@ -23136,7 +23867,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 471 */
+/* 481 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23150,7 +23881,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _effects = __webpack_require__(345);
 
-	var _actions = __webpack_require__(444);
+	var _actions = __webpack_require__(454);
 
 	var _marked = [_callee3].map(regeneratorRuntime.mark);
 
@@ -23209,7 +23940,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 472 */
+/* 482 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23223,9 +23954,9 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _effects = __webpack_require__(345);
 
-	var _actions = __webpack_require__(444);
+	var _actions = __webpack_require__(454);
 
-	var _actions2 = __webpack_require__(466);
+	var _actions2 = __webpack_require__(476);
 
 	var _marked = [_callee, putAfterDelay].map(regeneratorRuntime.mark);
 
@@ -23269,7 +24000,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 473 */
+/* 483 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23283,7 +24014,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _effects = __webpack_require__(345);
 
-	var _actions = __webpack_require__(444);
+	var _actions = __webpack_require__(454);
 
 	var _actions2 = __webpack_require__(300);
 
@@ -23326,7 +24057,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 474 */
+/* 484 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23340,7 +24071,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _effects = __webpack_require__(345);
 
-	var _actions = __webpack_require__(444);
+	var _actions = __webpack_require__(454);
 
 	var _selectors = __webpack_require__(337);
 
@@ -23398,7 +24129,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 475 */
+/* 485 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23412,13 +24143,13 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _effects = __webpack_require__(345);
 
-	var _actions = __webpack_require__(444);
+	var _actions = __webpack_require__(454);
 
-	var _selectors = __webpack_require__(443);
+	var _selectors = __webpack_require__(453);
 
-	var _selectors2 = __webpack_require__(476);
+	var _selectors2 = __webpack_require__(486);
 
-	var _actions2 = __webpack_require__(466);
+	var _actions2 = __webpack_require__(476);
 
 	var _marked = [_callee4].map(regeneratorRuntime.mark);
 
@@ -23525,7 +24256,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 476 */
+/* 486 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -23541,7 +24272,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 477 */
+/* 487 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23555,7 +24286,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _effects = __webpack_require__(345);
 
-	var _actions = __webpack_require__(444);
+	var _actions = __webpack_require__(454);
 
 	var _actions2 = __webpack_require__(300);
 
@@ -23622,7 +24353,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 478 */
+/* 488 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23632,11 +24363,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 	exports.Page = exports.reduxModule = undefined;
 
-	var _Page = __webpack_require__(479);
+	var _Page = __webpack_require__(489);
 
 	var _Page2 = _interopRequireDefault(_Page);
 
-	var _reenableScrollIndicator = __webpack_require__(481);
+	var _reenableScrollIndicator = __webpack_require__(491);
 
 	var _reenableScrollIndicator2 = _interopRequireDefault(_reenableScrollIndicator);
 
@@ -23651,7 +24382,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.Page = _Page2.default;
 
 /***/ },
-/* 479 */
+/* 489 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23672,11 +24403,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _components = __webpack_require__(302);
 
-	var _selectors = __webpack_require__(480);
+	var _selectors = __webpack_require__(490);
 
 	var _pages = __webpack_require__(310);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23785,13 +24516,13 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  onQualityMenuItemClick: _react2.default.PropTypes.func
 	};
 
-	exports.default = (0, _pages.connectInPage)((0, _utils.combine)({
+	exports.default = (0, _pages.connectInPage)((0, _utils.combineSelectors)({
 	  textIsHidden: _selectors.textIsHidden,
 	  textHasBeenHidden: _selectors.textHasBeenHidden
 	}))(PageWithInteractiveBackground);
 
 /***/ },
-/* 480 */
+/* 490 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -23810,7 +24541,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 481 */
+/* 491 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23824,7 +24555,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _effects = __webpack_require__(345);
 
-	var _actions = __webpack_require__(482);
+	var _actions = __webpack_require__(492);
 
 	var _selectors = __webpack_require__(337);
 
@@ -23874,7 +24605,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 482 */
+/* 492 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -23900,7 +24631,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 483 */
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23910,7 +24641,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 	exports.registry = undefined;
 
-	var _PageTypeRegistry = __webpack_require__(484);
+	var _PageTypeRegistry = __webpack_require__(494);
 
 	var _PageTypeRegistry2 = _interopRequireDefault(_PageTypeRegistry);
 
@@ -23921,7 +24652,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.default = registry.register;
 
 /***/ },
-/* 484 */
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24023,7 +24754,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 485 */
+/* 495 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24051,16 +24782,16 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  });
 	};
 
-	var _registerPageType = __webpack_require__(483);
+	var _registerPageType = __webpack_require__(493);
 
 	var _registerPageType2 = _interopRequireDefault(_registerPageType);
 
-	var _media = __webpack_require__(439);
+	var _media = __webpack_require__(449);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 486 */
+/* 496 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -24081,7 +24812,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	var registry = exports.registry = [];
 
 /***/ },
-/* 487 */
+/* 497 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24094,9 +24825,9 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _collections = __webpack_require__(338);
 
-	var _registerPageType = __webpack_require__(483);
+	var _registerPageType = __webpack_require__(493);
 
-	var _boot = __webpack_require__(488);
+	var _boot = __webpack_require__(498);
 
 	var _boot2 = _interopRequireDefault(_boot);
 
@@ -24154,7 +24885,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.default = _class;
 
 /***/ },
-/* 488 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24217,19 +24948,19 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  return store;
 	};
 
-	var _registerPageType = __webpack_require__(483);
+	var _registerPageType = __webpack_require__(493);
 
-	var _registerWidgetType = __webpack_require__(486);
+	var _registerWidgetType = __webpack_require__(496);
 
-	var _createStore = __webpack_require__(489);
+	var _createStore = __webpack_require__(499);
 
 	var _createStore2 = _interopRequireDefault(_createStore);
 
-	var _storylines = __webpack_require__(490);
+	var _storylines = __webpack_require__(500);
 
 	var _storylines2 = _interopRequireDefault(_storylines);
 
-	var _chapters = __webpack_require__(491);
+	var _chapters = __webpack_require__(501);
 
 	var _chapters2 = _interopRequireDefault(_chapters);
 
@@ -24237,46 +24968,46 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _pages2 = _interopRequireDefault(_pages);
 
-	var _pageTypes = __webpack_require__(492);
+	var _pageTypes = __webpack_require__(502);
 
 	var _pageTypes2 = _interopRequireDefault(_pageTypes);
 
-	var _current = __webpack_require__(495);
+	var _current = __webpack_require__(505);
 
 	var _current2 = _interopRequireDefault(_current);
 
-	var _files = __webpack_require__(499);
+	var _files = __webpack_require__(509);
 
 	var _files2 = _interopRequireDefault(_files);
 
-	var _settings = __webpack_require__(500);
+	var _settings = __webpack_require__(510);
 
 	var _settings2 = _interopRequireDefault(_settings);
 
-	var _i18n = __webpack_require__(502);
+	var _i18n = __webpack_require__(512);
 
 	var _i18n2 = _interopRequireDefault(_i18n);
 
-	var _entry = __webpack_require__(505);
+	var _entry = __webpack_require__(515);
 
 	var _entry2 = _interopRequireDefault(_entry);
 
-	var _hotkeys = __webpack_require__(508);
+	var _hotkeys = __webpack_require__(518);
 
 	var _hotkeys2 = _interopRequireDefault(_hotkeys);
 
-	var _hideText = __webpack_require__(509);
+	var _hideText = __webpack_require__(519);
 
 	var _hideText2 = _interopRequireDefault(_hideText);
 
-	var _widgets = __webpack_require__(512);
+	var _widgets = __webpack_require__(522);
 
 	var _widgets2 = _interopRequireDefault(_widgets);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 489 */
+/* 499 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -24386,7 +25117,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 490 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24419,7 +25150,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 491 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24451,7 +25182,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 492 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24460,13 +25191,13 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  value: true
 	});
 
-	var _actions = __webpack_require__(493);
+	var _actions = __webpack_require__(503);
 
-	var _reducer = __webpack_require__(494);
+	var _reducer = __webpack_require__(504);
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24483,7 +25214,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 493 */
+/* 503 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24506,7 +25237,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 494 */
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24527,10 +25258,10 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  }
 	};
 
-	var _actions = __webpack_require__(493);
+	var _actions = __webpack_require__(503);
 
 /***/ },
-/* 495 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24540,11 +25271,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 	exports.watch = exports.reducers = undefined;
 
-	var _reducer = __webpack_require__(496);
+	var _reducer = __webpack_require__(506);
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
-	var _watch = __webpack_require__(498);
+	var _watch = __webpack_require__(508);
 
 	var _watch2 = _interopRequireDefault(_watch);
 
@@ -24569,7 +25300,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.watch = _watch2.default;
 
 /***/ },
-/* 496 */
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24590,10 +25321,10 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  }
 	};
 
-	var _actions = __webpack_require__(497);
+	var _actions = __webpack_require__(507);
 
 /***/ },
-/* 497 */
+/* 507 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24616,7 +25347,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 498 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24631,10 +25362,10 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  });
 	};
 
-	var _actions = __webpack_require__(497);
+	var _actions = __webpack_require__(507);
 
 /***/ },
-/* 499 */
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24645,7 +25376,9 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _collections = __webpack_require__(338);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
+
+	var _redux = __webpack_require__(313);
 
 	exports.default = {
 	  init: function init(_ref) {
@@ -24666,32 +25399,32 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  createReducers: function createReducers(_ref2) {
 	    var files = _ref2.files,
 	        _ref2$fileUrlTemplate = _ref2.fileUrlTemplates,
-	        fileUrlTemplates = _ref2$fileUrlTemplate === undefined ? {} : _ref2$fileUrlTemplate,
+	        _fileUrlTemplates = _ref2$fileUrlTemplate === undefined ? {} : _ref2$fileUrlTemplate,
 	        _ref2$modelTypes = _ref2.modelTypes,
-	        modelTypes = _ref2$modelTypes === undefined ? {} : _ref2$modelTypes;
+	        _modelTypes = _ref2$modelTypes === undefined ? {} : _ref2$modelTypes;
 
-	    var reducers = Object.keys(files).reduce(function (result, collectionName) {
-	      collectionName = (0, _utils.camelize)(collectionName);
-	      result[collectionName] = (0, _collections.createReducer)(collectionName);
-	      return result;
-	    }, {});
+	    _fileUrlTemplates = _utils.camelize.keys(_fileUrlTemplates);
+	    _modelTypes = _utils.camelize.keys(_modelTypes);
 
-	    fileUrlTemplates = _utils.camelize.keys(fileUrlTemplates);
-	    reducers.fileUrlTemplates = function (state) {
-	      return fileUrlTemplates;
+	    return {
+	      files: (0, _redux.combineReducers)(Object.keys(files).reduce(function (result, collectionName) {
+	        collectionName = (0, _utils.camelize)(collectionName);
+	        result[collectionName] = (0, _collections.createReducer)(collectionName);
+	        return result;
+	      }, {})),
+
+	      fileUrlTemplates: function fileUrlTemplates(state) {
+	        return _fileUrlTemplates;
+	      },
+	      modelTypes: function modelTypes(state) {
+	        return _modelTypes;
+	      }
 	    };
-
-	    modelTypes = _utils.camelize.keys(modelTypes);
-	    reducers.modelTypes = function (state) {
-	      return modelTypes;
-	    };
-
-	    return reducers;
 	  }
 	};
 
 /***/ },
-/* 500 */
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24703,7 +25436,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.createSaga = createSaga;
 	exports.watch = watch;
 
-	var _reducer = __webpack_require__(501);
+	var _reducer = __webpack_require__(511);
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
@@ -24807,7 +25540,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 501 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24832,7 +25565,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	var _actions = __webpack_require__(301);
 
 /***/ },
-/* 502 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24841,9 +25574,9 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  value: true
 	});
 
-	var _actions = __webpack_require__(503);
+	var _actions = __webpack_require__(513);
 
-	var _reducer = __webpack_require__(504);
+	var _reducer = __webpack_require__(514);
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
@@ -24862,7 +25595,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 503 */
+/* 513 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24885,7 +25618,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 504 */
+/* 514 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24906,10 +25639,10 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  }
 	};
 
-	var _actions = __webpack_require__(503);
+	var _actions = __webpack_require__(513);
 
 /***/ },
-/* 505 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24918,9 +25651,9 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  value: true
 	});
 
-	var _actions = __webpack_require__(506);
+	var _actions = __webpack_require__(516);
 
-	var _reducer = __webpack_require__(507);
+	var _reducer = __webpack_require__(517);
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
@@ -24939,7 +25672,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 506 */
+/* 516 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24962,7 +25695,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 507 */
+/* 517 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24983,10 +25716,10 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  }
 	};
 
-	var _actions = __webpack_require__(506);
+	var _actions = __webpack_require__(516);
 
 /***/ },
-/* 508 */
+/* 518 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24995,9 +25728,9 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  value: true
 	});
 
-	var _keyCodes = __webpack_require__(426);
+	var _keyCodes = __webpack_require__(436);
 
-	var _actions = __webpack_require__(466);
+	var _actions = __webpack_require__(476);
 
 	exports.default = {
 	  init: function init(_ref) {
@@ -25023,7 +25756,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 509 */
+/* 519 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25033,11 +25766,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 	exports.watch = exports.reducers = undefined;
 
-	var _watch = __webpack_require__(510);
+	var _watch = __webpack_require__(520);
 
 	var _watch2 = _interopRequireDefault(_watch);
 
-	var _reducer = __webpack_require__(511);
+	var _reducer = __webpack_require__(521);
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
@@ -25064,7 +25797,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.watch = _watch2.default;
 
 /***/ },
-/* 510 */
+/* 520 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25083,10 +25816,10 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	            });
 	};
 
-	var _actions = __webpack_require__(482);
+	var _actions = __webpack_require__(492);
 
 /***/ },
-/* 511 */
+/* 521 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25120,9 +25853,9 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  }
 	};
 
-	var _actions = __webpack_require__(482);
+	var _actions = __webpack_require__(492);
 
-	var _actions2 = __webpack_require__(497);
+	var _actions2 = __webpack_require__(507);
 
 	var initialState = {
 	  isActive: false,
@@ -25130,7 +25863,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ },
-/* 512 */
+/* 522 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25140,17 +25873,17 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 	exports.createWidgetType = createWidgetType;
 
-	var _reducer = __webpack_require__(513);
+	var _reducer = __webpack_require__(523);
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
-	var _reactDom = __webpack_require__(382);
+	var _reactDom = __webpack_require__(392);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
 	var _reactRedux = __webpack_require__(359);
 
-	var _actions = __webpack_require__(514);
+	var _actions = __webpack_require__(524);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25192,7 +25925,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 513 */
+/* 523 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25214,10 +25947,10 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  }
 	};
 
-	var _actions = __webpack_require__(514);
+	var _actions = __webpack_require__(524);
 
 /***/ },
-/* 514 */
+/* 524 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25240,7 +25973,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 515 */
+/* 525 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25250,11 +25983,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 	exports.register = register;
 
-	var _audio = __webpack_require__(516);
+	var _audio = __webpack_require__(526);
 
-	var _plain = __webpack_require__(519);
+	var _plain = __webpack_require__(529);
 
-	var _video = __webpack_require__(520);
+	var _video = __webpack_require__(530);
 
 	function register() {
 	  (0, _plain.register)();
@@ -25263,7 +25996,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 516 */
+/* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25273,27 +26006,27 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 	exports.register = register;
 
-	var _media = __webpack_require__(439);
+	var _media = __webpack_require__(449);
 
-	var _PageAudioFilePlayer = __webpack_require__(517);
+	var _PageAudioFilePlayer = __webpack_require__(527);
 
 	var _PageAudioFilePlayer2 = _interopRequireDefault(_PageAudioFilePlayer);
 
-	var _registerPageType = __webpack_require__(483);
+	var _registerPageType = __webpack_require__(493);
 
 	var _registerPageType2 = _interopRequireDefault(_registerPageType);
 
 	var _pages = __webpack_require__(310);
 
-	var _selectors = __webpack_require__(443);
+	var _selectors = __webpack_require__(453);
 
 	var _selectors2 = __webpack_require__(337);
 
-	var _selectors3 = __webpack_require__(437);
+	var _selectors3 = __webpack_require__(447);
 
-	var _selectors4 = __webpack_require__(395);
+	var _selectors4 = __webpack_require__(405);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25316,7 +26049,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	function register() {
 	  (0, _registerPageType2.default)('audio', {
 
-	    component: (0, _pages.connectInPage)((0, _utils.combine)({
+	    component: (0, _pages.connectInPage)((0, _utils.combineSelectors)({
 	      page: (0, _selectors2.pageAttributes)(),
 	      audioFile: (0, _selectors4.file)('audioFiles', { id: (0, _selectors2.pageAttribute)('audioFileId') }),
 	      playerState: (0, _selectors.playerState)(),
@@ -25330,7 +26063,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 517 */
+/* 527 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25339,11 +26072,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  value: true
 	});
 
-	var _createPageFilePlayer = __webpack_require__(459);
+	var _createPageFilePlayer = __webpack_require__(469);
 
 	var _createPageFilePlayer2 = _interopRequireDefault(_createPageFilePlayer);
 
-	var _AudioFilePlayer = __webpack_require__(518);
+	var _AudioFilePlayer = __webpack_require__(528);
 
 	var _AudioFilePlayer2 = _interopRequireDefault(_AudioFilePlayer);
 
@@ -25352,7 +26085,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.default = (0, _createPageFilePlayer2.default)(_AudioFilePlayer2.default);
 
 /***/ },
-/* 518 */
+/* 528 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25361,7 +26094,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  value: true
 	});
 
-	var _createFilePlayer = __webpack_require__(449);
+	var _createFilePlayer = __webpack_require__(459);
 
 	var _createFilePlayer2 = _interopRequireDefault(_createFilePlayer);
 
@@ -25378,7 +26111,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 
 /***/ },
-/* 519 */
+/* 529 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25390,9 +26123,9 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _components = __webpack_require__(302);
 
-	var _media = __webpack_require__(439);
+	var _media = __webpack_require__(449);
 
-	var _registerPageType = __webpack_require__(483);
+	var _registerPageType = __webpack_require__(493);
 
 	var _registerPageType2 = _interopRequireDefault(_registerPageType);
 
@@ -25400,7 +26133,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _selectors = __webpack_require__(337);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25427,7 +26160,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	function register() {
 	  (0, _registerPageType2.default)('background_image', {
-	    component: (0, _pages.connectInPage)((0, _utils.combine)({
+	    component: (0, _pages.connectInPage)((0, _utils.combineSelectors)({
 	      page: (0, _selectors.pageAttributes)()
 	    }))(PlainPage),
 
@@ -25436,7 +26169,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 520 */
+/* 530 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25446,25 +26179,25 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 	exports.register = register;
 
-	var _media = __webpack_require__(439);
+	var _media = __webpack_require__(449);
 
-	var _registerPageType = __webpack_require__(483);
+	var _registerPageType = __webpack_require__(493);
 
 	var _registerPageType2 = _interopRequireDefault(_registerPageType);
 
 	var _pages = __webpack_require__(310);
 
-	var _selectors = __webpack_require__(443);
+	var _selectors = __webpack_require__(453);
 
 	var _selectors2 = __webpack_require__(337);
 
-	var _selectors3 = __webpack_require__(437);
+	var _selectors3 = __webpack_require__(447);
 
-	var _selectors4 = __webpack_require__(395);
+	var _selectors4 = __webpack_require__(405);
 
-	var _selectors5 = __webpack_require__(392);
+	var _selectors5 = __webpack_require__(402);
 
-	var _utils = __webpack_require__(372);
+	var _utils = __webpack_require__(380);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25490,7 +26223,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	function register() {
 	  (0, _registerPageType2.default)('video', {
 
-	    component: (0, _pages.connectInPage)((0, _utils.combine)({
+	    component: (0, _pages.connectInPage)((0, _utils.combineSelectors)({
 	      page: (0, _selectors2.pageAttributes)(),
 	      videoFile: (0, _selectors4.file)('videoFiles', { id: (0, _selectors2.pageAttribute)('videoFileId') }),
 	      playerState: (0, _selectors.playerState)(),
@@ -25507,7 +26240,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ },
-/* 521 */
+/* 531 */
 /***/ function(module, exports) {
 
 	module.exports = pageflow;
