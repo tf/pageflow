@@ -23106,7 +23106,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function PageBackgroundVideo(props) {
-	  if (props.hasMobilePlatform && (mobilePosterExists(props) || !props.hasMuteVideoAutoplaySupport)) {
+	  if (props.hasMobilePlatform && mobilePosterExists(props)) {
 	    return React.createElement(_MobilePageVideoPoster2.default, { page: props.page,
 	      propertyNamePrefix: props.propertyNamePrefix });
 	  } else {
@@ -23126,8 +23126,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	exports.default = (0, _reactRedux.connect)((0, _utils.combineSelectors)({
 	  fileExists: (0, _selectors.fileExists)(),
-	  hasMobilePlatform: (0, _selectors2.has)('mobile platform'),
-	  hasMuteVideoAutoplaySupport: (0, _selectors2.has)('mute video autoplay support')
+	  hasMobilePlatform: (0, _selectors2.has)('mobile platform')
 	}))(PageBackgroundVideo);
 
 /***/ },
