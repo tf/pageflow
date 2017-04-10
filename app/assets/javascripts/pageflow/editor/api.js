@@ -165,12 +165,12 @@ pageflow.EditorApi = pageflow.Object.extend({
     this.failures = new pageflow.FailuresAPI();
 
     /**
-     * Setup editor integration for page types.
+     * Set up editor integration for page types.
      */
     this.pageTypes = new pageflow.PageTypes();
 
     /**
-     *
+     * Set up editor integration for file types
      */
     this.fileTypes = new pageflow.FileTypes();
 
