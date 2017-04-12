@@ -7,8 +7,6 @@ module Pageflow
         video_file = build(:video_file)
         definition = ZencoderVideoOutputDefinition.new(video_file)
 
-        expect(definition).to have_output.to_s3(video_file.webm_high.path)
-        expect(definition).to have_output.to_s3(video_file.webm_medium.path)
         expect(definition).not_to have_output.to_s3(video_file.mp4_4k.path)
         expect(definition).not_to have_output.to_s3(video_file.mp4_fullhd.path)
         expect(definition).to have_output.to_s3(video_file.mp4_high.path)
@@ -26,8 +24,6 @@ module Pageflow
         definition = ZencoderVideoOutputDefinition.new(video_file)
         definition.skip_hls = true
 
-        expect(definition).to have_output.to_s3(video_file.webm_high.path)
-        expect(definition).to have_output.to_s3(video_file.webm_medium.path)
         expect(definition).not_to have_output.to_s3(video_file.mp4_4k.path)
         expect(definition).not_to have_output.to_s3(video_file.mp4_fullhd.path)
         expect(definition).to have_output.to_s3(video_file.mp4_high.path)
@@ -45,8 +41,6 @@ module Pageflow
         definition = ZencoderVideoOutputDefinition.new(video_file)
         definition.skip_smil = true
 
-        expect(definition).to have_output.to_s3(video_file.webm_high.path)
-        expect(definition).to have_output.to_s3(video_file.webm_medium.path)
         expect(definition).not_to have_output.to_s3(video_file.mp4_4k.path)
         expect(definition).not_to have_output.to_s3(video_file.mp4_fullhd.path)
         expect(definition).to have_output.to_s3(video_file.mp4_high.path)
@@ -64,8 +58,6 @@ module Pageflow
         video_file.entry.feature_states = {'highdef_video_encoding' => true}
         definition = ZencoderVideoOutputDefinition.new(video_file)
 
-        expect(definition).to have_output.to_s3(video_file.webm_high.path)
-        expect(definition).to have_output.to_s3(video_file.webm_medium.path)
         expect(definition).to have_output.to_s3(video_file.mp4_4k.path)
         expect(definition).to have_output.to_s3(video_file.mp4_fullhd.path)
         expect(definition).to have_output.to_s3(video_file.mp4_high.path)

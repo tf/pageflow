@@ -15,9 +15,6 @@ module Pageflow
 
     def outputs
       [
-        transferable(webm_high_definition),
-        transferable(webm_medium_definition),
-
         mp4_highdef_definitions,
         transferable(mp4_high_definition),
         transferable(mp4_medium_definition),
@@ -31,32 +28,6 @@ module Pageflow
     end
 
     private
-
-    def webm_high_definition
-      {
-        label: 'webm_high',
-        format: 'webm',
-        path: video_file.webm_high.path,
-        size: '1280x720',
-        quality: 4,
-        max_video_bitrate: 3500,
-        public: 1,
-        sharpen: true
-      }
-    end
-
-    def webm_medium_definition
-      {
-        label: 'webm_medium',
-        format: 'webm',
-        path: video_file.webm_medium.path,
-        size: '1280x720',
-        quality: 3,
-        max_video_bitrate: 2000,
-        public: 1,
-        sharpen: true
-      }
-    end
 
     def mp4_highdef_definitions
       return [] unless video_file.entry.feature_state('highdef_video_encoding')
