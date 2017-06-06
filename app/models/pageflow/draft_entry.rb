@@ -100,7 +100,7 @@ module Pageflow
     end
 
     def overview_button
-      OverviewButton.new(draft, theming)
+      OverviewButton.new(draft)
     end
 
     def resolve_widgets(options = {})

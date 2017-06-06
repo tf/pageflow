@@ -69,7 +69,7 @@ module Pageflow
     end
 
     def overview_button
-      OverviewButton.new(revision, theming)
+      OverviewButton.new(revision)
     end
 
     def resolve_widgets(options = {})

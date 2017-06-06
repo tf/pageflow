@@ -1,8 +1,8 @@
 module Pageflow
   class OverviewButton
-    attr_reader :revision, :theming
+    attr_reader :revision
 
-    def initialize(revision, _theming)
+    def initialize(revision)
       @revision = revision
     end
 

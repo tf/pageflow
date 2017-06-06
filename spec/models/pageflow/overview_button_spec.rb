@@ -10,8 +10,7 @@ module Pageflow
         revision = build(:revision,
                          theme_name: 'with_overview_button',
                          overview_button_enabled: true)
-        theming = create(:theming)
-        overview_button = OverviewButton.new(revision, theming)
+        overview_button = OverviewButton.new(revision)
 
         expect(overview_button).to be_enabled
       end
@@ -23,8 +22,7 @@ module Pageflow
         revision = build(:revision,
                          theme_name: 'with_overview_button',
                          overview_button_enabled: false)
-        theming = create(:theming)
-        overview_button = OverviewButton.new(revision, theming)
+        overview_button = OverviewButton.new(revision)
 
         expect(overview_button).not_to be_enabled
       end
@@ -36,8 +34,7 @@ module Pageflow
         revision = build(:revision,
                          theme_name: 'no_overview_button',
                          overview_button_enabled: true)
-        theming = create(:theming)
-        overview_button = OverviewButton.new(revision, theming)
+        overview_button = OverviewButton.new(revision)
 
         expect(overview_button).not_to be_enabled
       end
@@ -51,8 +48,7 @@ module Pageflow
         revision = build(:revision,
                          theme_name: 'with_overview_button',
                          overview_button_enabled: true)
-        theming = create(:theming)
-        overview_button = OverviewButton.new(revision, theming)
+        overview_button = OverviewButton.new(revision)
 
         expect(overview_button.enabled_value).to eq(true)
       end
@@ -64,8 +60,7 @@ module Pageflow
         revision = build(:revision,
                          theme_name: 'with_overview_button',
                          overview_button_enabled: false)
-        theming = create(:theming)
-        overview_button = OverviewButton.new(revision, theming)
+        overview_button = OverviewButton.new(revision)
 
         expect(overview_button.enabled_value).to eq(false)
       end
@@ -77,8 +72,7 @@ module Pageflow
         revision = build(:revision,
                          theme_name: 'no_overview_button',
                          overview_button_enabled: true)
-        theming = create(:theming)
-        overview_button = OverviewButton.new(revision, theming)
+        overview_button = OverviewButton.new(revision)
 
         expect(overview_button.enabled_value).to eq(true)
       end
