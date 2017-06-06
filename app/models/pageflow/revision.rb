@@ -49,6 +49,10 @@ module Pageflow
                              Pageflow.config_for(revision.entry).themes.names
                            end)
 
+    def theme
+      Pageflow.config_for(entry).themes.get(theme_name)
+    end
+
     def main_storyline_chapters
       main_storyline = storylines.first
       main_storyline ? main_storyline.chapters : Chapter.none

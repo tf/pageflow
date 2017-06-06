@@ -11,13 +11,14 @@ pageflow.app.addInitializer(function(options) {
   pageflow.storylines = new pageflow.StorylinesCollection(options.storylines);
   pageflow.entry = new pageflow.Entry(options.entry);
   pageflow.theming = new pageflow.Theming(options.theming);
+  pageflow.themes = new pageflow.ThemesCollection(options.themes);
   pageflow.account = new Backbone.Model(options.account);
 
   pageflow.entryData = new pageflow.PreviewEntryData({
+    entry: pageflow.entry,
     storylines: pageflow.storylines,
     chapters: pageflow.chapters,
-    pages: pageflow.pages,
-    theming: pageflow.theming
+    pages: pageflow.pages
   });
 
   pageflow.storylineOrdering = new pageflow.StorylineOrdering(pageflow.storylines, pageflow.pages);
