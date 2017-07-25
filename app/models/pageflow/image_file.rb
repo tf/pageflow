@@ -11,6 +11,7 @@ module Pageflow
                medium: ['1024x1024>', :JPG],
                large: ['1920x1920>', :JPG],
                ultra: ['3840×3840>', :JPG],
+               ultra_fw: ['3840×3840>', :JPG],
                panorama_medium: ['1024x1024^', panorama_format],
                panorama_large: ['1920x1080^', panorama_format])
     end
@@ -20,6 +21,7 @@ module Pageflow
       medium: '-quality 70 -interlace Plane',
       large: '-quality 70 -interlace Plane',
       ultra: '-quality 90 -interlace Plane',
+      ultra_fw: '-quality 90 -interlace Plane',
       panorama_medium: '-quality 70 -interlace Plane',
       panorama_large: '-quality 70 -interlace Plane'
     }

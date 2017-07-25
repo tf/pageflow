@@ -12,11 +12,13 @@ module Pageflow
                                  .merge(:medium => ['1920x1920>', :JPG],
                                         :large => ['1024x1024>', :JPG],
                                         :ultra => ['3840×3840>', :JPG],
+                                        :ultra_fw => ['3840×3840>', :JPG],
                                         :print => ['300x300>', :JPG]),
                                :convert_options => {
                                  :medium => "-quality 90 -interlace Plane",
                                  :large => "-quality 90 -interlace Plane",
                                  :ultra => '-quality 90 -interlace Plane',
+                                 :ultra_fw => '-quality 90 -interlace Plane',
                                  :print => "-quality 10 -interlace Plane"
                                }))
 
