@@ -24130,6 +24130,10 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	    updateOnNextPlay(player, getActiveTexTrackFileId, getPosition);
 	  });
 
+	  player.textTracks().on('addtrack', function () {
+	    updateTextTracks(player, null, getActiveTexTrackFileId(), getPosition());
+	  });
+
 	  updateTextTracks(player, null, getActiveTexTrackFileId(), getPosition());
 	  updateOnNextPlay(player, getActiveTexTrackFileId, getPosition);
 	}
