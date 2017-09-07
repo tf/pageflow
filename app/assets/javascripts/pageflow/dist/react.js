@@ -23109,7 +23109,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	    return {
 	      files: files.sort(function (file1, file2) {
-	        return file1.displayLabel.localeCompare(file2.displayLabel);
+	        return file1.displayLabel.localeCompare(file2.displayLabel || '');
 	      }),
 	      autoFile: autoFile,
 	      activeFileId: getActiveTextTrackFileId(files, autoFile, textTrackSettings),
