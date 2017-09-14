@@ -126,10 +126,9 @@ export function actionCreators({scope = 'default'} = {}) {
       });
     },
 
-    progress({bufferedEnd, duration}) {
+    progress({bufferedEnd}) {
       return pageAction(PROGRESS, {
-        bufferedEnd,
-        duration
+        bufferedEnd
       });
     },
 

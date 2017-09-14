@@ -5,8 +5,7 @@ export default function(player, actions) {
   }));
 
   player.on('progress', () => actions.progress({
-    bufferedEnd: player.bufferedEnd(),
-    duration: player.duration()
+    bufferedEnd: player.bufferedEnd()
   }));
 
   player.on('play', actions.playing);

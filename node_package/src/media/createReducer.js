@@ -155,8 +155,7 @@ export default function({scope = 'default'} = {}) {
     case PROGRESS:
       return {
         ...state,
-        bufferedEnd: action.payload.bufferedEnd,
-        duration: action.payload.duration
+        bufferedEnd: action.payload.bufferedEnd
       };
     case TIME_UPDATE:
       return {

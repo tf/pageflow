@@ -1,4 +1,4 @@
-import TimeDisplay, {unknownTimePlaceholder} from '../TimeDisplay';
+import TimeDisplay from '../TimeDisplay';
 
 import {shallow} from 'enzyme';
 import {expect} from 'support/chai';
@@ -32,11 +32,5 @@ describe('TimeDisplay', () => {
     const result = shallow(<TimeDisplay value={undefined} />);
 
     expect(result).to.have.text('0:00');
-  });
-
-  it('handles NaN', () => {
-    const result = shallow(<TimeDisplay value={NaN} />);
-
-    expect(result).to.have.text(unknownTimePlaceholder);
   });
 });

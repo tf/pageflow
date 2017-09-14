@@ -8,17 +8,11 @@ export default function TimeDisplay(props) {
   );
 }
 
-export const unknownTimePlaceholder = '-:--';
-
 TimeDisplay.defaultProps = {
   value: 0
 };
 
 function format(value) {
-  if (isNaN(value)) {
-    return unknownTimePlaceholder;
-  }
-
   const seconds = Math.floor(value) % 60;
   const minutes = Math.floor(value / 60) % 60;
   const hours = Math.floor(value / 60 / 60);
