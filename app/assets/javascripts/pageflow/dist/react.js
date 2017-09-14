@@ -23291,10 +23291,12 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	      return pageAction(PAUSED);
 	    },
 	    timeUpdate: function timeUpdate(_ref4) {
-	      var currentTime = _ref4.currentTime;
+	      var currentTime = _ref4.currentTime,
+	          duration = _ref4.duration;
 
 	      return pageAction(TIME_UPDATE, {
-	        currentTime: currentTime
+	        currentTime: currentTime,
+	        duration: duration
 	      });
 	    },
 	    metaDataLoaded: function metaDataLoaded(_ref5) {
@@ -23307,12 +23309,10 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	      });
 	    },
 	    progress: function progress(_ref6) {
-	      var bufferedEnd = _ref6.bufferedEnd,
-	          duration = _ref6.duration;
+	      var bufferedEnd = _ref6.bufferedEnd;
 
 	      return pageAction(PROGRESS, {
-	        bufferedEnd: bufferedEnd,
-	        duration: duration
+	        bufferedEnd: bufferedEnd
 	      });
 	    },
 	    ended: function ended() {
@@ -24044,8 +24044,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	  player.on('progress', function () {
 	    return actions.progress({
-	      bufferedEnd: player.bufferedEnd(),
-	      duration: player.duration()
+	      bufferedEnd: player.bufferedEnd()
 	    });
 	  });
 
@@ -24059,7 +24058,8 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	  player.on('timeupdate', function () {
 	    return actions.timeUpdate({
-	      currentTime: player.currentTime()
+	      currentTime: player.currentTime(),
+	      duration: player.duration()
 	    });
 	  });
 
@@ -24840,12 +24840,12 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	        });
 	      case _actions.PROGRESS:
 	        return _extends({}, state, {
-	          bufferedEnd: action.payload.bufferedEnd,
-	          duration: action.payload.duration
+	          bufferedEnd: action.payload.bufferedEnd
 	        });
 	      case _actions.TIME_UPDATE:
 	        return _extends({}, state, {
 	          currentTime: action.payload.currentTime,
+	          duration: action.payload.duration,
 	          isLoading: false
 	        });
 	      case _actions.ENDED:
