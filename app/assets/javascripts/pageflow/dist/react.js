@@ -23609,21 +23609,23 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	          playsInline: props.playsInline
 	        });
 
-	        (0, _handlePlayerState.initPlayer)(_this.player, function () {
-	          return _this.props.playerState;
-	        }, _this.props.playerActions, _this.prevFileId, _this.props.file.id);
+	        _this.player.ready(function () {
+	          (0, _handlePlayerState.initPlayer)(_this.player, function () {
+	            return _this.props.playerState;
+	          }, _this.props.playerActions, _this.prevFileId, _this.props.file.id);
 
-	        if (!_this.displaysTextTracksInNativePlayer) {
-	          (0, _textTracks.initTextTracks)(_this.player, function () {
-	            return _this.props.textTracks.activeFileId;
-	          }, function () {
-	            return _this.props.textTrackPosition;
-	          });
-	        }
+	          if (!_this.displaysTextTracksInNativePlayer) {
+	            (0, _textTracks.initTextTracks)(_this.player, function () {
+	              return _this.props.textTracks.activeFileId;
+	            }, function () {
+	              return _this.props.textTrackPosition;
+	            });
+	          }
 
-	        (0, _watchPlayer2.default)(_this.player, _this.props.playerActions);
+	          (0, _watchPlayer2.default)(_this.player, _this.props.playerActions);
 
-	        _this.prevFileId = _this.props.file.id;
+	          _this.prevFileId = _this.props.file.id;
+	        });
 	      };
 
 	      _this.disposeMediaTag = function () {
