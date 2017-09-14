@@ -17721,6 +17721,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.unknownTimePlaceholder = undefined;
 	exports.default = TimeDisplay;
 
 	var _classnames = __webpack_require__(304);
@@ -17737,11 +17738,17 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  );
 	}
 
+	var unknownTimePlaceholder = exports.unknownTimePlaceholder = '-:--';
+
 	TimeDisplay.defaultProps = {
 	  value: 0
 	};
 
 	function format(value) {
+	  if (isNaN(value)) {
+	    return unknownTimePlaceholder;
+	  }
+
 	  var seconds = Math.floor(value) % 60;
 	  var minutes = Math.floor(value / 60) % 60;
 	  var hours = Math.floor(value / 60 / 60);
@@ -23300,10 +23307,12 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	      });
 	    },
 	    progress: function progress(_ref6) {
-	      var bufferedEnd = _ref6.bufferedEnd;
+	      var bufferedEnd = _ref6.bufferedEnd,
+	          duration = _ref6.duration;
 
 	      return pageAction(PROGRESS, {
-	        bufferedEnd: bufferedEnd
+	        bufferedEnd: bufferedEnd,
+	        duration: duration
 	      });
 	    },
 	    ended: function ended() {
@@ -24035,7 +24044,8 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	  player.on('progress', function () {
 	    return actions.progress({
-	      bufferedEnd: player.bufferedEnd()
+	      bufferedEnd: player.bufferedEnd(),
+	      duration: player.duration()
 	    });
 	  });
 
@@ -24830,7 +24840,8 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	        });
 	      case _actions.PROGRESS:
 	        return _extends({}, state, {
-	          bufferedEnd: action.payload.bufferedEnd
+	          bufferedEnd: action.payload.bufferedEnd,
+	          duration: action.payload.duration
 	        });
 	      case _actions.TIME_UPDATE:
 	        return _extends({}, state, {
