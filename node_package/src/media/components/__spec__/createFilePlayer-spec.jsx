@@ -139,6 +139,7 @@ describe('createFilePlayer', () => {
       {event: 'play', action: 'playing'},
       {event: 'pause', action: 'paused'},
       {event: 'loadedmetadata', action: 'metaDataLoaded', payload: {currentTime: 5, duration: 10}},
+      {event: 'progress', action: 'progress', payload: {bufferedEnd: 7, duration: 10}},
       {event: 'timeupdate', action: 'timeUpdate', payload: {currentTime: 5}},
       {event: 'ended', action: 'ended'},
     ].forEach(({action, event, payload}) => {
@@ -151,6 +152,7 @@ describe('createFilePlayer', () => {
         mount(<FilePlayer {...requiredProps} playerActions={playerActions}/>);
 
         mockPlayer.currentTime.returns(5);
+        mockPlayer.bufferedEnd.returns(7);
         mockPlayer.duration.returns(10);
         mockPlayer.trigger(event);
 
@@ -340,6 +342,7 @@ describe('createFilePlayer', () => {
   function createMockPlayer(element) {
     return {
       currentTime: sinon.stub(),
+      bufferedEnd: sinon.stub(),
       duration: sinon.stub(),
       isAudio: sinon.stub(),
 

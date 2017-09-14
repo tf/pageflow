@@ -39,9 +39,18 @@ describe('createReducer creates function that', () => {
       const {progress} = actionCreators();
       const reducer = createReducer();
 
-      const nextState = reducer({}, progress({bufferedEnd: 40}));
+      const nextState = reducer({}, progress({bufferedEnd: 40, duration: 60}));
 
       expect(nextState.bufferedEnd).to.eq(40);
+    });
+
+    it('updates duration', () => {
+      const {progress} = actionCreators();
+      const reducer = createReducer();
+
+      const nextState = reducer({}, progress({bufferedEnd: 40, duration: 60}));
+
+      expect(nextState.duration).to.eq(60);
     });
   });
 
