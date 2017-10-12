@@ -35,6 +35,9 @@ module Pageflow
       end
     end
 
+    select2_options(scope: -> { Account.accessible_by(current_ability, :read) },
+                    text_attribute: :name)
+
     filter :name
 
     form :partial => 'form'

@@ -17,6 +17,8 @@ Gem::Specification.new do |s|
   # Framework for admin interface
   s.add_dependency 'activeadmin', '1.0.0.pre4'
 
+  s.add_dependency 'activeadmin-select2'
+
   # Make devise mailers use resque. (Needs to be below active admin entry!)
   s.add_dependency 'devise-async', '~> 0.9.0'
 
