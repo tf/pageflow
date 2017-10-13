@@ -6,6 +6,7 @@ require File.expand_path('spec/support/pageflow/rails_version', File.dirname(__F
 gem 'rails', Pageflow::RailsVersion.detect
 
 gem 'pageflow-support', path: 'spec/support'
+gem 'activeadmin-select2', path: '../activeadmin-select2'
 
 gem 'state_machine', git: 'https://github.com/codevise/state_machine.git', branch: 'master'
 
