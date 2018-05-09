@@ -38,6 +38,10 @@ pageflow.browser.agent = {
       !this._matches(/Chrome/i);
   },
 
+  matchesChrome66: function() {
+    return this._matches(/Chrome\/66/i);
+  },
+
   /**
    * Returns true on iOS Safari.
    * @return {boolean}
