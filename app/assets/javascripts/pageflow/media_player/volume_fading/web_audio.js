@@ -12,6 +12,16 @@ pageflow.mediaPlayer.volumeFading.webAudio = function(player, audioContext) {
 
   var allowedMinValue = 0.000001;
 
+  var originalPlay = player.play;
+
+  player.play = function(/* arguments */) {
+    if (typeof audioContext.resume === 'function' && audioContext.state === 'suspended') {
+      audioContext.resume();
+    }
+
+    return originalPlay.apply(player, arguments);
+  };
+
   player.volume = function(value) {
     ensureGainNode();
 
