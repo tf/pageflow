@@ -26178,6 +26178,8 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _selectors = __webpack_require__(375);
 
+	var _selectors2 = __webpack_require__(439);
+
 	var _marked = /*#__PURE__*/regeneratorRuntime.mark(_callee2),
 	    _marked2 = /*#__PURE__*/regeneratorRuntime.mark(prebufferAndPlay);
 
@@ -26220,43 +26222,49 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 	function prebufferAndPlay() {
-	  var autoplay;
+	  var canAutoplay, autoplay, willAutoplay;
 	  return regeneratorRuntime.wrap(function prebufferAndPlay$(_context3) {
 	    while (1) {
 	      switch (_context3.prev = _context3.next) {
 	        case 0:
 	          _context3.next = 2;
-	          return (0, _effects.select)((0, _selectors.pageAttribute)('autoplay'));
+	          return (0, _effects.select)((0, _selectors2.has)('autoplay support'));
 
 	        case 2:
-	          autoplay = _context3.sent;
+	          canAutoplay = _context3.sent;
+	          _context3.next = 5;
+	          return (0, _effects.select)((0, _selectors.pageAttribute)('autoplay'));
 
-	          if (!(autoplay !== false)) {
-	            _context3.next = 6;
+	        case 5:
+	          autoplay = _context3.sent;
+	          willAutoplay = canAutoplay && autoplay;
+
+	          if (!(willAutoplay !== false)) {
+	            _context3.next = 10;
 	            break;
 	          }
 
-	          _context3.next = 6;
+	          _context3.next = 10;
 	          return (0, _effects.put)(waiting());
 
-	        case 6:
-	          _context3.next = 8;
+	        case 10:
+	          _context3.next = 12;
 	          return [(0, _effects.take)(_actions2.PREBUFFERED), (0, _effects.put)(prebuffer())];
 
-	        case 8:
-	          if (!(autoplay !== false)) {
-	            _context3.next = 13;
+	        case 12:
+	          if (!(willAutoplay !== false)) {
+	            _context3.next = 17;
 	            break;
 	          }
 
-	          _context3.next = 11;
+	          _context3.next = 15;
 	          return (0, _effects.call)(_reduxSaga.delay, 1000);
 
-	        case 11:
-	          _context3.next = 13;
+	        case 15:
+	          _context3.next = 17;
 	          return (0, _effects.put)(play());
 
-	        case 13:
+	        case 17:
 	        case 'end':
 	          return _context3.stop();
 	      }
