@@ -24,7 +24,9 @@ export default function*(options = {}) {
 
   if (!has('mobile platform')) {
     sagas.push([
-      handlePageDidActivate()
+      handlePageDidActivate({
+        canAutoplay: has('autoplay support')
+      })
     ]);
   }
 

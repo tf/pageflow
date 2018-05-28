@@ -4,23 +4,21 @@ import {call, put, select, take, race} from 'redux-saga/effects';
 import {PAGE_DID_ACTIVATE, PAGE_WILL_DEACTIVATE} from 'pages/actions';
 import {PREBUFFERED, actionCreators} from 'media/actions';
 import {pageAttribute} from 'pages/selectors';
-import {has} from 'utils/selectors';
 
 const {play, prebuffer, waiting} = actionCreators();
 
-export default function*() {
+export default function*(options) {
   yield takeEvery(PAGE_DID_ACTIVATE, function*(action) {
     yield race({
-      task: call(prebufferAndPlay),
+      task: call(prebufferAndPlay, options),
       cancel: take(PAGE_WILL_DEACTIVATE)
     });
   });
 }
 
-function* prebufferAndPlay() {
-  const canAutoplay = yield select(has('autoplay support'));
-  const autoplay = yield select(pageAttribute('autoplay'));
-  const willAutoplay = canAutoplay && autoplay;
+function* prebufferAndPlay({canAutoplay}) {
+  const shouldAutoplay = yield select(pageAttribute('autoplay'));
+  const willAutoplay = canAutoplay && shouldAutoplay;
 
   if (willAutoplay !== false) {
     yield put(waiting());

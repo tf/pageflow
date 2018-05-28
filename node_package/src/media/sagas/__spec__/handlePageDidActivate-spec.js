@@ -12,14 +12,14 @@ const {prebuffered} = actionCreators();
 
 describe('handlePageDidActivate', () => {
   it('prebuffers when page did activate', () => {
-    const run = runSagaInPageScope(handlePageDidActivate)
+    const run = runSagaInPageScope(handlePageDidActivate, {args: [{canAutoplay: true}]})
       .dispatch(pageDidActivate());
 
     expect(run.put).to.have.been.calledWith(sinon.match({type: PREBUFFER}));
   });
 
   it('plays video once it is prebuffered', () => {
-    const run = runSagaInPageScope(handlePageDidActivate)
+    const run = runSagaInPageScope(handlePageDidActivate, {args: [{canAutoplay: true}]})
       .stubCall(delay)
       .dispatch(pageDidActivate())
       .dispatch(prebuffered());
@@ -28,8 +28,10 @@ describe('handlePageDidActivate', () => {
   });
 
   it('does not play video once prebuffered if autoplay is false', () => {
-    const run = runSagaInPageScope(handlePageDidActivate,
-                                   {page: {attributes: {autoplay: false}}})
+    const run = runSagaInPageScope(handlePageDidActivate, {
+      args: [{canAutoplay: true}],
+      page: {attributes: {autoplay: false}}
+    })
       .stubCall(delay)
       .dispatch(pageDidActivate())
       .dispatch(prebuffered());
@@ -38,7 +40,7 @@ describe('handlePageDidActivate', () => {
   });
 
   it('does not play video if page is deactivated while prebuffering', () => {
-    const run = runSagaInPageScope(handlePageDidActivate)
+    const run = runSagaInPageScope(handlePageDidActivate, {args: [{canAutoplay: true}]})
       .stubCall(delay)
       .dispatch(pageDidActivate())
       .dispatch(pageWillDeactivate())
