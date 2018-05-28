@@ -8939,9 +8939,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _ServerSidePage2 = _interopRequireDefault(_ServerSidePage);
 
-	var _builtInPageTypes = __webpack_require__(571);
+	var _builtInPageTypes = __webpack_require__(580);
 
-	var _pageflow = __webpack_require__(577);
+	var _cookieNotice = __webpack_require__(545);
+
+	var _pageflow = __webpack_require__(586);
 
 	var _pageflow2 = _interopRequireDefault(_pageflow);
 
@@ -8954,6 +8956,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	(0, _builtInPageTypes.register)();
+	(0, _cookieNotice.registerWidgetTypes)();
 
 	if (_pageflow2.default.events) {
 	  _pageflow2.default.events.on('seed:loaded', function () {
@@ -23486,7 +23489,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.widgetAttributes = exports.prop = exports.file = exports.setting = exports.t = exports.currentParentChapterAttributes = exports.currentParentPageAttributes = exports.pageIsPrepared = exports.pageIsActive = exports.pageAttributes = exports.pageAttribute = undefined;
+	exports.editingWidget = exports.widgetAttributes = exports.prop = exports.file = exports.setting = exports.t = exports.currentParentChapterAttributes = exports.currentParentPageAttributes = exports.pageIsPrepared = exports.pageIsActive = exports.pageAttributes = exports.pageAttribute = undefined;
 
 	var _selectors = __webpack_require__(375);
 
@@ -23513,6 +23516,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.file = _selectors5.file;
 	exports.prop = _selectors6.prop;
 	exports.widgetAttributes = _selectors7.widgetAttributes;
+	exports.editingWidget = _selectors7.editingWidget;
 
 /***/ }),
 /* 489 */
@@ -23642,6 +23646,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  value: true
 	});
 	exports.widgetAttributes = widgetAttributes;
+	exports.editingWidget = editingWidget;
 
 	var _collections = __webpack_require__(376);
 
@@ -23654,6 +23659,14 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	  return (0, _utils.memoizedSelector)(selector({ id: role }), function (widget) {
 	    return widget;
+	  });
+	}
+
+	function editingWidget(_ref2) {
+	  var role = _ref2.role;
+
+	  return (0, _utils.memoizedSelector)(selector({ id: role }), function (widget) {
+	    return !!widget.editing;
 	  });
 	}
 
@@ -26061,7 +26074,9 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	          }
 
 	          if (!(0, _utils.has)('mobile platform')) {
-	            sagas.push([(0, _handlePageDidActivate2.default)()]);
+	            sagas.push([(0, _handlePageDidActivate2.default)({
+	              canAutoplay: (0, _utils.has)('autoplay support')
+	            })]);
 	          }
 
 	          if (options.hideControls) {
@@ -26178,8 +26193,6 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _selectors = __webpack_require__(375);
 
-	var _selectors2 = __webpack_require__(439);
-
 	var _marked = /*#__PURE__*/regeneratorRuntime.mark(_callee2),
 	    _marked2 = /*#__PURE__*/regeneratorRuntime.mark(prebufferAndPlay);
 
@@ -26188,7 +26201,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	    prebuffer = _actionCreators.prebuffer,
 	    waiting = _actionCreators.waiting;
 
-	function _callee2() {
+	function _callee2(options) {
 	  return regeneratorRuntime.wrap(function _callee2$(_context2) {
 	    while (1) {
 	      switch (_context2.prev = _context2.next) {
@@ -26201,7 +26214,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	                  case 0:
 	                    _context.next = 2;
 	                    return (0, _effects.race)({
-	                      task: (0, _effects.call)(prebufferAndPlay),
+	                      task: (0, _effects.call)(prebufferAndPlay, options),
 	                      cancel: (0, _effects.take)(_actions.PAGE_WILL_DEACTIVATE)
 	                    });
 
@@ -26221,50 +26234,46 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  }, _marked, this);
 	}
 
-	function prebufferAndPlay() {
-	  var canAutoplay, autoplay, willAutoplay;
+	function prebufferAndPlay(_ref) {
+	  var canAutoplay = _ref.canAutoplay;
+	  var shouldAutoplay, willAutoplay;
 	  return regeneratorRuntime.wrap(function prebufferAndPlay$(_context3) {
 	    while (1) {
 	      switch (_context3.prev = _context3.next) {
 	        case 0:
 	          _context3.next = 2;
-	          return (0, _effects.select)((0, _selectors2.has)('autoplay support'));
-
-	        case 2:
-	          canAutoplay = _context3.sent;
-	          _context3.next = 5;
 	          return (0, _effects.select)((0, _selectors.pageAttribute)('autoplay'));
 
-	        case 5:
-	          autoplay = _context3.sent;
-	          willAutoplay = canAutoplay && autoplay;
+	        case 2:
+	          shouldAutoplay = _context3.sent;
+	          willAutoplay = canAutoplay && shouldAutoplay;
 
 	          if (!(willAutoplay !== false)) {
-	            _context3.next = 10;
+	            _context3.next = 7;
 	            break;
 	          }
 
-	          _context3.next = 10;
+	          _context3.next = 7;
 	          return (0, _effects.put)(waiting());
 
-	        case 10:
-	          _context3.next = 12;
+	        case 7:
+	          _context3.next = 9;
 	          return [(0, _effects.take)(_actions2.PREBUFFERED), (0, _effects.put)(prebuffer())];
 
-	        case 12:
+	        case 9:
 	          if (!(willAutoplay !== false)) {
-	            _context3.next = 17;
+	            _context3.next = 14;
 	            break;
 	          }
 
-	          _context3.next = 15;
+	          _context3.next = 12;
 	          return (0, _effects.call)(_reduxSaga.delay, 1000);
 
-	        case 15:
-	          _context3.next = 17;
+	        case 12:
+	          _context3.next = 14;
 	          return (0, _effects.put)(play());
 
-	        case 17:
+	        case 14:
 	        case 'end':
 	          return _context3.stop();
 	      }
@@ -27275,12 +27284,14 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	    pageTypes: _registerPageType.registry,
 
+	    theming: seed.theming,
 	    files: collections.files || {},
 	    storylines: collections.storylines,
 	    chapters: collections.chapters,
 	    pages: collections.pages,
 	    widgets: isEditor ? pageflow.entry.widgets : seed.widgets,
 
+	    cookies: pageflow.cookies,
 	    hideText: pageflow.hideText,
 	    events: pageflow.events,
 	    settings: pageflow.settings,
@@ -27289,7 +27300,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	    window: isServerSide ? null : window
 	  };
 
-	  var store = (0, _createStore2.default)([_i18n2.default, _entry2.default, _current2.default, _storylines2.default, _chapters2.default, _pages2.default, _files2.default, _settings2.default, _hideText2.default, _widgets2.default, _widgetPresence2.default, _pageTypes2.default, _hotkeys2.default], options);
+	  var store = (0, _createStore2.default)([_cookieNotice2.default, _i18n2.default, _theming2.default, _entry2.default, _current2.default, _storylines2.default, _chapters2.default, _pages2.default, _files2.default, _settings2.default, _hideText2.default, _widgets2.default, _widgetPresence2.default, _pageTypes2.default, _hotkeys2.default], options);
 
 	  if (!isServerSide) {
 	    _registerPageType.registry.forEach(function (options) {
@@ -27317,11 +27328,19 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _createStore2 = _interopRequireDefault(_createStore);
 
-	var _storylines = __webpack_require__(545);
+	var _cookieNotice = __webpack_require__(545);
+
+	var _cookieNotice2 = _interopRequireDefault(_cookieNotice);
+
+	var _theming = __webpack_require__(551);
+
+	var _theming2 = _interopRequireDefault(_theming);
+
+	var _storylines = __webpack_require__(554);
 
 	var _storylines2 = _interopRequireDefault(_storylines);
 
-	var _chapters = __webpack_require__(546);
+	var _chapters = __webpack_require__(555);
 
 	var _chapters2 = _interopRequireDefault(_chapters);
 
@@ -27329,43 +27348,43 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _pages2 = _interopRequireDefault(_pages);
 
-	var _pageTypes = __webpack_require__(547);
+	var _pageTypes = __webpack_require__(556);
 
 	var _pageTypes2 = _interopRequireDefault(_pageTypes);
 
-	var _current = __webpack_require__(550);
+	var _current = __webpack_require__(559);
 
 	var _current2 = _interopRequireDefault(_current);
 
-	var _files = __webpack_require__(554);
+	var _files = __webpack_require__(563);
 
 	var _files2 = _interopRequireDefault(_files);
 
-	var _settings = __webpack_require__(555);
+	var _settings = __webpack_require__(564);
 
 	var _settings2 = _interopRequireDefault(_settings);
 
-	var _i18n = __webpack_require__(557);
+	var _i18n = __webpack_require__(566);
 
 	var _i18n2 = _interopRequireDefault(_i18n);
 
-	var _entry = __webpack_require__(560);
+	var _entry = __webpack_require__(569);
 
 	var _entry2 = _interopRequireDefault(_entry);
 
-	var _hotkeys = __webpack_require__(563);
+	var _hotkeys = __webpack_require__(572);
 
 	var _hotkeys2 = _interopRequireDefault(_hotkeys);
 
-	var _hideText = __webpack_require__(564);
+	var _hideText = __webpack_require__(573);
 
 	var _hideText2 = _interopRequireDefault(_hideText);
 
-	var _widgets = __webpack_require__(567);
+	var _widgets = __webpack_require__(576);
 
 	var _widgets2 = _interopRequireDefault(_widgets);
 
-	var _widgetPresence = __webpack_require__(568);
+	var _widgetPresence = __webpack_require__(577);
 
 	var _widgetPresence2 = _interopRequireDefault(_widgetPresence);
 
@@ -27680,6 +27699,362 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.registerWidgetTypes = registerWidgetTypes;
+
+	var _CookieNoticeBar = __webpack_require__(546);
+
+	var _actions = __webpack_require__(549);
+
+	var _createReducer = __webpack_require__(550);
+
+	var _createReducer2 = _interopRequireDefault(_createReducer);
+
+	var _reduxSaga = __webpack_require__(387);
+
+	var _effects = __webpack_require__(383);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var COOKIE_KEY = 'cookie_notice_dismissed';
+
+	exports.default = {
+	  init: function init(_ref) {
+	    var isServerSide = _ref.isServerSide,
+	        events = _ref.events,
+	        dispatch = _ref.dispatch;
+
+	    if (!isServerSide) {
+	      events.on('cookie_notice:request', function () {
+	        return dispatch((0, _actions.request)());
+	      });
+	    }
+	  },
+	  createReducers: function createReducers(_ref2) {
+	    var cookies = _ref2.cookies;
+
+	    return {
+	      cookieNotice: (0, _createReducer2.default)({
+	        hasBeenDismissed: cookies && cookies.hasItem(COOKIE_KEY)
+	      })
+	    };
+	  },
+
+
+	  createSaga: function createSaga(_ref3) {
+	    var cookies = _ref3.cookies;
+
+	    return (/*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+	        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+	          while (1) {
+	            switch (_context2.prev = _context2.next) {
+	              case 0:
+	                _context2.next = 2;
+	                return (0, _reduxSaga.takeEvery)(_actions.DISMISS, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+	                  return regeneratorRuntime.wrap(function _callee$(_context) {
+	                    while (1) {
+	                      switch (_context.prev = _context.next) {
+	                        case 0:
+	                          _context.next = 2;
+	                          return (0, _effects.call)(function () {
+	                            cookies.setItem(COOKIE_KEY, true);
+	                          });
+
+	                        case 2:
+	                        case 'end':
+	                          return _context.stop();
+	                      }
+	                    }
+	                  }, _callee, this);
+	                }));
+
+	              case 2:
+	              case 'end':
+	                return _context2.stop();
+	            }
+	          }
+	        }, _callee2, this);
+	      })
+	    );
+	  }
+	};
+	function registerWidgetTypes() {
+	  (0, _CookieNoticeBar.register)();
+	}
+
+/***/ }),
+/* 546 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.register = register;
+
+	var _registerWidgetType = __webpack_require__(540);
+
+	var _registerWidgetType2 = _interopRequireDefault(_registerWidgetType);
+
+	var _selectors = __webpack_require__(547);
+
+	var _selectors2 = __webpack_require__(548);
+
+	var _selectors3 = __webpack_require__(493);
+
+	var _selectors4 = __webpack_require__(486);
+
+	var _actions = __webpack_require__(549);
+
+	var _utils = __webpack_require__(339);
+
+	var _react = __webpack_require__(333);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(397);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function CookieNoticeBar(props) {
+	  var isCookieNoticeVisible = props.isCookieNoticeVisible,
+	      editing = props.editing,
+	      t = props.t,
+	      dismiss = props.dismiss;
+
+
+	  if (isCookieNoticeVisible || editing) {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'cookie_notice_bar' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'cookie_notice_bar-content' },
+	        renderText(props),
+	        _react2.default.createElement(
+	          'a',
+	          { className: 'cookie_notice_bar-dismiss', onClick: dismiss },
+	          t('pageflow.public.dismiss_cookie_notice')
+	        )
+	      )
+	    );
+	  } else {
+	    return _react2.default.createElement('noscript', null);
+	  }
+	}
+
+	function renderText(_ref) {
+	  var privacyLinkUrl = _ref.privacyLinkUrl,
+	      t = _ref.t,
+	      locale = _ref.locale;
+
+	  var text = t('pageflow.public.cookie_notice_html', {
+	    privacyLinkUrl: privacyLinkUrl + '?lang=' + locale
+	  });
+
+	  return _react2.default.createElement('span', { className: 'cookie_notice_bar-text', dangerouslySetInnerHTML: {
+	      __html: text
+	    } });
+	}
+
+	function register() {
+	  (0, _registerWidgetType2.default)('cookie_notice_bar', {
+	    component: (0, _reactRedux.connect)((0, _utils.combineSelectors)({
+	      isCookieNoticeVisible: _selectors.isCookieNoticeVisible,
+	      privacyLinkUrl: _selectors2.privacyLinkUrl,
+	      editing: (0, _selectors3.editingWidget)({ role: 'cookie_notice' }),
+	      t: _selectors4.t,
+	      locale: _selectors4.locale
+	    }), {
+	      dismiss: _actions.dismiss
+	    })(CookieNoticeBar)
+	  });
+	}
+
+/***/ }),
+/* 547 */
+/***/ (function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.isCookieNoticeVisible = isCookieNoticeVisible;
+	function isCookieNoticeVisible(state) {
+	  return state.cookieNotice.visible;
+	}
+
+/***/ }),
+/* 548 */
+/***/ (function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.privacyLinkUrl = privacyLinkUrl;
+	function privacyLinkUrl(state) {
+	  return state.theming.privacy_link_url;
+	}
+
+/***/ }),
+/* 549 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.request = request;
+	exports.dismiss = dismiss;
+	var REQUEST = exports.REQUEST = 'COOKIE_NOTICE_REQUEST';
+	var DISMISS = exports.DISMISS = 'COOKIE_NOTICE_DISMISS';
+
+	function request() {
+	  return {
+	    type: REQUEST
+	  };
+	}
+
+	function dismiss() {
+	  return {
+	    type: DISMISS
+	  };
+	}
+
+/***/ }),
+/* 550 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports.default = function (_ref) {
+	  var hasBeenDismissed = _ref.hasBeenDismissed;
+
+	  var initialState = {
+	    dismissed: hasBeenDismissed,
+	    visible: false
+	  };
+
+	  return function () {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	    var action = arguments[1];
+
+	    switch (action.type) {
+	      case _actions.REQUEST:
+	        if (!state.dismissed) {
+	          return _extends({}, state, {
+	            visible: true
+	          });
+	        }
+
+	        return state;
+	      case _actions.DISMISS:
+	        return {
+	          dismissed: true,
+	          visible: false
+	        };
+	      default:
+	        return state;
+	    }
+	  };
+	};
+
+	var _actions = __webpack_require__(549);
+
+/***/ }),
+/* 551 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _actions = __webpack_require__(552);
+
+	var _reducer = __webpack_require__(553);
+
+	var _reducer2 = _interopRequireDefault(_reducer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = {
+	  init: function init(_ref) {
+	    var theming = _ref.theming,
+	        dispatch = _ref.dispatch;
+
+	    dispatch((0, _actions.init)(theming));
+	  },
+	  createReducers: function createReducers() {
+	    return { theming: _reducer2.default };
+	  }
+	};
+
+/***/ }),
+/* 552 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.init = init;
+	var INIT = exports.INIT = 'THEMING_INIT';
+
+	function init(theming) {
+	  return {
+	    type: INIT,
+	    payload: {
+	      theming: theming
+	    }
+	  };
+	}
+
+/***/ }),
+/* 553 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	exports.default = function () {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case _actions.INIT:
+	      return action.payload.theming;
+	    default:
+	      return state;
+	  }
+	};
+
+	var _actions = __webpack_require__(552);
+
+/***/ }),
+/* 554 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 
 	var _collections = __webpack_require__(376);
 
@@ -27705,7 +28080,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ }),
-/* 546 */
+/* 555 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27737,7 +28112,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ }),
-/* 547 */
+/* 556 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27746,9 +28121,9 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  value: true
 	});
 
-	var _actions = __webpack_require__(548);
+	var _actions = __webpack_require__(557);
 
-	var _reducer = __webpack_require__(549);
+	var _reducer = __webpack_require__(558);
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
@@ -27769,7 +28144,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ }),
-/* 548 */
+/* 557 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -27792,7 +28167,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ }),
-/* 549 */
+/* 558 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27813,10 +28188,10 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  }
 	};
 
-	var _actions = __webpack_require__(548);
+	var _actions = __webpack_require__(557);
 
 /***/ }),
-/* 550 */
+/* 559 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27826,11 +28201,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 	exports.watch = exports.reducers = undefined;
 
-	var _reducer = __webpack_require__(551);
+	var _reducer = __webpack_require__(560);
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
-	var _watch = __webpack_require__(553);
+	var _watch = __webpack_require__(562);
 
 	var _watch2 = _interopRequireDefault(_watch);
 
@@ -27855,7 +28230,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.watch = _watch2.default;
 
 /***/ }),
-/* 551 */
+/* 560 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27876,10 +28251,10 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  }
 	};
 
-	var _actions = __webpack_require__(552);
+	var _actions = __webpack_require__(561);
 
 /***/ }),
-/* 552 */
+/* 561 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -27902,7 +28277,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ }),
-/* 553 */
+/* 562 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27917,10 +28292,10 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  });
 	};
 
-	var _actions = __webpack_require__(552);
+	var _actions = __webpack_require__(561);
 
 /***/ }),
-/* 554 */
+/* 563 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27979,7 +28354,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ }),
-/* 555 */
+/* 564 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27991,7 +28366,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.createSaga = createSaga;
 	exports.watch = watch;
 
-	var _reducer = __webpack_require__(556);
+	var _reducer = __webpack_require__(565);
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
@@ -28097,7 +28472,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ }),
-/* 556 */
+/* 565 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28122,7 +28497,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	var _actions = __webpack_require__(330);
 
 /***/ }),
-/* 557 */
+/* 566 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28131,9 +28506,9 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  value: true
 	});
 
-	var _actions = __webpack_require__(558);
+	var _actions = __webpack_require__(567);
 
-	var _reducer = __webpack_require__(559);
+	var _reducer = __webpack_require__(568);
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
@@ -28152,7 +28527,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ }),
-/* 558 */
+/* 567 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -28175,7 +28550,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ }),
-/* 559 */
+/* 568 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28196,10 +28571,10 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  }
 	};
 
-	var _actions = __webpack_require__(558);
+	var _actions = __webpack_require__(567);
 
 /***/ }),
-/* 560 */
+/* 569 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28208,9 +28583,9 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  value: true
 	});
 
-	var _actions = __webpack_require__(561);
+	var _actions = __webpack_require__(570);
 
-	var _reducer = __webpack_require__(562);
+	var _reducer = __webpack_require__(571);
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
@@ -28229,7 +28604,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ }),
-/* 561 */
+/* 570 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -28252,7 +28627,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ }),
-/* 562 */
+/* 571 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28273,10 +28648,10 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  }
 	};
 
-	var _actions = __webpack_require__(561);
+	var _actions = __webpack_require__(570);
 
 /***/ }),
-/* 563 */
+/* 572 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28313,7 +28688,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ }),
-/* 564 */
+/* 573 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28323,11 +28698,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 	exports.watch = exports.reducers = undefined;
 
-	var _watch = __webpack_require__(565);
+	var _watch = __webpack_require__(574);
 
 	var _watch2 = _interopRequireDefault(_watch);
 
-	var _reducer = __webpack_require__(566);
+	var _reducer = __webpack_require__(575);
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
@@ -28354,7 +28729,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.watch = _watch2.default;
 
 /***/ }),
-/* 565 */
+/* 574 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28376,7 +28751,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	var _actions = __webpack_require__(536);
 
 /***/ }),
-/* 566 */
+/* 575 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28412,7 +28787,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _actions = __webpack_require__(536);
 
-	var _actions2 = __webpack_require__(552);
+	var _actions2 = __webpack_require__(561);
 
 	var initialState = {
 	  isActive: false,
@@ -28420,7 +28795,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ }),
-/* 567 */
+/* 576 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28450,7 +28825,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	      collectionName: 'widgets',
 	      dispatch: dispatch,
 
-	      attributes: ['role', 'type_name'],
+	      attributes: ['role', 'type_name', 'editing'],
 	      includeConfiguration: true
 	    });
 	  },
@@ -28475,7 +28850,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ }),
-/* 568 */
+/* 577 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28484,11 +28859,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  value: true
 	});
 
-	var _reducer = __webpack_require__(569);
+	var _reducer = __webpack_require__(578);
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
-	var _actions = __webpack_require__(570);
+	var _actions = __webpack_require__(579);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28519,7 +28894,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	};
 
 /***/ }),
-/* 569 */
+/* 578 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28541,10 +28916,10 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	  }
 	};
 
-	var _actions = __webpack_require__(570);
+	var _actions = __webpack_require__(579);
 
 /***/ }),
-/* 570 */
+/* 579 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -28567,7 +28942,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ }),
-/* 571 */
+/* 580 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28577,11 +28952,11 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 	exports.register = register;
 
-	var _audio = __webpack_require__(572);
+	var _audio = __webpack_require__(581);
 
-	var _plain = __webpack_require__(575);
+	var _plain = __webpack_require__(584);
 
-	var _video = __webpack_require__(576);
+	var _video = __webpack_require__(585);
 
 	function register() {
 	  (0, _plain.register)();
@@ -28590,7 +28965,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ }),
-/* 572 */
+/* 581 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28602,7 +28977,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _media = __webpack_require__(494);
 
-	var _PageAudioFilePlayer = __webpack_require__(573);
+	var _PageAudioFilePlayer = __webpack_require__(582);
 
 	var _PageAudioFilePlayer2 = _interopRequireDefault(_PageAudioFilePlayer);
 
@@ -28657,7 +29032,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ }),
-/* 573 */
+/* 582 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28670,7 +29045,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 
 	var _createPageFilePlayer2 = _interopRequireDefault(_createPageFilePlayer);
 
-	var _AudioFilePlayer = __webpack_require__(574);
+	var _AudioFilePlayer = __webpack_require__(583);
 
 	var _AudioFilePlayer2 = _interopRequireDefault(_AudioFilePlayer);
 
@@ -28679,7 +29054,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	exports.default = (0, _createPageFilePlayer2.default)(_AudioFilePlayer2.default);
 
 /***/ }),
-/* 574 */
+/* 583 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28705,7 +29080,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	});
 
 /***/ }),
-/* 575 */
+/* 584 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28763,7 +29138,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ }),
-/* 576 */
+/* 585 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28834,7 +29209,7 @@ pageflow = typeof pageflow === "object" ? pageflow : {}; pageflow["react"] =
 	}
 
 /***/ }),
-/* 577 */
+/* 586 */
 /***/ (function(module, exports) {
 
 	module.exports = pageflow;
