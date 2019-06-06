@@ -10,6 +10,7 @@ describe('createFilePlayer', () => {
     function setup({
       tagName = 'video',
       sources = () => [],
+      sourceOnDispose,
       poster,
       emulateTextTracksDisplay,
       createPlayer,
@@ -19,6 +20,7 @@ describe('createFilePlayer', () => {
       const FilePlayer = createFilePlayer({
         tagName,
         sources,
+        sourceOnDispose,
         poster,
         emulateTextTracksDisplay,
         createPlayer: createPlayer || (el => {
@@ -279,6 +281,19 @@ describe('createFilePlayer', () => {
       expect(mockPlayer.dispose).to.have.been.called;
     });
 
+    it('sets provided sourceOnDispose when the component unmounts', () => {
+      const sourceOnDispose = {type: 'video/mp4', src: 'data:video/mp4;blank-video'};
+      const {FilePlayer, mockPlayer} = setup({
+        sourceOnDispose
+      });
+
+      const wrapper = mount(<FilePlayer {...requiredProps} />);
+
+      wrapper.unmount();
+
+      expect(mockPlayer.src).to.have.been.calledWith([sourceOnDispose]);
+    });
+
     it('passes atmo settings to createPlayer function', () => {
       let passedAtmoSettings;
       const {FilePlayer} = setup({
@@ -452,6 +467,7 @@ describe('createFilePlayer', () => {
       fadeOutAndPause: sinon.spy(),
       muted: sinon.spy(),
       changeVolumeFactor: sinon.spy(),
+      src: sinon.spy(),
       dispose: sinon.spy(),
 
       updateCueLineSettings: sinon.spy(),

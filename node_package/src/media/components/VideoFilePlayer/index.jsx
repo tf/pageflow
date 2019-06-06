@@ -2,11 +2,13 @@ import React from 'react';
 import createFilePlayer from '../createFilePlayer';
 import Positioner from './Positioner';
 import sources from './sources';
+import blankSrc from './blankSrc';
 import {has, preloadImage} from 'utils';
 
 const FilePlayer = createFilePlayer({
   tagName: 'video',
   sources,
+  sourceOnDispose: {type: 'video/mp4', src: blankSrc},
   poster
 });
 

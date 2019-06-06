@@ -27,6 +27,7 @@ import {connect} from 'react-redux';
 export default function({
   tagName,
   sources,
+  sourceOnDispose,
   poster = () => {},
   emulateTextTracksDisplay = false,
   createPlayer = createPageflowPlayer
@@ -72,6 +73,10 @@ export default function({
       };
 
       this.disposeMediaTag = () => {
+        if (sourceOnDispose) {
+          this.player.src([sourceOnDispose]);
+        }
+
         this.player.dispose();
         this.player = null;
 
