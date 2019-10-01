@@ -68,6 +68,8 @@ Pageflow::Engine.routes.draw do
       end
     end
 
+    match '/auth/:provider/callback', to: 'credentials#create', via: [:get, :post]
+
     root :to => redirect('/admin')
   end
 
