@@ -4,8 +4,6 @@ import _ from 'underscore';
 
 import {findTranslation} from '../utils/i18nUtils';
 
-import {app} from '../../editor/app';
-
 import template from '../templates/tabsView.jst';
 
 /**
@@ -145,10 +143,10 @@ export const TabsView = Marionette.Layout.extend({
   },
 
   _refreshScrollerOnSideBarResize: function() {
-    if (app) {
-      this.listenTo(app, 'resize', function() {
-        this.scroller.refresh();
-      });
-    }
+//    if (app) {
+//      this.listenTo(app, 'resize', function() {
+//        this.scroller.refresh();
+//      });
+//    }
   }
 });
