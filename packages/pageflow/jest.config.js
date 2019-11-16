@@ -4,7 +4,7 @@ module.exports = {
   globals: {
     pageflow: {},
   },
-  setupFilesAfterEnv: ["jest-sinon"],
+  setupFilesAfterEnv: ["jest-sinon", "<rootDir>/spec/support/jest-jquery-matchers"],
   modulePaths: ["<rootDir>/src"],
   moduleNameMapper: {
     "^\\$support(.*)$": "<rootDir>/spec/support$1",
