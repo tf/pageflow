@@ -9,5 +9,8 @@ const presets = [
 ];
 
 module.exports = {
-  presets
+  presets,
+  exclude: [
+    'node_modules/**'
+  ]
 };
