@@ -24,13 +24,18 @@ before_install:
   - gem update bundler
 
 before_script:
-  - bin/npm ci
-  - bin/npm run build
   - bin/rake pageflow:dummy
   - bin/rake app:assets:precompile
 
+  - bin/yarn install
+  - bin/yarn run build
+
+  - bin/npm ci
+  - bin/npm run build
+
 script:
   - bin/rspec
+  - (cd packages/pageflow; yarn test)
   - bin/teaspoon
   - bin/npm test
 
