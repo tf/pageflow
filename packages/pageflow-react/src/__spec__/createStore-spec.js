@@ -54,7 +54,7 @@ describe('createStore', () => {
 
     createStore([reduxModule], options);
 
-    expect(spy).to.have.been.called;
+    expect(spy).toHaveBeenCalled();
   });
 
   test('passes options to saga', () => {
@@ -70,7 +70,7 @@ describe('createStore', () => {
 
     createStore([reduxModule], options);
 
-    expect(spy).to.have.been.calledWith('value');
+    expect(spy).toHaveBeenCalledWith('value');
   });
 
   test('does not run sagas if isServerSide is true', () => {
@@ -87,7 +87,7 @@ describe('createStore', () => {
 
     createStore([reduxModule], options);
 
-    expect(spy).not.to.have.been.called;
+    expect(spy).not.toHaveBeenCalled();
   });
 
   test('calls init function of passed Redux modules', () => {
@@ -99,7 +99,7 @@ describe('createStore', () => {
 
     createStore([reduxModule], options);
 
-    expect(spy).to.have.been.called;
+    expect(spy).toHaveBeenCalled();
   });
 
   test('passes options to init', () => {
@@ -111,7 +111,7 @@ describe('createStore', () => {
 
     createStore([reduxModule], options);
 
-    expect(spy).to.have.been.calledWith(sinon.match(options));
+    expect(spy).toHaveBeenCalledWith(sinon.match(options));
   });
 
   test('passes dispatch to init', () => {
@@ -134,7 +134,7 @@ describe('createStore', () => {
 
     createStore([reduxModule], options);
 
-    expect(spy).to.have.been.calledWith({type: 'ACTION'});
+    expect(spy).toHaveBeenCalledWith({type: 'ACTION'});
   });
 
   test('passes getState to init', () => {
@@ -176,7 +176,7 @@ describe('createStore', () => {
     const store = createStore([reduxModule], options);
     store.dispatch({type: 'ACTION'});
 
-    expect(spy).to.have.been.calledWith('ACTION');
+    expect(spy).toHaveBeenCalledWith('ACTION');
   });
 
   test('passes options to createMiddleware', () => {
@@ -196,6 +196,6 @@ describe('createStore', () => {
     const store = createStore([reduxModule], options);
     store.dispatch({type: 'ACTION'});
 
-    expect(spy).to.have.been.calledWith('value');
+    expect(spy).toHaveBeenCalledWith('value');
   });
 });
