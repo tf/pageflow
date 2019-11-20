@@ -1,6 +1,5 @@
 import pickAttributes from '../pickAttributes';
 
-import {expect} from 'support/chai';
 
 describe('loadFromSeed', () => {
   test('camelized attribute', () => {

@@ -3,7 +3,6 @@ import filesModule from 'files';
 
 import createStore from 'createStore';
 
-import {expect} from 'support/chai';
 
 describe('file', () => {
   test('selects file id and variants', () => {

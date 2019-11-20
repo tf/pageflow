@@ -1,6 +1,5 @@
 import {ensureProtocol} from '../urls';
 
-import {expect} from 'support';
 
 describe('ensureProtocol', () => {
   test('adds protocol to protocol relative urls', () => {

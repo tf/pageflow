@@ -3,7 +3,6 @@ import {pageType} from 'pageTypes/selectors';
 
 import createStore from 'createStore';
 
-import {expect} from 'support/chai';
 
 describe('pageType', () => {
   test('provides selector to get page type config of a page', () => {

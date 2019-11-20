@@ -1,6 +1,5 @@
 import sources from '../sources';
 
-import {expect} from 'support/chai';
 
 describe('sources', () => {
   test('includes hls variant by default', () => {

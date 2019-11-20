@@ -1,6 +1,5 @@
 import isBlank from '../isBlank';
 
-import {expect} from 'support/chai';
 
 describe('isBlank', () => {
   test('returns true for empty string', () => {

@@ -2,7 +2,6 @@ import createReducer from '../createReducer';
 
 import {actionCreators} from '../actions';
 
-import {expect} from 'support/chai';
 
 describe('createReducer creates function that', () => {
   test('handles actions for given media scope', () => {
