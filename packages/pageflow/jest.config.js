@@ -4,7 +4,7 @@ module.exports = {
   globals: {
     pageflow: {},
   },
-  setupFilesAfterEnv: ["jest-sinon", "<rootDir>/spec/support/jest-jquery-matchers"],
+  setupFilesAfterEnv: ["jest-sinon", "<rootDir>/spec/support/jest/jquery-matchers"],
   modulePaths: ["<rootDir>/src"],
   moduleNameMapper: {
     "^\\$support(.*)$": "<rootDir>/spec/support$1",
@@ -24,7 +24,7 @@ module.exports = {
     "^wysihtml5": "<rootDir>/spec/support/wysihtmlStub",
   },
   transform: {
-    "^.+\\.jst$": "<rootDir>/spec/support/jest-jst-transform",
+    "^.+\\.jst$": "<rootDir>/spec/support/jest/jst-transform",
     "^.+\\.[t|j]sx?$": "babel-jest"
   }
 };
