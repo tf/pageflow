@@ -5,7 +5,7 @@ import createStore from 'createStore';
 import {expect} from 'support/chai';
 
 describe('storylines', () => {
-  it('exports Redux module for storylines collection', () => {
+  test('exports Redux module for storylines collection', () => {
     const storylines = [
       {
         id: 100,
@@ -16,6 +16,6 @@ describe('storylines', () => {
     ];
     const store = createStore([storylinesModule], {storylines});
 
-    expect(storylineAttribute('parentPageId', {id: 100})(store.getState())).to.eq(1);
+    expect(storylineAttribute('parentPageId', {id: 100})(store.getState())).toBe(1);
   });
 });

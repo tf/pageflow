@@ -4,7 +4,7 @@ import {expect} from 'support/chai';
 import sinon from 'sinon';
 
 describe('mergePageTypes', () => {
-  it('keeps method only defined in base', () => {
+  test('keeps method only defined in base', () => {
     const base = {
       enhance: sinon.spy()
     };
@@ -16,7 +16,7 @@ describe('mergePageTypes', () => {
     expect(base.enhance).to.have.been.called;
   });
 
-  it('keeps method only defined in mixin', () => {
+  test('keeps method only defined in mixin', () => {
     const base = {};
     const mixin = {
       enhance: sinon.spy()
@@ -28,7 +28,7 @@ describe('mergePageTypes', () => {
     expect(mixin.enhance).to.have.been.called;
   });
 
-  it('calls both methods when page types provide conflicting method ', () => {
+  test('calls both methods when page types provide conflicting method ', () => {
     const base = {
       enhance: sinon.spy()
     };
@@ -43,7 +43,7 @@ describe('mergePageTypes', () => {
     expect(mixin.enhance).to.have.been.called;
   });
 
-  it('uses return value of mixin', () => {
+  test('uses return value of mixin', () => {
     const base = {
       enhance: sinon.stub().returns(4)
     };
@@ -53,10 +53,10 @@ describe('mergePageTypes', () => {
 
     const result = mergePageTypes(base, mixin);
 
-    expect(result.enhance()).to.eq(5);
+    expect(result.enhance()).toBe(5);
   });
 
-  it('keeps properties only defined in base', () => {
+  test('keeps properties only defined in base', () => {
     const base = {
       scroller: true
     };
@@ -64,10 +64,10 @@ describe('mergePageTypes', () => {
 
     const result = mergePageTypes(base, mixin);
 
-    expect(result.scroller).to.eq(true);
+    expect(result.scroller).toBe(true);
   });
 
-  it('keeps properties only defined in mixin', () => {
+  test('keeps properties only defined in mixin', () => {
     const base = {};
     const mixin = {
       scroller: true
@@ -75,10 +75,10 @@ describe('mergePageTypes', () => {
 
     const result = mergePageTypes(base, mixin);
 
-    expect(result.scroller).to.eq(true);
+    expect(result.scroller).toBe(true);
   });
 
-  it('lets mixin properties win', () => {
+  test('lets mixin properties win', () => {
     const base = {
       scroller: false
     };
@@ -88,6 +88,6 @@ describe('mergePageTypes', () => {
 
     const result = mergePageTypes(base, mixin);
 
-    expect(result.scroller).to.eq(true);
+    expect(result.scroller).toBe(true);
   });
 });

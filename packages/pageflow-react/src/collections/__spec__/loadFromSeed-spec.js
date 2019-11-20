@@ -5,7 +5,7 @@ import {expect} from 'support/chai';
 import sinon from 'sinon';
 
 describe('loadFromSeed', () => {
-  it('dispatches reset action initially', () => {
+  test('dispatches reset action initially', () => {
     const post = {title: 'News'};
     const collection = [post];
     const dispatch = sinon.spy();
@@ -26,7 +26,7 @@ describe('loadFromSeed', () => {
     }));
   });
 
-  it('camelized attribute', () => {
+  test('camelized attribute', () => {
     const post = {long_title: 'News'};
     const collection = [post];
     const dispatch = sinon.spy();
@@ -46,7 +46,7 @@ describe('loadFromSeed', () => {
     }));
   });
 
-  it('supports mapping attribute names', () => {
+  test('supports mapping attribute names', () => {
     const post = {post_type: 'gallery'};
     const collection = [post];
     const dispatch = sinon.spy();
@@ -66,7 +66,7 @@ describe('loadFromSeed', () => {
     }));
   });
 
-  it('supports including configuration attributes', () => {
+  test('supports including configuration attributes', () => {
     const post = {configuration: {some: 'setting'}};
     const collection = [post];
     const dispatch = sinon.spy();

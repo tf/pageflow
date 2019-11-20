@@ -26,7 +26,7 @@ describe('createSaga', () => {
       return store;
     }
 
-    it('runs saga for each item on collection reset', () => {
+    test('runs saga for each item on collection reset', () => {
       const spy = sinon.spy();
 
       const store = createStoreWithCollectionSaga({
@@ -46,7 +46,7 @@ describe('createSaga', () => {
       expect(spy).to.have.been.calledTwice;
     });
 
-    it('runs saga for each for added item', () => {
+    test('runs saga for each for added item', () => {
       const spy = sinon.spy();
 
       const store = createStoreWithCollectionSaga({
@@ -63,7 +63,7 @@ describe('createSaga', () => {
       expect(spy).to.have.been.called;
     });
 
-    it('cancels sagas when item is removed', () => {
+    test('cancels sagas when item is removed', () => {
       const spy = sinon.spy();
 
       const store = createStoreWithCollectionSaga({
@@ -86,7 +86,7 @@ describe('createSaga', () => {
       expect(spy).not.to.have.been.called;
     });
 
-    it('cancels sagas when collection is reset', () => {
+    test('cancels sagas when collection is reset', () => {
       const spy = sinon.spy();
 
       const store = createStoreWithCollectionSaga({
@@ -109,7 +109,7 @@ describe('createSaga', () => {
       expect(spy).not.to.have.been.called;
     });
 
-    it('allows to select in context of own item', () => {
+    test('allows to select in context of own item', () => {
       const spy = sinon.spy();
       const itemSelector = createItemSelector('posts');
 
@@ -128,7 +128,7 @@ describe('createSaga', () => {
       expect(spy).to.have.been.calledWith('Some post');
     });
 
-    it('preserves selector args', () => {
+    test('preserves selector args', () => {
       const spy = sinon.spy();
       const itemSelector = createItemSelector('posts');
 
@@ -150,7 +150,7 @@ describe('createSaga', () => {
       expect(spy).to.have.been.calledWith('Other post');
     });
 
-    it('dispatches actions in context of own item', () => {
+    test('dispatches actions in context of own item', () => {
       const itemSelector = createItemSelector('posts');
 
       const store = createStoreWithCollectionSaga({
@@ -186,11 +186,11 @@ describe('createSaga', () => {
         itemId: 5
       }});
 
-      expect(itemSelector({id: 5})(store.getState()).seen).to.eq(true);
-      expect(itemSelector({id: 6})(store.getState()).seen).to.eq(undefined);
+      expect(itemSelector({id: 5})(store.getState()).seen).toBe(true);
+      expect(itemSelector({id: 6})(store.getState()).seen).toBeUndefined();
     });
 
-    it('dispatches actions in context of own item', () => {
+    test('dispatches actions in context of own item', () => {
       const itemSelector = createItemSelector('posts');
 
       const store = createStoreWithCollectionSaga({
@@ -222,10 +222,10 @@ describe('createSaga', () => {
         ]
       }));
 
-      expect(itemSelector({id: 5})(store.getState()).seen).to.eq(true);
+      expect(itemSelector({id: 5})(store.getState()).seen).toBe(true);
     });
 
-    it('takes collection actions for own item', () => {
+    test('takes collection actions for own item', () => {
       const spy = sinon.spy();
 
       const store = createStoreWithCollectionSaga({
@@ -252,7 +252,7 @@ describe('createSaga', () => {
       expect(spy).to.have.been.calledOnce;
     });
 
-    it('does not take collection actions for other item', () => {
+    test('does not take collection actions for other item', () => {
       const spy = sinon.spy();
 
       const store = createStoreWithCollectionSaga({
@@ -279,7 +279,7 @@ describe('createSaga', () => {
       expect(spy).not.to.have.been.called;
     });
 
-    it('takes non collection actions', () => {
+    test('takes non collection actions', () => {
       const spy = sinon.spy();
 
       const store = createStoreWithCollectionSaga({

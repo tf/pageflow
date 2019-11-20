@@ -4,7 +4,7 @@ import {expect} from 'support/chai';
 
 describe('createFirstItemSelector', () => {
   describe('creates selector that', () => {
-    it('can look up first collection item', () => {
+    test('can look up first collection item', () => {
       const state = {
         posts: {
           order: [5, 4],
@@ -18,10 +18,10 @@ describe('createFirstItemSelector', () => {
 
       const result = selector(state);
 
-      expect(result.id).to.eq(5);
+      expect(result.id).toBe(5);
     });
 
-    it('returns undefined for empty collection', () => {
+    test('returns undefined for empty collection', () => {
       const state = {
         posts: {
           order: [],
@@ -32,11 +32,11 @@ describe('createFirstItemSelector', () => {
 
       const result = selector(state);
 
-      expect(result).to.eq(undefined);
+      expect(result).toBeUndefined();
     });
 
     describe('with namespace option', () => {
-      it('can look up first item in namespace', () => {
+      test('can look up first item in namespace', () => {
         const state = {
           myNamespace: {
             posts: {
@@ -52,17 +52,17 @@ describe('createFirstItemSelector', () => {
 
         const result = selector(state);
 
-        expect(result.id).to.eq(4);
+        expect(result.id).toBe(4);
       });
 
-      it('throws descriptive error if namespace is unknown', () => {
+      test('throws descriptive error if namespace is unknown', () => {
         const state = {
         };
         const selector = createFirstItemSelector('items', {namespace: 'ufos'});
 
         expect(() => {
           selector(state);
-        }).to.throw(/unknown namespace/);
+        }).toThrowError(/unknown namespace/);
       });
     });
   });

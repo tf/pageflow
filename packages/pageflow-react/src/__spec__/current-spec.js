@@ -25,7 +25,7 @@ describe('current', () => {
   }
 
   describe('currentParentPageAttributes', () => {
-    it('returns attributes of current parent page', () => {
+    test('returns attributes of current parent page', () => {
       const store = createStoreFromSeed({
         storylines: [
           {id: 100},
@@ -45,10 +45,10 @@ describe('current', () => {
 
       const result = currentParentPageAttributes()(store.getState());
 
-      expect(result.permaId).to.eq(1);
+      expect(result.permaId).toBe(1);
     });
 
-    it('returns null if current storyline does not have parent page', () => {
+    test('returns null if current storyline does not have parent page', () => {
       const store = createStoreFromSeed({
         storylines: [
           {id: 100}
@@ -65,12 +65,12 @@ describe('current', () => {
 
       const result = currentParentPageAttributes()(store.getState());
 
-      expect(result).to.eq(null);
+      expect(result).toBeNull();
     });
   });
 
   describe('currentParentChapterAttributes', () => {
-    it('returns attributes of current parent chapter', () => {
+    test('returns attributes of current parent chapter', () => {
       const store = createStoreFromSeed({
         storylines: [
           {id: 100},
@@ -90,10 +90,10 @@ describe('current', () => {
 
       const result = currentParentChapterAttributes()(store.getState());
 
-      expect(result.title).to.eq('Overview');
+      expect(result.title).toBe('Overview');
     });
 
-    it('returns null if current storyline does not have parent page', () => {
+    test('returns null if current storyline does not have parent page', () => {
       const store = createStoreFromSeed({
         storylines: [
           {id: 100}
@@ -110,7 +110,7 @@ describe('current', () => {
 
       const result = currentParentChapterAttributes()(store.getState());
 
-      expect(result).to.eq(null);
+      expect(result).toBeNull();
     });
   });
 });

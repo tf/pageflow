@@ -7,7 +7,7 @@ import {expect} from 'support/chai';
 import sinon from 'sinon';
 
 describe('watch', () => {
-  it('dispatches page change action on page:change event', () => {
+  test('dispatches page change action on page:change event', () => {
     const dispatch = sinon.spy();
     const events = {...Backbone.Events};
 

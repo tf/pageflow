@@ -4,15 +4,15 @@ import {pageChange} from '../actions';
 import {expect} from 'support/chai';
 
 describe('reducer', () => {
-  it('updates id when page is activating', () => {
+  test('updates id when page is activating', () => {
     const result = reducer(5, pageChange({id: 6}));
 
-    expect(result).to.eq(6);
+    expect(result).toBe(6);
   });
 
-  it('keeps state on other action', () => {
+  test('keeps state on other action', () => {
     const result = reducer(5, {type: 'OTHER'});
 
-    expect(result).to.eq(5);
+    expect(result).toBe(5);
   });
 });

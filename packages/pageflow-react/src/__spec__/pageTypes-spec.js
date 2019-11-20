@@ -6,7 +6,7 @@ import createStore from 'createStore';
 import {expect} from 'support/chai';
 
 describe('pageType', () => {
-  it('provides selector to get page type config of a page', () => {
+  test('provides selector to get page type config of a page', () => {
     const pageTypesSeed = {video: {name: 'video'}};
     const store = createStore([pageTypesModule], {
       pageTypesSeed
@@ -14,10 +14,10 @@ describe('pageType', () => {
 
     const result = pageType({page: {type: 'video'}})(store.getState());
 
-    expect(result.name).to.eq('video');
+    expect(result.name).toBe('video');
   });
 
-  it('allows to get page from selector props', () => {
+  test('allows to get page from selector props', () => {
     const pageTypesSeed = {video: {name: 'video'}};
     const store = createStore([pageTypesModule], {
       pageTypesSeed
@@ -30,10 +30,10 @@ describe('pageType', () => {
       page: props => props.targetPage
     })(store.getState(), props);
 
-    expect(result.name).to.eq('video');
+    expect(result.name).toBe('video');
   });
 
-  it('return null if page is null', () => {
+  test('return null if page is null', () => {
     const pageTypesSeed = {video: {}};
     const store = createStore([pageTypesModule], {
       pageTypesSeed
@@ -43,6 +43,6 @@ describe('pageType', () => {
       page: props => props.targetPage
     })(store.getState(), {});
 
-    expect(result).to.eq(null);
+    expect(result).toBeNull();
   });
 });

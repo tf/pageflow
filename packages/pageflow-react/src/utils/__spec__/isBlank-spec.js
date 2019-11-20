@@ -3,51 +3,57 @@ import isBlank from '../isBlank';
 import {expect} from 'support/chai';
 
 describe('isBlank', () => {
-  it('returns true for empty string', () => {
+  test('returns true for empty string', () => {
     const result = isBlank('');
 
-    expect(result).to.eq(true);
+    expect(result).toBe(true);
   });
 
-  it('returns false for string with characters', () => {
+  test('returns false for string with characters', () => {
     const result = isBlank(' abc  ');
 
-    expect(result).to.eq(false);
+    expect(result).toBe(false);
   });
 
-  it('returns true for whitespace', () => {
+  test('returns true for whitespace', () => {
     const result = isBlank('  \t\n');
 
-    expect(result).to.eq(true);
+    expect(result).toBe(true);
   });
 
-  it('returns true for null', () => {
+  test('returns true for null', () => {
     const result = isBlank(null);
 
-    expect(result).to.eq(true);
+    expect(result).toBe(true);
   });
 
-  it('returns true for undefined', () => {
+  test('returns true for undefined', () => {
     const result = isBlank(undefined);
 
-    expect(result).to.eq(true);
+    expect(result).toBe(true);
   });
 
-  it('returns true for html tags that only contain whitespace', () => {
+  test('returns true for html tags that only contain whitespace', () => {
     const result = isBlank('<p>  <br /> <i>\n</i></p>');
 
-    expect(result).to.eq(true);
+    expect(result).toBe(true);
   });
 
-  it('returns true for not wellformed html tags that only contain whitespace', () => {
-    const result = isBlank('<p>  <br>\t<i></p>');
+  test(
+    'returns true for not wellformed html tags that only contain whitespace',
+    () => {
+      const result = isBlank('<p>  <br>\t<i></p>');
 
-    expect(result).to.eq(true);
-  });
+      expect(result).toBe(true);
+    }
+  );
 
-  it('returns false for html tags that contain non whitespace characters', () => {
-    const result = isBlank('<p>  <i>Some text</i></p>');
+  test(
+    'returns false for html tags that contain non whitespace characters',
+    () => {
+      const result = isBlank('<p>  <i>Some text</i></p>');
 
-    expect(result).to.eq(false);
-  });
+      expect(result).toBe(false);
+    }
+  );
 });

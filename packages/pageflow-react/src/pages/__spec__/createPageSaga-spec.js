@@ -9,7 +9,7 @@ import {runSagaInPageScope} from 'support/sagas';
 
 describe('createPageSaga', () => {
   describe('creates saga that', () => {
-    it('does not run page type saga automatically', () => {
+    test('does not run page type saga automatically', () => {
       const spy = sinon.spy();
       const videoPageTypeSaga = function*() { yield call(spy); };
       const pageSaga = createPageSaga({pageTypeSagas: {video: videoPageTypeSaga}});
@@ -21,7 +21,7 @@ describe('createPageSaga', () => {
       expect(spy).not.to.have.been.called;
     });
 
-    it('runs page type saga on enhance', () => {
+    test('runs page type saga on enhance', () => {
       const spy = sinon.spy();
       const videoPageTypeSaga = function*() { yield call(spy); };
       const pageSaga = createPageSaga({pageTypeSagas: {video: videoPageTypeSaga}});
@@ -34,7 +34,7 @@ describe('createPageSaga', () => {
       expect(spy).to.have.been.called;
     });
 
-    it('cancels page type saga on cleanup', () => {
+    test('cancels page type saga on cleanup', () => {
       const spy = sinon.spy();
       const videoPageTypeSaga = function*() {
         try {

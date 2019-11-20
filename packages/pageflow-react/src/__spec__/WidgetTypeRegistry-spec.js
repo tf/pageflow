@@ -4,7 +4,7 @@ import {expect} from 'support';
 
 describe('WidgetTypeRegistry', () => {
   describe('#findByName', () => {
-    it('supports component and name property', () => {
+    test('supports component and name property', () => {
       const registry = new WidgetTypeRegistry();
       const component = function() {};
 
@@ -13,21 +13,21 @@ describe('WidgetTypeRegistry', () => {
       });
       const result = registry.findByName('some_widget');
 
-      expect(result.component).to.eq(component);
-      expect(result.name).to.eq('some_widget');
+      expect(result.component).toBe(component);
+      expect(result.name).toBe('some_widget');
     });
 
-    it('fails loudly if widget type is not found', () => {
+    test('fails loudly if widget type is not found', () => {
       const registry = new WidgetTypeRegistry();
 
       expect(() =>
         registry.findByName('not_there')
-      ).to.throw(/Widget type with name "not_there" not found/);
+      ).toThrowError(/Widget type with name "not_there" not found/);
     });
   });
 
   describe('#forEach', () => {
-    it('iterates of registered widget types', () => {
+    test('iterates of registered widget types', () => {
       const registry = new WidgetTypeRegistry();
       const component1 = function() {};
       const component2 = function() {};
@@ -43,7 +43,7 @@ describe('WidgetTypeRegistry', () => {
         result.push(widgetType)
       );
 
-      expect(result).to.eql([
+      expect(result).toEqual([
         {name: 'widget1', component: component1},
         {name: 'widget2', component: component2}
       ]);

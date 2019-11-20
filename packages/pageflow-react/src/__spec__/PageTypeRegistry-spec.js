@@ -4,16 +4,16 @@ import {expect} from 'support/chai';
 
 describe('PageTypeRegistry', () => {
   describe('#register', () => {
-    it('fails if no component is supplied', () => {
+    test('fails if no component is supplied', () => {
       const registry = new PageTypeRegistry();
 
       expect(() => {
         registry.register('background_image', {
         });
-      }).to.throw(/Requires component option to be present/);
+      }).toThrowError(/Requires component option to be present/);
     });
 
-    it('fails if reduxModules option is not an array', () => {
+    test('fails if reduxModules option is not an array', () => {
       const registry = new PageTypeRegistry();
       const component = function() {};
 
@@ -22,10 +22,10 @@ describe('PageTypeRegistry', () => {
           component,
           reduxModules: {}
         });
-      }).to.throw(/Expected reduxModules option to be an array/);
+      }).toThrowError(/Expected reduxModules option to be an array/);
     });
 
-    it('fails loudly if redux module is not an object', () => {
+    test('fails loudly if redux module is not an object', () => {
       const registry = new PageTypeRegistry();
       const component = function() {};
 
@@ -37,28 +37,33 @@ describe('PageTypeRegistry', () => {
             function() {}
           ]
         });
-      }).to.throw(/Expected redux module to be object with name, reducers and saga properties/);
+      }).toThrowError(
+        /Expected redux module to be object with name, reducers and saga properties/
+      );
     });
 
-    it('fails loudly if reducer property of a redux module is not an object', () => {
-      const registry = new PageTypeRegistry();
-      const component = function() {};
+    test(
+      'fails loudly if reducer property of a redux module is not an object',
+      () => {
+        const registry = new PageTypeRegistry();
+        const component = function() {};
 
-      expect(() => {
-        registry.register('background_image', {
-          component,
+        expect(() => {
+          registry.register('background_image', {
+            component,
 
-          reduxModules: [
-            {
-              name: 'media',
-              reducers: function() {}
-            }
-          ]
-        });
-      }).to.throw(/Expected reducers property of media reduxModule to be object/);
-    });
+            reduxModules: [
+              {
+                name: 'media',
+                reducers: function() {}
+              }
+            ]
+          });
+        }).toThrowError(/Expected reducers property of media reduxModule to be object/);
+      }
+    );
 
-    it('fails loudly if redux module is an object with unexpected key', () => {
+    test('fails loudly if redux module is an object with unexpected key', () => {
       const registry = new PageTypeRegistry();
       const component = function() {};
 
@@ -72,12 +77,14 @@ describe('PageTypeRegistry', () => {
             }
           ]
         });
-      }).to.throw(/Expected redux module to be object with name, reducers and saga properties/);
+      }).toThrowError(
+        /Expected redux module to be object with name, reducers and saga properties/
+      );
     });
   });
 
   describe('#register/#findByName', () => {
-    it('supports component and name property', () => {
+    test('supports component and name property', () => {
       const registry = new PageTypeRegistry();
       const component = function() {};
 
@@ -86,11 +93,11 @@ describe('PageTypeRegistry', () => {
       });
       const result = registry.findByName('background_image');
 
-      expect(result.component).to.eq(component);
-      expect(result.name).to.eq('background_image');
+      expect(result.component).toBe(component);
+      expect(result.name).toBe('background_image');
     });
 
-    it('passes other properties on', () => {
+    test('passes other properties on', () => {
       const registry = new PageTypeRegistry();
       const component = function() {};
 
@@ -100,10 +107,10 @@ describe('PageTypeRegistry', () => {
       });
       const result = registry.findByName('background_image');
 
-      expect(result.some).to.eq('value');
+      expect(result.some).toBe('value');
     });
 
-    it('combines reducer from reduxModules', () => {
+    test('combines reducer from reduxModules', () => {
       const registry = new PageTypeRegistry();
       const component = function() {};
 
@@ -136,7 +143,7 @@ describe('PageTypeRegistry', () => {
       const reducer = registry.findByName('background_image').reducer;
       const result = reducer({}, 'ACTION');
 
-      expect(result).to.eql({
+      expect(result).toEqual({
         a: 'a',
         b: 'b',
         c: 'c'
@@ -144,7 +151,7 @@ describe('PageTypeRegistry', () => {
     });
   });
 
-  it('does not set reducer if non are given', () => {
+  test('does not set reducer if non are given', () => {
     const registry = new PageTypeRegistry();
     const component = function() {};
 
@@ -153,10 +160,10 @@ describe('PageTypeRegistry', () => {
     });
     const result = registry.findByName('background_image').reducer;
 
-    expect(result).to.eq(undefined);
+    expect(result).toBeUndefined();
   });
 
-  it('creates saga from reduxModules', () => {
+  test('creates saga from reduxModules', () => {
     const registry = new PageTypeRegistry();
     const component = function() {};
     const saga1 = function*() { yield 1; };
@@ -180,11 +187,11 @@ describe('PageTypeRegistry', () => {
     const saga = registry.findByName('background_image').saga;
     const result = saga().next().value;
 
-    expect(result.map(i => i.next().value)).to.eql([1, 2]);
+    expect(result.map(i => i.next().value)).toEqual([1, 2]);
   });
 
   describe('#reduce', () => {
-    it('iterates over registered page types', () => {
+    test('iterates over registered page types', () => {
       const registry = new PageTypeRegistry();
       const component1 = function() {};
       const component2 = function() {};
@@ -200,12 +207,12 @@ describe('PageTypeRegistry', () => {
         []
       );
 
-      expect(result).to.eql([component1, component2]);
+      expect(result).toEqual([component1, component2]);
     });
   });
 
   describe('#forEach', () => {
-    it('iterates over registered page types', () => {
+    test('iterates over registered page types', () => {
       const registry = new PageTypeRegistry();
       const component1 = function() {};
       const component2 = function() {};
@@ -221,7 +228,7 @@ describe('PageTypeRegistry', () => {
         result.push(pageType.component)
       );
 
-      expect(result).to.eql([component1, component2]);
+      expect(result).toEqual([component1, component2]);
     });
   });
 });

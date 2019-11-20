@@ -13,7 +13,7 @@ import {expect} from 'support/chai';
 import sinon from 'sinon';
 
 describe('hotkeys.watchEvents', () => {
-  it('dispatches action for current page when tab key is pressed', () => {
+  test('dispatches action for current page when tab key is pressed', () => {
     const window = {
       addEventListener(name, handler) {
         this.handler = handler;

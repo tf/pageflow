@@ -3,28 +3,28 @@ import pickAttributes from '../pickAttributes';
 import {expect} from 'support/chai';
 
 describe('loadFromSeed', () => {
-  it('camelized attribute', () => {
+  test('camelized attribute', () => {
     const post = {long_title: 'News'};
 
     const result = pickAttributes(['long_title'], post);
 
-    expect(result).to.eql({longTitle: 'News'});
+    expect(result).toEqual({longTitle: 'News'});
   });
 
-  it('supports mapping attribute names', () => {
+  test('supports mapping attribute names', () => {
     const post = {post_type: 'gallery'};
 
     const result = pickAttributes([{type: 'post_type'}], post);
 
-    expect(result).to.eql({type: 'gallery'});
+    expect(result).toEqual({type: 'gallery'});
   });
 
-  it('supports including additional attributes', () => {
+  test('supports including additional attributes', () => {
     const post = {title: 'News'};
     const additional = {some_setting: 'value'};
 
     const result = pickAttributes(['title'], post, additional);
 
-    expect(result).to.eql({title: 'News', someSetting: 'value'});
+    expect(result).toEqual({title: 'News', someSetting: 'value'});
   });
 });

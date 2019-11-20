@@ -8,7 +8,7 @@ import stubI18n from 'support/stubI18n';
 describe('i18n', () => {
   stubI18n();
 
-  it('provides t selector to fetch translations', () => {
+  test('provides t selector to fetch translations', () => {
     const store = createStore([i18nModule], {locale: 'fr'});
 
     t(store.getState())('some.key');
@@ -16,11 +16,11 @@ describe('i18n', () => {
     expect(I18n.t).to.have.been.calledWith('some.key', {locale: 'fr'});
   });
 
-  it('provides locale selector to fetch locale name', () => {
+  test('provides locale selector to fetch locale name', () => {
     const store = createStore([i18nModule], {locale: 'fr'});
 
     const result = locale(store.getState());
 
-    expect(result).to.eq('fr');
+    expect(result).toBe('fr');
   });
 });

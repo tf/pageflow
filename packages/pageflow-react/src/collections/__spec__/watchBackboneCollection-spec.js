@@ -7,7 +7,7 @@ import {expect} from 'support/chai';
 import sinon from 'sinon';
 
 describe('watchBackboneCollection', () => {
-  it('dispatches reset action initially', () => {
+  test('dispatches reset action initially', () => {
     const postAttributes = {title: 'News'};
     const collection = new Backbone.Collection([postAttributes]);
     const dispatch = sinon.spy();
@@ -28,7 +28,7 @@ describe('watchBackboneCollection', () => {
     }));
   });
 
-  it('camelized attribute', () => {
+  test('camelized attribute', () => {
     const postAttributes = {long_title: 'News'};
     const collection = new Backbone.Collection([postAttributes]);
     const dispatch = sinon.spy();
@@ -48,7 +48,7 @@ describe('watchBackboneCollection', () => {
     }));
   });
 
-  it('supports mapping attribute names', () => {
+  test('supports mapping attribute names', () => {
     const postAttributes = {post_type: 'gallery'};
     const collection = new Backbone.Collection([postAttributes]);
     const dispatch = sinon.spy();
@@ -68,7 +68,7 @@ describe('watchBackboneCollection', () => {
     }));
   });
 
-  it('supports including configuration attributes', () => {
+  test('supports including configuration attributes', () => {
     const model = new Backbone.Model();
     model.configuration = new Backbone.Model({some: 'setting'});
     const collection = new Backbone.Collection([model]);
@@ -90,7 +90,7 @@ describe('watchBackboneCollection', () => {
     }));
   });
 
-  it('dispatches change action when used attribute changes', () => {
+  test('dispatches change action when used attribute changes', () => {
     const model = new Backbone.Model();
     const collection = new Backbone.Collection([model]);
     const dispatch = sinon.spy();
@@ -112,29 +112,32 @@ describe('watchBackboneCollection', () => {
     }));
   });
 
-  it('dispatches change action when attribute with mapped name changes', () => {
-    const model = new Backbone.Model();
-    const collection = new Backbone.Collection([model]);
-    const dispatch = sinon.spy();
+  test(
+    'dispatches change action when attribute with mapped name changes',
+    () => {
+      const model = new Backbone.Model();
+      const collection = new Backbone.Collection([model]);
+      const dispatch = sinon.spy();
 
-    watchBackboneCollection({
-      collectionName: 'posts',
-      collection,
-      dispatch,
-      attributes: [{fullTitle: 'full_title'}]
-    });
+      watchBackboneCollection({
+        collectionName: 'posts',
+        collection,
+        dispatch,
+        attributes: [{fullTitle: 'full_title'}]
+      });
 
-    model.set('full_title', 'changed');
+      model.set('full_title', 'changed');
 
-    expect(dispatch).to.have.been.calledWith(sinon.match({
-      type: CHANGE,
-      payload: {
-        attributes: {fullTitle: 'changed'}
-      }
-    }));
-  });
+      expect(dispatch).to.have.been.calledWith(sinon.match({
+        type: CHANGE,
+        payload: {
+          attributes: {fullTitle: 'changed'}
+        }
+      }));
+    }
+  );
 
-  it('does not dispatch change action when unused attribute changes', () => {
+  test('does not dispatch change action when unused attribute changes', () => {
     const model = new Backbone.Model();
     const collection = new Backbone.Collection([model]);
     const dispatch = sinon.spy();
@@ -153,54 +156,60 @@ describe('watchBackboneCollection', () => {
     }));
   });
 
-  it('does not dispatch multiple change actions when multple attribute change at once', () => {
-    const model = new Backbone.Model();
-    const collection = new Backbone.Collection([model]);
-    const dispatch = sinon.spy();
+  test(
+    'does not dispatch multiple change actions when multple attribute change at once',
+    () => {
+      const model = new Backbone.Model();
+      const collection = new Backbone.Collection([model]);
+      const dispatch = sinon.spy();
 
-    watchBackboneCollection({
-      collectionName: 'posts',
-      collection,
-      dispatch,
-      attributes: ['title', 'body']
-    });
+      watchBackboneCollection({
+        collectionName: 'posts',
+        collection,
+        dispatch,
+        attributes: ['title', 'body']
+      });
 
-    dispatch.reset();
+      dispatch.reset();
 
-    model.set({
-      title: 'changed',
-      body: 'changed'
-    });
+      model.set({
+        title: 'changed',
+        body: 'changed'
+      });
 
-    expect(dispatch).to.have.been.calledOnce;
-  });
+      expect(dispatch).to.have.been.calledOnce;
+    }
+  );
 
-  it('dispatches change action on change:confguration event when configuration is included ', () => {
-    const model = new Backbone.Model();
-    model.configuration = new Backbone.Model({some: 'setting'});
-    const collection = new Backbone.Collection([model]);
-    const dispatch = sinon.spy();
+  test(
+    'dispatches change action on change:confguration event when configuration is included ',
+    () => {
+      const model = new Backbone.Model();
+      model.configuration = new Backbone.Model({some: 'setting'});
+      const collection = new Backbone.Collection([model]);
+      const dispatch = sinon.spy();
 
-    watchBackboneCollection({
-      collectionName: 'posts',
-      collection,
-      dispatch,
-      attributes: [],
-      includeConfiguration: true
-    });
+      watchBackboneCollection({
+        collectionName: 'posts',
+        collection,
+        dispatch,
+        attributes: [],
+        includeConfiguration: true
+      });
 
-    model.configuration.set('some', 'changed');
-    model.trigger('change:configuration', model);
+      model.configuration.set('some', 'changed');
+      model.trigger('change:configuration', model);
 
-    expect(dispatch).to.have.been.calledWith(sinon.match({
-      type: CHANGE,
-      payload: {
-        attributes: {some: 'changed'}
-      }
-    }));
-  });
+      expect(dispatch).to.have.been.calledWith(sinon.match({
+        type: CHANGE,
+        payload: {
+          attributes: {some: 'changed'}
+        }
+      }));
+    }
+  );
 
-  it('dispatches order action on sort event', () => {
+  test('dispatches order action on sort event', () => {
     const model = new Backbone.Model({id: 5, position: 1});
     const collection = new Backbone.Collection([model], {comparator: 'position'});
     const dispatch = sinon.spy();

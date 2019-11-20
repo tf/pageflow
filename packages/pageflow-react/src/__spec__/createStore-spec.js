@@ -6,7 +6,7 @@ import {expect} from 'support/chai';
 import sinon from 'sinon';
 
 describe('createStore', () => {
-  it('combines reducers of given Redux modules', () => {
+  test('combines reducers of given Redux modules', () => {
     const options = {};
     const reduxModule = {
       createReducers() {
@@ -21,10 +21,10 @@ describe('createStore', () => {
     const store = createStore([reduxModule], options);
     store.dispatch({type: 'ACTION'});
 
-    expect(store.getState()).to.eql({test: 'new state'});
+    expect(store.getState()).toEqual({test: 'new state'});
   });
 
-  it('passes options to createReducers function', () => {
+  test('passes options to createReducers function', () => {
     const options = {value: 'new state'};
     const reduxModule = {
       createReducers(options) {
@@ -39,10 +39,10 @@ describe('createStore', () => {
     const store = createStore([reduxModule], options);
     store.dispatch({type: 'ACTION'});
 
-    expect(store.getState()).to.eql({test: 'new state'});
+    expect(store.getState()).toEqual({test: 'new state'});
   });
 
-  it('runs sagas of passed Redux modules', () => {
+  test('runs sagas of passed Redux modules', () => {
     const options = {};
     const spy = sinon.spy();
     const reduxModule = {
@@ -58,7 +58,7 @@ describe('createStore', () => {
     expect(spy).to.have.been.called;
   });
 
-  it('passes options to saga', () => {
+  test('passes options to saga', () => {
     const options = {some: 'value'};
     const spy = sinon.spy();
     const reduxModule = {
@@ -74,7 +74,7 @@ describe('createStore', () => {
     expect(spy).to.have.been.calledWith('value');
   });
 
-  it('does not run sagas if isServerSide is true', () => {
+  test('does not run sagas if isServerSide is true', () => {
     const options = {isServerSide: true};
     const spy = sinon.spy();
     const reduxModule = {
@@ -91,7 +91,7 @@ describe('createStore', () => {
     expect(spy).not.to.have.been.called;
   });
 
-  it('calls init function of passed Redux modules', () => {
+  test('calls init function of passed Redux modules', () => {
     const options = {};
     const spy = sinon.spy();
     const reduxModule = {
@@ -103,7 +103,7 @@ describe('createStore', () => {
     expect(spy).to.have.been.called;
   });
 
-  it('passes options to init', () => {
+  test('passes options to init', () => {
     const options = {some: 'value'};
     const spy = sinon.spy();
     const reduxModule = {
@@ -115,7 +115,7 @@ describe('createStore', () => {
     expect(spy).to.have.been.calledWith(sinon.match(options));
   });
 
-  it('passes dispatch to init', () => {
+  test('passes dispatch to init', () => {
     const options = {some: 'value'};
     const spy = sinon.spy();
     const reduxModule = {
@@ -138,7 +138,7 @@ describe('createStore', () => {
     expect(spy).to.have.been.calledWith({type: 'ACTION'});
   });
 
-  it('passes getState to init', () => {
+  test('passes getState to init', () => {
     const options = {};
     let result;
     const reduxModule = {
@@ -157,10 +157,10 @@ describe('createStore', () => {
 
     createStore([reduxModule], options);
 
-    expect(result).to.eql({test: 'initial'});
+    expect(result).toEqual({test: 'initial'});
   });
 
-  it('lets redux module define custom middleware', () => {
+  test('lets redux module define custom middleware', () => {
     const options = {};
     const spy = sinon.spy();
     const reduxModule = {
@@ -180,7 +180,7 @@ describe('createStore', () => {
     expect(spy).to.have.been.calledWith('ACTION');
   });
 
-  it('passes options to createMiddleware', () => {
+  test('passes options to createMiddleware', () => {
     const options = {some: 'value'};
     const spy = sinon.spy();
     const reduxModule = {

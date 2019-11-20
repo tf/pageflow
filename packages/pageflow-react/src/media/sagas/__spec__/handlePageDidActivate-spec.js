@@ -17,7 +17,7 @@ describe('handlePageDidActivate', () => {
     return {backgroundMedia};
   }
 
-  it('prebuffers when page did activate', () => {
+  test('prebuffers when page did activate', () => {
     const run = runSagaInPageScope(handlePageDidActivate, {
       reduxModules: [backgroundMediaModule],
       args: [{canAutoplay: true}]
@@ -27,7 +27,7 @@ describe('handlePageDidActivate', () => {
     expect(run.put).to.have.been.calledWith(sinon.match({type: PREBUFFER}));
   });
 
-  it('plays video once it is prebuffered', () => {
+  test('plays video once it is prebuffered', () => {
     const run = runSagaInPageScope(handlePageDidActivate, {
       reduxModules: [backgroundMediaModule],
       args: [{canAutoplay: true}]
@@ -39,7 +39,7 @@ describe('handlePageDidActivate', () => {
     expect(run.put).to.have.been.calledWith(sinon.match({type: PLAY}));
   });
 
-  it('does not play video once prebuffered if autoplay is false', () => {
+  test('does not play video once prebuffered if autoplay is false', () => {
     const run = runSagaInPageScope(handlePageDidActivate, {
       reduxModules: [backgroundMediaModule],
       args: [{canAutoplay: true}],
@@ -52,7 +52,7 @@ describe('handlePageDidActivate', () => {
     expect(run.put).not.to.have.been.calledWith(sinon.match({type: PLAY}));
   });
 
-  it('does not play video once prebuffered if background media muted', () => {
+  test('does not play video once prebuffered if background media muted', () => {
     const run = runSagaInPageScope(handlePageDidActivate, {
       reduxModules: [backgroundMediaModule],
       args: [{canAutoplay: true}]
@@ -65,7 +65,7 @@ describe('handlePageDidActivate', () => {
     expect(run.put).not.to.have.been.calledWith(sinon.match({type: PLAY}));
   });
 
-  it('supports option to play even if background media muted', () => {
+  test('supports option to play even if background media muted', () => {
     const run = runSagaInPageScope(handlePageDidActivate, {
       reduxModules: [backgroundMediaModule],
       args: [{
@@ -81,8 +81,8 @@ describe('handlePageDidActivate', () => {
     expect(run.put).to.have.been.calledWith(sinon.match({type: PLAY}));
   });
 
-  describe('with retryOnUnmute option', function() {
-    it('plays media once unmuted', () => {
+  describe('with retryOnUnmute option', () => {
+    test('plays media once unmuted', () => {
       const run = runSagaInPageScope(handlePageDidActivate, {
         reduxModules: [backgroundMediaModule],
         args: [{
@@ -99,7 +99,7 @@ describe('handlePageDidActivate', () => {
       expect(run.put).to.have.been.calledWith(sinon.match({type: PLAY}));
     });
 
-    it('does not retry if page has been deactivated', () => {
+    test('does not retry if page has been deactivated', () => {
       const run = runSagaInPageScope(handlePageDidActivate, {
         reduxModules: [backgroundMediaModule],
         args: [{
@@ -117,7 +117,7 @@ describe('handlePageDidActivate', () => {
       expect(run.put).not.to.have.been.calledWith(sinon.match({type: PLAY}));
     });
 
-    it('does not retry if autoplay is false', () => {
+    test('does not retry if autoplay is false', () => {
       const run = runSagaInPageScope(handlePageDidActivate, {
         reduxModules: [backgroundMediaModule],
         page: {attributes: {autoplay: false}},
@@ -136,7 +136,7 @@ describe('handlePageDidActivate', () => {
     });
   });
 
-  it('does not play video if page is deactivated while prebuffering', () => {
+  test('does not play video if page is deactivated while prebuffering', () => {
     const run = runSagaInPageScope(handlePageDidActivate, {
       reduxModules: [backgroundMediaModule],
       args: [{canAutoplay: true}]

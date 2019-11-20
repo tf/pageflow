@@ -8,7 +8,7 @@ import Backbone from 'backbone';
 import {expect} from 'support/chai';
 
 describe('widgets', () => {
-  it('exports redux module for widgets collection', () => {
+  test('exports redux module for widgets collection', () => {
     const widgetModel = new Backbone.Model({id: 'navigation', role: 'navigation', type_name: 'fancy'});
     widgetModel.configuration = new Backbone.Model({large: true});
     const widgets = new Backbone.Collection([widgetModel]);
@@ -16,11 +16,11 @@ describe('widgets', () => {
 
     const result = widgetAttributes({role: 'navigation'})(store.getState());
 
-    expect(result).to.include({typeName: 'fancy', large: true});
+    expect(result).toMatchObject({typeName: 'fancy', large: true});
   });
 
   describe('editingWidget selector', () => {
-    it('returns false by default', () => {
+    test('returns false by default', () => {
       const widgetModel = new Backbone.Model({id: 'navigation', role: 'navigation', type_name: 'fancy'});
       widgetModel.configuration = new Backbone.Model({large: true});
       const widgets = new Backbone.Collection([widgetModel]);
@@ -28,10 +28,10 @@ describe('widgets', () => {
 
       const result = editingWidget({role: 'navigation'})(store.getState());
 
-      expect(result).to.eq(false);
+      expect(result).toBe(false);
     });
 
-    it('returns true if editing attribute is set on widget', () => {
+    test('returns true if editing attribute is set on widget', () => {
       const widgetModel = new Backbone.Model({id: 'navigation', role: 'navigation', type_name: 'fancy'});
       widgetModel.configuration = new Backbone.Model({large: true});
       const widgets = new Backbone.Collection([widgetModel]);
@@ -40,7 +40,7 @@ describe('widgets', () => {
       widgetModel.set('editing', true);
       const result = editingWidget({role: 'navigation'})(store.getState());
 
-      expect(result).to.eq(true);
+      expect(result).toBe(true);
     });
   });
 });

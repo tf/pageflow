@@ -4,45 +4,45 @@ import {expect} from 'support/chai';
 import sinon from 'sinon';
 
 describe('prop selector', () => {
-  it('returns prop with given name', () => {
+  test('returns prop with given name', () => {
     const state = {};
     const props = {label: 'Text'};
 
     const result = prop('label')(state, props);
 
-    expect(result).to.eq('Text');
+    expect(result).toBe('Text');
   });
 
-  it('supports path lookup', () => {
+  test('supports path lookup', () => {
     const state = {};
     const props = {nested: {label: 'Text'}};
 
     const result = prop('nested.label')(state, props);
 
-    expect(result).to.eq('Text');
+    expect(result).toBe('Text');
   });
 
-  it('throws error if top level prop is missing', () => {
+  test('throws error if top level prop is missing', () => {
     const state = {};
     const props = {};
 
     expect(() => {
       prop('label')(state, props);
-    }).to.throw(/Missing required prop/);
+    }).toThrowError(/Missing required prop/);
   });
 
-  it('returns undefined if nested prop is missing', () => {
+  test('returns undefined if nested prop is missing', () => {
     const state = {};
     const props = {nested: {}};
 
     const result = prop('nested.not.there')(state, props);
 
-    expect(result).to.eq(undefined);
+    expect(result).toBeUndefined();
   });
 });
 
 describe('has selector', () => {
-  it('returns selector that returns state of given featue flag', () => {
+  test('returns selector that returns state of given featue flag', () => {
     const browser = {
       has(featureName) {
         return featureName == 'some present feature';
@@ -52,7 +52,7 @@ describe('has selector', () => {
     const resultForPresentFeature = has('some present feature')({}, {}, browser);
     const resultForAbsentFeature = has('some absent feature')({}, {}, browser);
 
-    expect(resultForPresentFeature).to.eq(true);
-    expect(resultForAbsentFeature).to.eq(false);
+    expect(resultForPresentFeature).toBe(true);
+    expect(resultForAbsentFeature).toBe(false);
   });
 });

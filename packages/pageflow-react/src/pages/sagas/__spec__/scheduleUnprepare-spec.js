@@ -8,7 +8,7 @@ import sinon from 'sinon';
 import {runSagaInPageScope} from 'support/sagas';
 
 describe('scheduleUnprepare', () => {
-  it('puts unprepare action after delay on schedule unprepare action', () => {
+  test('puts unprepare action after delay on schedule unprepare action', () => {
     const run = runSagaInPageScope(scheduleUnprepare)
       .blockOnCall(delay)
       .dispatch(pageScheduleUnprepare())
@@ -17,13 +17,16 @@ describe('scheduleUnprepare', () => {
     expect(run.put).to.have.been.calledWith(sinon.match({type: PAGE_DID_UNPREPARE}));
   });
 
-  it('does not put unprepare if page is prepared again before delay elapses', () => {
-    const run = runSagaInPageScope(scheduleUnprepare)
-      .blockOnCall(delay)
-      .dispatch(pageScheduleUnprepare())
-      .dispatch(pageDidPrepare())
-      .returnFromCall(delay);
+  test(
+    'does not put unprepare if page is prepared again before delay elapses',
+    () => {
+      const run = runSagaInPageScope(scheduleUnprepare)
+        .blockOnCall(delay)
+        .dispatch(pageScheduleUnprepare())
+        .dispatch(pageDidPrepare())
+        .returnFromCall(delay);
 
-    expect(run.put).not.to.have.been.calledWith(sinon.match({type: PAGE_DID_UNPREPARE}));
-  });
+      expect(run.put).not.to.have.been.calledWith(sinon.match({type: PAGE_DID_UNPREPARE}));
+    }
+  );
 });

@@ -46,34 +46,34 @@ describe('cookieNotice', () => {
     };
   }
 
-  it('is invisible by default', () => {
+  test('is invisible by default', () => {
     const {select} = setup();
 
     const result = select(isCookieNoticeVisible);
 
-    expect(result).to.eq(false);
+    expect(result).toBe(false);
   });
 
-  it('becomes visible once requested', () => {
+  test('becomes visible once requested', () => {
     const {select, events} = setup();
 
     events.trigger('cookie_notice:request');
     const result = select(isCookieNoticeVisible);
 
-    expect(result).to.eq(true);
+    expect(result).toBe(true);
   });
 
-  it('is hidden on dismiss', () => {
+  test('is hidden on dismiss', () => {
     const {select, events, dispatch} = setup();
 
     events.trigger('cookie_notice:request');
     dispatch(dismiss());
     const result = select(isCookieNoticeVisible);
 
-    expect(result).to.eq(false);
+    expect(result).toBe(false);
   });
 
-  it('stays invisible if dismissed before', () => {
+  test('stays invisible if dismissed before', () => {
     const cookies = fakeCookies();
 
     const {dispatch} = setup(cookies);
@@ -84,10 +84,10 @@ describe('cookieNotice', () => {
     events.trigger('cookie_notice:request');
     const result = select(isCookieNoticeVisible);
 
-    expect(result).to.eq(false);
+    expect(result).toBe(false);
   });
 
-  it('uses cookie_notice_bar_visible widget when it becomes visible', () => {
+  test('uses cookie_notice_bar_visible widget when it becomes visible', () => {
     const {events, widgetsApi} = setup();
 
     events.trigger('cookie_notice:request');
@@ -98,7 +98,7 @@ describe('cookieNotice', () => {
     });
   });
 
-  it('resets cookie_notice_bar_visible widget once dismissed', () => {
+  test('resets cookie_notice_bar_visible widget once dismissed', () => {
     const {events, dispatch, widgetsApi} = setup();
 
     events.trigger('cookie_notice:request');
@@ -107,19 +107,22 @@ describe('cookieNotice', () => {
     expect(widgetsApi.resetCallback).to.have.been.called;
   });
 
-  it('does not use cookie_notice_bar_visible widget if dismissed before', () => {
-    const cookies = fakeCookies();
+  test(
+    'does not use cookie_notice_bar_visible widget if dismissed before',
+    () => {
+      const cookies = fakeCookies();
 
-    const {dispatch} = setup(cookies);
-    dispatch(dismiss());
+      const {dispatch} = setup(cookies);
+      dispatch(dismiss());
 
-    const {events, widgetsApi} = setup(cookies);
+      const {events, widgetsApi} = setup(cookies);
 
-    events.trigger('cookie_notice:request');
+      events.trigger('cookie_notice:request');
 
-    expect(widgetsApi.use).not.to.have.been.calledWith({
-      name: 'cookie_notice_bar_visible',
-      insteadOf: 'cookie_notice_bar'
-    });
-  });
+      expect(widgetsApi.use).not.to.have.been.calledWith({
+        name: 'cookie_notice_bar_visible',
+        insteadOf: 'cookie_notice_bar'
+      });
+    }
+  );
 });

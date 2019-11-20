@@ -26,34 +26,34 @@ describe('backgroundMedia', () => {
     };
   }
 
-  it('is not muted by default', () => {
+  test('is not muted by default', () => {
     const {select} = setup();
 
     const result = select(muted);
 
-    expect(result).to.eq(false);
+    expect(result).toBe(false);
   });
 
-  it('is muted after mute event', () => {
+  test('is muted after mute event', () => {
     const {select, events} = setup();
 
     events.trigger('background_media:mute');
     const result = select(muted);
 
-    expect(result).to.eq(true);
+    expect(result).toBe(true);
   });
 
-  it('is no longer muted after unmute event', () => {
+  test('is no longer muted after unmute event', () => {
     const {select, events} = setup();
 
     events.trigger('background_media:mute');
     events.trigger('background_media:unmute');
     const result = select(muted);
 
-    expect(result).to.eq(false);
+    expect(result).toBe(false);
   });
 
-  it('calls pageflow.backgroundMedia.unmute on unmute action', () => {
+  test('calls pageflow.backgroundMedia.unmute on unmute action', () => {
     const {dispatch, backgroundMedia} = setup();
 
     dispatch(unmute());
