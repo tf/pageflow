@@ -5,22 +5,26 @@
   "main": "src/index.js",
   "scripts": {
     "start": "noreman development",
-    "build": "grunt build",
+    "build": "webpack --production --mode=production",
+    "build-dev": "webpack --mode=development",
     "test": "jest",
     "lint": "eslint src spec"
   },
   "processes": {
     "development": {
-      "webpack": "webpack --watch",
+      "webpack": "webpack --watch --mode=development",
       "jest": "jest --watch"
     }
   },
   "author": "Codevise Solutions GmbH <info@codevise.de>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/cli": "^7.7.0",
     "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
     "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
     "backbone": "^1.2.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-14": "^1.4.1",
@@ -29,23 +33,19 @@
     "eslint-plugin-import": "^2.1.0",
     "eslint-plugin-jest": "^23.0.4",
     "eslint-plugin-react": "^7.16.0",
-    "expose-loader": "^0.7.1",
-    "grunt": "^1.0.1",
-    "grunt-webpack": "^1.0.14",
-    "imports-loader": "^0.6.4",
     "jest": "^24.9.0",
     "jest-environment-enzyme": "^7.1.2",
     "jest-enzyme": "^7.1.2",
     "jest-sinon": "^1.0.1",
     "jquery": "^3.1.0",
-    "json-loader": "^0.5.4",
     "lolex": "^1.6.0",
     "noreman": "0.0.0",
     "react-addons-test-utils": "^0.14.7",
     "sinon": "^2.3.0",
     "underscore": "^1.8.3",
-    "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.1"
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
     "array-reverse-polyfill": "^1.0.9",
