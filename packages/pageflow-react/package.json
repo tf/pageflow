@@ -1,5 +1,5 @@
 {
-  "name": "pageflow",
+  "name": "pageflow-react",
   "version": "0.0.0",
   "description": "React/Redux based JavaScript.",
   "main": "src/index.js",
@@ -15,8 +15,8 @@
       "jest": "jest --watch"
     }
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Codevise Solutions GmbH <info@codevise.de>",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.7.2",
     "@babel/preset-react": "^7.7.0",
