@@ -1,0 +1,26 @@
+@value selectionColor from './colors.module.css';
+@value selectionWidth: 3px;
+
+.root {
+  border: solid selectionWidth transparent;
+  padding: 3px;
+  max-width: 270px;
+}
+
+.active {
+  border: solid selectionWidth selectionColor;
+}
+
+.thumbnailContainer {
+  position: relative;
+}
+
+.thumbnail {}
+
+.clickMask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
