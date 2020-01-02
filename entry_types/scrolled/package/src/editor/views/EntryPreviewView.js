@@ -14,6 +14,10 @@ export const EntryPreviewView = Marionette.ItemView.extend({
 
   ui: cssModulesUtils.ui(styles, 'iframe'),
 
+  modelEvents: {
+    'change:emulation_mode': 'updateEmulationMode'
+  },
+
   initialize() {
     this.messageListener = this.onMessage.bind(this);
   },
@@ -54,6 +58,20 @@ export const EntryPreviewView = Marionette.ItemView.extend({
         this.model.set('currentSectionIndex', message.data.payload.index);
       }
     }
+  },
+
+  updateEmulationMode: function() {
+    if (this.model.previous('emulation_mode')) {
+      this.$el.removeClass(styles[this.emulationModeClassName(this.model.previous('emulation_mode'))]);
+    }
+
+    if (this.model.get('emulation_mode')) {
+      this.$el.addClass(styles[this.emulationModeClassName(this.model.get('emulation_mode'))]);
+    }
+  },
+
+  emulationModeClassName: function(mode) {
+    return `${mode}EmulationMode`;
   }
 });
 
