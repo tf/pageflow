@@ -4,8 +4,11 @@ import Chapter from "./Chapter";
 import MutedContext from './MutedContext';
 import ScrollToSectionContext from './ScrollToSectionContext';
 import {useEntryStructure, useEntryStateDispatch} from '../entryState';
+import {EditorStateProvider} from './EditorState';
 
 import styles from './Entry.module.css';
+
+const editMode = window.location.pathname.indexOf('/editor/entries') === 0;
 
 export default function Entry(props) {
   const [currentSectionIndex, setCurrentSectionIndexState] = useState(0);
@@ -26,7 +29,7 @@ export default function Entry(props) {
   }, [setCurrentSectionIndexState]);
 
   useEffect(() => {
-    if (window.parent) {
+    if (window.parent !== window) {
       window.addEventListener('message', receive)
       window.parent.postMessage({type: 'READY'}, window.location.origin);
     }
@@ -55,6 +58,7 @@ export default function Entry(props) {
 
   return (
     <div className={styles.Entry}>
+      <EditorStateProvider active={editMode}>
       <MutedContext.Provider value={{muted: muted, setMuted: setMuted}}>
         <ScrollToSectionContext.Provider value={scrollToSection}>
           {renderChapters(entryStructure,
@@ -64,6 +68,7 @@ export default function Entry(props) {
                           setScrollTargetSectionIndex)}
         </ScrollToSectionContext.Provider>
       </MutedContext.Provider>
+      </EditorStateProvider>
     </div>
   );
 }

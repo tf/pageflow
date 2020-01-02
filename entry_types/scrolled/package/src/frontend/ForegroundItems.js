@@ -9,6 +9,7 @@ export default function ForegroundItems(props) {
         props.children(item,
                         <ForegroundItem key={index}
                                         type={item.type}
+                                        id={item.id}
                                         position={item.position}
                                         itemProps={item.props} />)
        )}

@@ -34,6 +34,7 @@ function sectionStructure(collections, section) {
         item => item.sectionId === section.id
       )
       .map(item => ({
+        id: item.id,
         type: item.typeName,
         position: item.configuration.position,
         props: item.configuration
