@@ -9,5 +9,9 @@ export const ScrolledEntry = Entry.extend({
     this.contentElements = new ContentElementsCollection(seed.collections.contentElements);
 
     this.scrolledSeed = seed;
+  },
+
+  supportsPhoneEmulation() {
+    return true;
   }
 });

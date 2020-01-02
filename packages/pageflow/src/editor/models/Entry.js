@@ -72,6 +72,10 @@ export const Entry = Backbone.Model.extend({
     return this.themes.findByName(this.configuration.get('theme_name'));
   },
 
+  supportsPhoneEmulation: function() {
+    return pageflow.features.isEnabled('editor_emulation_mode')
+  },
+
   addStoryline: function(attributes) {
     var storyline = this.buildStoryline(attributes);
     storyline.save();

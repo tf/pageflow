@@ -7,7 +7,7 @@ export const SidebarFooterView = Marionette.View.extend({
   className: 'sidebar_footer',
 
   render: function() {
-    if (pageflow.features.isEnabled('editor_emulation_mode')) {
+    if (this.model.supportsPhoneEmulation()) {
       this.appendSubview(new EmulationModeButtonView({model: this.model}));
     }
 
