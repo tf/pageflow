@@ -30,5 +30,9 @@ export const ScrolledEntry = Entry.extend({
     }, {
       sections: this.sections
     });
+  },
+
+  supportsPhoneEmulation() {
+    return true;
   }
 });
