@@ -1,0 +1,27 @@
+@value selectionColor from '../editor/views/colors.module.css';
+@value selectionWidth: 3px;
+@value selectionPadding: -10px;
+
+.selectable {
+  position: relative;
+}
+
+.selectable:after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: selectionPadding;
+  right: selectionPadding;
+  bottom: -3px;
+}
+
+.selectable:hover:after {
+  border: solid selectionWidth currentColor;
+  opacity: 0.3
+}
+
+.selected:hover:after,
+.selected:after {
+  border: solid selectionWidth selectionColor;
+  opacity: 0.8
+}

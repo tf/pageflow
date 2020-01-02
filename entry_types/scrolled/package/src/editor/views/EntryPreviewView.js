@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import Marionette from 'backbone.marionette';
+import {editor} from 'pageflow/editor';
 import {cssModulesUtils} from 'pageflow/ui';
 import {watchCollections} from '../../entryState';
 
@@ -52,6 +53,16 @@ export const EntryPreviewView = Marionette.ItemView.extend({
       }
       else if (message.data.type === 'CHANGE_SECTION') {
         this.model.set('currentSectionIndex', message.data.payload.index);
+      }
+      else if (message.data.type === 'SELECT') {
+        const {id} = message.data.payload;
+
+        if (id) {
+          editor.navigate(`/scrolled/content_element/${id}`, {trigger: true})
+        }
+        else {
+          editor.navigate('/', {trigger: true})
+        }
       }
     }
   }
