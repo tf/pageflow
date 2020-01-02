@@ -5,7 +5,7 @@ import AppHeader from './navigation/AppHeader';
 import Entry from './Entry';
 
 import './global.module.css';
-import {EntryStateProvider, useEntryStructure} from '../entryState';
+import {EntryStateProvider} from '../entryState';
 
 export default function Root() {
   return (

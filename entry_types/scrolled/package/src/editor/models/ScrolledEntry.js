@@ -7,5 +7,7 @@ export const ScrolledEntry = Entry.extend({
     this.chapters = new ChaptersCollection(seed.collections.chapters);
     this.sections = new SectionsCollection(seed.collections.sections);
     this.contentElements = new ContentElementsCollection(seed.collections.contentElements);
+
+    this.scrolledSeed = seed;
   }
 });
