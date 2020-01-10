@@ -1,12 +1,10 @@
-import {useContext} from 'react';
-
 import {getItem} from '../collections';
 
-import {EntryStateContext} from './EntryStateProvider';
+import {useEntryState} from './EntryStateProvider';
 import {expandUrls} from './expandUrls';
 
 export function useFile({collectionName, permaId}) {
-  const entryState = useContext(EntryStateContext);
+  const entryState = useEntryState();
 
   return expandUrls(
     collectionName,
