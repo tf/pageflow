@@ -36,6 +36,15 @@ de:
               label: "Beschriftung"
             id:
               label: "Bild"
+        soundDisclaimer:
+          tabs:
+            general: "Audio-Hinweis"
+        inlineVideo:
+          tabs:
+            general: "Inline-Video"
+        inlineBeforeAfter:
+          tabs:
+            general: "Vorher/Nachher"
 
       entry_outline:
         header: "Giederung"
