@@ -13,3 +13,13 @@ de:
             label: Titel
           summary:
             label: Zusammenfassung
+      edit_section:
+        tabs:
+          section: Abschnitt
+        attributes:
+          backdropImage:
+            label: Hintergrund
+          backdropType:
+            label: Hintergrund-Typ
+          invert:
+            label: Text invertieren

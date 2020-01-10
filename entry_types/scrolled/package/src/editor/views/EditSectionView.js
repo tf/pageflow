@@ -31,10 +31,12 @@ export const EditSectionView = Marionette.Layout.extend({
 
   onRender: function() {
     this.configurationEditor = new ConfigurationEditorView({
+      tabTranslationKeyPrefix: 'pageflow_scrolled.editor.edit_section.tabs',
+      attributeTranslationKeyPrefixes: ['pageflow_scrolled.editor.edit_section.attributes'],
       model: this.model.configuration
     });
 
-    this.configurationEditor.tab('general', function() {
+    this.configurationEditor.tab('section', function() {
       this.input('backdropType', SelectInputView, {
         values: ['image', 'color'],
         texts: ['Bild', 'Farbe']
