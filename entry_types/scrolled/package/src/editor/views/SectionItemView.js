@@ -1,6 +1,7 @@
 import Marionette from 'backbone.marionette';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {editor} from 'pageflow/editor';
 import {cssModulesUtils} from 'pageflow/ui';
 
 import {watchCollections} from '../../entryState';
@@ -23,7 +24,8 @@ export const SectionItemView = Marionette.ItemView.extend({
 
   events: {
     [`click .${styles.clickMask}`]: function() {
-      this.options.entry.trigger('scrollToSection', this.model);
+      editor.navigate(`/scrolled/sections/${this.model.id}`, {trigger: true})
+//      this.options.entry.trigger('scrollToSection', this.model);
     }
   },
 
