@@ -2,4 +2,14 @@ de:
   pageflow_scrolled:
     editor:
       entry_outline:
-        header: "Abschnitte"
+        header: "Giederung"
+      chapter_item:
+        add_section: "Neuer Abschnitt"
+      edit_chapter:
+        tabs:
+          chapter: Kapitel
+        attributes:
+          title:
+            label: Titel
+          summary:
+            label: Zusammenfassung

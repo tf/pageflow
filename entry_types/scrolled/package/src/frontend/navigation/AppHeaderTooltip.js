@@ -12,9 +12,7 @@ export default function AppHeaderTooltip(props) {
                   }}>
       <div>
         <h3 className={styles.tooltipHeadline}>Kapitel {props.chapterIndex}</h3>
-        <p>
-          {props.summary}
-        </p>
+        <p dangerouslySetInnerHTML={{__html: props.summary}} />
       </div>
     </ReactTooltip>
   )

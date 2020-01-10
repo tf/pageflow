@@ -1,0 +1,22 @@
+.root {
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 0 10px 10px 10px;
+}
+
+.link {
+  display: block;
+  margin: 0 -10px 0 -10px;
+  padding: 10px 10px 10px 30px;
+  background-color: #efefef;
+}
+
+.number {
+  font-weight: bold;
+}
+
+.title {}
+
+.sectionsRegion {
+  margin: 10px 0 10px 0;
+}
