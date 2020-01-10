@@ -5,6 +5,11 @@ import {ScrolledEntry} from './models/ScrolledEntry';
 import {EntryOutlineView} from './views/EntryOutlineView';
 import {EntryPreviewView} from './views/EntryPreviewView';
 
+import {SideBarRouter} from './routers/SideBarRouter';
+import {SideBarController} from './controllers/SideBarController';
+
+import '../contentElements/editor';
+
 import * as globalInterop from 'pageflow/editor';
 
 Object.assign(pageflow, globalInterop);
@@ -14,4 +19,9 @@ pageflow.editor.registerEntryType('scrolled', {
 
   previewView: EntryPreviewView,
   outlineView: EntryOutlineView
+});
+
+pageflow.editor.registerSideBarRouting({
+  router: SideBarRouter,
+  controller: SideBarController
 });
