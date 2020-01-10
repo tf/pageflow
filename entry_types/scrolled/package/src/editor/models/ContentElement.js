@@ -33,7 +33,7 @@ const ContentElementConfiguration = Configuration.extend({
 
 });
 
-export const PageConfigurationFileSelectionHandler = function(options) {
+export const FileSelectionHandler = function(options) {
   const contentElement = options.entry.contentElements.get(options.id);
 
   this.call = function(file) {
@@ -45,4 +45,4 @@ export const PageConfigurationFileSelectionHandler = function(options) {
   };
 };
 
-editor.registerFileSelectionHandler('contentElementConfiguration', PageConfigurationFileSelectionHandler);
+editor.registerFileSelectionHandler('contentElementConfiguration', FileSelectionHandler);
