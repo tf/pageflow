@@ -1,7 +1,7 @@
 import Backbone from 'backbone';
 
 import {failureTracking, Configuration} from 'pageflow/editor';
-import {ChapterSectionsCollection} from '../collections';
+import {ChapterSectionsCollection} from '../collections/ChapterSectionsCollection';
 
 export const Chapter = Backbone.Model.extend({
   mixins: [failureTracking],

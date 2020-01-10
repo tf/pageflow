@@ -11,7 +11,6 @@ export const ChapterSectionsCollection = SubsetCollection.extend({
       parentModel: chapter,
 
       filter: function(item) {
-        console.log(item.get('chapterId'), chapter.id);
         return !chapter.isNew() && item.get('chapterId') === chapter.id;
       },
 
