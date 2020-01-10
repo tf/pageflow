@@ -50,6 +50,8 @@ de:
         header: "Giederung"
       chapter_item:
         add_section: "Neuer Abschnitt"
+      section_item:
+        edit: Bearbeiten
       edit_chapter:
         tabs:
           chapter: Kapitel

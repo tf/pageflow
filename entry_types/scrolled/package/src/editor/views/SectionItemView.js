@@ -1,3 +1,4 @@
+import I18n from 'i18n-js';
 import Marionette from 'backbone.marionette';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -18,14 +19,19 @@ export const SectionItemView = Marionette.ItemView.extend({
       <div class="${styles.thumbnail}"></div>
       <div class="${styles.clickMask}"></div>
     </div>
+    <a href="" class="${styles.editLink}" title="${I18n.t('pageflow_scrolled.editor.section_item.edit')}"></a>
   `,
 
   ui: cssModulesUtils.ui(styles, 'thumbnail'),
 
   events: {
     [`click .${styles.clickMask}`]: function() {
+      this.options.entry.trigger('scrollToSection', this.model);
+    },
+
+    [`click .${styles.editLink}`]: function() {
       editor.navigate(`/scrolled/sections/${this.model.id}`, {trigger: true})
-//      this.options.entry.trigger('scrollToSection', this.model);
+      return false;
     }
   },
 
