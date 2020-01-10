@@ -152,8 +152,8 @@ describe('useEntryStructure', () => {
   it('reads data from watched collections', () => {
     const {result} = renderHookInEntry(() => useEntryStructure(), {
       setup: dispatch => {
-        const chapters = new ChaptersCollection(chaptersSeed);
         const sections = new SectionsCollection(sectionsSeed);
+        const chapters = new ChaptersCollection(chaptersSeed, {sections});
         const contentElements = new ContentElementsCollection(contentElementsSeed);
 
         watchCollections(
