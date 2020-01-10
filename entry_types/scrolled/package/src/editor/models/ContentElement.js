@@ -12,7 +12,21 @@ export const ContentElement = Backbone.Model.extend({
     this.listenTo(this.configuration, 'change', function() {
       this.trigger('change:configuration', this);
     });
-  }
+
+    this.listenTo(this.configuration, 'change', function() {
+      this.save();
+    });
+  },
+
+  urlRoot: function() {
+    return this.isNew() ? this.collection.url() : window.location.pathname + '/scrolled/content_elements';
+  },
+
+  toJSON: function() {
+    return {
+      configuration: this.configuration.toJSON()
+    };
+  },
 });
 
 const ContentElementConfiguration = Configuration.extend({
