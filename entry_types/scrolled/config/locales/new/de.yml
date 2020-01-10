@@ -1,6 +1,42 @@
 de:
   pageflow_scrolled:
     editor:
+      content_elements:
+        heading:
+          tabs:
+            general: "Überschrift"
+          attributes:
+            children:
+              label: "Text"
+        textBlock:
+          tabs:
+            general: "Text-Block"
+          attributes:
+            children:
+              label: "Text"
+        inlineImage:
+          tabs:
+            general: "Inline-Bild"
+          attributes:
+            caption:
+              label: "Beschriftung"
+            id:
+              label: "Bild"
+            position:
+              label: Position
+              values:
+                inline: Im Textfluss
+                sticky: Sticky
+                full: Voll Breite
+        stickyImage:
+          tabs:
+            general: "Inline-Bild"
+          attributes:
+            caption:
+              label: "Beschriftung"
+            id:
+              label: "Bild"
+
       entry_outline:
         header: "Giederung"
       chapter_item:
@@ -23,3 +59,7 @@ de:
             label: Hintergrund-Typ
           invert:
             label: Text invertieren
+      edit_content_element:
+        tabs:
+          general:
+        attributes:

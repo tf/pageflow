@@ -1,6 +1,6 @@
 
 import {editor} from '../../editor/api';
-import {TextInputView} from 'pageflow/ui';
+import {TextInputView, SelectInputView} from 'pageflow/ui';
 import {FileInputView} from 'pageflow/editor';
 
 ['inlineImage', 'stickyImage'].forEach(typeName =>
@@ -12,6 +12,9 @@ import {FileInputView} from 'pageflow/editor';
           fileSelectionHandler: 'contentElementConfiguration'
         });
         this.input('caption', TextInputView);
+        this.input('position', SelectInputView, {
+          values: ['inline', 'sticky', 'full']
+        });
       });
     }
   })

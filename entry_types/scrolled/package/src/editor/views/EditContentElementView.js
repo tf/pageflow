@@ -31,6 +31,8 @@ export const EditContentElementView = Marionette.Layout.extend({
 
   onRender: function() {
     this.configurationEditor = new ConfigurationEditorView({
+      tabTranslationKeyPrefix: `pageflow_scrolled.editor.content_elements.${this.model.get('typeName')}.tabs`,
+      attributeTranslationKeyPrefixes: [`pageflow_scrolled.editor.content_elements.${this.model.get('typeName')}.attributes`],
       model: this.model.configuration
     });
 
