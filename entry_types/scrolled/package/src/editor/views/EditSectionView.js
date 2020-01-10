@@ -37,6 +37,9 @@ export const EditSectionView = Marionette.Layout.extend({
     });
 
     this.configurationEditor.tab('section', function() {
+      this.input('layout', SelectInputView, {
+        values: ['left', 'right', 'center']
+      });
       this.input('backdropType', SelectInputView, {
         values: ['image', 'color'],
         texts: ['Bild', 'Farbe']

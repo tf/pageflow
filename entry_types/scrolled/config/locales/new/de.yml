@@ -59,6 +59,12 @@ de:
             label: Hintergrund-Typ
           invert:
             label: Text invertieren
+          layout:
+            label: Text-Ausrichtung
+            values:
+              left: "Links"
+              right: "Rechts"
+              center: "Mitte"
       edit_content_element:
         tabs:
           general:
