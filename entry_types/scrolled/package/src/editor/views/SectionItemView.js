@@ -30,6 +30,7 @@ export const SectionItemView = Marionette.ItemView.extend({
     },
 
     [`click .${styles.editLink}`]: function() {
+      this.options.entry.trigger('scrollToSection', this.model);
       editor.navigate(`/scrolled/sections/${this.model.id}`, {trigger: true})
       return false;
     }
