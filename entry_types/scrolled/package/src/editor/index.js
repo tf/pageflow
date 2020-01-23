@@ -1,12 +1,15 @@
 /*global pageflow*/
 
 import {ScrolledEntry} from './models/ScrolledEntry';
+import {ContentElementFileSelectionHandler} from './models/ContentElementFileSelectionHandler';
 
 import {EntryOutlineView} from './views/EntryOutlineView';
 import {EntryPreviewView} from './views/EntryPreviewView';
 
 import {SideBarRouter} from './routers/SideBarRouter';
 import {SideBarController} from './controllers/SideBarController';
+
+import '../contentElements/editor';
 
 import * as globalInterop from 'pageflow/editor';
 
@@ -23,3 +26,6 @@ pageflow.editor.registerSideBarRouting({
   router: SideBarRouter,
   controller: SideBarController
 });
+
+pageflow.editor.registerFileSelectionHandler('contentElementConfiguration',
+                                             ContentElementFileSelectionHandler);

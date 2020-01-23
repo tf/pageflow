@@ -58,7 +58,7 @@ export const EntryPreviewView = Marionette.ItemView.extend({
         const {id} = message.data.payload;
 
         if (id) {
-          editor.navigate(`/scrolled/content_element/${id}`, {trigger: true})
+          editor.navigate(`/scrolled/content_elements/${id}`, {trigger: true})
         }
         else {
           editor.navigate('/', {trigger: true})
