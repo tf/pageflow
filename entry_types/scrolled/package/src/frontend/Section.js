@@ -1,4 +1,4 @@
-import React, {useRef, useCallback} from 'react';
+import React, {useRef, useCallback, useEffect} from 'react';
 import classNames from 'classnames';
 
 import useOnScreen from './useOnScreen';

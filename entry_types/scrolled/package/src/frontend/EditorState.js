@@ -5,18 +5,18 @@ const Context = React.createContext({});
 export function EditorStateProvider(props) {
   const [selection, setSelectionState] = useState(null);
 
-  const setSelection = useCallback(id => {
+  const setSelection = useCallback(selection => {
     if (window.parent !== window) {
       window.parent.postMessage(
         {
-          type: 'SELECT',
-          payload: {id}
+          type: 'SELECTED',
+          payload: selection || {}
         },
         window.location.origin
       );
     }
 
-    setSelectionState(id);
+    setSelectionState(selection);
   }, []);
 
   return (
@@ -26,12 +26,23 @@ export function EditorStateProvider(props) {
   );
 }
 
-export function useEditorSelection(id) {
+export function useEditorSelection(options) {
   const {selection, setSelection} = useContext(Context);
 
+  const resetSelection = useCallback(() => {
+    setSelection(null);
+  }, [setSelection])
+
+  const select = useCallback(selection => {
+    setSelection(selection || options)
+  }, [setSelection, options])
+
   return useMemo(() => (setSelection ? {
-    isSelected: selection === id,
-    select: () => setSelection(id),
-    resetSelection: () => setSelection(null)
-  } : {}), [id, selection, setSelection]);
+    isSelected: selection && options && selection.id === options.id && selection.type === options.type,
+
+    isSelectable: !selection || selection.type === 'contentElement',
+
+    select,
+    resetSelection
+  } : {}), [options, selection, setSelection, select, resetSelection]);
 }

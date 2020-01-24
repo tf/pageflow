@@ -4,17 +4,16 @@ import Chapter from "./Chapter";
 import MutedContext from './MutedContext';
 import ScrollToSectionContext from './ScrollToSectionContext';
 import {useEntryStructure, useEntryStateDispatch} from '../entryState';
-import {EditorStateProvider} from './EditorState';
+import {useEditorSelection} from './EditorState';
 
 import styles from './Entry.module.css';
-
-const editMode = window.location.pathname.indexOf('/editor/entries') === 0;
 
 export default function Entry(props) {
   const [currentSectionIndex, setCurrentSectionIndexState] = useState(0);
 
   const [scrollTargetSectionIndex, setScrollTargetSectionIndex] = useState(null);
-
+  const {select} = useEditorSelection()
+  
   const [muted, setMuted] = useState(true);
 
   const dispatch = useEntryStateDispatch();
@@ -44,9 +43,12 @@ export default function Entry(props) {
         else if (message.data.type === 'SCROLL_TO_SECTION') {
           setScrollTargetSectionIndex(message.data.payload.index)
         }
+        else if (message.data.type === 'SELECT') {
+          select(message.data.payload);
+        }
       }
     }
-  }, [dispatch]);
+  }, [dispatch, select]);
 
   function scrollToSection(index) {
     if (index === 'next') {
@@ -58,7 +60,6 @@ export default function Entry(props) {
 
   return (
     <div className={styles.Entry}>
-      <EditorStateProvider active={editMode}>
       <MutedContext.Provider value={{muted: muted, setMuted: setMuted}}>
         <ScrollToSectionContext.Provider value={scrollToSection}>
           {renderChapters(entryStructure,
@@ -68,7 +69,6 @@ export default function Entry(props) {
                           setScrollTargetSectionIndex)}
         </ScrollToSectionContext.Provider>
       </MutedContext.Provider>
-      </EditorStateProvider>
     </div>
   );
 }

@@ -7,7 +7,8 @@ export default function ForegroundItems(props) {
     <>
       {props.items.map((item, index) =>
         props.children(item,
-                        <ForegroundItem key={index}
+                        <ForegroundItem key={item.id}
+                                        first={index === 0}
                                         type={item.type}
                                         id={item.id}
                                         position={item.position}

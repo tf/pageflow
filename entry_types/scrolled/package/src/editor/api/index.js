@@ -1,3 +1,6 @@
+import Backbone from 'backbone';
+import I18n from 'i18n-js'
+
 const contentElementTypes = {};
 
 export const editor = {
@@ -12,6 +15,15 @@ export const editor = {
       }
 
       return contentElementTypes[name].configurationEditor.call(configurationEditorView, options);
+    },
+
+    toCollection() {
+      return new Backbone.Collection(Object.keys(contentElementTypes).map(name => {
+        return {
+          typeName: name,
+          displayName: I18n.t(`pageflow_scrolled.editor.content_elements.${name}.name`)
+        }
+      }));
     }
   }
 }

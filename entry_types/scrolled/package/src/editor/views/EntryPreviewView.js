@@ -42,8 +42,9 @@ export const EntryPreviewView = Marionette.ItemView.extend({
         };
 
         watchCollections(this.model, {
-          dispatch: action =>
+          dispatch: action => {
             postMessage({type: 'ACTION', payload: action})
+          }
         });
 
         this.listenTo(this.model, 'scrollToSection', section =>
@@ -54,15 +55,38 @@ export const EntryPreviewView = Marionette.ItemView.extend({
             }
           })
         );
+
+        this.listenTo(this.model, 'selectContentElement', contentElement =>
+          postMessage({
+            type: 'SELECT',
+            payload: {
+              id: contentElement.id,
+              type: 'contentElement'
+            }
+          })
+        );
+
+        this.listenTo(this.model, 'resetSelection', contentElement =>
+          postMessage({
+            type: 'SELECT',
+            payload: null
+          })
+        );
       }
       else if (message.data.type === 'CHANGE_SECTION') {
         this.model.set('currentSectionIndex', message.data.payload.index);
       }
-      else if (message.data.type === 'SELECT') {
-        const {id} = message.data.payload;
+      else if (message.data.type === 'SELECTED') {
+        const {id, type} = message.data.payload;
 
-        if (id) {
+        if (type === 'contentElement') {
           editor.navigate(`/scrolled/content_elements/${id}`, {trigger: true})
+        }
+        else if (type === 'before') {
+          editor.navigate(`/scrolled/content_elements/insert?position=before&id=${id}`, {trigger: true})
+        }
+        else if (type === 'after') {
+          editor.navigate(`/scrolled/content_elements/insert?position=after&id=${id}`, {trigger: true})
         }
         else {
           editor.navigate('/', {trigger: true})
