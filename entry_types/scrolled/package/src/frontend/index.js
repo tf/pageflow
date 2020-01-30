@@ -8,6 +8,9 @@ import './global.module.css';
 import {EntryStateProvider} from '../entryState';
 import {EditorStateProvider} from './EditorState';
 
+import SoundDisclaimer from './SoundDisclaimer';
+export { SoundDisclaimer };
+
 const editMode = window.location.pathname.indexOf('/editor/entries') === 0;
 
 export default function Root() {
@@ -23,4 +26,4 @@ export default function Root() {
   );
 }
 
-ReactDOM.render(<Root />, document.getElementById('root'));
+// ReactDOM.render(<Root />, document.getElementById('root'));
