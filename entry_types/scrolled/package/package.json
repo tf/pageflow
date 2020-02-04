@@ -15,6 +15,7 @@
     "pageflow": "15.1.0"
   },
   "devDependencies": {
+    "@percy/storybook": "^3.2.0",
     "@storybook/react": "^5.3.9",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
@@ -41,6 +42,8 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
-    "storybook": "start-storybook"
+    "start-storybook": "start-storybook",
+    "build-storybook": "build-storybook -o .storybook/out",
+    "snapshot": "build-storybook -o .storybook/out && percy-storybook --widths=320,1280 --build_dir=.storybook/out"
   }
 }

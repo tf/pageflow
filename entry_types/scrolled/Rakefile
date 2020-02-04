@@ -1,0 +1,44 @@
+require 'bundler/setup'
+require 'fileutils'
+
+require 'pageflow/support'
+APP_RAKEFILE = File.expand_path("../#{Pageflow::Dummy::App.new.directory}/Rakefile", __FILE__)
+
+load 'rails/tasks/engine.rake'
+
+namespace :pageflow_scrolled do
+  task generate: :environment do
+    seeds = Module.new do
+      extend Pageflow::Seeds
+      extend PageflowScrolled::Seeds
+    end
+
+    account = seeds.account(name: 'Story seeds')
+
+    Pageflow::Entry.find_by_title('Story seed').destroy
+
+    entry = seeds.sample_scrolled_entry(title: 'Story seed',
+                                        account: account,
+                                        chapters: [],
+                                        image_files: {
+                                          turtle: {
+                                            url: 'https://s3-eu-west-1.amazonaws.com/de.codevise.pageflow.development/pageflow-next/seed-assets/images/04_turtle.jpg',
+                                            configuration: {
+                                              focusX: 24,
+                                              focusY: 40,
+                                              testReferenceName: 'turtle'
+                                            }
+                                          }.stringify_keys
+                                        })
+
+    seed =
+      PageflowScrolled::EntriesController
+      .render(inline: 'scrolled_entry_json_seed(json, entry)',
+              type: :jbuilder,
+              locals: {entry: Pageflow::DraftEntry.new(entry)})
+
+    tmp_dir = File.expand_path('package/tmp', __dir__)
+    FileUtils.mkdir(tmp_dir)
+    File.write(File.join(tmp_dir, 'seed.json'), seed)
+  end
+end
