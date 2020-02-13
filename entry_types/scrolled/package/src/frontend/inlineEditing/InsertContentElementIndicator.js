@@ -17,7 +17,7 @@ export function InsertContentElementIndicator({contentElementId, selected, posit
 
   return (
     <div className={classNames(styles.root,
-                               styles[position],
+                               styles[position === 'after' ? 'after' : 'before'],
                                {[styles.selected]: isSelected})}
          title={t('pageflow_scrolled.inline_editing.insert_content_element')}
          onClick={handleClick}>

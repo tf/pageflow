@@ -27,6 +27,8 @@ export {default as Entry} from './Entry';
 export {EntryStateProvider, useFile} from '../entryState'
 export {useEditorSelection} from './EditorState';
 
+export {InsertContentElementIndicator} from './inlineEditing/InsertContentElementIndicator'
+
 window.pageflowScrolledRender = function(seed) {
   setupI18n(seed.i18n);
   ReactDOM.render(<Root seed={seed} />, document.getElementById('root'));

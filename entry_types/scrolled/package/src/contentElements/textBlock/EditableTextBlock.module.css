@@ -1,0 +1,7 @@
+.paragraph {
+  position: relative;
+}
+
+.paragraph:first-of-type .insertIndicator {
+  display: none;
+}
