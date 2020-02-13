@@ -15,8 +15,8 @@ export function ContentElement(props) {
       <div className={classNames(styles.outer)}>
         {props.first && <InsertContentElementIndicator position="before" contentElementId={props.id} />}
         <div className={classNames({[styles.selected]: isSelected, [styles.selectable]: isSelectable})}
-             onClick={e => { e.stopPropagation(); isSelectable ? select() : resetSelection(); }}>
-          <Component configuration={props.itemProps} />
+             onClick={e => { isSelectable ? select() : resetSelection(); }}>
+          <Component configuration={props.itemProps} id={props.id} />
           <div className={styles.tl} />
           <div className={styles.bl} />
           <div className={styles.tr} />

@@ -8,3 +8,10 @@ editor.contentElementTypes.register('textBlock', {
     });
   }
 });
+
+editor.contentElementTypes.register('editableTextBlock', {
+  configurationEditor() {
+    this.tab('general', function() {
+    });
+  }
+});

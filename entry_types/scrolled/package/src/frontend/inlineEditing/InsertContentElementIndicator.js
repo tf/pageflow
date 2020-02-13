@@ -16,7 +16,7 @@ export function InsertContentElementIndicator({contentElementId, selected, posit
 
   return (
     <div className={classNames(styles.root,
-                               styles[position],
+                               styles[position === 'after' ? 'after' : 'before'],
                                {[styles.selected]: isSelected})}
          onClick={handleClick}>
       <div className={styles.box}>

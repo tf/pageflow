@@ -23,6 +23,8 @@ export * from './SectionThumbnail';
 export {default as Entry} from './Entry';
 export {EntryStateProvider} from '../entryState/EntryStateProvider'
 
+export {InsertContentElementIndicator} from './inlineEditing/InsertContentElementIndicator'
+
 window.pageflowScrolledRender = function(seed) {
   ReactDOM.render(<Root seed={seed} />, document.getElementById('root'));
 }

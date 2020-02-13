@@ -83,9 +83,18 @@ export const EntryPreviewView = Marionette.ItemView.extend({
         else if (type === 'after') {
           editor.navigate(`/scrolled/content_elements/insert?position=after&id=${id}`, {trigger: true})
         }
+        else if (type) {
+          console.log(type);
+          editor.navigate(`/scrolled/content_elements/insert?position=after&id=${id}`, {trigger: true})
+        }
         else {
           editor.navigate('/', {trigger: true})
         }
+      }
+      else if (message.data.type === 'UPDATE_CONTENT_ELEMENT') {
+        const {id, attributes} = message.data.payload;
+        console.log('set', attributes);
+        this.model.contentElements.get(id).configuration.set(attributes);
       }
     }
   }
