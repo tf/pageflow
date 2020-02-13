@@ -71,11 +71,17 @@ export const EntryPreviewView = Marionette.ItemView.extend({
         this.model.set('currentSectionIndex', message.data.payload.index);
       }
       else if (message.data.type === 'SELECTED') {
-        const {id} = message.data.payload;
+        const {id, type} = message.data.payload;
         const editor = this.options.editor;
 
-        if (id) {
+        if (type === 'contentElement') {
           editor.navigate(`/scrolled/content_elements/${id}`, {trigger: true})
+        }
+        else if (type === 'before') {
+          editor.navigate(`/scrolled/content_elements/insert?position=before&id=${id}`, {trigger: true})
+        }
+        else if (type === 'after') {
+          editor.navigate(`/scrolled/content_elements/insert?position=after&id=${id}`, {trigger: true})
         }
         else {
           editor.navigate('/', {trigger: true})
