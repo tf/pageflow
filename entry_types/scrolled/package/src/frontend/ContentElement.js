@@ -14,14 +14,11 @@ export function ContentElement(props) {
     return (
       <div className={classNames(styles.outer)}>
         {props.first && <InsertContentElementIndicator position="before" contentElementId={props.id} />}
-        <div className={classNames({[styles.selected]: isSelected, [styles.selectable]: isSelectable})}
-             onClick={e => { isSelectable ? select() : resetSelection(); }}>
-          <Component configuration={props.itemProps} id={props.id} />
-          <div className={styles.tl} />
-          <div className={styles.bl} />
-          <div className={styles.tr} />
-          <div className={styles.br} />
-        </div>
+        <Component configuration={props.itemProps} id={props.id} />
+        <div className={styles.tl} />
+        <div className={styles.bl} />
+        <div className={styles.tr} />
+        <div className={styles.br} />
         <InsertContentElementIndicator position="after" contentElementId={props.id} />
       </div>
     );
