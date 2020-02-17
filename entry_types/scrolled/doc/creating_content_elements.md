@@ -16,7 +16,7 @@ the editor and which React component is used to render the content
 element. Pageflow Scrolled provides a JavaScript API to register new
 content element types.
 
-The `pageflow-scrolled` contains a number of built in contenent
+The `pageflow-scrolled` package contains a number of built in content
 elements in directories below the `src/contentElements` directory. A
 typical directory looks like this:
 
@@ -53,11 +53,11 @@ hooks and components provided by the `pageflow-scrolled` package. It
 receives a configuration object via the `configuration` prop. The
 properties available in this object are determined by the inputs in
 the content element's configuration editor view (see "Editor
-Javascrip" section below).
+Javascript" section below).
 
 `pageflow-scrolled` provides both reusable components (like the
 `Image` component to render responsive images) and so called selector
-hooks that can used to retrieve information about the entry. For
+hooks that can be used to retrieve information about the entry. For
 example, the `useFile` hook allows turning a perma id of a file into
 an object containing urls and meta data information of the file. See
 the
