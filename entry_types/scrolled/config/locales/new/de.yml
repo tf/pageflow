@@ -44,6 +44,7 @@ de:
           tabs:
             general: "Vorher/Nachher"
         videoEmbed:
+          name: "Video Embed"
           tabs:
             general: "Video-Embed"
           attributes:
