@@ -61,6 +61,7 @@ jobs:
 
         - (cd entry_types/scrolled; PAGEFLOW_PLUGIN_ENGINE=pageflow_scrolled bundle exec rake pageflow_scrolled:dummy)
         - (cd entry_types/scrolled; WEBPACKER_PRECOMPILE=false bundle exec rake app:assets:precompile)
+        - (cd entry_types/scrolled/spec/dummy/*; RAILS_ENV=test bundle exec rake webpacker:compile)
       script: (cd entry_types/scrolled; bin/rspec)
 
     - name: Jest
