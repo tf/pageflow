@@ -36,7 +36,7 @@ module M
 
     res = super
 
-    puts res.body
+    puts res.body unless res.path =~ /chromediver/
     puts "===="
     res
   end
