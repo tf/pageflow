@@ -3,6 +3,8 @@ require 'selenium-webdriver'
 require 'capybara/chromedriver/logger'
 require 'webdrivers/chromedriver'
 
+Webdrivers::Chromedriver.required_version = '79.0.3945.36'
+
 Capybara.register_driver :selenium_chrome_headless_no_sandbox do |app|
   service = ::Selenium::WebDriver::Service.chrome(args: { log_path: '/tmp/chromedriver.log' })
 
