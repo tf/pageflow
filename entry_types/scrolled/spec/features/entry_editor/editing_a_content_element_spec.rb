@@ -3,7 +3,7 @@ require 'spec_helper'
 require 'pageflow/dom'
 require 'support/dominos/editor'
 
-RSpec.feature 'as entry editor, editing a content element', js: true do
+RSpec.feature 'as entry editor, editing a content element', js: true, frame: true do
   scenario 'can change text of heading' do
     entry = create(:entry, type_name: 'scrolled')
     create(:content_element,

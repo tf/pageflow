@@ -18,6 +18,8 @@ require 'pageflow/support/config/webmock'
 require 'pageflow_scrolled'
 
 RSpec.configure do |config|
+  config.filter_run_including frame: true
+
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = '.rspec_status'
 
