@@ -31,15 +31,12 @@ end
 
 module M
   def request(req, body = nil, &block)
-    puts([req.method, req.path] * " ")
+    super
+  rescue Net::ReadTimeout
+    puts(['FAILED:', req.method, req.path] * " ")
     puts req.body
-
-    res = super
-
-    puts res.body unless req.path =~ /chromedriver/
-    puts "===="
-    res
+    raise
   end
 end
 
-# Net::HTTP.prepend(M)
+Net::HTTP.prepend(M)
