@@ -42,4 +42,4 @@ module M
   end
 end
 
-Net::HTTP.prepend(M)
+# Net::HTTP.prepend(M)
