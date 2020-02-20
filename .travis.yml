@@ -63,8 +63,8 @@ jobs:
         - (cd entry_types/scrolled; WEBPACKER_PRECOMPILE=false bundle exec rake app:assets:precompile)
         - (cd entry_types/scrolled/spec/dummy/*; RAILS_ENV=test bundle exec rake webpacker:compile)
       script:
-        - (cd entry_types/scrolled; bin/rspec --fail-fast)
-        - (tail -n 1000 entry_types/scrolled/spec/dummy/*/log/test.log)
+        - (cd entry_types/scrolled; bin/rspec --fail-fast spec/features)
+        - (tail -n 1000 entry_types/scrolled/spec/dummy/*/log/test.log |grep Webpacker)
 
     - name: Jest
       language: node_js
