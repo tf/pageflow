@@ -6,7 +6,7 @@ require 'webdrivers/chromedriver'
 #Webdrivers::Chromedriver.required_version = '79.0.3945.36'
 
 Capybara.register_driver :selenium_chrome_headless_no_sandbox do |app|
-  service = ::Selenium::WebDriver::Service.chrome(args: {log_path: '/tmp/chromedriver.log'})
+  service = ::Selenium::WebDriver::Service.chrome(args: {log_path: '/tmp/chromedriver.log', verbose: true})
 
   browser_options = ::Selenium::WebDriver::Chrome::Options.new
   browser_options.args << '--headless'

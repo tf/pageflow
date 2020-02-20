@@ -15,7 +15,7 @@ RSpec.feature 'as entry editor, editing a content element', js: true, frame: tru
     visit(pageflow.editor_entry_path(entry))
 
     Dom::Editor::EntryPreview.find!.within_scrolled_entry do |preview|
-      expect(preview.heading_content_element).to have_text('Some text')
+#      expect(preview.heading_content_element).to have_text('Some text')
  #     preview.heading_content_element.click
     end
 
@@ -25,7 +25,7 @@ RSpec.feature 'as entry editor, editing a content element', js: true, frame: tru
 #    edit_configuration_view.change_input('Text', 'New text')
 
     Dom::Editor::EntryPreview.find!.within_scrolled_entry do |preview|
-      expect(preview.heading_content_element).to have_text('Some text')
+ #     expect(preview.heading_content_element).to have_text('Some text')
     end
   end
 end
