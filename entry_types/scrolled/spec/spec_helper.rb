@@ -28,3 +28,18 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+module M
+  def request(req, body = nil, &block)
+    puts([req.method, req.path] * " ")
+    puts req.body
+
+    res = super
+
+    puts res.body
+    puts "===="
+    res
+  end
+end
+
+Net::HTTP.prepend(M)
