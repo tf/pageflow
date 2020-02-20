@@ -32,6 +32,8 @@ _pageflow_ruby_job: &pageflow_ruby_job
     - WEBPACKER_PRECOMPILE=false bin/rake app:assets:precompile
   script: bin/rspec
 
+after_script: cat /tmp/chromedriver.log
+
 jobs:
   include:
 #    - name: RSpec - pageflow (Ruby 2.3)

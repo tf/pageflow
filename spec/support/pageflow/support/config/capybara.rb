@@ -4,9 +4,12 @@ require 'capybara/chromedriver/logger'
 require 'webdrivers/chromedriver'
 
 Capybara.register_driver :selenium_chrome_headless_no_sandbox do |app|
+  service = ::Selenium::WebDriver::Service.chrome(args: { log_path: '/tmp/chromedriver.log' })
+
   browser_options = ::Selenium::WebDriver::Chrome::Options.new
   browser_options.args << '--headless'
   browser_options.args << '--disable-gpu'
+  browser_options.args << "--log-path=#{ENV['HOME']}/ddd.log --verbose"
   # Required for chrome to work in container based Travis environment
   # (see https://docs.travis-ci.com/user/chrome)
   browser_options.args << '--no-sandbox'
@@ -23,7 +26,8 @@ Capybara.register_driver :selenium_chrome_headless_no_sandbox do |app|
   Capybara::Selenium::Driver.new(app,
                                  browser: :chrome,
                                  options: browser_options,
-                                 desired_capabilities: capabilities)
+                                 desired_capabilities: capabilities,
+                                 service: service)
 end
 
 Capybara.javascript_driver = :selenium_chrome_headless_no_sandbox
