@@ -5,9 +5,10 @@ import {api} from './api';
 import {useEditorSelection} from './EditorState';
 import styles from './ContentElement.module.css';
 import {InsertContentElementIndicator} from './inlineEditing/InsertContentElementIndicator';
+import {ContentElementErrorBoundary} from './ContentElementErrorBoundary';
 
 export function ContentElement(props) {
-  const Component = api.contentElementTypes.getComponent(props.type);
+  const Component = getComponent(props.type);
   const {isSelected, isSelectable, select, resetSelection} = useEditorSelection({id: props.id, type: 'contentElement'});
 
   if (select) {
@@ -16,9 +17,11 @@ export function ContentElement(props) {
         {props.first && <InsertContentElementIndicator position="before" contentElementId={props.id} />}
         <div className={classNames({[styles.selected]: isSelected, [styles.selectable]: isSelectable})}
              onClick={e => { e.stopPropagation(); isSelectable ? select() : resetSelection(); }}>
-          <Component sectionProps={props.sectionProps}
-                     configuration={props.itemProps}
-                     contentElementId={props.id}/>
+          <ContentElementErrorBoundary>
+            <Component sectionProps={props.sectionProps}
+                       configuration={props.itemProps}
+                       contentElementId={props.id}/>
+          </ContentElementErrorBoundary>
           <div className={styles.tl} />
           <div className={styles.bl} />
           <div className={styles.tr} />
@@ -30,8 +33,25 @@ export function ContentElement(props) {
   }
   else {
     return (
-      <Component sectionProps={props.sectionProps}
-                 configuration={props.itemProps} />
+      <ContentElementErrorBoundary>
+        <Component sectionProps={props.sectionProps}
+                   configuration={props.itemProps} />
+      </ContentElementErrorBoundary>
     );
   }
+}
+
+function getComponent(type) {
+  try {
+    return api.contentElementTypes.getComponent(type);
+  }
+  catch(e) {
+    return UnknownTypePlaceholder
+  }
+}
+
+function UnknownTypePlaceholder() {
+  return (
+    <div>Unknown content element type</div>
+  );
 }
