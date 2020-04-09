@@ -1,5 +1,5 @@
 .backdrop {
-  position: sticky;
+  position: relative; position: sticky;
   top: 0;
   height: 100vh;
 }

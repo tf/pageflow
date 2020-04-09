@@ -9,7 +9,7 @@
 }
 
 .backdropInner {
-  position: sticky;
+  position: relative; position: sticky;
   bottom: 0;
   width: 100%;
 

@@ -1,7 +1,7 @@
 @value fade-duration from './values.module.css';
 
 .backdrop {
-  position: sticky;
+  position: relative; position: sticky;
   top: 0;
   height: 0;
 }
