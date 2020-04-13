@@ -26,6 +26,13 @@
   border-right: solid 1px currentColor;
 }
 
+.toolbar {
+  position: absolute;
+  top: -40px;
+  right: -15px;
+  z-index: 1;
+}
+
 .insertAfter {
   display: none;
   text-align: center;

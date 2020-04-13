@@ -29,6 +29,7 @@ export {EditorStateProvider, useEditorSelection} from './EditorState';
 
 export {InsertContentElementIndicator} from './inlineEditing/InsertContentElementIndicator';
 export {SelectionRect} from './inlineEditing/SelectionRect';
+export {Toolbar} from './inlineEditing/Toolbar';
 
 window.pageflowScrolledRender = function(seed) {
   setupI18n(seed.i18n);
@@ -38,12 +39,12 @@ window.pageflowScrolledRender = function(seed) {
 function Root({seed}) {
   return (
     <>
-      <EditorStateProvider active={editMode}>
-        <EntryStateProvider seed={seed}>
-          <AppHeader />
-          <Entry />
-        </EntryStateProvider>
-      </EditorStateProvider>
+    <EditorStateProvider active={editMode}>
+    <EntryStateProvider seed={seed}>
+    <AppHeader />
+    <Entry />
+    </EntryStateProvider>
+    </EditorStateProvider>
     </>
   );
 }

@@ -36,3 +36,14 @@
 .selected:last-of-type {
   border-bottom: solid 1px currentColor;
 }
+
+.hoveringToolbar {
+  position: absolute;
+  z-index: 1;
+  top: -10000px;
+  left: -10000px;
+  margin-top: -6px;
+  opacity: 0;
+  background-color: #222;
+  border-radius: 4px;
+}

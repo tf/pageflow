@@ -35,8 +35,10 @@ export function SelectionRect(props) {
 function renderToolbar({toolbarButtons, onToolbarButtonClick, start}) {
   if (toolbarButtons && start) {
     return (
-      <Toolbar buttons={toolbarButtons}
-               onButtonClick={onToolbarButtonClick} />
+      <div className={styles.toolbar}>
+        <Toolbar buttons={toolbarButtons}
+                 onButtonClick={onToolbarButtonClick} />
+      </div>
     );
   }
 }

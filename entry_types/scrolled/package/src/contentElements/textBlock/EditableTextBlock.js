@@ -1,11 +1,10 @@
-import React, {useMemo, useCallback, useState} from 'react';
+import React, {useMemo, useCallback, useState, useRef, useEffect} from 'react';
 import {createEditor, Editor, Transforms, Text as SlateText, Range, Path} from 'slate';
-import {Slate, Editable, withReact, useEditor, ReactEditor} from 'slate-react';
+import {Slate, Editable, withReact, useEditor, ReactEditor, useSlate} from 'slate-react';
 import debounce from 'debounce';
 
-import {Text, SelectionRect} from 'pageflow-scrolled/frontend';
+import {Text, SelectionRect, Toolbar} from 'pageflow-scrolled/frontend';
 
-import textBlockStyles from './TextBlock.module.css';
 import styles from './EditableTextBlock.module.css';
 
 import TextIcon from './images/align-justify.svg';
@@ -13,6 +12,11 @@ import HeadingIcon from './images/heading.svg';
 import OlIcon from './images/list-ol.svg';
 import UlIcon from './images/list-ul.svg';
 import QuoteIcon from './images/quote-right.svg';
+
+import BoldIcon from './images/bold.svg';
+import UnderlineIcon from './images/underline.svg';
+import ItalicIcon from './images/italic.svg';
+import StrikethroughIcon from './images/strikethrough.svg';
 
 export const EditableTextBlock = React.memo(function EditableTextBlock({contentElementId, configuration}) {
   const editor = useMemo(() => withReact(createEditor()), []);
@@ -77,6 +81,7 @@ export const EditableTextBlock = React.memo(function EditableTextBlock({contentE
   return (
     <Text scaleCategory="body">
       <Slate editor={editor} value={value} onChange={value => { update(value) }}>
+        <HoveringToolbar />
         <Editable
           renderElement={renderElementWithSelection}
           renderLeaf={renderLeaf}
@@ -165,15 +170,24 @@ function Selection(props) {
   );
 }
 
-const Leaf = props => {
-  return (
-    <span
-      {...props.attributes}
-      style={{ fontWeight: props.leaf.bold ? 'bold' : 'normal' }}
-    >
-      {props.children}
-    </span>
-  )
+const Leaf = ({attributes, children, leaf}) => {
+  if (leaf.bold) {
+    children = <strong>{children}</strong>
+  }
+
+  if (leaf.italic) {
+    children = <em>{children}</em>
+  }
+
+  if (leaf.underline) {
+    children = <u>{children}</u>
+  }
+
+  if (leaf.strikethrough) {
+    children = <s>{children}</s>
+  }
+
+  return <span {...attributes}>{children}</span>
 }
 
 function renderLeaf(props) {
@@ -222,4 +236,74 @@ function isBlockActive(editor, format) {
 function isMarkActive(editor, format) {
   const marks = Editor.marks(editor)
   return marks ? marks[format] === true : false
+}
+
+function HoveringToolbar() {
+  const ref = useRef()
+  const outerRef = useRef()
+  const editor = useSlate()
+
+  useEffect(() => {
+    const el = ref.current
+    const {selection} = editor
+
+    if (!el || !outerRef.current) {
+      return
+    }
+
+    if (
+      !selection ||
+      !ReactEditor.isFocused(editor) ||
+      Range.isCollapsed(selection) ||
+      Editor.string(editor, selection) === ''
+    ) {
+      el.removeAttribute('style')
+      return
+    }
+
+    const domSelection = window.getSelection()
+    const domRange = domSelection.getRangeAt(0)
+    const rect = domRange.getBoundingClientRect()
+    const outerRect = outerRef.current.getBoundingClientRect()
+    el.style.opacity = 1
+    el.style.top = `${rect.bottom - outerRect.top + 10}px`
+    el.style.left = `${rect.left -
+                       outerRect.left}px`
+  })
+
+  const buttons = [
+    {
+      name: 'bold',
+      text: 'Bold',
+      icon: BoldIcon
+    },
+    {
+      name: 'italic',
+      text: 'Italic',
+      icon: ItalicIcon
+    },
+    {
+      name: 'underline',
+      text: 'Underline',
+      icon: UnderlineIcon
+    },
+    {
+      name: 'strikethrough',
+      text: 'Strikethrough',
+      icon: StrikethroughIcon
+    },
+  ].map(button => ({...button, active: isMarkActive(editor, button.name)}));
+
+  return (
+    <div ref={outerRef}>
+      <div ref={ref}
+           className={styles.hoveringToolbar}
+           style={{
+
+           }}>
+        <Toolbar buttons={buttons}
+                 onButtonClick={name => toggleMark(editor, name)}/>
+      </div>
+    </div>
+  );
 }

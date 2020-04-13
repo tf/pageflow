@@ -12,7 +12,10 @@ export function Toolbar({buttons, onButtonClick}) {
         return (
           <button title={button.text}
                   className={classNames(styles.button, {[styles.activeButton]: button.active})}
-                  onClick={() => onButtonClick(button.name)}>
+                  onMouseDown={event => {
+                    event.preventDefault();
+                    onButtonClick(button.name)
+                  }}>
             <Icon width={15} height={15} />
           </button>
         );
