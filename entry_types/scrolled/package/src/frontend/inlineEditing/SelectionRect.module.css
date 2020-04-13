@@ -26,38 +26,6 @@
   border-right: solid 1px currentColor;
 }
 
-.toolbar {
-  background: #fff;
-  position: absolute;
-  top: -40px;
-  right: -15px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  nnbox-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  display: none;
-  z-index: 1;
-}
-
-.start .toolbar {
-  display: block;
-}
-
-.toolbarButton {
-  border: 0;
-  background: #fff;
-  padding: 10px;
-  margin-right: 2px;
-  opacity: 0.6;
-}
-
-.toolbarButton:hover {
-  opacity: 1;
-}
-
-.activeToolbarButton {
-  background: #ddd;
-  opacity: 1;
-}
-
 .insertAfter {
   display: none;
   text-align: center;

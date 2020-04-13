@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import classNames from 'classnames';
 
+import {Toolbar} from './Toolbar';
+
 import styles from './SelectionRect.module.css';
 
 import PlusIcon from './images/plus.svg';
@@ -30,22 +32,11 @@ export function SelectionRect(props) {
   );
 }
 
-function renderToolbar({toolbarButtons, onToolbarButtonClick}) {
-  if (toolbarButtons) {
+function renderToolbar({toolbarButtons, onToolbarButtonClick, start}) {
+  if (toolbarButtons && start) {
     return (
-      <div className={styles.toolbar} contentEditable={false}>
-        {toolbarButtons.map(button => {
-          const Icon = button.icon
-
-          return (
-            <button title={button.text}
-                    className={classNames(styles.toolbarButton, {[styles.activeToolbarButton]: button.active})}
-                    onClick={() => onToolbarButtonClick(button.name)}>
-              <Icon width={15} height={15} />
-            </button>
-          );
-        })}
-      </div>
+      <Toolbar buttons={toolbarButtons}
+               onButtonClick={onToolbarButtonClick} />
     );
   }
 }
