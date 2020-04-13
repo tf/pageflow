@@ -215,7 +215,7 @@ function exampleStoryGroup({name, typeName, examples, parameters}) {
   }
 }
 
-function normalizeAndMergeFixture(options) {
+export function normalizeAndMergeFixture(options) {
   const seed = normalizeSeed(options);
 
   return {

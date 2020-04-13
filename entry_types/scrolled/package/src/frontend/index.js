@@ -25,9 +25,10 @@ export * from './i18n';
 export * from './SectionThumbnail';
 export {default as Entry} from './Entry';
 export {EntryStateProvider, useFile} from '../entryState'
-export {useEditorSelection} from './EditorState';
+export {EditorStateProvider, useEditorSelection} from './EditorState';
 
-export {InsertContentElementIndicator} from './inlineEditing/InsertContentElementIndicator'
+export {InsertContentElementIndicator} from './inlineEditing/InsertContentElementIndicator';
+export {SelectionRect} from './inlineEditing/SelectionRect';
 
 window.pageflowScrolledRender = function(seed) {
   setupI18n(seed.i18n);

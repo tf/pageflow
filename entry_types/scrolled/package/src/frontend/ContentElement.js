@@ -4,27 +4,21 @@ import classNames from 'classnames';
 import {api} from './api';
 import {useEditorSelection} from './EditorState';
 import styles from './ContentElement.module.css';
-import {InsertContentElementIndicator} from './inlineEditing/InsertContentElementIndicator';
+import {SelectionRect} from './inlineEditing/SelectionRect';
 
 export function ContentElement(props) {
-  const Component = api.contentElementTypes.getComponent(props.type);
-  const {isSelected, isSelectable, select, resetSelection} = useEditorSelection({id: props.id, type: 'contentElement'});
+  const {component: Component, customSelectionRect} =
+    api.contentElementTypes.getOptions(props.type);
+  const selection = useEditorSelection({id: props.id, type: 'contentElement'});
 
-  if (select) {
+  if (selection.select) {
     return (
       <div className={classNames(styles.outer)}>
-        {props.first && <InsertContentElementIndicator position="before" contentElementId={props.id} />}
-        <div className={classNames({[styles.selected]: isSelected, [styles.selectable]: isSelectable})}
-             onClick={e => { isSelectable ? select() : resetSelection(); }}>
+        {renderSelectionRect(customSelectionRect, selection, () =>
           <Component sectionProps={props.sectionProps}
                      configuration={props.itemProps}
                      contentElementId={props.id}/>
-          <div className={styles.tl} />
-          <div className={styles.bl} />
-          <div className={styles.tr} />
-          <div className={styles.br} />
-        </div>
-        <InsertContentElementIndicator position="after" contentElementId={props.id} />
+        )}
       </div>
     );
   }
@@ -34,4 +28,16 @@ export function ContentElement(props) {
                  configuration={props.itemProps} />
     );
   }
+}
+
+function renderSelectionRect(customSelectionRect, {select, isSelected}, fn) {
+  if (customSelectionRect) {
+    return fn();
+  }
+
+  return (
+    <SelectionRect selected={isSelected} onClick={() => select()}>
+      {fn()}
+    </SelectionRect>
+  );
 }

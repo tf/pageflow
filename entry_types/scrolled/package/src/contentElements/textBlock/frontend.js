@@ -7,5 +7,6 @@ frontend.contentElementTypes.register('textBlock', {
 });
 
 frontend.contentElementTypes.register('editableTextBlock', {
-  component: EditableTextBlock
+  component: EditableTextBlock,
+  customSelectionRect: true
 });

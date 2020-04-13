@@ -10,12 +10,12 @@
     "debounce": "^1.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
+    "react-compare-image": "^2.0.4",
     "react-dom": "^16.9.0",
     "react-player": "^1.15.2",
     "react-tooltip": "^3.11.1",
-    "react-compare-image": "^2.0.4"
     "slate": "^0.57.1",
-    "slate-react": "^0.57.1"
+    "slate-react": "tf/slate#slate-react-v0.57.1-tf.0-gitpkg"
   },
   "peerDependencies": {
     "pageflow": "15.1.0"
@@ -44,6 +44,7 @@
     "jest": "^24.9.0",
     "jest-css-modules-transform": "^3.1.0",
     "jest-svg-transformer": "^1.0.0",
+    "react-svg-loader": "^3.0.3",
     "react-test-renderer": "^16.9.0"
   },
   "scripts": {
