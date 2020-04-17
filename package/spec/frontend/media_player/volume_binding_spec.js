@@ -1,4 +1,3 @@
-import jQuery from 'jquery';
 import Backbone from 'backbone';
 
 import {mediaPlayer}  from 'pageflow/frontend';
@@ -91,8 +90,7 @@ describe('volumeBinding', function() {
     it('does not fade in until promise returned by play is resolved', function() {
       var player = fakePlayer();
       var settings = new Backbone.Model({volume: 98});
-      var deferred = new jQuery.Deferred();
-      player.play = function() { return deferred.promise(); };
+      player.play = function() { return Promise.resolve() };
       volumeBinding(player, settings);
 
       player.playAndFadeIn(500);
@@ -103,12 +101,10 @@ describe('volumeBinding', function() {
     it('fades in after promise returned by play is resolved', function() {
       var player = fakePlayer();
       var settings = new Backbone.Model({volume: 98});
-      var deferred = new jQuery.Deferred();
-      player.play = function() { return deferred.promise(); };
+      player.play = function() { return Promise.resolve() };
       volumeBinding(player, settings);
 
       player.playAndFadeIn(500);
-      deferred.resolve();
 
       expect(player.fadingVolume).toBe(98);
     });
@@ -120,19 +116,19 @@ describe('volumeBinding', function() {
       volumeBinding(player, settings);
 
       player.playAndFadeIn(500).then(callback);
-      player.fadingDeferred.resolve();
+      player.fadingPromiseResolve();
 
       expect(callback).toHaveBeenCalled();
     });
 
-    it('returns promise which resolves even if fade is canceled', function() {
+    it('returns promise which resolves even if fade is canceled', async () => {
       var player = fakePlayer();
       var settings = new Backbone.Model({volume: 98});
       var callback = sinon.spy();
       volumeBinding(player, settings);
 
       player.playAndFadeIn(500).then(callback);
-      player.fadingDeferred.reject();
+      player.fadingPromiseReject();
 
       expect(callback).toHaveBeenCalled();
     });
@@ -158,13 +154,13 @@ describe('volumeBinding', function() {
       expect(player.intendingToPause()).toBe(false);
     });
 
-    it('returns resolved promise if alreay playing', function() {
+    it('returns resolved promise if alreay playing', async () => {
       var player = fakePlayer({playing: true});
       var settings = new Backbone.Model({volume: 98});
       var callback = sinon.spy();
       volumeBinding(player, settings);
 
-      player.playAndFadeIn(500).then(callback);
+      await player.playAndFadeIn(500).then(callback);
 
       expect(callback).toHaveBeenCalled();
     });
@@ -262,7 +258,7 @@ describe('volumeBinding', function() {
       player.fadeOutAndPause(500);
 
       expect(player.originalPause).not.toHaveBeenCalled();
-      player.fadingDeferred.resolve();
+      player.fadingPromiseResolve();
       expect(player.originalPause).toHaveBeenCalled();
     });
 
@@ -273,7 +269,7 @@ describe('volumeBinding', function() {
 
       player.fadeOutAndPause(500);
 
-      player.fadingDeferred.reject();
+      player.fadingPromiseReject();
       expect(player.originalPause).toHaveBeenCalled();
     });
 
@@ -284,7 +280,7 @@ describe('volumeBinding', function() {
 
       player.fadeOutAndPause(500);
       player.play();
-      player.fadingDeferred.resolve();
+      player.fadingPromiseResolve();
 
       expect(player.originalPause).not.toHaveBeenCalled();
     });
@@ -308,7 +304,7 @@ describe('volumeBinding', function() {
 
       player.fadeOutAndPause(500).then(callback);
 
-      player.fadingDeferred.resolve();
+      player.fadingPromiseResolve();
       expect(callback).toHaveBeenCalled();
     });
 
@@ -345,7 +341,7 @@ describe('volumeBinding', function() {
 
       player.changeVolumeFactor(0.5, 500).then(callback);
 
-      player.fadingDeferred.resolve();
+      player.fadingPromiseResolve();
       expect(callback).toHaveBeenCalled();
     });
   });
@@ -376,9 +372,15 @@ describe('volumeBinding', function() {
       fadeVolume: function(value, duration) {
         this.fadingVolume = value;
         this.fadingDuration = duration;
-        this.fadingDeferred = new jQuery.Deferred();
 
-        return this.fadingDeferred.promise();
+        this.fadingPromiseResolve = null;
+        this.fadingPromiseReject = null;
+        this.fadingPromise = new Promise(function(resolve, reject) {
+          this.fadingPromiseResolve = resolve;
+          this.fadingPromiseReject = reject;
+        }.bind(this));
+
+        return this.fadingPromise;
       },
 
       on: function() {},
