@@ -96,8 +96,8 @@ jobs:
       before_script:
         - |
           export ON_UPSTREAM_MASTER=$([[ "$TRAVIS_PULL_REQUEST" == "false" && \
-                                         "$TRAVIS_REPO_SLUG" == "codevise/pageflow" && \
-                                         "$TRAVIS_BRANCH" == "master" ]] && echo "true" || echo "false")
+                                         "$TRAVIS_REPO_SLUG" == "tf/pageflow" && \
+                                         "$TRAVIS_BRANCH" == "gh-travis" ]] && echo "true" || echo "false")
 
           if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$ON_UPSTREAM_MASTER" == "false" ]]; then
             echo "Stopping job: Neither upstream master nor PR."
@@ -128,3 +128,14 @@ jobs:
           export PT=b55731926f7bcb9344a0b3ff662613954a4137d3c21c1be748e9929823f19b08
         - (cd entry_types/scrolled; bundle exec rake pageflow_scrolled:storybook:seed:setup[package/.storybook/seed.json])
         - (cd entry_types/scrolled/package; yarn run snapshot)
+
+deploy:
+  provider: pages
+  repo: tf/pageflow-scrolled-storybook
+  skip_cleanup: true
+  github_token: $CODEVISE_BOT_PERSONAL_TOKEN
+  keep_history: true
+  local_dir: entry_types/scrolled/package/.storybook/out
+  on:
+    branch: gh-travis
+    repo: tf/pageflow
