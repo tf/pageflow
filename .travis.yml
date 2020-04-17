@@ -34,63 +34,6 @@ _pageflow_ruby_job: &pageflow_ruby_job
 
 jobs:
   include:
-    - name: RSpec - pageflow (Ruby 2.3)
-      <<: *pageflow_ruby_job
-      rvm: 2.3.1
-      env:
-        - COVERALLS_PARALLEL=true
-
-    - name: RSpec - pageflow (Ruby 2.6)
-      <<: *pageflow_ruby_job
-      rvm: 2.6.5
-      env:
-        - COVERALLS_PARALLEL=true
-
-    - name: RSpec - pageflow-paged
-      <<: *ruby_job
-      before_script:
-        - yarn install
-        - bin/build-packages
-      script: (cd entry_types/paged; bin/rspec)
-
-    - name: RSpec - pageflow-scrolled (non-js)
-      <<: *ruby_job
-      before_script:
-        - yarn install
-        - bin/build-packages
-
-        - (cd entry_types/scrolled; PAGEFLOW_PLUGIN_ENGINE=pageflow_scrolled bundle exec rake pageflow_scrolled:dummy)
-        - (cd entry_types/scrolled; WEBPACKER_PRECOMPILE=false bundle exec rake app:assets:precompile)
-      script: (cd entry_types/scrolled; bin/rspec --tag ~js)
-
-    - name: RSpec - pageflow-scrolled (js)
-      <<: *ruby_job
-      before_script:
-        - yarn install
-        - bin/build-packages
-
-        - (cd entry_types/scrolled; PAGEFLOW_PLUGIN_ENGINE=pageflow_scrolled bundle exec rake pageflow_scrolled:dummy)
-        - (cd entry_types/scrolled; WEBPACKER_PRECOMPILE=false bundle exec rake app:assets:precompile)
-
-      # See REDMINE-17430
-      # Running only the js specs should not take more than 20 seconds.
-      # If Chrome Driver hangs, the timeout command will exit with 137.
-      # Retry or else exit with original exit status of rspec command.
-      script: (cd entry_types/scrolled; for i in {1..10}; do timeout --signal=KILL 30 bin/rspec --tag js; e=$?; [[ $e -gt 100 ]] && echo Timeout || exit $e; done; exit 1)
-
-    - name: Jest
-      language: node_js
-      node_js: 10.17.0
-      install:
-        - yarn install
-        - (cd entry_types/paged/packages/pageflow-paged-react; yarn install)
-      before_script: yarn run build
-      script:
-        - (cd package; yarn test)
-        - (cd entry_types/paged/packages/pageflow-paged-react; yarn test)
-        - (cd entry_types/paged/packages/pageflow-paged; yarn test)
-        - (cd entry_types/scrolled/package; yarn test)
-
     - name: Percy - pageflow-scrolled
       <<: *ruby_job
       before_script:
@@ -133,7 +76,7 @@ deploy:
   provider: pages
   repo: tf/pageflow-scrolled-storybook
   skip_cleanup: true
-  github_token: $CODEVISE_BOT_PERSONAL_TOKEN
+  github_token: $CODEVISE_BOT_PERSONAL_TOKEN2
   keep_history: true
   local_dir: entry_types/scrolled/package/.storybook/out
   on:
