@@ -73,8 +73,11 @@ jobs:
           export PT=b55731926f7bcb9344a0b3ff662613954a4137d3c21c1be748e9929823f19b08
         - (cd entry_types/scrolled; bundle exec rake pageflow_scrolled:storybook:seed:setup[package/.storybook/seed.json])
         - (cd entry_types/scrolled/package; yarn run snapshot)
-        - [[ $ON_UPSTREAM == "true" ]] &&
-          (cd entry_types/scrolled/package/.storybook; mkdir -p outv/"$TRAVIS_BRANCH"; mv out/* outv/"$TRAVIS_BRANCH")
+        - |
+          [[ $ON_UPSTREAM == "true" ]] &&
+          (cd entry_types/scrolled/package/.storybook;
+           mkdir -p outv/"$TRAVIS_BRANCH";
+           mv out/* outv/"$TRAVIS_BRANCH")
 
 deploy:
   provider: pages
@@ -86,3 +89,4 @@ deploy:
   local_dir: entry_types/scrolled/package/.storybook/outv
   on:
     repo: tf/pageflow
+    all_branches: true
