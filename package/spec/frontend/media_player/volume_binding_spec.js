@@ -64,16 +64,16 @@ describe('volumeBinding', function() {
   });
 
   describe('#playAndFadeIn', function() {
-    it('fades from 0 to settings volume', function() {
+    it.only('fades from 0 to settings volume', async function() {
       var player = fakePlayer();
       var settings = new Backbone.Model({volume: 98});
       volumeBinding(player, settings);
 
       player.playAndFadeIn(500);
 
-      expect(player.currentVolume).toBe(0);
-      expect(player.fadingVolume).toBe(98);
-      expect(player.fadingDuration).toBe(500);
+      await expect(player.nextVolume).resolves.toBe(0);
+      await expect(player.nextFadeVolume).resolves.toBe(98);
+      await expect(player.nextFadeDuration).resolves.toBe(500);
     });
 
     it('starts listenting to settings changes', function() {
@@ -361,17 +361,21 @@ describe('volumeBinding', function() {
       pause: pauseSpy,
       originalPause: pauseSpy,
 
+      nextVolume: resolvablePromise(),
+      nextFadeVolume: resolvablePromise(),
+      nextFadeDuration: resolvablePromise(),
+
       paused: function() {
         return !options.playing;
       },
 
       volume: function(value) {
-        this.currentVolume = value;
+        this.nextVolume.resolve(value);
       },
 
       fadeVolume: function(value, duration) {
-        this.fadingVolume = value;
-        this.fadingDuration = duration;
+        this.nextFadeVolume.resolve(value);
+        this.nextFadeDuration.resolve(duration);
 
         this.fadingPromiseResolve = null;
         this.fadingPromiseReject = null;
@@ -393,3 +397,10 @@ describe('volumeBinding', function() {
     return player;
   }
 });
+
+function resolvablePromise() {
+  let resolve;
+  let promise = new Promise(r => resolve = r);
+  promise.resolve = resolve;
+  return promise;
+}
