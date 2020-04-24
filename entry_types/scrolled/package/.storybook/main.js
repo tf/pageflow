@@ -9,9 +9,25 @@ module.exports = {
       ...config,
       module: {
         ...config.module,
-        rules: addModuleOptionToCssLoader(config.module.rules),
-      },
-      resolve: {
+        rules: [
+          {
+            test: /\.svg$/,
+            use: [
+              {
+                loader: "babel-loader"
+              },
+                {
+                  loader: "react-svg-loader",
+                  options: {
+                    jsx: false
+                  }
+                }
+              ]
+            },
+            ...addModuleOptionToCssLoader(removeFileLoader(config.module.rules))
+          ]
+        },
+        resolve: {
         alias: {
           ...config.resolve.alias,
           'pageflow-scrolled/frontend': path.resolve(__dirname, '../src/frontend'),
@@ -20,6 +36,12 @@ module.exports = {
     };
   }
 };
+
+function removeFileLoader(rules) {
+  return rules.filter(rule => {
+    return rule.test.toString().indexOf('svg') < 0
+  });
+}
 
 function addModuleOptionToCssLoader(rules) {
   return rules.map(rule => {
