@@ -53,8 +53,6 @@ export default withInlineEditingDecorator('SectionDecorator', function Section(p
   const [contentAreaRect, setContentAreaRef] = useBoundingClientRect(props.layout);
   const intersecting = isIntersectingX(motifAreaRect, contentAreaRect);
 
-  const heightOffset = 0; //(props.backdrop.first || props.transition === 'scrollOver') ? 0 : (window.innerHeight / 3);
-
   const transitionStyles = getTransitionStyles(props, props.previousSection, props.nextSection);
 
   const appearance = {
@@ -107,7 +105,7 @@ export default withInlineEditingDecorator('SectionDecorator', function Section(p
                coverInvisibleNextSection={props.nextSection && props.nextSection.transition.startsWith('fade')}
                transitionStyles={transitionStyles}
                state={props.state}
-               padding={Math.max(0, motifAreaDimension.top + motifAreaDimension.height - heightOffset)}
+               padding={getMotifAreaPadding(props, motifAreaDimension)}
                opacity={props.shadowOpacity}>
             <BackgroundColorProvider dark={!props.invert}>
               <Layout sectionId={props.id}
@@ -148,4 +146,10 @@ function heightMode(props) {
 function endsWithFullWidthElement(elements) {
   const lastElement = elements[elements.length - 1];
   return lastElement && lastElement.position === 'full';
+}
+
+function getMotifAreaPadding(props, motifAreaDimension) {
+  return props.transition?.startsWith('scroll') ?
+         motifAreaDimension.top + motifAreaDimension.height :
+         motifAreaDimension.height;
 }
