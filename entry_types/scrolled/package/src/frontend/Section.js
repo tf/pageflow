@@ -1,4 +1,4 @@
-import React, {useRef, useCallback, useMemo} from 'react';
+import React, {useRef, useMemo} from 'react';
 import classNames from 'classnames';
 
 import { SectionAtmo } from './SectionAtmo';
@@ -6,9 +6,7 @@ import { SectionAtmo } from './SectionAtmo';
 import {Backdrop} from './Backdrop';
 import Foreground from './Foreground';
 import {Layout} from './layouts';
-import isIntersectingX from './isIntersectingX';
-import useBoundingClientRect from './useBoundingClientRect';
-import useDimension from './useDimension';
+import {useMotifAreaState} from './useMotifAreaState';
 import useScrollTarget from './useScrollTarget';
 import {SectionLifecycleProvider} from './useSectionLifecycle'
 import {withInlineEditingDecorator} from './inlineEditing';
@@ -42,16 +40,10 @@ export default withInlineEditingDecorator('SectionDecorator', function Section(p
     sectionIndex: props.sectionIndex
   }), [props.layout, props.invert, props.sectionIndex]);
 
-  const [motifAreaRect, setMotifAreaRect] = useBoundingClientRect();
-  const [motifAreaDimension, setMotifAreaDimensionRef] = useDimension();
-
-  const setMotifAreaRefs = useCallback(node => {
-    setMotifAreaRect(node);
-    setMotifAreaDimensionRef(node);
-  }, [setMotifAreaRect, setMotifAreaDimensionRef]);
-
-  const [contentAreaRect, setContentAreaRef] = useBoundingClientRect(props.layout);
-  const intersecting = isIntersectingX(motifAreaRect, contentAreaRect);
+  const [motifAreaState, setMotifAreaRef, setContentAreaRef] = useMotifAreaState({
+    empty: !props.foreground.length,
+    sectionTransition: props.transition
+  });
 
   const transitionStyles = getTransitionStyles(props, props.previousSection, props.nextSection);
 
@@ -86,26 +78,27 @@ export default withInlineEditingDecorator('SectionDecorator', function Section(p
       <SectionLifecycleProvider onActivate={props.onActivate} isLast={!props.nextSection}>
         <SectionAtmo audioFilePermaId={props.atmoAudioFileId} />
         <Backdrop {...props.backdrop}
-                  onMotifAreaUpdate={setMotifAreaRefs}
+                  onMotifAreaUpdate={setMotifAreaRef}
                   state={props.state}
                   transitionStyles={transitionStyles}>
-          {(children) => <Shadow align={props.layout}
-                                 inverted={props.invert}
-                                 intersecting={intersecting}
-                                 opacity={props.shadowOpacity >= 0 ? props.shadowOpacity / 100 : 0.7}
-                                 motifAreaRect={motifAreaRect}
-                                 contentAreaRect={contentAreaRect}>{children}</Shadow>}
+          {(children) =>
+            <Shadow align={props.layout}
+                    inverted={props.invert}
+                    motifAreaState={motifAreaState}
+                    opacity={props.shadowOpacity >= 0 ? props.shadowOpacity / 100 : 0.7}>
+              {children}
+            </Shadow>}
         </Backdrop>
         <Foreground transitionStyles={transitionStyles}
                     state={props.state}
+                    minHeight={motifAreaState.minHeight}
                     paddingBottom={!endsWithFullWidthElement(props.foreground)}
                     heightMode={heightMode(props)}>
-          <Box active={intersecting}
-               inverted={props.invert}
+          <Box inverted={props.invert}
                coverInvisibleNextSection={props.nextSection && props.nextSection.transition.startsWith('fade')}
                transitionStyles={transitionStyles}
                state={props.state}
-               padding={getMotifAreaPadding(props, motifAreaDimension)}
+               padding={motifAreaState.padding}
                opacity={props.shadowOpacity}>
             <BackgroundColorProvider dark={!props.invert}>
               <Layout sectionId={props.id}
@@ -146,10 +139,4 @@ function heightMode(props) {
 function endsWithFullWidthElement(elements) {
   const lastElement = elements[elements.length - 1];
   return lastElement && lastElement.position === 'full';
-}
-
-function getMotifAreaPadding(props, motifAreaDimension) {
-  return props.transition?.startsWith('scroll') ?
-         motifAreaDimension.top + motifAreaDimension.height :
-         motifAreaDimension.height;
 }
