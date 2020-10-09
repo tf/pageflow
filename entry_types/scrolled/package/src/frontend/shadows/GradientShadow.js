@@ -5,7 +5,9 @@ import Fullscreen from '../Fullscreen';
 import styles from './GradientShadow.module.css';
 
 export default function GradientShadow(props) {
-  const opacityFactor = Math.min(1, props.motifAreaState.intersectionRatioY * 2)
+  const opacityFactor = props.motifAreaState.isIntersectingX ?
+                        Math.min(1, props.motifAreaState.intersectionRatioY * 2) :
+                        1;
 
   return (
     <div className={classNames(styles.root,

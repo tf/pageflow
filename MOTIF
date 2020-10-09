@@ -1,0 +1,29 @@
+
+
+fade/*/*/full:
+
+- shown full screen
+- if motif area fits in upper viewport half, no padding is needed
+- if not, pad accordingly
+
+fadeBg/*/*/full
+
+- shown full screen
+- motif area in upper viewport half will be overlayed by content of previous section
+- if section is long enough: padding = motif area height
+
+? what happens if there is not enough content
+  fadeBg/scroll
+
+scroll/*/*/*
+scrollOver/*/*/*
+
+- padding = motif area top + height
+
+reveal/*/*/*
+
+- padding = motif area top + height to allow showing whole picture
+
+? what happens if there is not enough content
+  reveal/scroll
+

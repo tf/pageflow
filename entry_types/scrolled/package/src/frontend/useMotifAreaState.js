@@ -4,7 +4,7 @@ import isIntersectingX from './isIntersectingX';
 import useBoundingClientRect from './useBoundingClientRect';
 import useDimension from './useDimension';
 
-export function useMotifAreaState({sectionTransition, empty}) {
+export function useMotifAreaState({sectionTransition, empty} = {}) {
   const [motifAreaRect, setMotifAreaRectRef] = useBoundingClientRect();
   const [motifAreaDimension, setMotifAreaDimensionRef] = useDimension();
 
@@ -14,7 +14,7 @@ export function useMotifAreaState({sectionTransition, empty}) {
   }, [setMotifAreaRectRef, setMotifAreaDimensionRef]);
 
   const [contentAreaRect, setContentAreaRef] = useBoundingClientRect();
-  const intersectingX = isIntersectingX(motifAreaRect, contentAreaRect);
+  const intersectingX = isIntersectingX(motifAreaRect, contentAreaRect) && motifAreaRect.height > 0;
 
   const padding = getMotifAreaPadding(sectionTransition, motifAreaDimension);
 
@@ -22,7 +22,6 @@ export function useMotifAreaState({sectionTransition, empty}) {
     {
       padding: intersectingX ? padding : 0,
       minHeight: padding,
-      rect: motifAreaRect,
       intersectionRatioY: getIntersectionRatioY(intersectingX, motifAreaRect, contentAreaRect),
       isIntersectingX: intersectingX
     },
@@ -39,5 +38,5 @@ function getMotifAreaPadding(sectionTransition, motifAreaDimension) {
 
 function getIntersectionRatioY(intersectingX, motifAreaRect, contentAreaRect) {
   const motifAreaOverlap = Math.min(motifAreaRect.height, motifAreaRect.bottom - contentAreaRect.top)
-  return intersectingX && motifAreaRect.height > 0 ? motifAreaOverlap / motifAreaRect.height : 0;
+  return intersectingX ? motifAreaOverlap / motifAreaRect.height : 0;
 }

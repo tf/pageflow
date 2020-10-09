@@ -48,6 +48,7 @@ export default withInlineEditingDecorator('SectionDecorator', function Section(p
                                    {[styles.invert]: props.invert})}>
       <SectionLifecycleProvider onActivate={props.onActivate} isLast={!props.nextSection}>
         <SectionAtmo audioFilePermaId={props.atmoAudioFileId} />
+
         <Backdrop {...props.backdrop}
                   onMotifAreaUpdate={setMotifAreaRef}
                   state={props.state}
@@ -60,9 +61,9 @@ export default withInlineEditingDecorator('SectionDecorator', function Section(p
               {children}
             </Shadow>}
         </Backdrop>
+
         <Foreground transitionStyles={transitionStyles}
                     state={props.state}
-                    minHeight={motifAreaState.minHeight}
                     paddingBottom={!endsWithFullWidthElement(props.foreground)}
                     heightMode={heightMode(props)}>
           <Box inverted={props.invert}
