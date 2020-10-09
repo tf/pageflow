@@ -13,7 +13,79 @@ import {
   exampleTextBlock
 } from 'pageflow-scrolled/spec/support/stories';
 
-const stories = storiesOf('Frontend/Motif Area', module)
+
+const transitions = ['fade', 'fadeBg', 'scroll', 'scrollOver', 'reveal', 'beforeAfter'];
+const motifAreaPositions = ['top', 'bottom']
+
+let stories = storiesOf(`Frontend/Motif Area/Full`, module);
+
+transitions.forEach(transition =>
+  motifAreaPositions.forEach(motifAreaPosition =>
+    stories.add(
+      `${transition}/${motifAreaPosition}`,
+      () =>
+        <RootProviders seed={exampleSeed({transition1: transition, transition2: 'scroll', fullHeight: true, motifAreaPosition, textBlocks: 0, title: `${transition}/${motifAreaPosition}`})}>
+          <MotifAreaVisibilityProvider visible={true}>
+            <Entry />
+          </MotifAreaVisibilityProvider>
+        </RootProviders>,
+      {
+        percy: {skip: true}
+      }
+    )
+  )
+);
+
+stories = {
+  scrollInScrollOut: storiesOf(`Frontend/Motif Area/Short/scrollIn - scrollOut`, module),
+  scrollInConceal: storiesOf(`Frontend/Motif Area/Short/scrollIn - conceal`, module),
+  revealScrollOut: storiesOf(`Frontend/Motif Area/Short/reveal - scrollOut`, module),
+  revealConceal: storiesOf(`Frontend/Motif Area/Short/reveal - conceal`, module)
+};
+
+const enterTransitions = {
+  scroll: 'scrollIn',
+  scrollOver: 'scrollIn',
+  reveal: 'reveal',
+  beforeAfter: 'reveal'
+}
+
+const exitTransitions = {
+  scroll: 'ScrollOut',
+  scrollOver: 'Conceal',
+  reveal: 'ScrollOut',
+  beforeAfter: 'Conceal'
+}
+
+
+let transitions1 = ['scroll', 'scrollOver', 'reveal', 'beforeAfter'];
+let transitions2 = ['scroll', 'scrollOver', 'reveal', 'beforeAfter'];
+
+transitions1.forEach(transition1 =>
+  transitions2.forEach(transition2 =>
+    motifAreaPositions.forEach(motifAreaPosition =>
+      stories[`${enterTransitions[transition1]}${exitTransitions[transition2]}`].add(
+        `${transition1}/${transition2}/${motifAreaPosition}`,
+        () =>
+          <RootProviders seed={exampleSeed({transition1, transition2, fullHeight: false, textBlocks: 0, motifAreaPosition, title: `${transition1}/${transition2}/${motifAreaPosition}`})}>
+            <MotifAreaVisibilityProvider visible={true}>
+              <Entry />
+            </MotifAreaVisibilityProvider>
+          </RootProviders>,
+        {
+          percy: {skip: true}
+        }
+      )
+    )
+  )
+);
+
+
+
+
+
+
+stories = storiesOf('Frontend/Motif Area - s', module)
   .addParameters({percy: {skip: true}});
 
 exampleStory( {
@@ -45,14 +117,27 @@ exampleStory( {
 
 exampleStory( {
   transition1: 'fade',
-  transition2: 'fade',
+  transition2: 'scroll',
   motifAreaPosition: 'top',
   fullHeight: true,
   textBlocks: 0,
-  title: 'Fade In/No Content',
+  title: 'Fade In/Motif Top/No Content',
   notes: [`
     Even if there is no content, the section will always have full height and thus
-    allow looking at the motif area. 
+    allow looking at the motif area.
+  `]
+});
+
+exampleStory( {
+  transition1: 'fade',
+  transition2: 'scroll',
+  motifAreaPosition: 'bottom',
+  fullHeight: true,
+  textBlocks: 0,
+  title: 'Fade In/Motif Bottom/No Content',
+  notes: [`
+    Even if there is no content, the section will always have full height and thus
+    allow looking at the motif area.
   `]
 });
 
@@ -85,16 +170,125 @@ exampleStory( {
 exampleStory( {
   transition1: 'fadeBg',
   transition2: 'scroll',
-  motifAreaPosition: 'bottom',
+  motifAreaPosition: 'top',
   fullHeight: true,
   textBlocks: 0,
-  title: 'Fade In Bg/Motif Bottom',
+  title: 'Fade In Bg/Motif Top/No Content',
   notes: [`
     Even if there is no content, the section will always have full height and thus
     allow looking at the motif area.
   `]
 });
 
+exampleStory( {
+  transition1: 'fadeBg',
+  transition2: 'scroll',
+  motifAreaPosition: 'bottom',
+  fullHeight: true,
+  textBlocks: 0,
+  title: 'Fade In Bg/Motif Bottom/No Content',
+  notes: [`
+    Even if there is no content, the section will always have full height and thus
+    allow looking at the motif area.
+  `]
+});
+
+// scroll/scrollOver
+
+exampleStory( {
+  transition1: 'scroll',
+  transition2: 'scroll',
+  motifAreaPosition: 'top',
+  title: 'Scroll In/Motif Top',
+  notes: [`
+    Even if there is no content, the section will always have full height and thus
+    allow looking at the motif area.
+  `]
+});
+
+exampleStory( {
+  transition1: 'scroll',
+  transition2: 'scroll',
+  motifAreaPosition: 'bottom',
+  title: 'Scroll In/Motif Bottom',
+  notes: [`
+    Even if there is no content, the section will always have full height and thus
+    allow looking at the motif area.
+  `]
+});
+
+exampleStory( {
+  transition1: 'scroll',
+  transition2: 'scrollOver',
+  motifAreaPosition: 'top',
+  title: 'Scroll In/Motif Top/No Content',
+  textBlocks: 0,
+  notes: [`
+    Even if there is no content, the section will always have full height and thus
+    allow looking at the motif area.
+  `]
+});
+
+exampleStory( {
+  transition1: 'scroll',
+  transition2: 'beforeAfter',
+  motifAreaPosition: 'bottom',
+  title: 'Scroll In/Motif Bottom/No Content',
+  textBlocks: 0,
+  notes: [`
+    Even if there is no content, the section will always have full height and thus
+    allow looking at the motif area.
+  `]
+});
+
+// reveal
+
+exampleStory( {
+  transition1: 'reveal',
+  transition2: 'scroll',
+  motifAreaPosition: 'top',
+  title: 'Reveal/Motif Top',
+  notes: [`
+    Even if there is no content, the section will always have full height and thus
+    allow looking at the motif area.
+  `]
+});
+
+exampleStory( {
+  transition1: 'reveal',
+  transition2: 'scroll',
+  motifAreaPosition: 'bottom',
+  title: 'Reveal/Motif Bottom',
+  notes: [`
+    Even if there is no content, the section will always have full height and thus
+    allow looking at the motif area.
+  `]
+});
+
+exampleStory( {
+  transition1: 'reveal',
+  transition2: 'scroll',
+  motifAreaPosition: 'top',
+  title: 'Reveal/Motif Top/NoContent',
+  textBlocks: 0,
+  notes: [`
+    Even if there is no content, the section will always have full height and thus
+    allow looking at the motif area.
+  `]
+});
+
+
+exampleStory( {
+  transition1: 'reveal',
+  transition2: 'scroll',
+  motifAreaPosition: 'bottom',
+  title: 'Reveal/Motif Bottom/NoContent',
+  textBlocks: 0,
+  notes: [`
+    Even if there is no content, the section will always have full height and thus
+    allow looking at the motif area.
+  `]
+});
 
 function exampleStory(options) {
   stories.add(
@@ -114,7 +308,7 @@ function exampleSeed({transition1, transition2, motifAreaPosition, fullHeight, t
       {
         id: 1,
         configuration: {
-          transition: 'fade',
+          transition: 'scroll',
           backdrop: {
             image: filePermaId('imageFiles', 'turtle')
           },

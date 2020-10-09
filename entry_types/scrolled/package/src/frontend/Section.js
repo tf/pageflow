@@ -34,7 +34,8 @@ export default withInlineEditingDecorator('SectionDecorator', function Section(p
 
   const [motifAreaState, setMotifAreaRef, setContentAreaRef] = useMotifAreaState({
     empty: !props.foreground.length,
-    sectionTransition: props.transition
+    sectionTransition: props.transition,
+    fullHeight: props.fullHeight
   });
 
   const transitionStyles = getTransitionStyles(props, props.previousSection, props.nextSection);
@@ -64,6 +65,7 @@ export default withInlineEditingDecorator('SectionDecorator', function Section(p
 
         <Foreground transitionStyles={transitionStyles}
                     state={props.state}
+                    minHeight={motifAreaState.minHeight}
                     paddingBottom={!endsWithFullWidthElement(props.foreground)}
                     heightMode={heightMode(props)}>
           <Box inverted={props.invert}
