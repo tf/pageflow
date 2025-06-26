@@ -1,5 +1,7 @@
 .wrapper {
   overflow: hidden;
+  position: relative;
+  height: 100%;
   border-radius: var(--content-element-box-border-radius,
                      var(--theme-content-element-box-border-radius));
 }
