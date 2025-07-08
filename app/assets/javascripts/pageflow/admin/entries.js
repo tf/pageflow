@@ -90,6 +90,9 @@ jQuery(function($) {
     var accountSelect = $('#entry_account_id', this);
     var siteSelect = $('#entry_site_id', this);
     var titleInput = $('#entry_title', this);
+    var allowEmptySlugInput = $('#entry_allow_empty_slug', this);
+    var directorySelect = $('#entry_permalink_attributes_directory_id', this);
+    var slugInput = $('#entry_permalink_attributes_slug', this);
 
     function updateSiteAndEntryTypeInput() {
       var selectedAccountId = accountSelect.val();
@@ -114,6 +117,8 @@ jQuery(function($) {
     function updatePermalinkInput() {
       fetchPermalinkInput(function(response) {
         $('#entry_permalink_attributes_permalink_input').replaceWith(response);
+        directorySelect = $('#entry_permalink_attributes_directory_id');
+        slugInput = $('#entry_permalink_attributes_slug');
       });
     }
 
@@ -139,6 +144,23 @@ jQuery(function($) {
     siteSelect.on('change', updatePermalinkInput);
 
     titleInput.on('change keyup', debounce(updateSlugPlaceholder, 300));
+
+    function enableRootEntry() {
+      slugInput.val('').removeAttr('placeholder');
+      allowEmptySlugInput.val('1');
+      if (directorySelect.length) {
+        directorySelect.val($('.root_entry_link').data('root-directory-id'));
+      }
+    }
+
+    $('.root_entry_link').on('click', function(event) {
+      event.preventDefault();
+      enableRootEntry();
+    });
+
+    if (allowEmptySlugInput.val() === '1') {
+      enableRootEntry();
+    }
   });
 });
 
