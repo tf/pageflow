@@ -64,7 +64,8 @@ module Pageflow
 
           entry.build_permalink(
             directory: permalink_directory,
-            slug: evaluator.permalink_attributes.fetch(:slug)
+            slug: evaluator.permalink_attributes.fetch(:slug),
+            allow_empty_slug: evaluator.permalink_attributes[:allow_empty_slug]
           )
         end
       end

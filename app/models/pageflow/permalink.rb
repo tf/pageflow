@@ -4,6 +4,8 @@ module Pageflow
     extend FriendlyId
     friendly_id :slug_candidates, use: :scoped, scope: :directory
 
+    attr_accessor :allow_empty_slug
+
     before_validation :set_default_slug
 
     has_one :entry
@@ -11,8 +13,9 @@ module Pageflow
     belongs_to :directory, class_name: 'PermalinkDirectory'
 
     validates(:slug,
-              format: /\A[0-9a-zA-Z_-]+\z/,
+              format: {with: /\A[0-9a-zA-Z_-]+\z/, allow_blank: true},
               uniqueness: {scope: :directory})
+    validate :slug_present_unless_root_directory
 
     validate :belongs_to_same_site_as_entry
 
@@ -22,7 +25,18 @@ module Pageflow
     private
 
     def set_default_slug
-      self.slug = entry.default_permalink_slug if slug == ''
+      return unless slug == ''
+
+      return if allow_empty_slug.present?
+      return if entry && entry.persisted? && directory&.path.blank?
+
+      self.slug = entry.default_permalink_slug
+    end
+
+    def slug_present_unless_root_directory
+      return unless directory && directory.path.present?
+
+      errors.add(:slug, :blank) if slug.blank?
     end
 
     def slug_candidates

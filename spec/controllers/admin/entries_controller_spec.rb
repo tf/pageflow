@@ -613,6 +613,20 @@ describe Admin::EntriesController do
       expect(response.body)
         .to have_selector('.permalink_base_url', text: 'some.example.com/foo/')
     end
+
+    it 'enables root entry mode via query param' do
+      user = create(:user)
+      account = create(:account, with_publisher: user)
+      create(:permalink_directory, path: '', site: account.default_site)
+
+      sign_in(user, scope: :user)
+      get :new, params: {at: 'root'}
+
+      expect(response.body)
+        .to have_selector('input[name="entry[permalink_attributes][allow_empty_slug]"][value="1"]', visible: :hidden)
+      expect(response.body)
+        .not_to have_selector('input[name="entry[permalink_attributes][slug]"][placeholder]')
+    end
   end
 
   describe '#create' do

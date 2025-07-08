@@ -2,9 +2,28 @@ require 'spec_helper'
 
 module Pageflow
   describe 'Entries Index', type: :request do
+    let(:entry_type_app) do
+      lambda do |env|
+        entry = EntriesControllerEnvHelper.get_published_entry_from_env(env)
+        mode = EntriesControllerEnvHelper.get_entry_mode_from_env(env)
+
+        ['200',
+         {'Content-Type' => 'text/html'},
+         ["#{entry.title} #{mode} rendered by entry type frontend app."]]
+      end
+    end
+
     before :all do
       Pageflow.config.editor_route_constraint = ->(_request) { false }
       Rails.application.reload_routes!
+    end
+
+    before do
+      pageflow_configure do |config|
+        TestEntryType.register(config,
+                               name: 'test',
+                               frontend_app: entry_type_app)
+      end
     end
 
     describe '#index' do
@@ -14,6 +33,22 @@ module Pageflow
         get('/', params: {}, headers: {'HTTP_HOST' => 'pageflow.example.com'})
 
         expect(response).to redirect_to('http://example.com/overview')
+      end
+
+      it 'renders entry with empty slug if present' do
+        site = create(:site, cname: 'pageflow.example.com')
+        create(:entry,
+               :published,
+               site: site,
+               type_name: 'test',
+               title: 'Root Story',
+               permalink_attributes: {slug: '', allow_empty_slug: '1'})
+
+        get('/', params: {}, headers: {'HTTP_HOST' => 'pageflow.example.com'})
+
+        expect(response.status).to eq(200)
+        expect(response.body)
+          .to include('Root Story published rendered by entry type frontend app')
       end
 
       it 'responds with not found if no site matches cname' do

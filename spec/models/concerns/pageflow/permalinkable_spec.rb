@@ -120,23 +120,38 @@ module Pageflow
       expect(entry).to have(1).error_on('permalink.slug')
     end
 
-    it 'uses default slug based on entry title if empty string' do
+    it 'uses default slug based on entry title if empty string in non-root directory' do
       entry = create(
         :entry,
         title: 'My Example',
         permalink_attributes: {
-          slug: ''
+          slug: '',
+          directory_path: 'en/'
         }
       )
 
       expect(entry.permalink).to have_attributes(slug: 'my-example')
     end
 
+    it 'allows empty slug in root directory' do
+      entry = create(
+        :entry,
+        title: 'My Example',
+        permalink_attributes: {
+          slug: '',
+          allow_empty_slug: '1'
+        }
+      )
+
+      expect(entry.permalink).to have_attributes(slug: '')
+    end
+
     it 'does not enforce uniqueness when generating default slug' do
       account = create(:account)
       permalink_directory = create(
         :permalink_directory,
-        site: account.default_site
+        site: account.default_site,
+        path: 'en/'
       )
       create(
         :entry,

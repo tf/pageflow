@@ -6,3 +6,5 @@ de:
           Wenn der Permalink geändert wird, nachdem der Beitrag
           bereits veröffentlicht wurde, wird automatisch eine
           Weiterleitung von der alten URL zur neuen URL eingerichtet.
+        root_entry_hint_html: "Sie können den Beitrag auch %{link}."
+        root_entry_link: "am Root-Pfad der Seite anlegen"

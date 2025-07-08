@@ -3,5 +3,17 @@
                base_url: entry.site.canonical_entry_url_prefix.presence ||
                          pretty_site_url(entry.site),
                site: entry.site,
-               slug_placeholder: entry.default_permalink_slug,
+               slug_placeholder: (entry.new_record? && !(entry.permalink && entry.permalink.allow_empty_slug) ? entry.default_permalink_slug : nil),
                hint: entry.new_record? ? nil : t('pageflow.admin.entries.permalink_hint'))%>
+
+<% if entry.new_record? && (root_dir = entry.site.permalink_directories.find_by(path: '')) %>
+  <%= form.hidden_field(:allow_empty_slug, id: 'entry_allow_empty_slug') %>
+  <div class="input">
+    <span class="hint">
+      <%= t('pageflow.admin.entries.root_entry_hint_html',
+             link: link_to(t('pageflow.admin.entries.root_entry_link'), '#',
+                            class: 'root_entry_link',
+                            data: {root_directory_id: root_dir.id})) %>
+    </span>
+  </div>
+<% end %>

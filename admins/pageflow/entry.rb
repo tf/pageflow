@@ -218,6 +218,14 @@ module Pageflow
 
           entry.type_name = default_entry_type.name
         end
+
+        if action_name == 'new' && params[:at] == 'root'
+          entry.build_permalink unless entry.permalink
+          entry.permalink.assign_attributes(slug: '', allow_empty_slug: '1')
+          if (root_dir = entry.site.permalink_directories.find_by(path: ''))
+            entry.permalink.directory = root_dir
+          end
+        end
       end
 
       after_create do |entry|
@@ -288,7 +296,7 @@ module Pageflow
       end
 
       def permitted_attributes
-        result = [:title, :type_name, {permalink_attributes: [:slug, :directory_id]}]
+        result = [:title, :type_name, {permalink_attributes: [:slug, :directory_id, :allow_empty_slug]}]
         target = if !params[:id] && current_user.admin?
                    Account.first
                  elsif params[:id]

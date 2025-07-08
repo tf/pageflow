@@ -6,3 +6,5 @@ en:
           Changing the permalink after the story has already been
           published automatically creates a redirect from the old URL
           to the new URL
+        root_entry_hint_html: "You can also %{link}."
+        root_entry_link: "create an entry at the site root"
