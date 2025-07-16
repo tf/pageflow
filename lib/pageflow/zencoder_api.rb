@@ -1,4 +1,5 @@
 module Pageflow
+  # ZencoderApi class
   class ZencoderApi
     class Error < StandardError; end
     class RecoverableError < Error; end

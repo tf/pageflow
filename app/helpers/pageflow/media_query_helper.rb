@@ -1,4 +1,5 @@
 module Pageflow
+  # MediaQueryHelper module
   module MediaQueryHelper
     def media_query(condition, &block)
       content = capture(&block)

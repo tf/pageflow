@@ -1,4 +1,5 @@
 module Pageflow
+  # StubPageConfiguration class
   class StubPageConfiguration
     attr_reader :template
 

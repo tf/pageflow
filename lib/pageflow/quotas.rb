@@ -1,4 +1,5 @@
 module Pageflow
+  # Quotas class
   class Quotas
     def initialize
       @factories = HashWithIndifferentAccess.new

@@ -1,4 +1,5 @@
 module Pageflow
+  # InfoBoxHelper module
   module InfoBoxHelper
     def info_box(configuration)
       css_classes = ['add_info_box']

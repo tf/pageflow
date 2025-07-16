@@ -1,4 +1,5 @@
 module Pageflow
+  # Roles module
   module Roles
     module_function
 

@@ -2,6 +2,7 @@ require 'rails/generators'
 
 module Pageflow
   module Generators
+    # ActiveAdminInitializerGenerator class
     class ActiveAdminInitializerGenerator < Rails::Generators::Base
       desc 'Configure active admin utilitiy menu to contain profile link.'
 

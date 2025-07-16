@@ -1,4 +1,5 @@
 module Pageflow
+  # RevisionFileHelper module
   module RevisionFileHelper
     # Instead of finding a file directly by its ID (stored in configuration hashes for example),
     # finds the file by its usages perma_id within the scope of the revisions usages.

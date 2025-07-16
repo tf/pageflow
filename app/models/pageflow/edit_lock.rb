@@ -1,16 +1,19 @@
 module Pageflow
+  # EditLock class
   class EditLock < ApplicationRecord
     scope :active, (lambda do
       time = Time.now - EditLock.time_to_live
       where('pageflow_edit_locks.updated_at >= ?', time)
     end)
 
+    # Error class
     class Error < RuntimeError
       def code
         self.class.name.split('::').last.underscore
       end
     end
 
+    # HeldByOtherUserError class
     class HeldByOtherUserError < Error
       attr_reader :user
 
@@ -63,6 +66,7 @@ module Pageflow
       touch
     end
 
+    # Null class
     class Null
       attr_reader :entry
 

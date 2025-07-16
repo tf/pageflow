@@ -1,4 +1,5 @@
 module Pageflow
+  # Themes class
   class Themes
     include Enumerable
 

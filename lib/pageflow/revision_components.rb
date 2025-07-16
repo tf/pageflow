@@ -1,4 +1,5 @@
 module Pageflow
+  # RevisionComponents class
   class RevisionComponents
     include Enumerable
 

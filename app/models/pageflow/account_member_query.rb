@@ -1,6 +1,7 @@
 module Pageflow
   # Query accounts for members, e.g. based on role
   class AccountMemberQuery < ApplicationQuery
+    # Scope class
     class Scope < ApplicationQuery::Scope
       # Account whose members we scope
       # @return [Pageflow::Account]

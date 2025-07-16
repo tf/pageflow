@@ -12,26 +12,26 @@ module Pageflow
       it_behaves_like 'a membership-based permission that',
                       allows: :manager,
                       but_forbids: :publisher,
-                      of_account: ->(topic) { topic.account },
+                      of_account: lambda(&:account),
                       to: :read,
                       topic: -> { create(:site) }
 
       it_behaves_like 'a membership-based permission that',
                       allows: :manager,
                       but_forbids: :publisher,
-                      of_account: ->(topic) { topic.account },
+                      of_account: lambda(&:account),
                       to: :update,
                       topic: -> { create(:site) }
 
       it_behaves_like 'a membership-based permission that',
                       allows: :manager,
                       but_forbids: :publisher,
-                      of_account: ->(topic) { topic.account },
+                      of_account: lambda(&:account),
                       to: :manage_root_entry,
                       topic: -> { create(:site) }
 
       it_behaves_like 'an admin permission that',
-                      of_account: ->(topic) { topic.account },
+                      of_account: lambda(&:account),
                       to: :manage_root_entry,
                       topic: -> { create(:site) }
     end
@@ -45,25 +45,25 @@ module Pageflow
 
       it_behaves_like 'an admin permission that',
                       allows_admins_but_forbids_even_managers: true,
-                      of_account: ->(topic) { topic.account },
+                      of_account: lambda(&:account),
                       to: :read,
                       topic: -> { create(:site) }
 
       it_behaves_like 'an admin permission that',
                       allows_admins_but_forbids_even_managers: true,
-                      of_account: ->(topic) { topic.account },
+                      of_account: lambda(&:account),
                       to: :update,
                       topic: -> { create(:site) }
 
       it_behaves_like 'a membership-based permission that',
                       allows: :manager,
                       but_forbids: :publisher,
-                      of_account: ->(topic) { topic.account },
+                      of_account: lambda(&:account),
                       to: :manage_root_entry,
                       topic: -> { create(:site) }
 
       it_behaves_like 'an admin permission that',
-                      of_account: ->(topic) { topic.account },
+                      of_account: lambda(&:account),
                       to: :manage_root_entry,
                       topic: -> { create(:site) }
     end

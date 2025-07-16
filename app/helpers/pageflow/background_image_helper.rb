@@ -1,4 +1,5 @@
 module Pageflow
+  # BackgroundImageHelper module
   module BackgroundImageHelper
     include RevisionFileHelper
 
@@ -24,6 +25,7 @@ module Pageflow
       ".load_all_images .#{css_class}, .load_image.#{css_class}"
     end
 
+    # Div class
     class Div
       attr_reader :configuration, :property_base_name, :options
 
@@ -80,6 +82,7 @@ module Pageflow
       end
     end
 
+    # DivWithSizeAttributes class
     class DivWithSizeAttributes < Div
       include RevisionFileHelper
 

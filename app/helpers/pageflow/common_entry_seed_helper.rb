@@ -18,6 +18,7 @@ module Pageflow
       json.file_model_types { config_file_model_types_seed(json, config) }
     end
 
+    # PageTypesSeed class
     class PageTypesSeed
       attr_reader :config
 

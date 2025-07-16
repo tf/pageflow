@@ -5,35 +5,35 @@ module Pageflow
     it_behaves_like 'a membership-based permission that',
                     allows: :manager,
                     but_forbids: :publisher,
-                    of_entry: ->(topic) { topic.entity },
+                    of_entry: lambda(&:entity),
                     to: :create,
                     topic: -> { create(:entry_membership) }
 
     it_behaves_like 'a membership-based permission that',
                     allows: :manager,
                     but_forbids: :publisher,
-                    of_account: ->(topic) { topic.entity },
+                    of_account: lambda(&:entity),
                     to: :create,
                     topic: -> { create(:account_membership) }
 
     it_behaves_like 'a membership-based permission that',
                     allows: :manager,
                     but_forbids: :publisher,
-                    of_entry: ->(topic) { topic.entity },
+                    of_entry: lambda(&:entity),
                     to: :edit_role,
                     topic: -> { create(:entry_membership) }
 
     it_behaves_like 'a membership-based permission that',
                     allows: :manager,
                     but_forbids: :publisher,
-                    of_account: ->(topic) { topic.entity },
+                    of_account: lambda(&:entity),
                     to: :edit_role,
                     topic: -> { create(:account_membership) }
 
     it_behaves_like 'a membership-based permission that',
                     allows: :manager,
                     but_forbids: :publisher,
-                    of_entry: ->(topic) { topic.entity },
+                    of_entry: lambda(&:entity),
                     to: :destroy,
                     topic: -> { create(:entry_membership) }
 
@@ -47,7 +47,7 @@ module Pageflow
       it_behaves_like 'a membership-based permission that',
                       allows: :manager,
                       but_forbids: :publisher,
-                      of_account: ->(topic) { topic.entity },
+                      of_account: lambda(&:entity),
                       to: :destroy,
                       topic: -> { create(:account_membership) }
     end

@@ -1,4 +1,5 @@
 module Pageflow
+  # FoldersHelper module
   module FoldersHelper
     def collection_for_folders(current_account, current_folder = nil)
       accounts = AccountPolicy::Scope

@@ -1,4 +1,5 @@
 module Pageflow
+  # BuiltInFileType module
   module BuiltInFileType
     # Factory methods to decouple Pageflow initializers from concrete
     # file type classes, making more transparent which file types are

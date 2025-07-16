@@ -1,4 +1,5 @@
 module Pageflow
+  # Theme class
   class Theme
     attr_reader :name, :directory_name, :options
 

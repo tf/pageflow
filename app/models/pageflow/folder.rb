@@ -1,4 +1,5 @@
 module Pageflow
+  # Folder class
   class Folder < ApplicationRecord
     belongs_to :account
     has_many :entries

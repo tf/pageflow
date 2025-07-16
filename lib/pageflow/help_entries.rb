@@ -1,4 +1,5 @@
 module Pageflow
+  # HelpEntries class
   class HelpEntries
     include Enumerable
 

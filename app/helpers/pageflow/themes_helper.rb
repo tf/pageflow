@@ -1,4 +1,5 @@
 module Pageflow
+  # ThemesHelper module
   module ThemesHelper
     include RenderJsonHelper
 

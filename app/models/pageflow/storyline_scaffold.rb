@@ -1,4 +1,5 @@
 module Pageflow
+  # StorylineScaffold class
   class StorylineScaffold
     def initialize(storyline, options)
       @storyline = storyline

@@ -1,5 +1,7 @@
 module Pageflow
+  # EntryRoleQuery class
   class EntryRoleQuery < ApplicationQuery
+    # Scope class
     class Scope < Scope
       attr_reader :user, :scope
 

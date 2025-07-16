@@ -1,4 +1,5 @@
 module Pageflow
+  # OutputSource module
   module OutputSource
     STATE_MAPPING = {
       true => 'finished',

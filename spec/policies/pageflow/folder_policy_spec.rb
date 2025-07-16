@@ -5,7 +5,7 @@ module Pageflow
     it_behaves_like 'a membership-based permission that',
                     allows: :publisher,
                     but_forbids: :editor,
-                    of_account: ->(topic) { topic.account },
+                    of_account: lambda(&:account),
                     to: :manage,
                     topic: -> { create(:folder) }
   end

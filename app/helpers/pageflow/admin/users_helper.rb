@@ -1,5 +1,6 @@
 module Pageflow
   module Admin
+    # UsersHelper module
     module UsersHelper
       include QuotaHelper
 

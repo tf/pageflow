@@ -3,6 +3,7 @@ require 'securerandom'
 
 module Pageflow
   module Generators
+    # SeedsGenerator class
     class SeedsGenerator < Rails::Generators::Base
       desc 'Requires the pageflow seeds in db/seeds.rb'
 

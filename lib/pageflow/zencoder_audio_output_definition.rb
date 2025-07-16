@@ -1,4 +1,5 @@
 module Pageflow
+  # ZencoderAudioOutputDefinition class
   class ZencoderAudioOutputDefinition < ZencoderOutputDefinition
     attr_reader :audio_file
 

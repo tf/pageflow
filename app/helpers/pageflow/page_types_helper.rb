@@ -1,4 +1,5 @@
 module Pageflow
+  # PageTypesHelper module
   module PageTypesHelper
     include RenderJsonHelper
 

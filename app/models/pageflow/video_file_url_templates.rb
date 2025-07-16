@@ -1,4 +1,5 @@
 module Pageflow
+  # VideoFileUrlTemplates class
   class VideoFileUrlTemplates
     def call
       {

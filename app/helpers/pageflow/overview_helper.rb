@@ -1,4 +1,5 @@
 module Pageflow
+  # OverviewHelper module
   module OverviewHelper
     def overview_page_description(page)
       if page.configuration['description'].present?

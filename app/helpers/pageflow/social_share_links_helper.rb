@@ -1,4 +1,5 @@
 module Pageflow
+  # SocialShareLinksHelper module
   module SocialShareLinksHelper
     include SocialShareHelper
 

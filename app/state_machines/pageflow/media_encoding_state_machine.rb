@@ -1,4 +1,5 @@
 module Pageflow
+  # MediaEncodingStateMachine module
   module MediaEncodingStateMachine
     extend ActiveSupport::Concern
 

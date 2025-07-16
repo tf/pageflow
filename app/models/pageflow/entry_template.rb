@@ -1,4 +1,5 @@
 module Pageflow
+  # EntryTemplate class
   class EntryTemplate < ApplicationRecord
     include ThemeReferencer
     include SerializedConfiguration

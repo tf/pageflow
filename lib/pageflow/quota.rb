@@ -1,5 +1,7 @@
 module Pageflow
+  # Quota class
   class Quota
+    # ExhaustedError class
     class ExhaustedError < RuntimeError
       attr_reader :quota
 
@@ -53,6 +55,7 @@ module Pageflow
       self
     end
 
+    # Unlimited class
     class Unlimited < Quota
       def state
         'available'

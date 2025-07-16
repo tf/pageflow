@@ -2,6 +2,7 @@ module Pageflow
   module ActiveAdminPatches
     module Views
       module Pages
+        # Base module
         module Base
           def build(*args)
             super(*args)

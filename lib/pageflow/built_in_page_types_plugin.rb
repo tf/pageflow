@@ -1,4 +1,5 @@
 module Pageflow
+  # BuiltInPageTypesPlugin class
   class BuiltInPageTypesPlugin < Plugin
     def configure(config)
       config.for_entry_type(PageflowPaged.entry_type) do |entry_type_config|

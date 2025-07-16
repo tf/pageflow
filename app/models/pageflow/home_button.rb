@@ -1,4 +1,5 @@
 module Pageflow
+  # HomeButton class
   class HomeButton
     attr_reader :revision, :site
 

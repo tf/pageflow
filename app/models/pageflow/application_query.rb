@@ -1,6 +1,7 @@
 module Pageflow
   # Abstraction layer for Pageflow's query interface
   class ApplicationQuery
+    # Scope class
     class Scope
       protected
 

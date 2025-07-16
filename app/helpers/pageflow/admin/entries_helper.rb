@@ -1,5 +1,6 @@
 module Pageflow
   module Admin
+    # EntriesHelper module
     module EntriesHelper
       def admin_entry_title(entry)
         if entry.title.blank?

@@ -1,4 +1,5 @@
 module Pageflow
+  # EntriesHelper module
   module EntriesHelper
     def pretty_entry_title(entry)
       return entry.title if entry.site.title == ' '

@@ -1,4 +1,5 @@
 module Pageflow
+  # PositionedFile class
   class PositionedFile
     attr_reader :file, :position_x, :position_y
 
@@ -29,6 +30,7 @@ module Pageflow
       Null.new
     end
 
+    # Null class
     class Null < PositionedFile
       def initialize
         super(nil)

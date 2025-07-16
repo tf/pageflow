@@ -1,4 +1,5 @@
 module Pageflow
+  # UploadableFile module
   module UploadableFile
     extend ActiveSupport::Concern
     include ReusableFile
@@ -109,6 +110,7 @@ module Pageflow
       file_uploaded!
     end
 
+    # ClassMethods module
     module ClassMethods
       def processing_state_machine(&block)
         state_machine do

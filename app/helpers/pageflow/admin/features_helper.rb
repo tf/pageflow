@@ -1,5 +1,6 @@
 module Pageflow
   module Admin
+    # FeaturesHelper module
     module FeaturesHelper
       def feature_state_select_tag(feature_target, feature_name)
         own_state = feature_target.own_feature_state(feature_name)

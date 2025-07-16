@@ -1,5 +1,6 @@
 module Pageflow
   module Admin
+    # FormHelper module
     module FormHelper
       # Using semantic_form_for directly causes Formtastic deprecation
       # warnings regarding `input_class_finder` and

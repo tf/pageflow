@@ -2,6 +2,7 @@ require 'rails/generators'
 
 module Pageflow
   module Generators
+    # ThemeGenerator class
     class ThemeGenerator < Rails::Generators::Base
       desc 'Creates a configurable theme based on the default theme.'
 

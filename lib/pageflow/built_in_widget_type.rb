@@ -1,4 +1,5 @@
 module Pageflow
+  # BuiltInWidgetType class
   class BuiltInWidgetType < WidgetType
     attr_reader :name, :roles, :partial_path
 

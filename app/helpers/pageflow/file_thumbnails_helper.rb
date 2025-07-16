@@ -1,4 +1,5 @@
 module Pageflow
+  # FileThumbnailsHelper module
   module FileThumbnailsHelper
     def file_thumbnails_css(revision)
       render(partial: 'pageflow/file_types/thumbnails',

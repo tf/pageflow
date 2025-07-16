@@ -1,4 +1,5 @@
 module Pageflow
+  # WidgetTypes class
   class WidgetTypes
     include Enumerable
 

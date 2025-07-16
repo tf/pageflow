@@ -1,4 +1,5 @@
 module Pageflow
+  # FileReuse class
   class FileReuse
     attr_accessor :source_entry, :destination_entry, :file_type, :file
 

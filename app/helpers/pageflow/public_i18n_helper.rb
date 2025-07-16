@@ -1,4 +1,5 @@
 module Pageflow
+  # PublicI18nHelper module
   module PublicI18nHelper
     def public_i18n_javascript_tag(entry)
       render('pageflow/public_i18n/javascript_tag',

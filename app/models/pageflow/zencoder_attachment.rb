@@ -1,6 +1,7 @@
 require 'uri'
 
 module Pageflow
+  # ZencoderAttachment class
   class ZencoderAttachment
     cattr_accessor :default_options
     self.default_options = {

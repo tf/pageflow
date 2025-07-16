@@ -1,4 +1,5 @@
 module Pageflow
+  # Membership class
   class Membership < ApplicationRecord
     belongs_to :user
     belongs_to :entity, polymorphic: true

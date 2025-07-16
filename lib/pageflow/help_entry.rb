@@ -1,4 +1,5 @@
 module Pageflow
+  # HelpEntry class
   class HelpEntry
     attr_reader :name, :children
 

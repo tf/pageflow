@@ -3,6 +3,7 @@ require 'pageflow/global_config_api'
 require 'pageflow/news_item_api'
 require 'pageflow/version'
 
+# Pageflow module
 module Pageflow
   extend GlobalConfigApi
   extend NewsItemApi

@@ -1,4 +1,5 @@
 module Pageflow
+  # WidgetsHelper module
   module WidgetsHelper
     include RenderJsonHelper
 

@@ -1,4 +1,5 @@
 module Pageflow
+  # QuotaHelper module
   module QuotaHelper
     def quota_state_description(name, account)
       description = Pageflow.config.quotas.get(name, account).state_description

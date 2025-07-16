@@ -1,4 +1,5 @@
 module Pageflow
+  # ImageFileUrlTemplates class
   class ImageFileUrlTemplates
     def call
       styles.each_with_object({}) do |style, result|

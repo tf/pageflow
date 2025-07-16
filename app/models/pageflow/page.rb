@@ -1,4 +1,5 @@
 module Pageflow
+  # Page class
   class Page < ApplicationRecord
     include SerializedConfiguration
     include NestedRevisionComponent

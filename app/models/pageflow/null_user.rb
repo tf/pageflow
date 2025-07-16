@@ -1,4 +1,5 @@
 module Pageflow
+  # NullUser class
   class NullUser
     def full_name
       '-'

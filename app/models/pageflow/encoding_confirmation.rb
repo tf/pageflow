@@ -1,4 +1,5 @@
 module Pageflow
+  # EncodingConfirmation class
   class EncodingConfirmation
     class QuotaExceededError < RuntimeError
     end

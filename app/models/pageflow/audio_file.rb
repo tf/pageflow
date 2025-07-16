@@ -1,4 +1,5 @@
 module Pageflow
+  # AudioFile class
   class AudioFile < ApplicationRecord
     include UploadableFile
     include MediaEncodingStateMachine

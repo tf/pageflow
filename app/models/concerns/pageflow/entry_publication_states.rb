@@ -1,4 +1,5 @@
 module Pageflow
+  # EntryPublicationStates module
   module EntryPublicationStates
     extend ActiveSupport::Concern
 
@@ -58,6 +59,7 @@ module Pageflow
       !!revisions.publications.first&.noindex
     end
 
+    # ClassMethods module
     module ClassMethods
       def with_publication_state(state)
         case state

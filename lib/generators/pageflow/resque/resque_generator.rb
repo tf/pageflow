@@ -2,6 +2,7 @@ require 'rails/generators'
 
 module Pageflow
   module Generators
+    # ResqueGenerator class
     class ResqueGenerator < Rails::Generators::Base
       desc 'Configure resque for pageflow.'
 

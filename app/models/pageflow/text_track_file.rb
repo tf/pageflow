@@ -1,4 +1,5 @@
 module Pageflow
+  # TextTrackFile class
   class TextTrackFile < ApplicationRecord
     include UploadableFile
     include ImageAndTextTrackProcessingStateMachine

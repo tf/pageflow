@@ -1,4 +1,5 @@
 module Pageflow
+  # ImageAndTextTrackProcessingStateMachine module
   module ImageAndTextTrackProcessingStateMachine
     extend ActiveSupport::Concern
 

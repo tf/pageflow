@@ -1,4 +1,5 @@
 module Pageflow
+  # Entry class
   class Entry < ApplicationRecord
     class PasswordMissingError < StandardError
     end

@@ -1,5 +1,6 @@
 module Pageflow
   module Admin
+    # WidgetsHelper module
     module WidgetsHelper
       def admin_widgets_fields(form, config)
         render('pageflow/admin/widgets/fields',

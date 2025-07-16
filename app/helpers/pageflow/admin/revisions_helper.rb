@@ -1,5 +1,6 @@
 module Pageflow
   module Admin
+    # RevisionsHelper module
     module RevisionsHelper
       def revision_css_class(revision)
         css_classes = []

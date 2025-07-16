@@ -1,4 +1,5 @@
 module Pageflow
+  # CnameSiteRequestScope class
   class CnameSiteRequestScope
     def call(sites, request)
       sites.where(<<-SQL, host: request.host)

@@ -1,4 +1,5 @@
 module Pageflow
+  # PageTypes class
   class PageTypes
     include Enumerable
 

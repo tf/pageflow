@@ -27,6 +27,7 @@ module Pageflow
       copy_nested_revision_component_to(record)
     end
 
+    # ClassMethods module
     module ClassMethods
       # Recommended way to create revision components. Uses an
       # advisory lock to ensure concurrently created records are not

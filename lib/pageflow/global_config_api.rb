@@ -1,4 +1,5 @@
 module Pageflow
+  # GlobalConfigApi module
   module GlobalConfigApi
     # The global configuration.
     #

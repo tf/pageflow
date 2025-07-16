@@ -1,4 +1,5 @@
 module Pageflow
+  # RailsVersion module
   module RailsVersion
     extend self
 

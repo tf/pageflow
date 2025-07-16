@@ -1,4 +1,5 @@
 module PageflowScrolled
+  # Chapter class
   class Chapter < Pageflow::ApplicationRecord
     POSITION_ORDER = [
       'pageflow_scrolled_storylines.position ASC',

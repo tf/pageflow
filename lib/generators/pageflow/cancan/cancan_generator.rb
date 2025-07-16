@@ -2,6 +2,7 @@ require 'rails/generators'
 
 module Pageflow
   module Generators
+    # CancanGenerator class
     class CancanGenerator < Rails::Generators::Base
       desc 'Setup ability class.'
 

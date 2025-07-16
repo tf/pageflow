@@ -1,4 +1,5 @@
 module Pageflow
+  # Hooks class
   class Hooks
     def initialize
       @subscribers = Hash.new do |hash, key|

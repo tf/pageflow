@@ -1,4 +1,5 @@
 module Pageflow
+  # ReusableFile module
   module ReusableFile
     extend ActiveSupport::Concern
 

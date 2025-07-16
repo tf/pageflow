@@ -1,9 +1,11 @@
 module Pageflow
+  # EmbedCodeHelper module
   module EmbedCodeHelper
     def embed_code_entry_snippet(entry)
       Pageflow::EmbedCodeHelper::EntrySnippet.new(pageflow, entry)
     end
 
+    # EntrySnippet class
     class EntrySnippet
       def initialize(routes, entry)
         @routes = routes

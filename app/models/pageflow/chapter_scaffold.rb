@@ -1,4 +1,5 @@
 module Pageflow
+  # ChapterScaffold class
   class ChapterScaffold
     def initialize(chapter, options)
       @chapter = chapter

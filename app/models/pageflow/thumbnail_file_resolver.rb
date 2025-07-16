@@ -1,4 +1,5 @@
 module Pageflow
+  # ThumbnailFileResolver class
   class ThumbnailFileResolver < Struct.new(:entry, :candidates, :configuration)
     def find_thumbnail
       candidates.detect do |candidate|

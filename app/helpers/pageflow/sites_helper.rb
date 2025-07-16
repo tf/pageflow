@@ -1,4 +1,5 @@
 module Pageflow
+  # SitesHelper module
   module SitesHelper
     DEFAULT_SITE_URL_OPTIONS = lambda do |site|
       site.cname.present? ? {host: site.cname} : nil

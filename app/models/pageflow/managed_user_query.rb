@@ -1,6 +1,7 @@
 module Pageflow
   # @api private
   class ManagedUserQuery < ApplicationQuery
+    # Scope class
     class Scope < Scope
       def initialize(current_user, scope)
         @current_user = current_user

@@ -1,4 +1,5 @@
 module Pageflow
+  # PagesHelper module
   module PagesHelper
     def render_page_template(page, locals = {})
       page_type = Pageflow.config.page_types.find_by_name!(page.template)

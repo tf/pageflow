@@ -2,6 +2,7 @@ require 'rails/generators'
 
 module Pageflow
   module Generators
+    # RoutesGenerator class
     class RoutesGenerator < Rails::Generators::Base
       desc 'Injects the pageflow mount call into config/routes.rb'
 

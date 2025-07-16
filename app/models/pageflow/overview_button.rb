@@ -1,4 +1,5 @@
 module Pageflow
+  # OverviewButton class
   class OverviewButton
     attr_reader :revision
 

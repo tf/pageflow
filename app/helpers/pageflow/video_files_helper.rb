@@ -1,4 +1,5 @@
 module Pageflow
+  # VideoFilesHelper module
   module VideoFilesHelper
     include RevisionFileHelper
 

@@ -1,5 +1,6 @@
 module PageflowPaged
   module React
+    # PageType class
     class PageType < Pageflow::PageType
       attr_reader :name, :component_name, :file_types
 

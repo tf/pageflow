@@ -1,4 +1,5 @@
 module Pageflow
+  # FileTypes class
   class FileTypes
     include Enumerable
 

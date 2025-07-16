@@ -1,4 +1,5 @@
 module Pageflow
+  # AssetUrlsHelper module
   module AssetUrlsHelper
     include RenderJsonHelper
 

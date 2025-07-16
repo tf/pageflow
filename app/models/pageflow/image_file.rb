@@ -1,4 +1,5 @@
 module Pageflow
+  # ImageFile class
   class ImageFile < ApplicationRecord
     include UploadableFile
     include ImageAndTextTrackProcessingStateMachine

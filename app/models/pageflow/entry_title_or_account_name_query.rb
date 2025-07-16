@@ -1,6 +1,7 @@
 module Pageflow
   # @api private
   class EntryTitleOrAccountNameQuery < ApplicationQuery
+    # Scope class
     class Scope < Scope
       def initialize(term, scope)
         @term = term

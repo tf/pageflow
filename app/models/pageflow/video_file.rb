@@ -1,4 +1,5 @@
 module Pageflow
+  # VideoFile class
   class VideoFile < ApplicationRecord
     include UploadableFile
     include MediaEncodingStateMachine

@@ -1,4 +1,5 @@
 module Pageflow
+  # UrlTemplate module
   module UrlTemplate
     extend self
 

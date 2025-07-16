@@ -1,4 +1,5 @@
 module Pageflow
+  # WidgetType class
   class WidgetType
     class NotFoundError < RuntimeError
     end
@@ -60,6 +61,7 @@ module Pageflow
       ''
     end
 
+    # Null class
     class Null < WidgetType
       def initialize(role)
         @role = role

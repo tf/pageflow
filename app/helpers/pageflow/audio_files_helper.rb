@@ -1,4 +1,5 @@
 module Pageflow
+  # AudioFilesHelper module
   module AudioFilesHelper
     include RevisionFileHelper
 

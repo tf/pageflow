@@ -1,4 +1,5 @@
 module Pageflow
+  # Storyline class
   class Storyline < ApplicationRecord
     include SerializedConfiguration
     include RevisionComponent

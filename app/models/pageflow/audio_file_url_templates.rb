@@ -1,4 +1,5 @@
 module Pageflow
+  # AudioFileUrlTemplates class
   class AudioFileUrlTemplates
     def call
       {

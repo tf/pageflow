@@ -1,4 +1,5 @@
 module Pageflow
+  # EntryPublication class
   class EntryPublication
     attr_reader :entry, :attributes, :quota, :user
 

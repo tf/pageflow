@@ -1,4 +1,5 @@
 module Pageflow
+  # Account class
   class Account < ApplicationRecord
     include FeatureTarget
     include SerializationBlacklist

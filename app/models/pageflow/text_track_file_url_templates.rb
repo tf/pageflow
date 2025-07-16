@@ -1,4 +1,5 @@
 module Pageflow
+  # TextTrackFileUrlTemplates class
   class TextTrackFileUrlTemplates
     def call
       {

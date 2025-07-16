@@ -1,4 +1,5 @@
 module Pageflow
+  # EntryExportImport module
   module EntryExportImport
     extend self
 

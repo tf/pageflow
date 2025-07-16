@@ -1,4 +1,5 @@
 module Pageflow
+  # UsedFile class
   class UsedFile < SimpleDelegator
     def initialize(file, usage = nil)
       super(file)

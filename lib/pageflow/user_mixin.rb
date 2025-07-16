@@ -70,6 +70,7 @@ module Pageflow
       devise_mailer.send(notification, self, *args).deliver_later
     end
 
+    # ClassMethods module
     module ClassMethods
       def ransackable_attributes(_auth_object = nil)
         %w[first_name last_name email]

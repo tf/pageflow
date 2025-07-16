@@ -1,5 +1,6 @@
 module Pageflow
   module Admin
+    # MembershipsHelper module
     module MembershipsHelper
       def membership_user_select(f, parent)
         if f.object.persisted?

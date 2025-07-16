@@ -1,4 +1,5 @@
 module Pageflow
+  # NavigationBarHelper module
   module NavigationBarHelper
     def navigation_bar_css_class(entry, options = {})
       [

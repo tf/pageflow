@@ -1,4 +1,5 @@
 module Pageflow
+  # React module
   module React
     # @deprecated Use `PageflowPaged::React.create_page_type` instead.
     def self.create_page_type(name, options = {})

@@ -1,4 +1,5 @@
 module Pageflow
+  # ThemeReferencer module
   module ThemeReferencer
     extend ActiveSupport::Concern
 

@@ -1,4 +1,5 @@
 module Pageflow
+  # Suspendable module
   module Suspendable
     def active_for_authentication?
       super && !suspended?

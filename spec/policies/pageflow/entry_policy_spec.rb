@@ -40,7 +40,7 @@ module Pageflow
     it_behaves_like 'a membership-based permission that',
                     allows: :publisher,
                     but_forbids: :editor,
-                    of_account: ->(topic) { topic.account },
+                    of_account: lambda(&:account),
                     to: :create,
                     topic: -> { create(:entry) }
 
@@ -60,7 +60,7 @@ module Pageflow
     it_behaves_like 'a membership-based permission that',
                     allows: :publisher,
                     but_forbids: :editor,
-                    of_account: ->(topic) { topic.account },
+                    of_account: lambda(&:account),
                     to: :manage_translations,
                     topic: -> { create(:entry) }
 
@@ -133,14 +133,14 @@ module Pageflow
     it_behaves_like 'a membership-based permission that',
                     allows: :publisher,
                     but_forbids: :editor,
-                    of_account: ->(topic) { topic.account },
+                    of_account: lambda(&:account),
                     to: :publish_on_account_of,
                     topic: -> { create(:entry) }
 
     it_behaves_like 'a membership-based permission that',
                     allows: :publisher,
                     but_forbids: :editor,
-                    of_account: ->(topic) { topic.account },
+                    of_account: lambda(&:account),
                     to: :update_account_on,
                     topic: -> { create(:entry) }
 
@@ -154,7 +154,7 @@ module Pageflow
       it_behaves_like 'a membership-based permission that',
                       allows: :publisher,
                       but_forbids: :editor,
-                      of_account: ->(topic) { topic.account },
+                      of_account: lambda(&:account),
                       to: :update_site_on,
                       topic: -> { create(:entry) }
     end
@@ -168,7 +168,7 @@ module Pageflow
 
       it_behaves_like 'an admin permission that',
                       allows_admins_but_forbids_even_managers: true,
-                      of_account: ->(topic) { topic.account },
+                      of_account: lambda(&:account),
                       to: :update_site_on,
                       topic: -> { create(:entry) }
     end
@@ -176,7 +176,7 @@ module Pageflow
     it_behaves_like 'a membership-based permission that',
                     allows: :manager,
                     but_forbids: :publisher,
-                    of_account: ->(topic) { topic.account },
+                    of_account: lambda(&:account),
                     to: :manage_account_of,
                     topic: -> { create(:entry) }
 
@@ -190,7 +190,7 @@ module Pageflow
       it_behaves_like 'a membership-based permission that',
                       allows: :manager,
                       but_forbids: :publisher,
-                      of_account: ->(topic) { topic.account },
+                      of_account: lambda(&:account),
                       to: :update_feature_configuration_on,
                       topic: -> { create(:entry) }
     end
@@ -204,7 +204,7 @@ module Pageflow
 
       it_behaves_like 'an admin permission that',
                       allows_admins_but_forbids_even_managers: true,
-                      of_account: ->(topic) { topic.account },
+                      of_account: lambda(&:account),
                       to: :update_feature_configuration_on,
                       topic: -> { create(:entry) }
     end
@@ -212,7 +212,7 @@ module Pageflow
     it_behaves_like 'a membership-based permission that',
                     allows: :manager,
                     but_forbids: :publisher,
-                    of_account: ->(topic) { topic.account },
+                    of_account: lambda(&:account),
                     to: :destroy,
                     topic: -> { create(:entry) }
 

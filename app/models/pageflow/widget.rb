@@ -1,4 +1,5 @@
 module Pageflow
+  # Widget class
   class Widget < ApplicationRecord
     include SerializedConfiguration
 

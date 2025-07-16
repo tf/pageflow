@@ -1,5 +1,6 @@
 module Pageflow
   module Admin
+    # LocalesHelper module
     module LocalesHelper
       include Pageflow::PublicI18n::LocalesHelper
 

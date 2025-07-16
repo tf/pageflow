@@ -4,6 +4,7 @@ module Pageflow
   #
   # @since 12.2
   module Admin
+    # AttributesTableRows class
     class AttributesTableRows
       # @api private
       def initialize

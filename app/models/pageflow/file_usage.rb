@@ -1,4 +1,5 @@
 module Pageflow
+  # FileUsage class
   class FileUsage < ApplicationRecord
     include SerializedConfiguration
     include RevisionComponent

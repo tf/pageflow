@@ -1,4 +1,5 @@
 module Pageflow
+  # Site class
   class Site < ApplicationRecord
     belongs_to :account
     belongs_to :custom_404_entry, class_name: 'Entry', optional: true

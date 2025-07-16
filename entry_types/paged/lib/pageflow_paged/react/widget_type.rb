@@ -1,5 +1,6 @@
 module PageflowPaged
   module React
+    # WidgetType class
     class WidgetType < Pageflow::WidgetType
       attr_reader :name, :role, :options
 

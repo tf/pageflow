@@ -1,4 +1,5 @@
 module PageflowScrolled
+  # Storyline class
   class Storyline < Pageflow::ApplicationRecord
     SECTIONS_ORDER = [
       'pageflow_scrolled_chapters.position ASC',

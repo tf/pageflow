@@ -1,5 +1,6 @@
 module Pageflow
   module Admin
+    # Tabs class
     class Tabs
       # @api private
       def initialize
