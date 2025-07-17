@@ -13,7 +13,7 @@ export function useSetting(name) {
     settings.on(`change:${name}`, update)
 
     return () => settings.off(undefined, update);
-  }, [setValue, name]);
+  }, [setValue]);
 
   const setter = useCallback(value => settings.set(name, value), [name]);
 
