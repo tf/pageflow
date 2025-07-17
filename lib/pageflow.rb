@@ -10,7 +10,7 @@ module Pageflow # rubocop:todo Style/Documentation
   def self.routes(router)
     router.instance_eval do
       namespace :admin do
-        resources :users do
+         resources :users do
           resources :memberships
         end
 
