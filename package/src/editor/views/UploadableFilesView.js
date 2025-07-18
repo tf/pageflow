@@ -1,7 +1,8 @@
 import Marionette from 'backbone.marionette';
 import _ from 'underscore';
 
-import {PresenceTableCellView, TableView, TextTableCellView, i18nUtils} from 'pageflow/ui';
+import I18n from 'i18n-js';
+import {PresenceTableCellView, TableView, TextTableCellView} from 'pageflow/ui';
 import {editor} from '../base';
 
 export const UploadableFilesView = Marionette.View.extend({
@@ -28,11 +29,8 @@ export const UploadableFilesView = Marionette.View.extend({
         'pageflow.editor.files.common_attributes'
       ],
       columns: this.commonColumns({
-        fileTypeDisplayName: i18nUtils.findTranslation([
-          'pageflow.entry_types.' + entryTypeName + '.editor.files.tabs.' +
-            this.options.fileType.collectionName,
-          'pageflow.editor.files.tabs.' + this.options.fileType.collectionName
-        ])
+        fileTypeDisplayName: I18n.t('pageflow.editor.files.tabs.' +
+                                   this.options.fileType.collectionName)
       }).concat(this.fileTypeColumns()),
       selection: this.options.selection,
       selectionAttribute: 'file'

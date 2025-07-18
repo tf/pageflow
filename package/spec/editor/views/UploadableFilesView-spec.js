@@ -11,8 +11,9 @@ describe('UploadableFilesView', () => {
   var f = support.factories;
 
   support.useFakeTranslations({
-    'pageflow.entry_types.strange.editor.files.tabs.image_files': 'Entry Tab',
-    'pageflow.editor.files.tabs.image_files': 'Fallback Tab'
+    'pageflow.entry_types.strange.editor.files.attributes.image_files.custom.column_header':
+      'Entry Column',
+    'pageflow.editor.files.attributes.image_files.custom.column_header': 'Fallback Column'
   });
 
   it('renders confirmUploadTableColumns of file type', () => {
@@ -37,7 +38,12 @@ describe('UploadableFilesView', () => {
 
   it('uses entry type-specific translation keys if provided', () => {
     editor.registerEntryType('strange');
-    var fileType = f.fileType({collectionName: 'image_files'});
+    var fileType = f.fileType({
+      collectionName: 'image_files',
+      confirmUploadTableColumns: [
+        {name: 'custom', cellView: TextTableCellView}
+      ]
+    });
     var view = new UploadableFilesView({
       collection: f.filesCollection({fileType: fileType}),
       fileType: fileType,
@@ -46,12 +52,17 @@ describe('UploadableFilesView', () => {
 
     view.render();
 
-    expect(view.$el.find('thead th').first()).toHaveText('Entry Tab');
+    expect(view.$el.find('th').eq(2)).toHaveText('Entry Column');
   });
 
   it('falls back to generic translation keys', () => {
     editor.registerEntryType('other');
-    var fileType = f.fileType({collectionName: 'image_files'});
+    var fileType = f.fileType({
+      collectionName: 'image_files',
+      confirmUploadTableColumns: [
+        {name: 'custom', cellView: TextTableCellView}
+      ]
+    });
     var view = new UploadableFilesView({
       collection: f.filesCollection({fileType: fileType}),
       fileType: fileType,
@@ -60,6 +71,6 @@ describe('UploadableFilesView', () => {
 
     view.render();
 
-    expect(view.$el.find('thead th').first()).toHaveText('Fallback Tab');
+    expect(view.$el.find('th').eq(2)).toHaveText('Fallback Column');
   });
 });

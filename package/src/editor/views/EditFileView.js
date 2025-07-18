@@ -2,7 +2,7 @@ import Marionette from 'backbone.marionette';
 import _ from 'underscore';
 import I18n from 'i18n-js';
 
-import {ConfigurationEditorTabView, SelectInputView, SeparatorView, TextInputView, UrlDisplayView, i18nUtils} from 'pageflow/ui';
+import {ConfigurationEditorTabView, SelectInputView, SeparatorView, TextInputView, UrlDisplayView} from 'pageflow/ui';
 import {editor} from '../base';
 
 import {state} from '$state';
@@ -48,10 +48,7 @@ export const EditFileView = Marionette.ItemView.extend({
       tab.input('source_url', TextInputView);
       tab.input('license', SelectInputView, {
         includeBlank: true,
-        blankTranslationKey: i18nUtils.findKeyWithTranslation([
-          'pageflow.entry_types.' + entryTypeName + '.editor.files.common_attributes.license.blank',
-          'pageflow.editor.files.common_attributes.license.blank'
-        ]),
+        blankTranslationKey: 'pageflow.editor.files.common_attributes.license.blank',
         values: state.config.availableFileLicenses,
         texts: state.config.availableFileLicenses.map(name => I18n.t(`pageflow.file_licenses.${name}.name`))
       });
