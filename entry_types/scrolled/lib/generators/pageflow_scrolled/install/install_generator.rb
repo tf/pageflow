@@ -146,9 +146,11 @@ module PageflowScrolled
 
         directory 'theme', theme_dir
 
-        CUSTOM_THEME_ICONS.each do |icon|
-          copy_file icons_src_dir.join("#{icon}.svg"),
-                    File.join(theme_dir, "icons/#{icon}.svg")
+        if icons_src_dir.exist?
+          CUSTOM_THEME_ICONS.each do |icon|
+            copy_file icons_src_dir.join("#{icon}.svg"),
+                      File.join(theme_dir, "icons/#{icon}.svg")
+          end
         end
       end
     end
