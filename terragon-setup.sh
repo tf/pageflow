@@ -1,0 +1,32 @@
+#!/bin/bash
+
+sudo add-apt-repository -y ppa:chris-needham/ppa
+sudo apt update
+sudo apt install -y build-essential libssl-dev libreadline-dev zlib1g-dev \
+                    libsqlite3-dev git curl libyaml-dev libgmp-dev autoconf \
+                    bison libffi-dev libgdbm-dev \
+                    mariadb-server libvips42 imagemagick audiowaveform
+
+sudo service mariadb start
+mariadb --version
+
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init - bash)"' >> ~/.bashrc
+source ~/.bashrc
+
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+
+rbenv install 3.2.3
+rbenv global 3.2.3
+
+ruby -v
+which ruby
+
+bundle install
+npm install -g yarn@1.22.5 --force
+yarn install
+yarn build
+
+bin/rspec spec/models/pageflow/account_spec.rb
