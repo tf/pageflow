@@ -28,5 +28,3 @@ bundle install
 npm install -g yarn@1.22.5 --force
 yarn install
 yarn build
-
-bin/rspec spec/models/pageflow/account_spec.rb
