@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -ex
-echo "Tesrt 12321"
+echo "Test 1"
 sudo add-apt-repository -y ppa:chris-needham/ppa
 sudo apt-get update
 sudo apt-get install -y build-essential libssl-dev libreadline-dev zlib1g-dev \
