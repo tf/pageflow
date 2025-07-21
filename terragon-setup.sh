@@ -13,17 +13,13 @@ sudo service mariadb start
 mariadb --version
 
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-
-rbenv init - bash
-echo 'eval "$(rbenv init - bash)"' >> ~/.bashrc
+~/.rbenv/bin/rbenv init
 source ~/.bashrc
 cat ~/.bashrc
 
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
-ls ~/.rbenv/bin
 echo $PATH
-which rbenv
 
 rbenv install 3.2.3
 rbenv global 3.2.3
