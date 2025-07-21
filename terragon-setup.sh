@@ -14,7 +14,7 @@ mariadb --version
 
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+rbenv init - bash
 echo 'eval "$(rbenv init - bash)"' >> ~/.bashrc
 source ~/.bashrc
 cat ~/.bashrc
