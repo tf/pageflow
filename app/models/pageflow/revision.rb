@@ -171,20 +171,22 @@ module Pageflow
     def copy
       revision = dup
 
-      yield(revision) if block_given?
+      transaction do
+        yield(revision) if block_given?
 
-      widgets.each do |widget|
-        widget.copy_to(revision)
+        widgets.each do |widget|
+          widget.copy_to(revision)
+        end
+
+        revision.save!
+
+        NestedRevisionComponentCopy.new(
+          from: self,
+          to: revision
+        ).perform_for(
+          revision_components: Pageflow.config.revision_components.to_a + [FileUsage]
+        )
       end
-
-      revision.save!
-
-      NestedRevisionComponentCopy.new(
-        from: self,
-        to: revision
-      ).perform_for(
-        revision_components: Pageflow.config.revision_components.to_a + [FileUsage]
-      )
 
       revision
     end
