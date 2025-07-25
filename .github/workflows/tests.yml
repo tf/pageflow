@@ -22,7 +22,7 @@ jobs:
           - engine-name: pageflow
             ruby-version: 3.2
             engine-directory: .
-            rspec-command: bin/rspec-with-retry --tag js
+            rspec-command: bin/rspec-loop --tag js
 
           - engine-name: pageflow_paged
             ruby-version: 3.2

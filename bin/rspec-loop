@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Used to run flaky js specs multiple times
+
+for i in {1..10}; do
+  bin/rspec $@ || (echo "SHOW ENGINE INNODB STATUS;" | spec/dummy/rails-*/bin/rails dbconsole -p -e test)
+done;
+
+exit 1
