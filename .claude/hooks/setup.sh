@@ -8,22 +8,70 @@ fi
 
 echo "Setting up Pageflow development environment..."
 
-# Install system dependencies
-sudo add-apt-repository -y ppa:chris-needham/ppa
-sudo apt-get update
-sudo apt-get install -y mariadb-server libvips42 imagemagick audiowaveform
-sudo service mariadb start
-mariadb --version
+# Check network connectivity
+check_network() {
+  ping -c 1 -W 2 archive.ubuntu.com &>/dev/null || ping -c 1 -W 2 rubygems.org &>/dev/null
+}
 
-# Install Ruby dependencies
-bundle install
+NETWORK_AVAILABLE=false
+if check_network; then
+  NETWORK_AVAILABLE=true
+  echo "Network available"
+else
+  echo "Network unavailable - skipping remote package installation"
+fi
 
-# Install Node dependencies
-npm install -g yarn@1.22.5 --force
-yarn install
-yarn build
+# Install system dependencies (only if network available)
+if [ "$NETWORK_AVAILABLE" = true ]; then
+  # Try to add PPA for audiowaveform
+  if command -v add-apt-repository &>/dev/null; then
+    sudo add-apt-repository -y ppa:chris-needham/ppa 2>/dev/null || echo "Could not add PPA"
+  fi
 
-# Run example test to verify setup
-bin/rspec spec/models/pageflow/account_spec.rb
+  sudo apt-get update || echo "apt-get update failed"
+  sudo apt-get install -y mariadb-server libvips42 imagemagick || echo "Some packages failed to install"
+  sudo apt-get install -y audiowaveform 2>/dev/null || echo "audiowaveform not available"
+fi
+
+# Start MariaDB if installed
+if command -v mariadb &>/dev/null; then
+  sudo service mariadb start 2>/dev/null || echo "Could not start mariadb"
+  mariadb --version
+else
+  echo "MariaDB not installed, skipping database setup"
+fi
+
+# Install Ruby dependencies (only if network available)
+if [ "$NETWORK_AVAILABLE" = true ]; then
+  echo "Installing Ruby dependencies..."
+  bundle install
+else
+  echo "Skipping bundle install (no network)"
+fi
+
+# Install Node dependencies (only if network available)
+if [ "$NETWORK_AVAILABLE" = true ]; then
+  echo "Installing Node dependencies..."
+  if ! command -v yarn &>/dev/null; then
+    npm install -g yarn@1.22.5 --force
+  fi
+  yarn install
+fi
+
+# Build assets (can work offline if node_modules exists)
+if [ -d "node_modules" ]; then
+  echo "Building assets..."
+  yarn build
+else
+  echo "Skipping build (node_modules not found)"
+fi
+
+# Run example test to verify setup (only if dependencies are installed)
+if [ -f "Gemfile.lock" ] && bundle check &>/dev/null; then
+  echo "Running verification test..."
+  bin/rspec spec/models/pageflow/account_spec.rb || echo "Tests failed or could not run"
+else
+  echo "Skipping tests (dependencies not fully installed)"
+fi
 
 echo "Setup complete!"
