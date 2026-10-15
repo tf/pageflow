@@ -1,4 +1,4 @@
-<% if authorized?(:update_site_on, entry) %>
+<% if authorized?(:update_site_on, local_assigns.fetch(:authorization_entry, entry)) %>
   <%= form.input(:site,
                  as: :searchable_select,
                  ajax: {

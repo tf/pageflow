@@ -147,14 +147,10 @@ module Pageflow
 
     action_item(:duplicate, only: :show, priority: 5) do
       if authorized?(:duplicate, entry)
-        button_to(I18n.t('pageflow.admin.entries.duplicate'),
-                  duplicate_admin_entry_path(entry),
-                  method: :post,
-                  form_class: 'action_item duplicate',
-                  data: {
-                    rel: 'duplicate',
-                    confirm: I18n.t('pageflow.admin.entries.confirm_duplicate')
-                  })
+        link_to(I18n.t('pageflow.admin.entries.duplicate'),
+                duplicate_admin_entry_path(entry),
+                class: 'duplicate',
+                data: {rel: 'duplicate'})
       end
     end
 
@@ -173,22 +169,59 @@ module Pageflow
     end
 
     collection_action :permalink_inputs do
-      @entry = Entry.new(permitted_params[:entry])
+      if params[:duplicate_entry_id]
+        original = Entry.find(params[:duplicate_entry_id])
+        authorize!(:duplicate, original)
+        @entry = EntryDuplicate.of(original).build
+        @entry.assign_attributes(permitted_params[:entry] || {})
+        if @entry.account_id != original.account_id && params.dig(:entry, :site_id).blank?
+          @entry.site = @entry.account.default_site
+        end
+      else
+        @entry = Entry.new(permitted_params[:entry])
+      end
 
       apply_entry_defaults(@entry)
 
-      if authorized?(:create, @entry)
+      if params[:duplicate_entry_id] || authorized?(:create, @entry)
         render(layout: false)
       else
         head :forbidden
       end
     end
 
-    member_action :duplicate, method: :post do
-      entry = Entry.find(params[:id])
-      authorize!(:duplicate, entry)
-      new_entry = entry.duplicate
-      redirect_to(edit_admin_entry_path(new_entry))
+    member_action :duplicate, method: [:get, :post] do
+      authorize!(:duplicate, resource)
+      duplication = EntryDuplicate.of(resource)
+      @duplicate_entry = duplication.build
+      @page_title = I18n.t('pageflow.admin.entries.duplicate')
+      @copy_memberships = !request.post? || params[:copy_memberships] == '1'
+
+      if request.post?
+        @duplicate_entry.assign_attributes(permitted_params[:entry] || {})
+        if @duplicate_entry.account_id != resource.account_id &&
+           (!authorized?(:update_site_on, resource) || params.dig(:entry, :site_id).blank?)
+          @duplicate_entry.site = @duplicate_entry.account.default_site
+        end
+        if @duplicate_entry.site_id != resource.site_id &&
+           @duplicate_entry.site.permalink_directories.empty?
+          @duplicate_entry.permalink = nil
+        end
+        duplication.create!(entry: @duplicate_entry, copy_memberships: @copy_memberships)
+        if authorized?(:read, @duplicate_entry)
+          redirect_to(admin_entry_path(@duplicate_entry))
+        else
+          redirect_to(admin_entries_path)
+        end
+      else
+        render :duplicate
+      end
+    rescue ActiveRecord::RecordInvalid
+      # FriendlyId clears invalid slugs. Keep the submitted value in the form.
+      if @duplicate_entry.permalink && (slug = params.dig(:entry, :permalink_attributes, :slug))
+        @duplicate_entry.permalink.slug = slug
+      end
+      render :duplicate, status: :unprocessable_entity
     end
 
     member_action :snapshot, method: :post do
@@ -339,6 +372,7 @@ module Pageflow
       # rubocop:todo Metrics/PerceivedComplexity
       def permitted_attributes # rubocop:todo Metrics/AbcSize, Metrics/CyclomaticComplexity
         result = [:title, :type_name, {permalink_attributes: [:slug, :directory_id]}]
+        result.delete(:type_name) if action_name == 'duplicate'
         target = if !params[:id] && current_user.admin?
                    Account.first
                  elsif params[:id]
@@ -352,19 +386,24 @@ module Pageflow
         result << :folder_id if create_or_new_action? ||
                                 (params[:id] && authorized?(:configure_folder_for, resource))
 
-        accounts = if params[:id]
-                     resource.account
-                   else
-                     account_policy_scope.sites_accessible
-                   end
-
-        result += permitted_site_attributes(accounts)
+        result += permitted_site_attributes(permitted_site_accounts(result))
 
         result
       end
       # rubocop:enable Metrics/PerceivedComplexity
 
+      def permitted_site_accounts(attributes)
+        if action_name == 'duplicate' && attributes.include?(:account_id)
+          Account.find(params[:entry][:account_id])
+        elsif params[:id]
+          resource.account
+        else
+          account_policy_scope.sites_accessible
+        end
+      end
+
       def permit_feature_states(attributes)
+        return if action_name == 'duplicate'
         return unless params[:id] && authorized?(:update_feature_configuration_on, resource)
 
         feature_states = params[:entry][:feature_states].try(:permit!)
@@ -403,7 +442,8 @@ module Pageflow
       end
 
       def legally_moving_entry_to_other_account
-        action_name.to_sym == :update && authorized?(:update_account_on, resource) &&
+        [:update, :duplicate].include?(action_name.to_sym) &&
+          authorized?(:update_account_on, resource) &&
           account_policy_scope.entry_movable.include?(Account.find(params[:entry][:account_id]))
       end
 

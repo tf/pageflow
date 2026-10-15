@@ -92,6 +92,8 @@ jQuery(function($) {
     var titleInput = $('#entry_title', this);
     var permalinkDirectorySelect = $('#entry_permalink_attributes_directory_id', this);
 
+    var duplicateEntryId = $(this).data('duplicateEntryId');
+    var initialAccountId = $(this).data('accountId');
     var isRootPermalink = $(this).attr('data-root-permalink') === 'true';
 
     function updateSiteAndEntryTypeInput() {
@@ -149,7 +151,8 @@ jQuery(function($) {
 
     function fetchPermalinkInput(callback) {
       $.get('/admin/entries/permalink_inputs' +
-            '?entry[account_id]=' + accountSelect.val() +
+            '?entry[account_id]=' + (accountSelect.val() || initialAccountId) +
+                   (duplicateEntryId ? '&duplicate_entry_id=' + duplicateEntryId : '') +
                    (siteSelect.val() ? '&entry[site_id]=' + siteSelect.val() : '') +
             '&entry[title]=' + encodeURIComponent(titleInput.val()))
        .done(callback);

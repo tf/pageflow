@@ -897,7 +897,8 @@ en:
             one: 1 unread topic
             other: "%{count} unread topics"
         confirm_depublish: Depublish this story?
-        confirm_duplicate: Duplicate this story?
+        copy_memberships: Copy all members with their current roles
+        without_memberships: Create the copy without members
         confirm_restore: Restore story to the selected version? A snapshot will be created, so that you can roll back later.
         depublish: Depublish story
         duplicate: Copy Story

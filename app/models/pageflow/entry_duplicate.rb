@@ -1,12 +1,23 @@
 module Pageflow
   EntryDuplicate = Struct.new(:original_entry) do
-    def create!
-      ActiveRecord::Base.transaction do
-        create_entry
+    def build
+      entry = Entry.new(new_attributes)
+      if original_entry.permalink.present?
+        entry.build_permalink(directory: original_entry.permalink.directory)
+      end
+      entry
+    end
 
-        copy_permalink
+    def create!(entry: nil, copy_memberships: true)
+      ActiveRecord::Base.transaction do
+        @new_entry = entry || Entry.new(new_attributes)
+        new_entry.save!
+
+        if entry.nil? && original_entry.permalink.present?
+          new_entry.create_permalink!(directory: original_entry.permalink.directory)
+        end
         copy_draft
-        copy_memberships
+        self.copy_memberships if copy_memberships
       end
 
       new_entry
@@ -19,16 +30,6 @@ module Pageflow
     private
 
     attr_reader :new_entry
-
-    def create_entry
-      @new_entry = Entry.create!(new_attributes)
-    end
-
-    def copy_permalink
-      return if original_entry.permalink.blank?
-
-      new_entry.create_permalink!(directory: original_entry.permalink.directory)
-    end
 
     def copy_draft
       original_entry.draft.copy do |revision|

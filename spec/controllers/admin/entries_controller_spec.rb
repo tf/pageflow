@@ -1719,6 +1719,150 @@ describe Admin::EntriesController do
   end
 
   describe '#duplicate' do
+    it 'renders a form without creating a copy' do
+      user = create(:user)
+      entry = create(:entry, with_publisher: user)
+      sign_in(user, scope: :user)
+
+      expect {
+        get(:duplicate, params: {id: entry.id})
+      }.not_to(change { Pageflow::Entry.count })
+
+      expect(response).to render_template(:duplicate)
+      expect(assigns(:duplicate_entry)).to be_new_record
+      expect(response.body).to have_selector('input[type="radio"][name="copy_memberships"]',
+                                             count: 2)
+      expect(response.body).to have_selector('input[name="copy_memberships"][value="1"][checked]')
+      expect(response.body).to have_link('Cancel', href: admin_entry_path(entry))
+    end
+
+    it 'omits the membership choice when the original entry has no members' do
+      entry = create(:entry)
+      sign_in(create(:user, :admin), scope: :user)
+
+      get(:duplicate, params: {id: entry.id})
+
+      expect(response.body).not_to have_selector('[name="copy_memberships"]')
+      expect(response.body).not_to have_selector('#entry_copy_memberships_input')
+    end
+
+    it 'uses the plain German cancel label' do
+      entry = create(:entry)
+      sign_in(create(:user, :admin, locale: 'de'), scope: :user)
+
+      get(:duplicate, params: {id: entry.id})
+
+      expect(response.body).to have_link('Abbrechen', href: admin_entry_path(entry))
+    end
+
+    it 'creates the copy with the submitted title and slug and without members' do
+      user = create(:user)
+      entry = create(:entry, with_publisher: user, permalink_attributes: {slug: 'original'})
+      sign_in(user, scope: :user)
+
+      post(:duplicate, params: {id: entry.id, copy_memberships: '0',
+                                entry: {title: 'Selected name',
+                                        permalink_attributes: {slug: 'selected-slug'}}})
+
+      copy = Pageflow::Entry.order(:id).last
+      expect(copy.title).to eq('Selected name')
+      expect(copy.permalink.slug).to eq('selected-slug')
+      expect(copy.memberships).to be_empty
+      expect(response).to redirect_to(admin_entries_path)
+    end
+
+    it 'copies memberships when selected' do
+      user = create(:user)
+      entry = create(:entry, with_publisher: user)
+      sign_in(user, scope: :user)
+
+      post(:duplicate, params: {id: entry.id, copy_memberships: '1', entry: {title: 'Copy'}})
+
+      expect(Pageflow::Entry.order(:id).last.users).to include(user)
+    end
+
+    it 'renders validation errors without creating records' do
+      user = create(:user)
+      entry = create(:entry, with_publisher: user)
+      sign_in(user, scope: :user)
+
+      expect {
+        post(:duplicate, params: {id: entry.id, copy_memberships: '0', entry: {title: ''}})
+      }.not_to(change { [Pageflow::Entry.count, Pageflow::Revision.count] })
+
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to render_template(:duplicate)
+      expect(assigns(:duplicate_entry).errors[:title]).to be_present
+      expect(assigns(:copy_memberships)).to eq(false)
+      expect(response.body).to have_selector('input[name="copy_memberships"][value="0"][checked]')
+      expect(response.body)
+        .not_to have_selector('input[name="copy_memberships"][value="1"][checked]')
+    end
+
+    it 'creates the copy in the selected account, site and folder' do
+      entry = create(:entry)
+      account = create(:account)
+      site = create(:site, account:)
+      folder = create(:folder, account:)
+      directory = create(:permalink_directory, site:)
+      sign_in(create(:user, :admin), scope: :user)
+
+      post(:duplicate, params: {id: entry.id, entry: {
+             title: 'Destination copy', account_id: account.id, site_id: site.id,
+             folder_id: folder.id,
+             permalink_attributes: {slug: 'destination', directory_id: directory.id}
+           }})
+
+      copy = Pageflow::Entry.order(:id).last
+      expect(copy).to have_attributes(account:, site:, folder:)
+      expect(copy.permalink).to have_attributes(slug: 'destination', directory:)
+      expect(entry.reload.account).not_to eq(account)
+    end
+
+    it 'does not allow an entry publisher to change the account or site without permission' do
+      user = create(:user)
+      entry = create(:entry, with_publisher: user)
+      account = create(:account)
+      sign_in(user, scope: :user)
+
+      post(:duplicate, params: {id: entry.id, entry: {
+             title: 'Copy', account_id: account.id, site_id: account.default_site.id
+           }})
+
+      expect(Pageflow::Entry.order(:id).last).to have_attributes(account: entry.account,
+                                                                 site: entry.site)
+    end
+
+    it 'does not retain the original permalink when moving to a site without directories' do
+      entry = create(:entry, permalink_attributes: {slug: 'original'})
+      account = create(:account)
+      sign_in(create(:user, :admin), scope: :user)
+
+      post(:duplicate, params: {id: entry.id, entry: {
+             title: 'Copy', account_id: account.id
+           }})
+
+      copy = Pageflow::Entry.order(:id).last
+      expect(copy.site).to eq(account.default_site)
+      expect(copy.permalink).to be_nil
+      expect(entry.reload.permalink.slug).to eq('original')
+    end
+
+    it 'does not create a copy when the selected permalink is already taken' do
+      user = create(:user)
+      entry = create(:entry, with_publisher: user, permalink_attributes: {slug: 'taken'})
+      sign_in(user, scope: :user)
+
+      expect {
+        post(:duplicate, params: {id: entry.id, entry: {
+               title: 'Copy', permalink_attributes: {slug: 'taken'}
+             }})
+      }.not_to(change { [Pageflow::Entry.count, Pageflow::Permalink.count] })
+
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(assigns(:duplicate_entry).permalink.slug).to eq('taken')
+    end
+
     it 'does not allow account editor to duplicate own entries of own account' do
       user = create(:user)
       account = create(:account, with_editor: user)
@@ -1877,6 +2021,39 @@ describe Admin::EntriesController do
 
   describe 'get #permalinks_inputs' do
     render_views
+
+    it 'allows an entry publisher to preview the permalink of a duplicate' do
+      user = create(:user)
+      entry = create(:entry, with_publisher: user, permalink_attributes: {slug: 'original'})
+      sign_in(user, scope: :user)
+
+      get(:permalink_inputs, params: {duplicate_entry_id: entry.id,
+                                      entry: {account_id: entry.account_id, title: 'Chosen title'}})
+
+      expect(response.status).to eq(200)
+      expect(response.body).to have_selector('input[data-placeholder="chosen-title"]')
+    end
+
+    it 'does not allow previewing a duplicate of an inaccessible entry' do
+      entry = create(:entry)
+      sign_in(create(:user), scope: :user)
+
+      get(:permalink_inputs, params: {duplicate_entry_id: entry.id})
+
+      expect(response).to redirect_to(admin_root_path)
+    end
+
+    it 'uses the destination account default site when no site is selected' do
+      entry = create(:entry, permalink_attributes: {slug: 'original'})
+      account = create(:account)
+      sign_in(create(:user, :admin), scope: :user)
+
+      get(:permalink_inputs, params: {duplicate_entry_id: entry.id,
+                                      entry: {account_id: account.id, title: 'Copy'}})
+
+      expect(response.status).to eq(200)
+      expect(assigns(:entry).site).to eq(account.default_site)
+    end
 
     it 'is allowed for account publisher' do
       account = create(:account)

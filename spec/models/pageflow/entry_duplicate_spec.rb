@@ -2,6 +2,19 @@ require 'spec_helper'
 
 module Pageflow
   describe EntryDuplicate do
+    describe '#build' do
+      it 'prepares an unsaved copy without creating records' do
+        entry = create(:entry, permalink_attributes: {slug: 'original'})
+
+        expect {
+          copy = EntryDuplicate.of(entry).build
+          expect(copy).to be_new_record
+          expect(copy.permalink).to be_new_record
+          expect(copy.permalink.directory).to eq(entry.permalink.directory)
+        }.not_to(change { [Entry.count, Revision.count, Permalink.count, Membership.count] })
+      end
+    end
+
     describe '#create!' do
       it 'creates an entry with a title containing the original title' do
         entry = create(:entry, title: 'Some Title')
@@ -41,6 +54,28 @@ module Pageflow
         duplicate = EntryDuplicate.of(entry).create!
 
         expect(duplicate.users.first).to eq(user)
+        expect(duplicate.memberships.first.role).to eq('previewer')
+      end
+
+      it 'can omit memberships without adding the creator' do
+        entry = create(:entry, with_publisher: create(:user))
+
+        duplicate = EntryDuplicate.of(entry).create!(copy_memberships: false)
+
+        expect(duplicate.memberships).to be_empty
+      end
+
+      it 'uses the title and permalink selected before creation' do
+        entry = create(:entry, permalink_attributes: {slug: 'original'})
+        duplication = EntryDuplicate.of(entry)
+        copy = duplication.build
+        copy.assign_attributes(title: 'Chosen title', permalink_attributes: {slug: 'chosen-slug'})
+
+        duplicate = duplication.create!(entry: copy)
+
+        expect(duplicate.reload.title).to eq('Chosen title')
+        expect(duplicate.permalink.slug).to eq('chosen-slug')
+        expect(entry.reload.permalink.slug).to eq('original')
       end
 
       it 'copies enabled features' do
