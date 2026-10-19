@@ -3,6 +3,7 @@
   "x-subject": {"model": "contentElement", "typeName": "inlineVideo"},
   "type": "object",
   "properties": {
+    "caption": {"x-richText": true},
     "id": {
       "type": "integer",
       "x-fileCollection": "video_files"

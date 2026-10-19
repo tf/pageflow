@@ -3,6 +3,16 @@
   "x-subject": {"model": "contentElement", "typeName": "externalLinkList"},
   "type": "object",
   "properties": {
+    "itemTexts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "description": {"type": "array", "x-richText": true},
+          "backfaceDescription": {"type": "array", "x-richText": true}
+        }
+      }
+    },
     "links": {
       "type": "array",
       "items": {"$ref": "#/$defs/link"}

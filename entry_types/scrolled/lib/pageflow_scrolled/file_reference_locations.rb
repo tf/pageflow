@@ -24,9 +24,7 @@ module PageflowScrolled
 
       return [] unless schema.is_a?(Hash)
 
-      references = schema['x-fileCollection'] ? [reference(schema, path)] : []
-
-      references +
+      Array.wrap(reference(schema, path)) +
         branches(schema).flat_map { |branch| collect(branch, document:, path:, seen:) } +
         children(schema).flat_map do |name, child|
           collect(child, document:, path: path + [name], seen:)
@@ -38,9 +36,12 @@ module PageflowScrolled
     end
 
     def reference(schema, path)
+      return unless schema['x-fileCollection'] || schema['x-richText']
+
       {
         'path' => path,
-        'collection' => schema['x-fileCollection'].camelize(:lower),
+        'collection' => schema['x-fileCollection']&.camelize(:lower),
+        'richText' => schema['x-richText'],
         'activeIf' => schema['x-activeIf']
       }.compact
     end

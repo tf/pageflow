@@ -3,6 +3,7 @@
   "x-subject": {"model": "contentElement", "typeName": "inlineBeforeAfter"},
   "type": "object",
   "properties": {
+    "caption": {"x-richText": true},
     "before_id": {
       "type": "integer",
       "x-fileCollection": "image_files"

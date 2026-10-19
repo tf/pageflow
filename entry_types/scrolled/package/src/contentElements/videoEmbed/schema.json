@@ -3,6 +3,7 @@
   "x-subject": {"model": "contentElement", "typeName": "videoEmbed"},
   "type": "object",
   "properties": {
+    "caption": {"x-richText": true},
     "posterId": {
       "type": "integer",
       "x-fileCollection": "image_files"

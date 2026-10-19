@@ -10,6 +10,36 @@ module PageflowScrolled
       expect(locations).to eq([{'path' => ['image'], 'collection' => 'imageFiles'}])
     end
 
+    it 'finds rich text locations including conditions' do
+      locations = FileReferenceLocations.new(ConfigurationSchemas.new([])).for(
+        {'properties' => {
+          'captions' => {
+            'additionalProperties' => {
+              'x-richText' => true,
+              'x-activeIf' => {'path' => ['hidden'], 'not' => true}
+            }
+          }
+        }}
+      )
+
+      expect(locations).to eq([{'path' => ['captions', '*'], 'richText' => true,
+                                'activeIf' => {'path' => ['hidden'], 'not' => true}}])
+    end
+
+    it 'describes download links in shipped text block and caption schemas' do
+      schemas = ConfigurationSchemas.load(
+        [File.expand_path('../../config/configuration_schemas/*.json', __dir__)]
+      )
+      locations = FileReferenceLocations.new(schemas)
+
+      expect(locations.for(schemas.find(model: 'contentElement', type_name: 'textBlock')))
+        .to include('path' => ['value'], 'richText' => true)
+      expect(locations.for(schemas.find(model: 'contentElement', type_name: 'inlineImage')))
+        .to include('path' => ['caption'], 'richText' => true)
+      expect(locations.for(schemas.find(model: 'contentElement', type_name: 'imageGallery')))
+        .to include('path' => ['captions', '*'], 'richText' => true)
+    end
+
     it 'ignores properties without file collection' do
       locations = FileReferenceLocations.new(ConfigurationSchemas.new([])).for(
         {'properties' => {'invertTooltips' => {'type' => 'boolean'}}}

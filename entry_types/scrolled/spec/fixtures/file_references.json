@@ -8,6 +8,65 @@
   ],
   "cases": [
     {
+      "name": "finds download links in nested rich text and preserves their collections",
+      "locations": [{"path": ["value"], "richText": true}],
+      "configuration": {
+        "value": [{"type": "bulleted-list", "children": [
+          {"type": "list-item", "children": [
+            {"text": "Download "},
+            {"type": "link", "href": {"file": {"permaId": 5, "collectionName": "imageFiles"}}, "children": [{"text": "image"}]},
+            {"text": " or "},
+            {"type": "link", "href": {"file": {"permaId": 5, "collectionName": "videoFiles"}}, "children": [{"text": "video"}]},
+            {"type": "link", "href": "https://example.com", "children": [{"text": "website"}]},
+            {"type": "link", "href": {"chapter": 5}, "children": [{"text": "chapter"}]}
+          ]}
+        ]}]
+      },
+      "references": [
+        {"collectionName": "imageFiles", "permaId": 5, "path": ["value", "0", "children", "0", "children", "1", "href", "file", "permaId"], "active": true},
+        {"collectionName": "videoFiles", "permaId": 5, "path": ["value", "0", "children", "0", "children", "3", "href", "file", "permaId"], "active": true}
+      ]
+    },
+    {
+      "name": "finds download links in rich text maps and respects active conditions",
+      "locations": [{"path": ["captions", "*"], "richText": true,
+                     "activeIf": {"path": ["hidden"], "not": true}}],
+      "configuration": {
+        "hidden": true,
+        "captions": {
+          "first": "Legacy caption",
+          "second": [{"type": "paragraph", "children": [
+            {"type": "link", "href": {"file": {"permaId": 6, "collectionName": "otherFiles"}}, "children": [{"text": "PDF"}]}
+          ]}]
+        }
+      },
+      "references": [
+        {"collectionName": "otherFiles", "permaId": 6, "path": ["captions", "second", "0", "children", "0", "href", "file", "permaId"], "active": false}
+      ]
+    },
+    {
+      "name": "skips missing null empty and legacy rich text",
+      "locations": [{"path": ["missing"], "richText": true},
+                    {"path": ["empty"], "richText": true},
+                    {"path": ["caption"], "richText": true},
+                    {"path": ["value"], "richText": true}],
+      "configuration": {"empty": [], "caption": "Legacy caption", "value": null},
+      "references": []
+    },
+    {
+      "name": "ignores incomplete download targets and file metadata outside link nodes",
+      "locations": [{"path": ["value"], "richText": true}],
+      "configuration": {
+        "value": [{"type": "paragraph", "children": [
+          {"type": "link", "href": {"file": {"collectionName": "imageFiles"}}, "children": [{"text": "missing id"}]},
+          {"type": "link", "href": {"file": {"permaId": 0, "collectionName": "imageFiles"}}, "children": [{"text": "invalid id"}]},
+          {"type": "link", "href": {"file": {"permaId": 5}}, "children": [{"text": "missing collection"}]},
+          {"text": "not a link", "href": {"file": {"permaId": 5, "collectionName": "imageFiles"}}}
+        ]}]
+      },
+      "references": []
+    },
+    {
       "name": "finds reference in top level property",
       "locations": [{"path": ["image"], "collection": "imageFiles"}],
       "configuration": {"image": 5},

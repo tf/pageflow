@@ -3,6 +3,7 @@
   "x-subject": {"model": "contentElement", "typeName": "vrImage"},
   "type": "object",
   "properties": {
+    "caption": {"x-richText": true},
     "image": {
       "type": "integer",
       "x-fileCollection": "image_files"

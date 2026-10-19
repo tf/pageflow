@@ -3,6 +3,16 @@
   "x-subject": {"model": "contentElement", "typeName": "hotspots"},
   "type": "object",
   "properties": {
+    "caption": {"x-richText": true},
+    "tooltipTexts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "description": {"type": "array", "x-richText": true}
+        }
+      }
+    },
     "image": {
       "type": "integer",
       "x-fileCollection": "image_files"

@@ -3,6 +3,7 @@
   "x-subject": {"model": "contentElement", "typeName": "lottieAnimation"},
   "type": "object",
   "properties": {
+    "caption": {"x-richText": true},
     "id": {
       "type": "integer",
       "x-fileCollection": "lottie_files"

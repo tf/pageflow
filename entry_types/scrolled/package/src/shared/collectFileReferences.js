@@ -10,15 +10,34 @@
 export function collectFileReferences({locations, configuration}) {
   return locations.flatMap(location =>
     valuesAt(configuration, location.path)
-      .map(({path, value}) => ({path, permaId: toPermaId(value)}))
+      .flatMap(({path, value}) => location.richText ?
+        richTextReferences(value, path) :
+        [{path, value, collectionName: location.collection}])
+      .map(({path, value, collectionName}) => ({path, permaId: toPermaId(value), collectionName}))
       .filter(({permaId}) => permaId)
-      .map(({path, permaId}) => ({
-        collectionName: location.collection,
+      .map(({path, permaId, collectionName}) => ({
+        collectionName,
         permaId,
         path,
         active: isActive(location.activeIf, configuration)
       }))
   );
+}
+
+function richTextReferences(nodes, path) {
+  if (!Array.isArray(nodes)) {
+    return [];
+  }
+
+  return nodes.flatMap((node, index) => {
+    const nodePath = [...path, String(index)];
+    const file = node.type === 'link' && node.href?.file;
+    const references = file?.collectionName ?
+      [{path: [...nodePath, 'href', 'file', 'permaId'],
+        value: file.permaId, collectionName: file.collectionName}] : [];
+
+    return [...references, ...richTextReferences(node.children, [...nodePath, 'children'])];
+  });
 }
 
 // Backdrops of legacy sections store a color in the property that

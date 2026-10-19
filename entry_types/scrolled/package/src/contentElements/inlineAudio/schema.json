@@ -3,6 +3,7 @@
   "x-subject": {"model": "contentElement", "typeName": "inlineAudio"},
   "type": "object",
   "properties": {
+    "caption": {"x-richText": true},
     "id": {
       "type": "integer",
       "x-fileCollection": "audio_files"

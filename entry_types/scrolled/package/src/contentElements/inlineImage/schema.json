@@ -3,6 +3,7 @@
   "x-subject": {"model": "contentElement", "typeName": "inlineImage"},
   "type": "object",
   "properties": {
+    "caption": {"x-richText": true},
     "id": {
       "type": "integer",
       "x-fileCollection": "image_files"

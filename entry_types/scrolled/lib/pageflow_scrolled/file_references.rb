@@ -10,12 +10,20 @@ module PageflowScrolled
 
     def for(configuration)
       @locations.flat_map do |location|
-        values_at(configuration, location['path']).filter_map do |path, value|
+        values = values_at(configuration, location['path']).flat_map do |path, value|
+          if location['richText']
+            rich_text_references(value, path)
+          else
+            [[path, value, location['collection']]]
+          end
+        end
+
+        values.filter_map do |path, value, collection_name|
           perma_id = to_perma_id(value)
           next unless perma_id
 
           {
-            collection_name: location['collection'],
+            collection_name:,
             perma_id:,
             path:,
             active: active?(location['activeIf'], configuration)
@@ -25,6 +33,23 @@ module PageflowScrolled
     end
 
     private
+
+    def rich_text_references(nodes, path)
+      return [] unless nodes.is_a?(Array)
+
+      nodes.each_with_index.flat_map do |node, index|
+        node_path = path + [index]
+        file = node['href'].is_a?(Hash) && node['href']['file'] if node['type'] == 'link'
+        references = if file && file['collectionName']
+                       [[node_path + %w[href file permaId], file['permaId'],
+                         file['collectionName']]]
+                     else
+                       []
+                     end
+
+        references + rich_text_references(node['children'], node_path + ['children'])
+      end
+    end
 
     def to_perma_id(value)
       perma_id = Integer(value, exception: false)

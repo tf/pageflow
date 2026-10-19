@@ -3,6 +3,10 @@
   "x-subject": {"model": "contentElement", "typeName": "imageGallery"},
   "type": "object",
   "properties": {
+    "captions": {
+      "type": "object",
+      "additionalProperties": {"x-richText": true}
+    },
     "items": {
       "type": "array",
       "items": {"$ref": "#/$defs/item"}

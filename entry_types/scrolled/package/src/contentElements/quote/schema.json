@@ -2,5 +2,8 @@
   "$id": "pageflow-scrolled/contentElements/quote",
   "x-subject": {"model": "contentElement", "typeName": "quote"},
   "type": "object",
-  "properties": {}
+  "properties": {
+    "text": {"type": "array", "x-richText": true},
+    "attribution": {"type": "array", "x-richText": true}
+  }
 }
